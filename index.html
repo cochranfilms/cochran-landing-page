@@ -1382,18 +1382,36 @@
       .stat-label {
         font-size: 0.9rem;
       }
+      /* Hero CTA buttons - Mobile optimized and consistent */
       .hero-cta {
         flex-direction: column;
         gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
       }
+      
       .cta-primary, .cta-secondary {
-        padding: 1.2rem 2rem;
-        font-size: 1.1rem;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        box-sizing: border-box;
       }
+      
       .hero-content {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem;
+        text-align: center;
       }
       .testimonials-grid {
         grid-template-columns: 1fr;
@@ -3340,7 +3358,7 @@
       animation: glow 2s ease-in-out infinite;
     }
     
-    /* Mobile optimizations */
+    /* Mobile optimizations - Alignment & Spacing Fixed */
     @media (max-width: 768px) {
       .magnetic-element {
         transform: none !important;
@@ -3358,29 +3376,45 @@
         display: none;
       }
       
-      /* Header mobile optimizations */
+      /* Header mobile optimizations - Perfect Alignment */
       header {
-        padding: 2rem 1rem;
-        min-height: 150px;
+        padding: 1.5rem 1rem;
+        min-height: auto;
+        text-align: center;
+      }
+      
+      .header-content {
+        max-width: 100%;
+        padding: 0 1rem;
+        margin: 0 auto;
       }
       
       header img {
-        max-height: 60px;
-        max-width: 220px;
+        max-height: 50px;
+        max-width: 200px;
+        margin: 0 auto 1rem;
+        display: block;
       }
       
       header h1 {
-        font-size: 1.5rem;
-        margin: 1rem 0 0.5rem;
+        font-size: 1.4rem;
+        margin: 1rem auto 0.8rem;
+        text-align: center;
+        max-width: 300px;
+        line-height: 1.3;
       }
       
       header p {
-        font-size: 1rem;
-        max-width: 100%;
+        font-size: 0.95rem;
+        max-width: 320px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.5;
+        padding: 0 0.5rem;
       }
       
       .header-divider {
-        width: 60px;
+        width: 50px;
         margin: 1rem auto;
       }
       
@@ -3388,29 +3422,282 @@
         display: none;
       }
       
-      /* Section titles mobile optimizations */
+      /* Section titles mobile optimizations - Centered */
       .section-title {
-        font-size: 2.5rem;
-        letter-spacing: 0.1em;
-        margin-bottom: 0.5rem;
+        font-size: 2.2rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 1rem;
+        text-align: center;
+        padding: 0 1rem;
+        line-height: 1.2;
       }
       
       .section-title::before {
-        width: 80px;
+        width: 60px;
         height: 2px;
-        top: -10px;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
       }
       
       .section-title::after {
-        width: 60px;
+        width: 40px;
         height: 1px;
-        bottom: -10px;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
       }
       
       .section-subtitle {
-        font-size: 1.2rem;
-        margin-bottom: 3rem;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 0 1rem;
+        line-height: 1.5;
+      }
+      
+      /* All sections - reduce excess padding */
+      section {
+        padding: 3rem 1rem !important;
+      }
+      
+      .section-header {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      
+      /* ALL BUTTONS - Mobile consistency and alignment */
+      .btn-primary, .btn-secondary {
+        padding: 0.9rem 1.8rem !important;
+        font-size: 0.95rem !important;
+        width: 100%;
+        max-width: 280px;
+        margin: 0.5rem auto !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 44px;
+        box-sizing: border-box;
+      }
+      
+      /* Service details actions - mobile optimized */
+      .service-details-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem;
+      }
+      
+      .service-details-actions .btn-primary,
+      .service-details-actions .btn-secondary {
+        flex: none !important;
+        max-width: 280px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
+      
+      /* Modal content - mobile alignment */
+      .modal-content {
+        padding: 1.5rem 1rem !important;
+        margin: 1rem;
+        max-width: calc(100vw - 2rem) !important;
+        text-align: center;
+      }
+      
+      /* Form inputs - mobile consistency */
+      input, textarea, select {
+        width: 100% !important;
+        padding: 0.8rem !important;
+        margin: 0.5rem 0 !important;
+        font-size: 1rem !important;
+        box-sizing: border-box;
+      }
+      
+      /* Container alignment - prevent overflow */
+      .container, .service-builder-container, .million-dollar-photography {
+        padding: 2rem 1rem !important;
+        margin: 0 auto;
         max-width: 100%;
+        overflow-x: hidden;
+      }
+      
+      /* Text containers - proper mobile alignment */
+      .text-container, .content-container {
+        max-width: 100%;
+        padding: 0 1rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      /* Grid layouts - single column on mobile */
+      .grid, .testimonials-grid, .cinematic-services-grid, .service-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        padding: 0 1rem;
+      }
+      
+      /* Cards - mobile spacing */
+      .card, .service-card, .testimonial-card {
+        margin: 1rem auto !important;
+        max-width: 100%;
+        padding: 1.5rem 1rem !important;
+      }
+      
+      /* Footer mobile optimization */
+      footer {
+        padding: 2rem 1rem !important;
+        text-align: center;
+      }
+      
+      /* Navigation and menu items */
+      nav, .nav-menu, .menu-items {
+        text-align: center;
+        padding: 0 1rem;
+      }
+      
+      /* Button containers - ensure proper centering */
+      .btn-container, .button-group, .action-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      
+      /* Ensure all paragraph text is centered on mobile */
+      p {
+        text-align: center;
+        margin: 1rem auto;
+        max-width: 320px;
+        padding: 0 1rem;
+        line-height: 1.5;
+      }
+      
+      /* Headers consistency */
+      h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+        margin: 1rem auto;
+        max-width: 100%;
+        padding: 0 1rem;
+      }
+      
+      /* Lists - center alignment */
+      ul, ol {
+        max-width: 320px;
+        margin: 1rem auto;
+        padding: 0 1rem;
+      }
+      
+      /* Images - responsive and centered */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      
+      /* Video containers */
+      .video-container, .hero-video-container {
+        max-width: 100%;
+        margin: 1rem auto;
+        padding: 0 1rem;
+      }
+      
+      /* Prevent horizontal overflow */
+      * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        overflow-x: hidden;
+      }
+    }
+    
+    /* Ultra-mobile optimization for very small screens */
+    @media (max-width: 480px) {
+      /* Header - ultra compact */
+      header {
+        padding: 1rem 0.5rem;
+      }
+      
+      header h1 {
+        font-size: 1.2rem;
+        margin: 0.8rem auto 0.5rem;
+        max-width: 280px;
+      }
+      
+      header p {
+        font-size: 0.9rem;
+        max-width: 280px;
+        padding: 0 0.25rem;
+      }
+      
+      /* Section titles - ultra small screens */
+      .section-title {
+        font-size: 1.8rem;
+        padding: 0 0.5rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        max-width: 280px;
+        padding: 0 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      /* Buttons - ultra compact */
+      .cta-primary, .cta-secondary, .btn-primary, .btn-secondary {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 0.9rem !important;
+        max-width: 260px !important;
+        margin: 0.4rem auto !important;
+      }
+      
+      /* Containers - ultra tight spacing */
+      section {
+        padding: 2rem 0.5rem !important;
+      }
+      
+      .container, .service-builder-container {
+        padding: 1.5rem 0.5rem !important;
+      }
+      
+      /* Modal - ultra small screens */
+      .modal-content {
+        padding: 1rem 0.8rem !important;
+        margin: 0.5rem;
+        border-radius: 12px;
+      }
+      
+      /* Cards - compact mobile */
+      .card, .service-card, .testimonial-card {
+        padding: 1rem 0.8rem !important;
+        margin: 0.8rem auto !important;
+      }
+      
+      /* Hero content - ultra mobile */
+      .hero-content {
+        padding: 0 0.5rem;
+        gap: 1rem;
+      }
+      
+      .hero-cta {
+        max-width: 280px;
+        gap: 0.8rem;
+      }
+      
+      /* Grids - ultra mobile spacing */
+      .grid, .testimonials-grid, .cinematic-services-grid {
+        gap: 1rem !important;
+        padding: 0 0.5rem;
       }
     }
     
@@ -4302,8 +4589,28 @@
     }
     
     /* 🎬 AWARD-WINNING CINEMATIC LOADING EXPERIENCE */
+    :root {
+      --loading-duration: 1s;
+      --animation-speed: 1;
+      --reduced-motion: false;
+    }
+    
+    /* Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --animation-speed: 0.5;
+        --reduced-motion: true;
+      }
+      
+      * {
+        animation-duration: 0.5s !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+    
     body:not(.loaded) {
       overflow: hidden;
+      -webkit-overflow-scrolling: touch;
     }
     
     /* Main Loading Container */
@@ -4321,13 +4628,17 @@
       align-items: center;
       justify-content: center;
       opacity: 1;
-      transition: opacity 1s ease-out;
+      transition: opacity var(--loading-duration) ease-out;
       overflow: hidden;
+      will-change: opacity;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
     
     body.loaded .cinematic-loader {
       opacity: 0;
       pointer-events: none;
+      transform: translateZ(0);
     }
     
     /* Professional Camera Viewfinder Overlay */
@@ -4960,112 +5271,343 @@
       100% { transform: translate(0, 0) scale(0); opacity: 0; }
     }
     
-    /* Responsive Design */
+    /* Mobile Optimization - Complete Enhancement */
     @media (max-width: 768px) {
+      /* Main loader optimizations */
+      .cinematic-loader {
+        background: 
+          radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+        will-change: opacity;
+      }
+      
+      /* Central aperture - optimized for mobile */
       .aperture-container {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
+        z-index: 15;
       }
       
       .aperture {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
+        border-width: 2px;
+        animation-duration: 6s; /* Slower for better mobile performance */
       }
       
+      /* Typography - mobile optimized */
       .brand-name {
-        font-size: 1.8rem;
-      }
-      
-      .tagline {
-        font-size: 0.8rem;
-      }
-      
-      .cinematic-progress {
-        width: 250px;
-      }
-      
-      /* Mobile adjustments for production elements */
-      .countdown-container {
-        width: 80px;
-        height: 80px;
-        top: 15%;
-        right: 5%;
-      }
-      
-      .countdown-number {
-        font-size: 2rem;
-      }
-      
-      .clapperboard {
-        width: 100px;
-        height: 70px;
-        top: 12%;
-        left: 5%;
-      }
-      
-      .clapper-top {
-        height: 20px;
-        top: -18px;
-      }
-      
-      .clapper-text {
-        font-size: 0.5rem;
+        font-size: 1.6rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.15em;
         line-height: 1.1;
       }
       
-      .film-reels {
-        width: 80px;
-        height: 80px;
-        bottom: 12%;
-        right: 5%;
+      .tagline {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        line-height: 1.2;
       }
       
-      .film-reel {
-        width: 50px;
-        height: 50px;
+      /* Progress bar - better mobile positioning */
+      .cinematic-progress {
+        width: 280px;
+        bottom: 60px;
+        height: 4px;
       }
       
-      .film-reel::before {
-        width: 12px;
-        height: 12px;
+      .progress-fill {
+        animation-duration: 4s; /* Optimized timing */
       }
       
-      .camera-equipment {
-        width: 70px;
-        height: 40px;
-        bottom: 8%;
-        left: 8%;
-      }
-      
-      .camera-body {
-        width: 40px;
+      /* Film strip - reduced complexity */
+      .film-strip::before,
+      .film-strip::after {
         height: 25px;
-        left: 15px;
+        background: 
+          repeating-linear-gradient(
+            90deg,
+            #000 0%,
+            #000 8px,
+            #FFB200 8px,
+            #FFB200 12px,
+            #000 12px,
+            #000 20px
+          );
+        animation-duration: 4s; /* Slower for smoother performance */
       }
       
-      .camera-lens {
-        width: 20px;
-        height: 20px;
-        bottom: 5px;
+      .film-strip::before {
+        top: 10px;
       }
       
-      .viewfinder-grid {
-        width: 90%;
-        height: 90%;
+      .film-strip::after {
+        bottom: 10px;
       }
       
-      .spotlight {
-        width: 120px;
-        height: 120px;
-      }
-      
+      /* Sound waves - simplified for mobile */
       .sound-waves {
-        bottom: 100px;
-        height: 30px;
+        bottom: 110px;
+        height: 25px;
+        gap: 2px;
       }
       
       .wave-bar {
         width: 2px;
+        animation-duration: 2s; /* Optimized for mobile */
+      }
+      
+      /* Production elements - mobile optimized positioning */
+      .countdown-container {
+        width: 70px;
+        height: 70px;
+        top: 12%;
+        right: 8%;
+        z-index: 12;
+      }
+      
+      .countdown-circle {
+        border-width: 1px;
+        animation-duration: 5s; /* Slower for better visibility */
+      }
+      
+      .countdown-number {
+        font-size: 1.8rem;
+        text-shadow: 0 0 15px rgba(255, 178, 0, 0.8);
+      }
+      
+      /* Clapperboard - simplified for mobile */
+      .clapperboard {
+        width: 90px;
+        height: 60px;
+        top: 8%;
+        left: 8%;
+        border-width: 1px;
+        animation-duration: 8s; /* Less frequent animation */
+      }
+      
+      .clapper-top {
+        height: 18px;
+        top: -16px;
+        border-width: 1px;
+        background: 
+          repeating-linear-gradient(
+            45deg,
+            #000 0px,
+            #000 8px,
+            #fff 8px,
+            #fff 16px
+          );
+      }
+      
+      .clapper-text {
+        font-size: 0.45rem;
+        line-height: 1;
+        font-weight: 600;
+      }
+      
+      /* Film reels - optimized size and performance */
+      .film-reels {
+        width: 70px;
+        height: 70px;
+        bottom: 15%;
+        right: 8%;
+      }
+      
+      .film-reel {
+        width: 45px;
+        height: 45px;
+        border-width: 2px;
+        animation-duration: 4s; /* Optimized for mobile */
+      }
+      
+      .film-reel:last-child {
+        animation-duration: 3.5s;
+      }
+      
+      .film-reel::before {
+        width: 10px;
+        height: 10px;
+        box-shadow: 0 0 10px rgba(255, 178, 0, 0.6);
+      }
+      
+      /* Camera equipment - simplified design */
+      .camera-equipment {
+        width: 60px;
+        height: 35px;
+        bottom: 12%;
+        left: 10%;
+      }
+      
+      .camera-body {
+        width: 35px;
+        height: 22px;
+        left: 12px;
+        animation-duration: 5s; /* Slower for better mobile performance */
+      }
+      
+      .camera-lens {
+        width: 18px;
+        height: 18px;
+        bottom: 4px;
+        border-width: 1px;
+        animation-duration: 4s;
+      }
+      
+      /* Viewfinder - optimized for mobile screens */
+      .viewfinder-grid {
+        width: 85%;
+        height: 85%;
+        border-width: 1px;
+        animation-duration: 4s;
+      }
+      
+      .viewfinder-corners {
+        width: 90%;
+        height: 90%;
+      }
+      
+      .viewfinder-corners::before,
+      .viewfinder-corners::after,
+      .corner-tr,
+      .corner-bl {
+        width: 20px;
+        height: 20px;
+        border-width: 2px;
+      }
+      
+      /* Studio lights - reduced for mobile performance */
+      .spotlight {
+        width: 100px;
+        height: 100px;
+        animation-duration: 10s; /* Slower animations */
+      }
+      
+      .spotlight:nth-child(2) {
+        animation-duration: 8s;
+      }
+      
+      .spotlight:nth-child(3) {
+        animation-duration: 12s;
+      }
+      
+      /* Particles - reduced complexity on mobile */
+      .particle {
+        width: 1px;
+        height: 1px;
+        animation-duration: 8s; /* Slower for better performance */
+      }
+      
+      .particle:nth-child(2n) {
+        animation-duration: 10s;
+      }
+      
+      .particle:nth-child(3n) {
+        animation-duration: 12s;
+      }
+      
+      /* Lens flares - simplified for mobile */
+      .lens-flare {
+        width: 60px;
+        height: 60px;
+        animation-duration: 10s;
+      }
+      
+      /* Performance optimizations */
+      * {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
+      }
+    }
+    
+    /* Ultra-mobile optimization for very small screens */
+    @media (max-width: 480px) {
+      .aperture-container {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .aperture {
+        width: 130px;
+        height: 130px;
+      }
+      
+      .brand-name {
+        font-size: 1.4rem;
+        letter-spacing: 0.1em;
+      }
+      
+      .tagline {
+        font-size: 0.6rem;
+        letter-spacing: 0.15em;
+      }
+      
+      .cinematic-progress {
+        width: 240px;
+        bottom: 40px;
+      }
+      
+      .countdown-container {
+        width: 60px;
+        height: 60px;
+        top: 10%;
+        right: 5%;
+      }
+      
+      .countdown-number {
+        font-size: 1.5rem;
+      }
+      
+      .clapperboard {
+        width: 75px;
+        height: 50px;
+        top: 6%;
+        left: 5%;
+      }
+      
+      .clapper-top {
+        height: 15px;
+        top: -13px;
+      }
+      
+      .clapper-text {
+        font-size: 0.35rem;
+      }
+      
+      .film-reels {
+        width: 60px;
+        height: 60px;
+        bottom: 18%;
+        right: 5%;
+      }
+      
+      .film-reel {
+        width: 35px;
+        height: 35px;
+      }
+      
+      .camera-equipment {
+        width: 50px;
+        height: 30px;
+        bottom: 15%;
+        left: 5%;
+      }
+      
+      .camera-body {
+        width: 30px;
+        height: 18px;
+        left: 10px;
+      }
+      
+      .camera-lens {
+        width: 15px;
+        height: 15px;
+      }
+      
+      .sound-waves {
+        bottom: 90px;
+        height: 20px;
       }
     }
 
@@ -6209,6 +6751,49 @@
       align-items: center;
       padding-top: 1.5rem;
       border-top: 2px solid rgba(76, 175, 80, 0.4);
+    }
+    
+    /* Consistent button sizing across all button types */
+    .btn-primary, .btn-secondary {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #000;
+      box-shadow: 0 4px 15px rgba(255,178,0,0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,178,0,0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255,178,0,0.2);
     }
     
     .service-details-actions .btn-primary,
@@ -8338,6 +8923,9 @@
   document.addEventListener('DOMContentLoaded', () => {
     console.log('🎬 Cochran Films Production Studio Loading...');
     
+    // Mobile-first optimization
+    optimizeForMobile();
+    
     // Initialize countdown timer
     initializeCountdownTimer();
     
@@ -8345,10 +8933,59 @@
     animateProductionElements();
   });
   
+  // Mobile optimization function
+  function optimizeForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    const isUltraMobile = window.innerWidth <= 480;
+    
+    if (isMobile) {
+      console.log('📱 Mobile optimization active');
+      
+      // Reduce animation complexity for better performance
+      document.documentElement.style.setProperty('--reduced-motion', 'true');
+      
+      // Optimize viewport for mobile
+      const viewport = document.querySelector('meta[name="viewport"]');
+      if (viewport) {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+      }
+      
+      // Disable spotlight animations on ultra-mobile for performance
+      if (isUltraMobile) {
+        const spotlights = document.querySelectorAll('.spotlight');
+        spotlights.forEach(spotlight => {
+          spotlight.style.animation = 'none';
+          spotlight.style.opacity = '0.2';
+        });
+      }
+      
+      // Optimize for touch devices
+      document.body.style.touchAction = 'manipulation';
+      document.body.style.webkitTouchCallout = 'none';
+      document.body.style.webkitUserSelect = 'none';
+      
+      // Reduce particle count for better performance
+      const particles = document.querySelectorAll('.particle');
+      particles.forEach((particle, index) => {
+        if (index % 2 === 0 && isUltraMobile) {
+          particle.style.display = 'none';
+        }
+      });
+    }
+  }
+  
   window.addEventListener('load', () => {
     console.log('🎬 Rolling cameras... Action!');
     
-    // Allow the full cinematic experience to play (4.5s for all animations + 1s fade out)
+    const isMobile = window.innerWidth <= 768;
+    const isUltraMobile = window.innerWidth <= 480;
+    
+    // Optimize loading time based on device capabilities
+    const loadingDuration = isUltraMobile ? 3000 : isMobile ? 4000 : 5000;
+    const transitionDuration = isMobile ? 0.8 : 1.2;
+    const staggerDelay = isMobile ? 150 : 300;
+    
+    // Allow the cinematic experience to play (optimized for mobile)
     setTimeout(() => {
       document.body.classList.add('loaded');
       console.log('🎬 And... CUT! Welcome to Cochran Films.');
@@ -8357,22 +8994,22 @@
       setTimeout(() => {
         try {
           initializePremiumFeatures();
-          // Add cinematic entrance effects to main content
+          // Add cinematic entrance effects to main content (mobile optimized)
           document.querySelectorAll('header, .hero-section').forEach((element, index) => {
             element.style.opacity = '0';
-            element.style.transform = 'translateY(30px) scale(0.95)';
+            element.style.transform = isMobile ? 'translateY(20px)' : 'translateY(30px) scale(0.95)';
             setTimeout(() => {
-              element.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+              element.style.transition = `all ${transitionDuration}s cubic-bezier(0.4, 0, 0.2, 1)`;
               element.style.opacity = '1';
-              element.style.transform = 'translateY(0) scale(1)';
-            }, index * 300);
+              element.style.transform = isMobile ? 'translateY(0)' : 'translateY(0) scale(1)';
+            }, index * staggerDelay);
           });
         } catch (error) {
           console.error('Production error during initialization:', error);
           // Ensure page is still functional even if initialization fails
         }
-      }, 400);
-    }, 5000); // Extended for full production experience
+      }, isMobile ? 200 : 400);
+    }, loadingDuration);
   });
   
   // Countdown Timer Function
@@ -8398,16 +9035,21 @@
     }, 800);
   }
   
-  // Production Elements Animation
+  // Production Elements Animation (Mobile Optimized)
   function animateProductionElements() {
-    // Add random camera flash effects
-    setInterval(() => {
-      if (Math.random() < 0.3) { // 30% chance every interval
-        createCameraFlash();
-      }
-    }, 1500);
+    // Detect mobile device
+    const isMobile = window.innerWidth <= 768;
     
-    // Dynamic particle generation
+    // Reduce flash effects on mobile to prevent blinking
+    if (!isMobile) {
+      setInterval(() => {
+        if (Math.random() < 0.15) { // Reduced frequency for better UX
+          createCameraFlash();
+        }
+      }, 3000); // Increased interval
+    }
+    
+    // Dynamic particle generation (optimized for mobile)
     generateDynamicParticles();
   }
   
@@ -8419,7 +9061,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.3);
       z-index: 999998;
       pointer-events: none;
       opacity: 0;
@@ -8427,50 +9069,130 @@
     
     document.body.appendChild(flash);
     
-    // Flash animation
-    flash.style.transition = 'opacity 0.05s ease-out';
+    // Gentler flash animation
+    flash.style.transition = 'opacity 0.1s ease-out';
     flash.style.opacity = '1';
     
     setTimeout(() => {
       flash.style.opacity = '0';
       setTimeout(() => {
-        document.body.removeChild(flash);
-      }, 50);
-    }, 50);
+        if (document.body.contains(flash)) {
+          document.body.removeChild(flash);
+        }
+      }, 100);
+    }, 100);
   }
   
   function generateDynamicParticles() {
     const particleSystem = document.querySelector('.particles-system');
     if (!particleSystem) return;
     
+    const isMobile = window.innerWidth <= 768;
+    const isUltraMobile = window.innerWidth <= 480;
+    
+    // Reduce particle frequency on mobile for better performance
+    const interval = isMobile ? (isUltraMobile ? 2000 : 1500) : 800;
+    const maxParticles = isMobile ? (isUltraMobile ? 3 : 5) : 10;
+    
+    let activeParticles = 0;
+    
     setInterval(() => {
+      if (activeParticles >= maxParticles) return;
+      
       const particle = document.createElement('div');
       particle.className = 'particle';
       particle.style.left = Math.random() * 100 + '%';
       particle.style.animationDelay = '0s';
-      particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      particle.style.animationDuration = (Math.random() * 4 + 6) + 's'; // Slower on mobile
+      
+      // Mobile-specific optimizations
+      if (isMobile) {
+        particle.style.willChange = 'transform, opacity';
+        particle.style.transform = 'translateZ(0)'; // Force hardware acceleration
+      }
       
       particleSystem.appendChild(particle);
+      activeParticles++;
       
-      // Remove particle after animation
+      // Remove particle after animation with better cleanup
+      const cleanupTime = isMobile ? 10000 : 8000;
       setTimeout(() => {
         if (particleSystem.contains(particle)) {
           particleSystem.removeChild(particle);
+          activeParticles--;
         }
-      }, 8000);
-    }, 800);
+      }, cleanupTime);
+    }, interval);
   }
   
-  // Fallback safety net
+  // Handle orientation changes for mobile
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        console.log('📱 Orientation changed - optimizing layout');
+        optimizeForMobile();
+      }
+    }, 100);
+  });
+  
+  // Handle resize for responsive optimization
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile && !document.body.classList.contains('loaded')) {
+        optimizeForMobile();
+      }
+    }, 250);
+  });
+  
+  // Fallback safety net (mobile optimized)
   setTimeout(() => {
     if (!document.body.classList.contains('loaded')) {
       document.body.classList.add('loaded');
       console.log('🎬 Final cut: Production loading complete');
     }
-  }, 10000); // Extended fallback time for production experience
+  }, window.innerWidth <= 480 ? 6000 : window.innerWidth <= 768 ? 8000 : 10000);
   
   // Pre-production setup
   console.log('🎬 Setting up production studio... Lights, Camera, Loading!');
+  
+  // Performance monitoring for mobile
+  if (window.innerWidth <= 768) {
+    console.log('📱 Mobile performance monitoring active');
+    
+    // Monitor frame rate and adjust accordingly
+    let frameCount = 0;
+    let lastTime = performance.now();
+    
+    function checkPerformance() {
+      frameCount++;
+      const currentTime = performance.now();
+      
+      if (currentTime - lastTime >= 1000) {
+        const fps = frameCount;
+        frameCount = 0;
+        lastTime = currentTime;
+        
+        // If FPS is low, reduce animation complexity
+        if (fps < 30 && !document.body.classList.contains('loaded')) {
+          console.log('📱 Low FPS detected - reducing animations');
+          const complexAnimations = document.querySelectorAll('.aperture, .film-reel, .spotlight');
+          complexAnimations.forEach(element => {
+            element.style.animationDuration = '8s';
+          });
+        }
+      }
+      
+      if (!document.body.classList.contains('loaded')) {
+        requestAnimationFrame(checkPerformance);
+      }
+    }
+    
+    requestAnimationFrame(checkPerformance);
+  }
   
   // Theme toggle logic
   document.addEventListener('DOMContentLoaded', function() {
