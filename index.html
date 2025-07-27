@@ -645,6 +645,34 @@
       background: transparent !important;
     }
     
+    /* 📱 MOBILE THEME TOGGLE OPTIMIZATION */
+    @media (max-width: 768px) {
+      .theme-toggle-portal {
+        top: 1rem !important;
+        right: 1rem !important;
+        z-index: 10002 !important;
+      }
+      
+      .theme-toggle {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1rem !important;
+        background: rgba(255, 178, 0, 0.9) !important;
+        border: 2px solid rgba(255, 178, 0, 0.3) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3) !important;
+        backdrop-filter: blur(10px) !important;
+      }
+      
+      .theme-toggle i {
+        color: #000 !important;
+        font-size: 1rem !important;
+      }
+    }
+    
     /* Ensure no other elements appear behind the theme toggle */
     .theme-toggle-portal::before,
     .theme-toggle-portal::after {
@@ -1417,6 +1445,12 @@
         max-width: 90% !important;
         margin-left: auto !important;
         margin-right: auto !important;
+      }
+      
+      /* 📱 LIGHT MODE HERO SUBTITLE FIX */
+      body[data-theme="light"] .hero-subtitle {
+        color: rgba(0, 0, 0, 0.8) !important;
+        text-shadow: none !important;
       }
       
       .hero-line {
@@ -6696,34 +6730,59 @@
       }
     }
     
-    /* 📱 MOBILE LOADING SCREEN OPTIMIZATION - FIX CENTERING */
+    /* 📱 MOBILE LOADING SCREEN OPTIMIZATION - COMPLETE FIX */
     @media (max-width: 768px) {
+      .cinematic-loader {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 9999 !important;
+      }
+      
+      .aperture-container {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 10000 !important;
+      }
+      
       .cinematic-text {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        text-align: center;
-        padding: 0 2rem;
-        z-index: 15;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90% !important;
+        max-width: 400px !important;
+        text-align: center !important;
+        padding: 0 1rem !important;
+        z-index: 10001 !important;
       }
       
       .brand-name {
-        font-size: 2rem !important;
-        line-height: 1.2;
-        text-align: center;
-        display: block;
-        width: 100%;
-        margin: 0 auto 1rem;
+        font-size: 2.2rem !important;
+        line-height: 1.1 !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 auto 1rem !important;
+        color: #FFD700 !important;
+        text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5) !important;
       }
       
       .tagline {
-        font-size: 0.9rem !important;
-        text-align: center;
-        display: block;
-        width: 100%;
-        margin: 0 auto;
+        font-size: 1rem !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        opacity: 0.9 !important;
+        color: #FFF !important;
       }
     }
     
@@ -9365,6 +9424,135 @@
       }
     }
     
+    /* 📱 FIX ANY FLOATING BUTTON OVERLAYS */
+    @media (max-width: 768px) {
+      /* Remove any fixed positioned buttons that might overlay content */
+      .floating-book-btn,
+      .sticky-book-btn,
+      .fixed-book-btn {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      /* Ensure no buttons are stuck in fixed positions causing overlays */
+      button[style*="position: fixed"],
+      .btn[style*="position: fixed"],
+      *[style*="position: fixed"][onclick*="book"] {
+        position: relative !important;
+        z-index: auto !important;
+      }
+      
+      /* Prevent any elements from overlaying main content */
+      .overlay-button {
+        display: none !important;
+      }
+      
+      /* 📱 ENSURE ALL MODALS ARE PROPERLY SIZED AND CLOSEABLE */
+      .modal-overlay,
+      .modal {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 9999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 1rem !important;
+        box-sizing: border-box !important;
+      }
+      
+      .modal-content {
+        position: relative !important;
+        max-width: 95% !important;
+        max-height: 90% !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+      
+      .modal-close {
+        position: absolute !important;
+        top: 0.5rem !important;
+        right: 0.5rem !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.5rem !important;
+        z-index: 10000 !important;
+        background: rgba(255, 178, 0, 0.9) !important;
+        border: none !important;
+        border-radius: 50% !important;
+        color: #000 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      
+      /* 📱 FINAL COMPREHENSIVE MOBILE FIXES */
+      
+      /* Ensure hero section is properly visible in both light and dark modes */
+      body[data-theme="light"] .hero-section {
+        background: rgba(255, 255, 255, 0.95) !important;
+      }
+      
+      body[data-theme="light"] .hero-title {
+        color: #FF8C00 !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      body[data-theme="light"] .hero-line.highlight {
+        color: #FF6B35 !important;
+        text-shadow: 0 0 10px rgba(255, 107, 53, 0.3) !important;
+      }
+      
+      /* Fix any remaining button spacing issues */
+      .cta-primary,
+      .cta-secondary,
+      .hero-cta button {
+        margin: 0.5rem 0 !important;
+        min-height: 50px !important;
+        font-size: 1rem !important;
+        padding: 1rem 2rem !important;
+        border-radius: 25px !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      
+      /* Ensure proper spacing between all sections */
+      section,
+      .section {
+        margin-bottom: 2rem !important;
+        padding: 2rem 1rem !important;
+      }
+      
+      /* Fix any text readability issues */
+      p,
+      .text {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      /* Ensure all interactive elements are properly sized */
+      input,
+      textarea,
+      select,
+      button {
+        min-height: 44px !important;
+        padding: 0.8rem 1rem !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
+        box-sizing: border-box !important;
+      }
+    }
+    
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -11331,6 +11519,10 @@
       };
       
       function showMobileNotification(message, type = 'info') {
+        // 📱 DISABLED: Mobile notifications disabled for better UX
+        console.log(`Mobile notification: ${message} (${type})`);
+        return; // Exit early to disable notifications
+        
         // Create mobile-friendly notification
         const notification = document.createElement('div');
         notification.className = `mobile-notification mobile-notification-${type}`;
@@ -12115,13 +12307,32 @@
     consult: 'https://www.cochranfilms.com/services'
   };
   
+  // 📱 ENHANCED BOOKING MODAL CLOSE FUNCTIONALITY
   if (closeModalBtn && bookingModal) {
     closeModalBtn.onclick = function() {
       bookingModal.style.display = 'none';
+      // Restore body scroll
+      document.body.style.overflow = '';
+      console.log('✅ Booking modal closed via close button');
     };
+    
     bookingModal.onclick = function(e) {
-      if (e.target === bookingModal) bookingModal.style.display = 'none';
+      if (e.target === bookingModal) {
+        bookingModal.style.display = 'none';
+        // Restore body scroll
+        document.body.style.overflow = '';
+        console.log('✅ Booking modal closed via background click');
+      }
     };
+    
+    // Add escape key functionality
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && bookingModal.style.display === 'flex') {
+        bookingModal.style.display = 'none';
+        document.body.style.overflow = '';
+        console.log('✅ Booking modal closed via escape key');
+      }
+    });
   }
   
   if (bookingForm) {
@@ -12418,6 +12629,9 @@
         // Close mobile nav if open
         closeMobileNav();
         
+        // 📱 PREVENT BODY SCROLL WHEN MODAL OPENS
+        document.body.style.overflow = 'hidden';
+        
         // Clear any previous selection
         serviceSelect.value = '';
         // Show ALL service options
@@ -12426,6 +12640,8 @@
           option.style.display = 'block';
         });
         modal.style.display = 'flex';
+        
+        console.log('✅ Booking modal opened - body scroll disabled');
       }
     }
     
