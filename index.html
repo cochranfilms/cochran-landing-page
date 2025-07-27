@@ -2403,16 +2403,26 @@
       100% { box-shadow: 0 12px 35px rgba(255,178,0,0.8), inset 0 1px 0 rgba(255,255,255,0.6); }
     }
     
-    @media (max-width: 1400px) {
+    /* Comprehensive Mobile Timeline Optimization */
+    @media (max-width: 1200px) {
+      .cinematic-timeline {
+        padding: 2rem 0;
+      }
+      
       .timeline-milestones {
-        justify-content: flex-start;
-        overflow-x: auto;
+        flex-direction: column;
+        gap: 2rem;
         padding: 0 1rem;
-        gap: 1.2rem;
+        align-items: center;
+        overflow: visible;
       }
       
       .milestone-card {
-        width: 240px;
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        padding: 1.5rem;
+        margin: 0 auto;
         flex-shrink: 0;
       }
       
@@ -2421,7 +2431,110 @@
       }
       
       .timeline-track {
+        top: 0;
+        left: 50%;
+        right: auto;
+        width: 2px;
+        height: 100%;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, 
+          rgba(255,178,0,0.3) 0%, 
+          rgba(255,178,0,0.8) 50%, 
+          rgba(255,178,0,0.3) 100%);
+      }
+      
+      .timeline-progress {
+        width: 100%;
+        height: 0%;
+        transition: height 0.8s ease;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-section {
+        padding: 2rem 1rem;
+      }
+      
+      .cinematic-timeline {
+        padding: 1rem 0;
+      }
+      
+      .timeline-milestones {
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+      }
+      
+      .milestone-card {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 1.2rem;
+        margin: 0;
+      }
+      
+      .milestone-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      
+      .milestone-year {
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      .milestone-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      .milestone-description {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .milestone-story {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+      
+      .milestone-card:hover {
+        transform: translateY(-5px) scale(1.02);
+      }
+      
+      .timeline-track {
         display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .milestone-card {
+        padding: 1rem;
+        margin: 0;
+      }
+      
+      .milestone-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .milestone-year {
+        font-size: 1.2rem;
+      }
+      
+      .milestone-title {
+        font-size: 1rem;
+      }
+      
+      .milestone-description {
+        font-size: 0.8rem;
+      }
+      
+      .milestone-story {
+        font-size: 0.8rem;
       }
     }
     /* Video section animation for timeline hover */
@@ -2445,68 +2558,27 @@
     .btns-moved {
       transform: translateY(120px);
     }
+    /* Legacy timeline styles - cleaned up for mobile */
     @media (max-width: 1200px) {
       .timeline.horizontal-timeline {
-        gap: 1rem;
-        padding: 2rem 0.5rem;
-      }
-      .milestone {
-        min-width: 160px;
-        max-width: 200px;
-        padding: 1.2rem 0.8rem;
-      }
-      .milestone .dropdown-details {
-        min-width: 200px;
-        max-width: 280px;
-      }
-      .video-moved {
-        transform: translateY(100px);
-      }
-      .btns-moved {
-        transform: translateY(100px);
+        display: none; /* Hide old timeline on mobile */
       }
     }
+    
     @media (max-width: 800px) {
       .timeline.horizontal-timeline {
-        flex-direction: column;
-        border-top: none;
-        padding: 2rem 0.5rem;
-        flex-wrap: nowrap;
-        margin-bottom: 2rem;
+        display: none; /* Hide old timeline on mobile */
       }
-      .mileline {
-        flex-direction: row;
-        align-items: flex-start;
-        min-width: 0;
+      
+      /* Video elements - mobile optimized */
+      iframe {
         max-width: 100%;
-        margin-left: 2rem;
-        margin-bottom: 2rem;
-        text-align: left;
-        padding: 1.2rem 1rem;
+        margin: 1rem auto;
       }
-      .milestone .icon {
-        margin-bottom: 0;
-        margin-right: 1rem;
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
-      }
-      .milestone .dropdown-details {
-        left: 0;
-        top: 110%;
-        transform: none;
-        min-width: 200px;
-        max-width: 95vw;
-        position: absolute;
-      }
-      .milestone.graduate {
-        transform: scale(1.02);
-      }
-      .video-moved {
-        transform: translateY(80px);
-      }
+      
+      .video-moved,
       .btns-moved {
-        transform: translateY(80px);
+        transform: none; /* Reset transforms on mobile */
       }
     }
     .btns button {
@@ -3610,6 +3682,141 @@
         padding: 0 1rem;
       }
       
+      /* Service CTA buttons - proper styling */
+      .service-cta-buttons {
+        margin-top: 2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 0 1rem !important;
+      }
+      
+      /* Value comparison section - mobile fix */
+      .comparison-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+      }
+      
+      .comparison-column {
+        max-width: 100% !important;
+        margin: 1rem auto !important;
+        padding: 1.5rem 1rem !important;
+      }
+      
+      /* Deliver section - mobile optimization */
+      .deliver-section {
+        padding: 2rem 1rem !important;
+      }
+      
+      .deliver-container {
+        padding: 0 1rem !important;
+        max-width: 100% !important;
+      }
+      
+      .deliver-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        padding: 0 !important;
+      }
+      
+      .deliver-card {
+        max-width: 100% !important;
+        margin: 1rem auto !important;
+        padding: 1.5rem 1rem !important;
+      }
+      
+      /* SEO and service cards - mobile fix */
+      .service-card {
+        max-width: 100% !important;
+        margin: 1rem auto !important;
+        padding: 1.5rem 1rem !important;
+      }
+      
+      .service-icon {
+        margin-bottom: 1rem !important;
+      }
+      
+      .service-content h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.8rem !important;
+        text-align: center !important;
+      }
+      
+      .service-content p {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        text-align: center !important;
+        margin: 0.8rem auto !important;
+        max-width: 280px !important;
+      }
+      
+      .service-features {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        margin-top: 1rem !important;
+      }
+      
+      .service-features span {
+        font-size: 0.8rem !important;
+        padding: 0.3rem 0.8rem !important;
+      }
+      
+      /* Timeline interactive elements - mobile fix */
+      .timeline-interactive {
+        padding: 2rem 1rem !important;
+      }
+      
+      .timeline-interactive .milestone-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 1rem auto !important;
+      }
+      
+      /* Footer - mobile optimization */
+      .premium-footer {
+        padding: 2rem 1rem !important;
+      }
+      
+      .footer-container {
+        padding: 0 1rem !important;
+        max-width: 100% !important;
+      }
+      
+      .footer-content {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 2rem !important;
+      }
+      
+      .footer-links {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        text-align: center !important;
+      }
+      
+      .footer-section {
+        text-align: center !important;
+      }
+      
+      .footer-section ul {
+        padding: 0 !important;
+        margin: 1rem auto !important;
+        max-width: 200px !important;
+      }
+      
+      .social-links {
+        justify-content: center !important;
+        gap: 1rem !important;
+        margin: 1rem auto !important;
+      }
+      
       /* Prevent horizontal overflow */
       * {
         box-sizing: border-box;
@@ -3698,6 +3905,89 @@
       .grid, .testimonials-grid, .cinematic-services-grid {
         gap: 1rem !important;
         padding: 0 0.5rem;
+      }
+      
+      /* Service CTA buttons - ultra mobile */
+      .service-cta-buttons {
+        max-width: 280px !important;
+        gap: 0.8rem !important;
+        margin-top: 1.5rem !important;
+        padding: 0 0.5rem !important;
+      }
+      
+      /* Timeline cards - ultra mobile */
+      .milestone-card {
+        margin: 0.8rem auto !important;
+      }
+      
+      /* Service cards - ultra mobile text */
+      .service-content h3 {
+        font-size: 1.1rem !important;
+      }
+      
+      .service-content p {
+        font-size: 0.85rem !important;
+        max-width: 260px !important;
+      }
+      
+      /* Comparison columns - ultra mobile */
+      .comparison-column {
+        padding: 1rem 0.8rem !important;
+        margin: 0.8rem auto !important;
+      }
+      
+      .column-header h3 {
+        font-size: 1.1rem !important;
+      }
+      
+      .comparison-item span {
+        font-size: 0.85rem !important;
+      }
+      
+      /* Global mobile text improvements */
+      .section-header h2, .section-header h3 {
+        text-align: center !important;
+        margin: 1rem auto !important;
+        padding: 0 1rem !important;
+      }
+      
+      /* Ensure all containers are mobile-friendly */
+      .container, .section-container, .content-wrapper {
+        max-width: 100% !important;
+        padding: 0 1rem !important;
+        margin: 0 auto !important;
+        overflow-x: hidden !important;
+      }
+      
+      /* Fix any remaining button container issues */
+      .button-container, .cta-container, .action-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        padding: 1rem !important;
+      }
+      
+      /* Ensure proper image scaling */
+      img, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+      
+      /* Fix any table or complex layout issues */
+      table {
+        width: 100% !important;
+        font-size: 0.9rem !important;
+      }
+      
+      th, td {
+        padding: 0.5rem !important;
+        font-size: 0.85rem !important;
       }
     }
     
@@ -6753,6 +7043,15 @@
       border-top: 2px solid rgba(76, 175, 80, 0.4);
     }
     
+    /* Service CTA buttons styling - desktop */
+    .service-cta-buttons {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      align-items: center;
+    }
+    
     /* Consistent button sizing across all button types */
     .btn-primary, .btn-secondary {
       padding: 1rem 2rem;
@@ -8707,7 +9006,7 @@
       
       <!-- CTA Buttons -->
       <!-- AI: Insert service-card interaction tracking here -->
-      <div class="hero-cta" style="margin-top: 3rem; display: flex; justify-content: center; gap: 2rem;">
+      <div class="hero-cta service-cta-buttons">
         <button class="cta-primary" onclick="openBookingModal()">Start Your Project</button>
         <button class="cta-secondary" onclick="window.open('https://www.cochranfilms.com/portfolio', '_blank')">View Portfolio</button>
       </div>
