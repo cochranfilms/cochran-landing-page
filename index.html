@@ -13606,9 +13606,115 @@
     preventAutoModal: true
   };
   
+  // 📱 MOBILE VERSION ACTIVATION SYSTEM
+  function activateMobileVersion() {
+    const mobileVersion = document.getElementById('mobileVersion');
+    const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+    const isMobile = window.innerWidth <= 768;
+    
+    console.log('📱 Mobile version activation check:', { isMobile, windowWidth: window.innerWidth });
+    
+    if (isMobile && mobileVersion) {
+      // Show mobile version
+      mobileVersion.style.display = 'block';
+      mobileVersion.style.visibility = 'visible';
+      mobileVersion.style.opacity = '1';
+      
+      // Hide desktop elements
+      desktopElements.forEach(element => {
+        element.style.display = 'none';
+        element.style.visibility = 'hidden';
+        element.style.opacity = '0';
+      });
+      
+      console.log('📱 Mobile version ACTIVATED');
+      
+      // Initialize mobile-specific elements
+      initializeMobileElements();
+      
+    } else if (!isMobile && mobileVersion) {
+      // Hide mobile version
+      mobileVersion.style.display = 'none';
+      mobileVersion.style.visibility = 'hidden';
+      mobileVersion.style.opacity = '0';
+      
+      // Show desktop elements
+      desktopElements.forEach(element => {
+        element.style.display = '';
+        element.style.visibility = '';
+        element.style.opacity = '';
+      });
+      
+      console.log('📱 Desktop version ACTIVATED');
+    }
+  }
+  
+  // Initialize mobile-specific elements
+  function initializeMobileElements() {
+    // Initialize mobile navigation
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', toggleMobileNav);
+      console.log('📱 Mobile nav toggle initialized');
+    }
+    
+    // Close mobile nav when clicking outside menu
+    if (mobileNavOverlay) {
+      mobileNavOverlay.addEventListener('click', function(e) {
+        if (e.target === mobileNavOverlay) {
+          closeMobileNav();
+        }
+      });
+    }
+    
+    // Initialize mobile service cards
+    const mobileServiceCards = document.querySelectorAll('.mobile-service-card');
+    mobileServiceCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const serviceType = this.getAttribute('onclick')?.match(/openMobileServiceModal\('([^']+)'\)/)?.[1];
+        if (serviceType) {
+          openMobileServiceModal(serviceType);
+        }
+      });
+    });
+    
+    // Initialize mobile gallery items
+    const mobileGalleryItems = document.querySelectorAll('.mobile-gallery-item');
+    mobileGalleryItems.forEach(item => {
+      item.addEventListener('click', function() {
+        openMobileLightbox(this);
+      });
+    });
+    
+    // Initialize mobile contact buttons
+    const mobileContactButtons = document.querySelectorAll('.mobile-contact-btn');
+    mobileContactButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        if (this.classList.contains('primary')) {
+          openBookingModal();
+        } else {
+          openMobileContactForm();
+        }
+      });
+    });
+    
+    console.log('📱 Mobile elements initialized');
+  }
+  
+  // Handle window resize for responsive switching
+  function handleMobileResize() {
+    let resizeTimer;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      activateMobileVersion();
+    }, 250);
+  }
+  
   // 📱 Enhanced Mobile Navigation Functions
   function toggleMobileNav() {
-    const toggle = document.getElementById('mobileNavToggle');
+    const toggle = document.querySelector('.mobile-nav-toggle');
     const overlay = document.getElementById('mobileNavOverlay');
     
     if (toggle && overlay) {
@@ -13627,7 +13733,7 @@
   }
   
   function closeMobileNav() {
-    const toggle = document.getElementById('mobileNavToggle');
+    const toggle = document.querySelector('.mobile-nav-toggle');
     const overlay = document.getElementById('mobileNavOverlay');
     
     if (toggle && overlay) {
@@ -13670,6 +13776,10 @@
   // Enhanced cinematic loading animation with production elements
   document.addEventListener('DOMContentLoaded', () => {
     console.log('🎬 Cochran Films Production Studio Loading...');
+    
+    // 📱 ACTIVATE MOBILE VERSION FIRST
+    activateMobileVersion();
+    window.addEventListener('resize', handleMobileResize);
     
     // 📱 MOBILE NAVIGATION FUNCTIONS
     function toggleMobileNav() {
@@ -13755,11 +13865,16 @@
       document.body.style.overflow = 'hidden';
     }
     
-    function closeMobileLightbox() {
-      const lightbox = document.getElementById('mobileLightbox');
-      lightbox.style.display = 'none';
-      document.body.style.overflow = '';
-    }
+      function closeMobileLightbox() {
+    const lightbox = document.getElementById('mobileLightbox');
+    lightbox.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  
+  function openMobileContactForm() {
+    // Open the main contact modal for mobile
+    openBookingModal();
+  }
     
     // 📱 MOBILE LOADER INITIALIZATION
     const isMobile = window.innerWidth <= 768;
@@ -18524,9 +18639,20 @@
         document.body.appendChild(modal);
       }
       
-      // Make functions globally available
-      window.removeServiceFromPackage = removeServiceFromPackage;
-      window.sendToWaveApps = sendToWaveApps;
+        // Make functions globally available
+  window.removeServiceFromPackage = removeServiceFromPackage;
+  window.sendToWaveApps = sendToWaveApps;
+  
+  // 📱 GLOBAL MOBILE FUNCTIONS
+  window.toggleMobileNav = toggleMobileNav;
+  window.closeMobileNav = closeMobileNav;
+  window.scrollToMobileSection = scrollToMobileSection;
+  window.openMobileServiceModal = openMobileServiceModal;
+  window.closeMobileServiceModal = closeMobileServiceModal;
+  window.openMobileLightbox = openMobileLightbox;
+  window.closeMobileLightbox = closeMobileLightbox;
+  window.openMobileContactForm = openMobileContactForm;
+  window.openBookingModal = openBookingModal;
       
       function sendToWaveApps(invoiceData) {
         // Enhanced project request handling with email integration
