@@ -3466,19 +3466,21 @@
       padding: 2rem 1rem;
       transition: background 0.3s, color 0.3s;
     }
-    /* 🎬 FIXED RESPONSIVE MODAL THEME - NO EXCESSIVE SCROLLING */
+    /* 🎬 OPTIMIZED RESPONSIVE MODAL THEME */
     .modal-overlay {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; 
+      left: 0; 
+      width: 100%;
+      height: 100%;
       background: rgba(0,0,0,0.8);
-      z-index: 9999;
-      display: flex;
+      z-index: 99999;
+      display: none;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(8px);
-      overflow-y: auto;
-      padding: 2rem 1rem;
+      -webkit-backdrop-filter: blur(8px);
     }
     
     /* Dark mode modal */
@@ -3489,6 +3491,11 @@
     /* Light mode modal */
     body[data-theme="light"] .modal-overlay {
       background: rgba(0,0,0,0.6);
+    }
+    
+    /* Ensure modal shows when active */
+    .modal-overlay[style*="display: flex"] {
+      display: flex !important;
     }
     
     .modal-content {
@@ -3504,8 +3511,7 @@
       min-width: 320px;
       max-width: 95vw;
       width: 500px;
-      max-height: 80vh;
-      overflow-y: auto;
+      max-height: 90vh;
       position: relative;
       margin: auto;
       animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1);
@@ -3518,6 +3524,8 @@
       .modal-content {
         width: 550px;
         padding: 2.5rem;
+        max-height: 85vh;
+        overflow-y: auto;
       }
       
       #bookingForm {
@@ -3576,6 +3584,8 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      max-height: none;
+      overflow: visible;
     }
     #bookingForm label {
       font-weight: 600;
@@ -3809,20 +3819,20 @@
         transform: scale(1.1) !important;
       }
       
-      /* 📱 FIXED MOBILE MODAL OPTIMIZATIONS */
+      /* 📱 MOBILE MODAL OPTIMIZATIONS */
       .modal-overlay {
-        padding: 1rem !important;
-        align-items: flex-start !important;
-        justify-content: center !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
+        padding: 1rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
       }
       
       .modal-content {
-        max-height: 85vh !important;
-        overflow-y: auto !important;
-        margin: auto !important;
-        -webkit-overflow-scrolling: touch !important;
+        max-height: 95vh;
+        overflow-y: auto;
+        margin: 0;
+        width: 95vw;
+        max-width: 450px;
       }
       
       /* 📱 MOBILE MODAL OVERLAY SPECIFIC POSITIONING */
@@ -10481,19 +10491,28 @@
         box-sizing: border-box !important;
       }
       
-      /* 📱 MILLION DOLLAR MODAL SYSTEM */
+      /* 📱 OPTIMIZED MODAL SYSTEM */
       #bookingModal {
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        background: rgba(0, 0, 0, 0.9) !important;
-        animation: modalFadeIn 0.3s ease !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        background: rgba(0, 0, 0, 0.8);
+        animation: modalFadeIn 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+        display: none;
+        align-items: center;
+        justify-content: center;
       }
       
       #bookingModal .modal-content {
-        transform: translateY(0) !important;
-        animation: modalSlideIn 0.4s ease !important;
-        border: 2px solid #FFB200 !important;
-        box-shadow: 0 20px 60px rgba(255, 178, 0, 0.3) !important;
+        transform: translateY(0);
+        animation: modalSlideIn 0.4s ease;
+        border: 2px solid #4CAF50;
+        box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
       }
       
       #closeModal {
@@ -13229,6 +13248,13 @@
   
   // Enhanced cinematic loading animation with production elements
   document.addEventListener('DOMContentLoaded', () => {
+    // 🚀 IMMEDIATE SCROLL ENABLEMENT - TOP PRIORITY
+    setTimeout(() => {
+      document.body.classList.add('loaded');
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+    }, 50); // Immediate scroll enablement
+    
     // Cochran Films Production Studio Loading...
     
     // 📱 MILLION DOLLAR MOBILE INITIALIZATION
@@ -13702,7 +13728,11 @@
         opacity: 1 !important;
         visibility: visible !important;
       }
-      body:not(.loaded) { overflow: hidden !important; height: 100vh !important; }
+      body:not(.loaded) { 
+      overflow: hidden !important; 
+      height: 100vh !important; 
+      transition: overflow 0.3s ease;
+    }
     `;
     document.head.appendChild(style);
   })();
@@ -13717,23 +13747,45 @@
       loader.style.visibility = 'visible';
     }
     
+    // Only prevent scrolling briefly during critical loading
     document.body.style.overflow = 'hidden';
     document.body.style.height = '100vh';
+    
+    // Backup scroll enablement (already handled above, but keeping as failsafe)
+    setTimeout(() => {
+      if (!document.body.classList.contains('loaded')) {
+        document.body.classList.add('loaded');
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+      }
+    }, 300); // Backup timer
   });
   
   // Optimized loading completion
   window.addEventListener('load', () => {
     
-    // Adaptive loading time based on device capabilities
+    // Optimized loading time for immediate scrolling
     const isMobile = window.innerWidth <= 768;
     const isSlowDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
-    const loadingTime = isMobile ? (isSlowDevice ? 2500 : 3000) : 4000;
+    const loadingTime = isMobile ? 800 : 1200; // Much faster for better UX
+    
+        // Enable scrolling immediately on page load
+    document.body.classList.add('loaded');
+    document.body.style.overflow = '';
+    document.body.style.height = '';
     
     setTimeout(() => {
-      
-      document.body.classList.add('loaded');
-      
-      setTimeout(() => {
+        // Loading animation complete
+        const loader = document.querySelector('.cinematic-loader');
+        if (loader) {
+          loader.style.transition = 'opacity 0.5s ease';
+          loader.style.opacity = '0';
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 500);
+        }
+        
+        // Ensure scrolling is definitely enabled
         document.body.style.overflow = '';
         document.body.style.height = '';
         
@@ -13758,8 +13810,6 @@
         } catch (error) {
           console.error('Feature initialization error:', error);
         }
-      }, 600);
-      
     }, loadingTime);
   });
   
@@ -14885,15 +14935,13 @@
   }); // Close the second DOMContentLoaded event listener
 
       // Function to open booking modal
-    // 📱 MILLION DOLLAR BOOKING MODAL OPENING
+    // 📱 ENHANCED BOOKING MODAL OPENING
     function openBookingModal() {
-      // Only prevent auto-opening if triggered programmatically without user interaction
       // Always allow manual button clicks - improved detection
       const userInitiated = arguments.length > 0 || window.event || document.activeElement || event;
       
-      // Allow opening if called with arguments or if there's clear user interaction
+      // Skip prevention for manual clicks
       if (window.mobileState && window.mobileState.preventAutoModal && !userInitiated && arguments.length === 0) {
-        console.log('🚫 Auto-modal opening prevented');
         return;
       }
       
@@ -14919,10 +14967,16 @@
           option.style.display = 'block';
         });
         
-                 // Show modal with proper styling and manual flag
+        // Show modal with proper styling and manual flag
         modal.style.display = 'flex';
         modal.style.visibility = 'visible';
         modal.style.opacity = '1';
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.zIndex = '99999';
         modal.setAttribute('data-manual-open', 'true');
         
         // Ensure modal is positioned at top on mobile
@@ -14948,17 +15002,27 @@
     function scrollToServiceBuilder() {
       const serviceBuilder = document.getElementById('serviceBuilder');
       if (serviceBuilder) {
+        // Close any open modals first
+        closeMobileNav();
+        
+        // Scroll with smooth behavior
         serviceBuilder.scrollIntoView({ 
           behavior: 'smooth', 
-          block: 'start' 
+          block: 'start',
+          inline: 'nearest'
         });
         
-        // Optional: Add a visual highlight effect
-        serviceBuilder.style.transition = 'all 0.3s ease';
-        serviceBuilder.style.background = 'rgba(255, 178, 0, 0.1)';
+        // Add visual highlight effect
         setTimeout(() => {
-          serviceBuilder.style.background = '';
-        }, 2000);
+          serviceBuilder.style.transition = 'all 0.5s ease';
+          serviceBuilder.style.background = 'rgba(255, 178, 0, 0.1)';
+          serviceBuilder.style.transform = 'scale(1.01)';
+          
+          setTimeout(() => {
+            serviceBuilder.style.background = '';
+            serviceBuilder.style.transform = '';
+          }, 2500);
+        }, 500);
       }
     }
     
@@ -15066,26 +15130,75 @@
     });
   }
   
-  // Enhanced lightbox functionality with video quiz
+  // Enhanced lightbox functionality 
   function openLightbox(button) {
     const masonryItem = button.closest('.masonry-item');
     const img = masonryItem.querySelector('img');
-    const title = masonryItem.querySelector('.overlay-content h3').textContent;
-    const description = masonryItem.querySelector('.overlay-content p').textContent;
     
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
-    const quizTitle = document.getElementById('quizTitle');
-    const quizSubtitle = document.getElementById('quizSubtitle');
     
-    // Set content
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    quizTitle.textContent = 'What Type of Video Do You Need?';
-    quizSubtitle.textContent = 'Get personalized recommendations';
+    if (lightboxModal && lightboxImg) {
+      // Set content
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      
+      // Show lightbox
+      lightboxModal.style.display = 'flex';
+      lightboxModal.style.opacity = '1';
+      lightboxModal.style.visibility = 'visible';
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  // Lightbox close functionality
+  function closeLightbox() {
+    const lightboxModal = document.getElementById('lightboxModal');
+    if (lightboxModal) {
+      lightboxModal.style.display = 'none';
+      lightboxModal.style.opacity = '0';
+      lightboxModal.style.visibility = 'hidden';
+      
+      // Restore body scroll
+      document.body.style.overflow = '';
+    }
+  }
+  
+  // Add lightbox close event listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxModal = document.getElementById('lightboxModal');
     
-    // Reset quiz to initial state
-    resetQuiz();
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+    
+    if (lightboxModal) {
+      lightboxModal.addEventListener('click', function(e) {
+        if (e.target === lightboxModal) {
+          closeLightbox();
+        }
+      });
+    }
+    
+    // ESC key to close lightbox
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  });
+  
+  // Open lightbox function
+  function openLightbox(imageSrc, button) {
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    
+    if (!lightboxModal || !lightboxImg) return;
+    
+    lightboxImg.src = imageSrc;
     
     // Show modal with animation
     lightboxModal.classList.add('active');
@@ -15102,10 +15215,12 @@
     }
     
     // Add click animation to the button
-    button.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      button.style.transform = '';
-    }, 150);
+    if (button) {
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = '';
+      }, 150);
+    }
   }
   
   // Close lightbox
