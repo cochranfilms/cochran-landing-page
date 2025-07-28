@@ -39,11 +39,11 @@
   <meta name="theme-color" content="#000000">
   
   <!-- 🎨 FAVICON -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./CF_Favicon2025.png?v=2025">
-  <link rel="icon" type="image/png" sizes="16x16" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="180x180" href="./CF_Favicon2025.png?v=2025">
-  <link rel="shortcut icon" type="image/x-icon" href="./CF_Favicon2025.png?v=2025">
-  <meta name="msapplication-TileImage" content="./CF_Favicon2025.png?v=2025">
+  <link rel="icon" type="image/png" sizes="32x32" href="./Favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./Favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./Favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="./Favicon.png">
+  <meta name="msapplication-TileImage" content="./Favicon.png">
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -788,7 +788,8 @@
       position: relative;
       z-index: 0;
       background: var(--section-bg);
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
     }
     .grid {
       display: flex;
@@ -859,7 +860,8 @@
       padding: 4rem 2rem;
       position: relative;
       overflow: visible; /* Changed from hidden to visible for intersection observer */
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
     }
     .testimonials-section::before {
       content: '';
@@ -1203,7 +1205,8 @@
       align-items: center;
       overflow: hidden;
       background: transparent;
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
       padding: 2rem 0;
     }
     .hero-background {
@@ -1775,7 +1778,8 @@
       padding: 4rem 2rem;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
     }
     .services-section::before {
   content: '';
@@ -2053,7 +2057,8 @@
       padding: 4rem 2rem;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
     }
     .comparison-section::before {
   content: '';
@@ -3414,7 +3419,8 @@
       padding: 4rem 2rem;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
     }
     .agency-comparison-section::before {
       content: '';
@@ -3548,7 +3554,8 @@
       padding: 4rem 1rem;
       position: relative;
       overflow: visible;
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
     }
     .timeline-section::before {
       content: '';
@@ -3625,7 +3632,8 @@
       padding: 4rem 2rem;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s ease;
+      transition: background 0.5s ease;
+      will-change: auto;
     }
     .deliver-section::before {
       content: '';
@@ -7147,8 +7155,8 @@
     
     /* Premium mobile aperture design */
     .aperture-container {
-      width: 180px !important;
-      height: 180px !important;
+      width: 240px !important;
+      height: 240px !important;
       position: relative !important;
       z-index: 15 !important;
       display: flex !important;
@@ -7158,16 +7166,16 @@
     }
     
     .aperture {
-      width: 150px !important;
-      height: 150px !important;
-      border: 3px solid #FFB200 !important;
+      width: 200px !important;
+      height: 200px !important;
+      border: 4px solid #FFB200 !important;
       border-radius: 50% !important;
       background: transparent !important;
       animation: premiumMobileRotate 4s linear infinite !important;
       position: relative !important;
       box-shadow: 
-        0 0 20px rgba(255, 178, 0, 0.3),
-        inset 0 0 20px rgba(255, 178, 0, 0.1) !important;
+        0 0 30px rgba(255, 178, 0, 0.3),
+        inset 0 0 30px rgba(255, 178, 0, 0.1) !important;
     }
     
     .aperture::before {
@@ -7176,9 +7184,9 @@
       top: 50% !important;
       left: 50% !important;
       transform: translate(-50%, -50%) !important;
-      width: 90px !important;
-      height: 90px !important;
-      border: 2px solid rgba(255, 178, 0, 0.6) !important;
+      width: 130px !important;
+      height: 130px !important;
+      border: 3px solid rgba(255, 178, 0, 0.6) !important;
       border-radius: 50% !important;
       animation: premiumMobileInner 3s ease-in-out infinite !important;
     }
@@ -7189,9 +7197,9 @@
       top: 50% !important;
       left: 50% !important;
       transform: translate(-50%, -50%) !important;
-      font-size: 2.5rem !important;
+      font-size: 3.5rem !important;
       animation: premiumMobileIcon 2s ease-in-out infinite !important;
-      filter: drop-shadow(0 0 10px rgba(255, 178, 0, 0.5)) !important;
+      filter: drop-shadow(0 0 15px rgba(255, 178, 0, 0.5)) !important;
     }
     
     @keyframes premiumMobileRotate {
@@ -9878,7 +9886,7 @@
       
       <!-- Cinematic Typography -->
       <div class="cinematic-text">
-        <div class="brand-name">COCHRAN FILMS</div>
+        <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
         <div class="tagline">STORYTELLING THAT CONVERTS</div>
       </div>
     </div>
@@ -12064,14 +12072,14 @@
     // Detect mobile device
     const isMobile = window.innerWidth <= 768;
     
-    // Reduce flash effects on mobile to prevent blinking
-    if (!isMobile) {
-      setInterval(() => {
-        if (Math.random() < 0.15) { // Reduced frequency for better UX
-          createCameraFlash();
-        }
-      }, 3000); // Increased interval
-    }
+    // Disable flash effects to prevent white flashing during scroll
+    // if (!isMobile) {
+    //   setInterval(() => {
+    //     if (Math.random() < 0.15) { // Reduced frequency for better UX
+    //       createCameraFlash();
+    //     }
+    //   }, 3000); // Increased interval
+    // }
     
     // Dynamic particle generation (optimized for mobile)
     generateDynamicParticles();
@@ -14686,7 +14694,7 @@
       // Add moodboard description
       doc.setFontSize(10);
       doc.setTextColor(100, 100, 100);
-      doc.text('Based on your input, we\'ve curated relevant visual references for your project:', 15, y);
+      doc.text('Based on your input, we\'ve curated relevant visual references for your project style:', 15, y);
       y += 10;
       
       // Embed up to 6 images, 2 per row
@@ -15423,7 +15431,7 @@
            'live-production-5hr': {
              description: 'Extended 5-hour live production with professional streaming and comprehensive editing.',
              includes: ['5 hours live production', 'Professional streaming setup', 'Advanced switching', 'Comprehensive editing'],
-             deliverables: ['Live stream production', 'Professional edited video', 'Multi-format delivery'],
+             deliverables: ['Live stream production', 'Professional edited video', 'Multiple format delivery'],
              timeline: 'Live + 7-10 days for edited version'
            },
            'live-production-8hr': {
