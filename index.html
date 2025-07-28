@@ -3499,10 +3499,10 @@
         0 20px 60px rgba(0,0,0,0.6),
         0 0 40px rgba(76, 175, 80, 0.3),
         inset 0 1px 0 rgba(255,255,255,0.1);
-      padding: 2rem 1.5rem;
+      padding: 2rem;
       min-width: 320px;
       max-width: 95vw;
-      width: 450px;
+      width: 500px;
       max-height: 80vh;
       overflow-y: auto;
       position: relative;
@@ -3510,6 +3510,28 @@
       animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1);
       transition: all 0.3s ease;
       -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 🖥️ DESKTOP BOOKING FORM OPTIMIZATION */
+    @media (min-width: 769px) {
+      .modal-content {
+        width: 550px;
+        padding: 2.5rem;
+      }
+      
+      #bookingForm {
+        gap: 1.5rem;
+      }
+      
+      #bookingForm label {
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
+      }
+      
+      #bookingForm input, #bookingForm select, #bookingForm textarea {
+        padding: 1rem 1.2rem;
+        font-size: 1.05rem;
+      }
     }
     
     /* Light mode modal content */
@@ -3552,7 +3574,7 @@
     #bookingForm {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1rem;
     }
     #bookingForm label {
       font-weight: 600;
@@ -10536,7 +10558,7 @@
       <li role="none"><a href="#serviceBuilder" onclick="closeMobileNav()" role="menuitem">Services</a></li>
       <li role="none"><a href="#portfolio" onclick="closeMobileNav()" role="menuitem">Portfolio</a></li>
       <li role="none"><a href="#about" onclick="closeMobileNav()" role="menuitem">About</a></li>
-      <li role="none"><a href="javascript:void(0)" onclick="openBookingModal(); closeMobileNav()" role="menuitem">Book Now</a></li>
+      <li role="none"><a href="javascript:void(0)" onclick="openBookingModal(true); closeMobileNav()" role="menuitem">Book Now</a></li>
     </ul>
   </div>
 
@@ -10697,7 +10719,7 @@
         
         <div class="hero-cta" data-aos="fade-up" data-aos-delay="1100">
           <!-- AI: Insert scroll-depth-based CTA logic here -->
-          <button class="cta-primary" onclick="openBookingModal()" data-aos="zoom-in" data-aos-delay="1200">Start Your Project</button>
+          <button class="cta-primary" onclick="openBookingModal(true)" data-aos="zoom-in" data-aos-delay="1200">Start Your Project</button>
           <button class="cta-secondary" onclick="window.location.href='https://www.cochranfilms.com/portfolio'" data-aos="zoom-in" data-aos-delay="1300">View Portfolio</button>
         </div>
       </div>
@@ -12006,7 +12028,7 @@
       <!-- CTA Buttons -->
       <!-- AI: Insert service-card interaction tracking here -->
       <div class="hero-cta service-cta-buttons">
-        <button class="cta-primary" onclick="openBookingModal()">Start Your Project</button>
+        <button class="cta-primary" onclick="openBookingModal(true)">Start Your Project</button>
         <button class="cta-secondary" onclick="window.location.href='https://www.cochranfilms.com/portfolio'">View Portfolio</button>
       </div>
     </div>
@@ -12745,7 +12767,7 @@
           </div>
           <div class="mobile-services-list"></div>
           <div class="mobile-quick-actions">
-            <button class="mobile-book-btn" onclick="openBookingModal()">
+            <button class="mobile-book-btn" onclick="openBookingModal(true)">
               📞 Book Now
             </button>
             <button class="mobile-clear-btn" onclick="clearMobilePackage()">
@@ -14150,9 +14172,11 @@
     // 📱 MILLION DOLLAR BOOKING MODAL OPENING
     function openBookingModal() {
       // Only prevent auto-opening if triggered programmatically without user interaction
-      // Allow manual button clicks even when event object is not available
-      const userInitiated = arguments.length > 0 || window.event || document.activeElement;
-      if (window.mobileState && window.mobileState.preventAutoModal && !userInitiated) {
+      // Always allow manual button clicks - improved detection
+      const userInitiated = arguments.length > 0 || window.event || document.activeElement || event;
+      
+      // Allow opening if called with arguments or if there's clear user interaction
+      if (window.mobileState && window.mobileState.preventAutoModal && !userInitiated && arguments.length === 0) {
         console.log('🚫 Auto-modal opening prevented');
         return;
       }
