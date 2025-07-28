@@ -85,6 +85,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
+      box-sizing: border-box; /* Ensure consistent box model */
     }
     
     /* GPU acceleration for smooth scrolling */
@@ -92,6 +93,8 @@
       transform: translateZ(0);
       -webkit-transform: translateZ(0);
       will-change: scroll-position;
+      max-width: 100vw; /* Prevent horizontal overflow */
+      overflow-x: hidden; /* Ensure no horizontal scroll */
     }
     
     /* Optimize animations for mobile */
@@ -99,6 +102,25 @@
       *, *::before, *::after {
         animation-duration: 0.3s !important;
         transition-duration: 0.2s !important;
+      }
+      
+      /* 📱 CRITICAL MOBILE LAYOUT FIXES */
+      html, body {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        position: relative !important;
+      }
+      
+      /* Prevent zoom on input focus */
+      input, select, textarea {
+        font-size: 16px !important; /* Prevents iOS zoom */
+        max-width: 100% !important;
+      }
+      
+      /* Ensure all elements respect viewport */
+      * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
       }
       
       /* Reduce motion for better performance */
@@ -698,7 +720,7 @@
         0 4px 12px rgba(255, 178, 0, 0.2),
         inset 0 1px 0 rgba(255,255,255,0.1);
       transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-      z-index: 999999 !important;
+      z-index: 9998 !important; /* Below mobile nav but above content */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       pointer-events: auto !important;
@@ -745,7 +767,7 @@
       .theme-toggle-portal {
         top: 1rem !important;
         right: 70px !important; /* Moved left to avoid mobile nav toggle */
-        z-index: 10002 !important;
+        z-index: 9999 !important; /* Below mobile nav toggle */
       }
       
       .theme-toggle {
@@ -792,6 +814,32 @@
     /* Light mode when scrolled */
     body[data-theme="light"].scrolled .theme-toggle {
       color: #000 !important;
+    }
+    
+    /* 📱 FINAL MOBILE OPTIMIZATION LAYER */
+    @media (max-width: 768px) {
+      /* Ensure consistent mobile experience */
+      .touching * {
+        pointer-events: none !important;
+      }
+      
+      .touching button,
+      .touching .btn,
+      .touching a {
+        pointer-events: auto !important;
+      }
+      
+      /* Fix any remaining layout issues */
+      iframe, img, video {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+      
+      /* Optimize touch targets */
+      button, .btn, a, input, select, textarea {
+        min-height: 44px !important; /* Apple's recommended minimum */
+        min-width: 44px !important;
+      }
     }
     
     /* Hide theme toggle when lightbox is active */
@@ -3287,12 +3335,27 @@
       }
       
       /* 📱 ADDITIONAL MOBILE MODAL OPTIMIZATIONS */
-      .modal {
+      .modal, .modal-overlay {
         padding: 1rem !important;
         align-items: flex-start !important;
         justify-content: center !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
+      }
+      
+      /* 📱 MOBILE MODAL OVERLAY SPECIFIC POSITIONING */
+      .modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        z-index: 9999 !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        padding-top: 2rem !important;
+        box-sizing: border-box !important;
       }
       
       .modal-content h2 {
@@ -5118,13 +5181,8 @@
         max-width: 260px !important;
       }
       
-      /* Floating book button - ultra mobile */
-      body::after {
-        bottom: 15px !important;
-        right: 15px !important;
-        padding: 0.6rem 1rem !important;
-        font-size: 0.8rem !important;
-      }
+      /* Floating book button - ultra mobile - REMOVED TO PREVENT CONFLICTS */
+      /* Using dedicated mobile-book-btn instead of pseudo-element */
       
       /* Hero section - ultra mobile */
       .hero-title {
@@ -5166,39 +5224,8 @@
       
       /* 🎯 CONVERSION-FOCUSED MOBILE UX ENHANCEMENTS */
       
-      /* Quick action floating button */
-      body::after {
-        content: "📞 Book Now" !important;
-        position: fixed !important;
-        bottom: 20px !important;
-        right: 20px !important;
-        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
-        color: #000 !important;
-        padding: 0.8rem 1.2rem !important;
-        border-radius: 30px !important;
-        font-weight: 700 !important;
-        font-size: 0.9rem !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5) !important;
-        z-index: 9999 !important;
-        cursor: pointer !important;
-        transform: scale(1) !important;
-        transition: all 0.3s ease !important;
-        animation: pulseGlow 3s ease-in-out infinite !important;
-        pointer-events: none !important; /* Will be handled by JS */
-      }
-      
-      @keyframes pulseGlow {
-        0%, 100% { 
-          box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5);
-          transform: scale(1);
-        }
-        50% { 
-          box-shadow: 0 8px 25px rgba(255, 178, 0, 0.7);
-          transform: scale(1.05);
-        }
-      }
+      /* Quick action floating button - REMOVED TO PREVENT CONFLICTS */
+      /* Using dedicated mobile navigation and booking buttons instead */
       
       /* Enhanced mobile hero section */
       .hero-section {
@@ -7149,16 +7176,22 @@
       z-index: 999999 !important;
     }
     
-    /* Hide ALL complex elements on mobile for ultra-clean look */
+    /* Hide SOME complex elements on mobile for ultra-clean look - KEEP ESSENTIAL ELEMENTS */
     .viewfinder-overlay,
     .studio-lights,
     .film-reels,
     .camera-equipment,
     .lens-flare,
-    .countdown-container,
     .clapperboard,
     .particles-system {
       display: none !important;
+    }
+    
+    /* KEEP countdown and aperture for loading functionality */
+    .countdown-container,
+    .aperture-container,
+    .cinematic-text {
+      display: block !important;
     }
     
     /* Elegant film strip borders */
@@ -9365,7 +9398,7 @@
       position: fixed;
       top: 1rem;
       right: 1rem;
-      z-index: 10003; /* Higher than theme toggle */
+      z-index: 10001; /* Proper hierarchy: above nav overlay */
       background: rgba(255, 178, 0, 0.9);
       border: none;
       border-radius: 8px;
@@ -9413,7 +9446,7 @@
       height: 100%;
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.98));
       backdrop-filter: blur(20px);
-      z-index: 9998;
+      z-index: 10000; /* Below nav toggle but above content */
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -11660,8 +11693,45 @@
   window.mobileState = {
     modalOpen: false,
     navOpen: false,
-    preventAutoModal: true
+    preventAutoModal: true,
+    isMobile: window.innerWidth <= 768,
+    isUltraMobile: window.innerWidth <= 480,
+    touchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0
   };
+  
+  // 📱 COMPREHENSIVE MOBILE OPTIMIZATION INITIALIZATION
+  if (window.mobileState.isMobile) {
+    console.log('📱 Mobile device detected - initializing optimizations');
+    
+    // Prevent double-tap zoom on buttons
+    document.addEventListener('touchend', function(e) {
+      if (e.target.tagName === 'BUTTON' || e.target.classList.contains('btn')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+    
+    // Add mobile-specific touch handling
+    document.addEventListener('touchstart', function() {
+      document.body.classList.add('touching');
+    }, { passive: true });
+    
+    document.addEventListener('touchend', function() {
+      setTimeout(() => {
+        document.body.classList.remove('touching');
+      }, 300);
+    }, { passive: true });
+    
+    // Optimize scroll performance
+    document.addEventListener('scroll', function() {
+      if (window.mobileState.navOpen) {
+        document.getElementById('mobileNavOverlay').classList.remove('active');
+        document.getElementById('mobileNavToggle').classList.remove('active');
+        window.mobileState.navOpen = false;
+      }
+    }, { passive: true });
+    
+    console.log('📱 Mobile optimizations complete');
+  }
   
   // 📱 Enhanced Mobile Navigation Functions
   function toggleMobileNav() {
@@ -12368,8 +12438,26 @@
     if (!document.body.classList.contains('loaded')) {
       document.body.classList.add('loaded');
       console.log('🎬 Final cut: Production loading complete');
+      
+      // 📱 MOBILE PERFORMANCE INITIALIZATION
+      if (window.innerWidth <= 768) {
+        // Initialize mobile-specific optimizations
+        document.body.style.webkitOverflowScrolling = 'touch';
+        document.body.style.touchAction = 'manipulation';
+        
+        // Remove any problematic animations on older devices
+        if (navigator.userAgent.includes('iPhone') && !navigator.userAgent.includes('iPhone 1')) {
+          document.querySelectorAll('*').forEach(el => {
+            if (el.style.animation) {
+              el.style.animationDuration = '0.1s';
+            }
+          });
+        }
+        
+        console.log('📱 Mobile optimizations initialized');
+      }
     }
-  }, window.innerWidth <= 480 ? 6000 : window.innerWidth <= 768 ? 8000 : 10000);
+  }, window.innerWidth <= 480 ? 4000 : window.innerWidth <= 768 ? 5000 : 8000); /* Reduced loading times */
   
   // Pre-production setup
   console.log('🎬 Setting up production studio... Lights, Camera, Loading!');
@@ -13317,8 +13405,10 @@
       // Function to open booking modal
     // 📱 MILLION DOLLAR BOOKING MODAL OPENING
     function openBookingModal() {
-      // Prevent auto-opening if triggered automatically
-      if (window.mobileState && window.mobileState.preventAutoModal && !event) {
+      // Only prevent auto-opening if triggered programmatically without user interaction
+      // Allow manual button clicks even when event object is not available
+      const userInitiated = arguments.length > 0 || window.event || document.activeElement;
+      if (window.mobileState && window.mobileState.preventAutoModal && !userInitiated) {
         console.log('🚫 Auto-modal opening prevented');
         return;
       }
@@ -13350,6 +13440,13 @@
         modal.style.visibility = 'visible';
         modal.style.opacity = '1';
         modal.setAttribute('data-manual-open', 'true');
+        
+        // Ensure modal is positioned at top on mobile
+        if (window.innerWidth <= 768) {
+          modal.scrollTop = 0;
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
         
         // Add focus to first input for better UX
         setTimeout(() => {
