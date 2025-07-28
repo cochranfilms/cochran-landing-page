@@ -306,6 +306,7 @@
     :root {
       --bg: #000000;
       --text: #f9f7ff;
+      --text-rgb: 249, 247, 255;
       --primary: #FFB200;
       --primary-dark: #FF9000;
       --card-bg: #232336;
@@ -323,6 +324,7 @@
     body[data-theme="dark"] {
       --bg: #000000;
       --text: #f9f7ff;
+      --text-rgb: 249, 247, 255;
       --primary: #FFB200;
       --primary-dark: #FF9000;
       --card-bg: #232336;
@@ -344,6 +346,7 @@
     body[data-theme="light"] {
       --bg: #f9f7ff;
       --text: #000;
+      --text-rgb: 0, 0, 0;
       --primary: #FFB200;
       --primary-dark: #FF9000;
       --card-bg: #fff;
@@ -707,6 +710,60 @@
       z-index: 999999 !important;
       pointer-events: auto !important;
       background: transparent !important;
+    }
+    
+    /* 🚫 HIDE TOP NAVIGATION BAR */
+    /* Hide any top navigation bars with GET QUOTE button and social icons */
+    .top-nav, .top-bar, .header-top, .top-navigation, 
+    [class*="top-nav"], [class*="top-bar"], [class*="header-top"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+    
+    /* Hide any fixed positioned elements at the very top */
+    *[style*="position: fixed"][style*="top: 0"],
+    *[style*="position:fixed"][style*="top:0"] {
+      display: none !important;
+    }
+    
+    /* Ensure body starts at the top without any padding/margin from hidden top bars */
+    body {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+    
+    /* Hide elements containing GET QUOTE or social icons */
+    *:contains("GET QUOTE"), 
+    *:contains("get quote"),
+    *:contains("Storytelling That Converts") {
+      display: none !important;
+    }
+    
+    /* Hide common social icon containers at the top */
+    .social-icons, .social-links, .top-social, 
+    [class*="social"][class*="top"],
+    [class*="social"][class*="header"] {
+      display: none !important;
+    }
+    
+    /* Hide any element with high z-index that might be overlaying */
+    *[style*="z-index: 999999"],
+    *[style*="z-index:999999"] {
+      display: none !important;
+    }
+    
+    /* Hide any iframe or widget that might be creating the top bar */
+    iframe[src*="quote"], iframe[src*="social"], iframe[src*="nav"] {
+      display: none !important;
+    }
+    
+    /* Force hide any element positioned at the very top of the viewport */
+    *[style*="position: absolute; top: 0"],
+    *[style*="position:absolute;top:0"] {
+      display: none !important;
     }
     
     /* 📱 COMPREHENSIVE MOBILE OPTIMIZATION */
@@ -2608,6 +2665,9 @@
         width: 100%;
         min-height: 100vh;
         padding-bottom: 4rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
       
       /* Mobile section styling */
@@ -5686,19 +5746,24 @@
       padding: 2rem 1rem;
       transition: background 0.3s, color 0.3s;
     }
-    /* 🎬 RESPONSIVE GREEN SUCCESS MODAL THEME */
+    /* 🎬 UNIFIED MODAL SYSTEM - FIXED POSITIONING */
     .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(8px);
-      padding: 2rem 1rem;
-      box-sizing: border-box;
+      position: fixed !important;
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      bottom: 0 !important;
+      background: rgba(0,0,0,0.8) !important;
+      z-index: 999999 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+      backdrop-filter: blur(8px) !important;
+      padding: 1rem !important;
+      box-sizing: border-box !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
     }
     
     /* Dark mode modal */
@@ -5712,24 +5777,25 @@
     }
     
     .modal-content {
-      background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-      color: #ffffff;
-      border-radius: 20px;
-      border: 2px solid #4CAF50;
+      background: linear-gradient(145deg, #1a1a1a, #0f0f0f) !important;
+      color: #ffffff !important;
+      border-radius: 20px !important;
+      border: 2px solid #4CAF50 !important;
       box-shadow: 
         0 20px 60px rgba(0,0,0,0.6),
         0 0 40px rgba(76, 175, 80, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-      padding: 2.5rem 2rem 2rem 2rem;
-      min-width: 320px;
-      max-width: 95vw;
-      max-height: 90vh;
-      width: 450px;
-      position: relative;
-      animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1);
-      transition: all 0.3s ease;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+        inset 0 1px 0 rgba(255,255,255,0.1) !important;
+      padding: 2rem 1.5rem !important;
+      min-width: 300px !important;
+      max-width: 90vw !important;
+      max-height: 85vh !important;
+      width: auto !important;
+      position: relative !important;
+      animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+      transition: all 0.3s ease !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: auto !important;
     }
     
     /* Light mode modal content */
@@ -8736,26 +8802,36 @@
       transform: translateY(-2px);
     }
     
-    /* Invoice Modal Styles */
+    /* Invoice Modal Styles - FIXED POSITIONING */
     .brief-submission-modal {
-      max-width: 600px !important;
+      max-width: 650px !important;
       width: 90vw !important;
       max-height: 85vh !important;
       overflow-y: auto !important;
       -webkit-overflow-scrolling: touch !important;
+      margin: 0 auto !important;
+      position: relative !important;
+      display: block !important;
+    }
+    
+    /* Ensure modal content is properly sized and positioned */
+    .modal-overlay .brief-submission-modal {
       margin: auto !important;
+      align-self: center !important;
     }
     
     /* Desktop specific modal positioning */
     @media (min-width: 769px) {
       .modal-overlay {
-        padding: 3rem 2rem !important;
+        padding: 2rem !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
       
       .brief-submission-modal {
-        max-width: 650px !important;
-        width: auto !important;
-        min-width: 500px !important;
+        max-width: 700px !important;
+        width: 80vw !important;
+        min-width: 600px !important;
         max-height: 80vh !important;
       }
     }
@@ -12567,29 +12643,17 @@
         display: none !important;
       }
       
-      /* 📱 ENSURE ALL MODALS ARE PROPERLY SIZED AND CLOSEABLE */
-      .modal-overlay,
-      .modal {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 9999 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+      /* 📱 MOBILE MODAL SYSTEM SIMPLIFIED */
+      .modal-overlay {
+        z-index: 999999 !important;
         padding: 1rem !important;
-        box-sizing: border-box !important;
       }
       
       .modal-content {
-        position: relative !important;
-        max-width: 95% !important;
-        max-height: 90% !important;
-        width: 100% !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
+        max-width: 95vw !important;
+        max-height: 85vh !important;
+        width: auto !important;
+        margin: auto !important;
       }
       
       .modal-close {
@@ -13023,8 +13087,10 @@
       </div>
     </div>
 
-    <!-- Mobile Hero Section -->
-    <section class="mobile-hero" id="mobileHero">
+    <!-- Mobile Content Container -->
+    <div class="mobile-content">
+      <!-- Mobile Hero Section -->
+      <section class="mobile-hero" id="mobileHero">
       <div class="mobile-hero-content">
         <div class="mobile-hero-header">
           <img src="Logo.png" alt="Cochran Films Logo" class="mobile-hero-logo">
@@ -13455,6 +13521,7 @@
       <button class="mobile-lightbox-close" onclick="closeMobileLightbox()">&times;</button>
       <img id="mobileLightboxImg" src="" alt="Gallery Image">
     </div>
+    </div> <!-- End mobile-content -->
   </div>
 
 
@@ -15261,12 +15328,32 @@
   
   // 📱 INITIALIZE MOBILE EXPERIENCE IMMEDIATELY
   // This ensures mobile experience is set up before DOM is fully loaded
-  if (window.innerWidth <= 768) {
-    // Force mobile initialization
-    setTimeout(() => {
+  function forceInitializeMobile() {
+    const isMobile = window.innerWidth <= 768;
+    console.log('📱 Force init - Screen width:', window.innerWidth, 'isMobile:', isMobile);
+    
+    if (isMobile) {
       initializeMobileExperience();
-    }, 100);
+      // Double-check mobile version is visible
+      const mobileVersion = document.getElementById('mobileVersion');
+      if (mobileVersion) {
+        mobileVersion.style.display = 'block';
+        mobileVersion.style.visibility = 'visible';
+        mobileVersion.style.opacity = '1';
+        console.log('📱 Mobile version forced visible');
+      }
+    } else {
+      initializeMobileExperience();
+    }
   }
+  
+  // Initialize immediately and on DOM ready
+  if (window.innerWidth <= 768) {
+    setTimeout(forceInitializeMobile, 50);
+  }
+  
+  // Also initialize on DOM ready
+  document.addEventListener('DOMContentLoaded', forceInitializeMobile);
   
   // 📱 Enhanced Mobile Navigation Functions
   function toggleMobileNav() {
@@ -17793,1343 +17880,151 @@
     uploadStatus.style.display = 'none';
   }
   
-
-  
-  
   
 
-  
-
-  
-    function processUserMessage(message) {
-    const lowerMessage = message.toLowerCase();
+  // Video quiz functions
+  function analyzeVideoNeeds() {
+    const brandDescription = document.getElementById('brandDescription').value.trim();
+    const imageUpload = document.getElementById('imageUpload').files[0];
     
-    // Store the user message in conversation history for analysis
-    conversationHistory.push({ sender: 'user', message: message, timestamp: new Date().toISOString() });
-    
-    // Check if brief has already been generated
-    const briefContent = document.getElementById('briefContent');
-    const hasBriefGenerated = briefContent && !briefContent.querySelector('.brief-placeholder');
-    
-    if (hasBriefGenerated) {
-      return "Your creative brief is ready! Type below to re-generate another brief or ask for modifications.";
-    }
-    
-    // Enhanced message analysis
-    const messageAnalysis = analyzeUserMessage(message);
-    
-    // Generate brief immediately based on user input
-    return `Perfect! I'm analyzing your business and content needs to create your personalized creative brief. Based on your input about "${messageAnalysis.keywords.join(', ')}", I'm generating a comprehensive brief with visual moodboard references...`;
-  }
-  
-  function analyzeUserMessage(message) {
-    const lowerMessage = message.toLowerCase();
-    const keywords = [];
-    
-    // Enhanced keyword extraction
-    const keywordPatterns = {
-      'video': ['video', 'film', 'content', 'production'],
-      'brand': ['brand', 'company', 'business', 'organization'],
-      'audience': ['audience', 'customers', 'clients', 'viewers'],
-      'emotion': ['emotion', 'feeling', 'mood', 'tone'],
-      'style': ['style', 'aesthetic', 'look', 'visual'],
-      'industry': ['industry', 'sector', 'field', 'market'],
-      'goal': ['goal', 'objective', 'purpose', 'aim']
-    };
-    
-    Object.entries(keywordPatterns).forEach(([category, patterns]) => {
-      patterns.forEach(pattern => {
-        if (lowerMessage.includes(pattern)) {
-          keywords.push(pattern);
-        }
-      });
-    });
-    
-    return {
-      keywords: keywords.length > 0 ? keywords : ['creative', 'professional'],
-      length: message.length,
-      hasQuestions: /\?/.test(message),
-      hasEmojis: /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/u.test(message)
-    };
-  }
-  
-  function generateCreativeBrief() {
-    const briefContent = document.getElementById('briefContent');
-    const moodboardSection = document.getElementById('moodboardSection');
-    
-    if (!briefContent) {
-      console.error('Brief content element not found');
-      showNotification('Error: Brief content element not found', 'error');
+    if (!brandDescription && !imageUpload) {
+      alert('Please either upload an image or describe your brand in 3 words.');
       return;
     }
     
-    try {
-      // Analyze conversation history to create personalized brief
-      const brief = createPersonalizedBrief();
-      
-      // Create a comprehensive paragraph summary
-      const briefParagraph = createBriefParagraph(brief);
-      
-      // Force the content to be visible with explicit styles and !important
-      briefContent.innerHTML = `
-        <div style="background: rgba(255,255,255,0.05) !important; padding: 2rem !important; border-radius: 15px !important; margin-bottom: 2rem !important; border: 1px solid rgba(255,178,0,0.3) !important; display: block !important;">
-          <h5 style="color: #FFB200 !important; font-size: 1.4rem !important; margin-bottom: 1.5rem !important; font-weight: bold !important; display: block !important;">Your Creative Brief</h5>
-          <p style="color: #f9f7ff !important; line-height: 1.8 !important; margin-bottom: 2rem !important; font-size: 1.1rem !important; display: block !important;">${briefParagraph}</p>
-          
-          <div style="margin-bottom: 2rem !important; display: block !important;">
-            <h5 style="color: #FFB200 !important; font-size: 1.2rem !important; margin-bottom: 1rem !important; font-weight: bold !important; display: block !important;">Project Details</h5>
-            <div style="display: grid !important; gap: 0.8rem !important;">
-              <p style="color: #f9f7ff !important; margin: 0 !important; display: block !important;"><strong style="color: #FFB200 !important;">Project Type:</strong> ${brief.projectType}</p>
-              <p style="color: #f9f7ff !important; margin: 0 !important; display: block !important;"><strong style="color: #FFB200 !important;">Target Audience:</strong> ${brief.targetAudience}</p>
-              <p style="color: #f9f7ff !important; margin: 0 !important; display: block !important;"><strong style="color: #FFB200 !important;">Emotional Goal:</strong> ${brief.emotionalGoal}</p>
-              <p style="color: #f9f7ff !important; margin: 0 !important; display: block !important;"><strong style="color: #FFB200 !important;">Visual Style:</strong> ${brief.visualStyle}</p>
-              <p style="color: #f9f7ff !important; margin: 0 !important; display: block !important;"><strong style="color: #FFB200 !important;">Key Message:</strong> ${brief.keyMessage}</p>
-              <p style="color: #f9f7ff !important; margin: 0 !important; display: block !important;"><strong style="color: #FFB200 !important;">Call to Action:</strong> ${brief.callToAction}</p>
-            </div>
-          </div>
-          
-          <div style="margin-bottom: 2rem !important; display: block !important;">
-            <h5 style="color: #FFB200 !important; font-size: 1.2rem !important; margin-bottom: 1rem !important; font-weight: bold !important; display: block !important;">Strategic Approach</h5>
-            <p style="color: #f9f7ff !important; line-height: 1.6 !important; margin: 0 !important; display: block !important;">${brief.strategicApproach}</p>
-          </div>
-          
-          <div style="margin-bottom: 2rem !important; display: block !important;">
-            <h5 style="color: #FFB200 !important; font-size: 1.2rem !important; margin-bottom: 1rem !important; font-weight: bold !important; display: block !important;">Production Recommendations</h5>
-            <p style="color: #f9f7ff !important; line-height: 1.6 !important; margin: 0 !important; display: block !important;">${brief.productionRecommendations}</p>
-          </div>
-          
-          <div style="margin-top: 2rem !important; padding: 1.5rem !important; background: linear-gradient(135deg, rgba(255,178,0,0.1), rgba(255,178,0,0.05)) !important; border: 2px solid rgba(255,178,0,0.3) !important; border-radius: 12px !important; text-align: center !important;">
-            <h5 style="color: #FFB200 !important; font-size: 1.3rem !important; margin-bottom: 1rem !important; font-weight: bold !important;">🚀 Ready to Bring Your Vision to Life?</h5>
-            <p style="color: #f9f7ff !important; margin-bottom: 1.5rem !important; font-size: 1rem !important;">Send your creative brief to our team and get started on your video project today!</p>
-            <button onclick="openBriefSubmissionForm()" style="background: linear-gradient(135deg, #FFB200, #FF9000) !important; border: none !important; color: #000 !important; padding: 1rem 2rem !important; border-radius: 8px !important; cursor: pointer !important; font-weight: bold !important; font-size: 1.1rem !important; transition: all 0.3s ease !important; box-shadow: 0 4px 15px rgba(255,178,0,0.3) !important; margin-bottom: 1rem !important;">
-              <i class="fas fa-paper-plane"></i> Send Brief to Cochran Films
-            </button>
-            <div style="display: flex !important; gap: 1rem !important; justify-content: center !important; flex-wrap: wrap !important;">
-              <button onclick="regenerateBrief()" style="background: rgba(255,178,0,0.2) !important; border: 1px solid rgba(255,178,0,0.4) !important; color: #FFB200 !important; padding: 0.8rem 1.5rem !important; border-radius: 8px !important; cursor: pointer !important; font-weight: bold !important; transition: all 0.3s ease !important;">
-                <i class="fas fa-redo"></i> Regenerate
-              </button>
-              <button onclick="handleDownloadAndScroll()" style="background: rgba(255,178,0,0.2) !important; border: 1px solid rgba(255,178,0,0.4) !important; color: #FFB200 !important; padding: 0.8rem 1.5rem !important; border-radius: 8px !important; cursor: pointer !important; font-weight: bold !important; transition: all 0.3s ease !important;">
-                <i class="fas fa-download"></i> Download PDF
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      // Generate moodboard based on user input
-      generateMoodboard(brief.visualStyle, brief.projectType, brief.targetAudience);
-      moodboardSection.style.display = 'block';
-      
-      console.log('Creative brief generated:', brief);
-      console.log('Brief content element:', briefContent);
-      console.log('Brief content HTML:', briefContent.innerHTML);
-      
-      // Show success notification
-      showNotification('Creative brief generated successfully!', 'success');
-      
-      // Show the CTA section after brief is generated
-      const ctaSection = document.getElementById('briefSubmissionCTA');
-      if (ctaSection) {
-        ctaSection.style.display = 'block';
-        // Add animation class after a brief delay
-        setTimeout(() => {
-          ctaSection.classList.add('show');
-        }, 100);
-      }
-      
-    } catch (error) {
-      console.error('Error generating creative brief:', error);
-      showNotification('Error generating brief. Please try again.', 'error');
-    }
-  }
-  
-  function createBriefParagraph(brief) {
-    // Advanced brief paragraph generation with comprehensive insights
-    const paragraph = `Based on our comprehensive analysis of your business, I recommend a ${brief.projectType} that specifically targets ${brief.targetAudience}. The content should ${brief.emotionalGoal.toLowerCase()} through ${brief.visualStyle.toLowerCase()} visual storytelling that aligns with your brand's unique value proposition. Your key message should ${brief.keyMessage.toLowerCase()}, with a strategic call-to-action that ${brief.callToAction.toLowerCase()}. Our approach involves ${brief.strategicApproach.toLowerCase()}, supported by ${brief.productionRecommendations.toLowerCase()}. This ${brief.contentStrategy.toLowerCase()} will effectively communicate your ${brief.businessInsights.toLowerCase()} and leverage your ${brief.competitiveAdvantage.toLowerCase()}.`;
-    
-    return paragraph;
-  }
-  
-  function createPersonalizedBrief() {
-    // Advanced AI analysis of conversation history
-    const messages = conversationHistory.map(msg => msg.message.toLowerCase());
-    const allText = messages.join(' ');
-    const userMessage = messages.find(msg => msg.length > 10) || allText;
-    
-    // If no user message, provide a default brief
-    if (!userMessage || userMessage.length < 5) {
-      return {
-        projectType: 'Brand Story Video',
-        targetAudience: 'General audience (25-45)',
-        emotionalGoal: 'Build Trust and Credibility',
-        visualStyle: 'Professional',
-        keyMessage: 'Communicate your unique value proposition to potential customers',
-        callToAction: 'Inspire viewers to take action and connect with your brand',
-        strategicApproach: 'Build authentic connections through professional storytelling that showcases your expertise',
-        productionRecommendations: 'Professional production with balanced lighting, steady camera work, and polished presentation',
-        businessInsights: 'Your general business thrives on quality and expertise, targeting general market with a professional brand personality',
-        competitiveAdvantage: 'Your expertise in quality positions you uniquely to serve professionals who value business',
-        contentStrategy: 'A brand story video that leverages your quality to connect with professionals through professional storytelling'
-      };
-    }
-    
-    // Comprehensive business type analysis
-    const businessAnalysis = analyzeBusinessType(userMessage);
-    const audienceAnalysis = analyzeTargetAudience(userMessage);
-    const contentAnalysis = analyzeContentType(userMessage);
-    const styleAnalysis = analyzeVisualStyle(userMessage);
-    const emotionAnalysis = analyzeEmotionalGoals(userMessage);
-    
-    // Advanced project type determination with confidence scoring
-    const projectType = determineProjectType(contentAnalysis, businessAnalysis);
-    const emotionalGoal = determineEmotionalGoal(emotionAnalysis, businessAnalysis);
-    const visualStyle = determineVisualStyle(styleAnalysis, businessAnalysis);
-    const targetAudience = determineTargetAudience(audienceAnalysis, businessAnalysis);
-    
-    // Create comprehensive brief with advanced insights
-    const brief = {
-      projectType,
-      targetAudience,
-      emotionalGoal,
-      visualStyle,
-      keyMessage: generateAdvancedKeyMessage(userMessage, businessAnalysis, audienceAnalysis),
-      callToAction: generateAdvancedCallToAction(userMessage, businessAnalysis, projectType),
-      strategicApproach: generateAdvancedStrategicApproach(userMessage, businessAnalysis, projectType, audienceAnalysis),
-      productionRecommendations: generateAdvancedProductionRecommendations(visualStyle, projectType, businessAnalysis),
-      businessInsights: generateBusinessInsights(businessAnalysis),
-      competitiveAdvantage: generateCompetitiveAdvantage(businessAnalysis, audienceAnalysis),
-      contentStrategy: generateContentStrategy(projectType, businessAnalysis, audienceAnalysis)
-    };
-    
-    return brief;
-  }
-  
-  function analyzeBusinessType(text) {
-    const analysis = {
-      industry: 'general',
-      businessModel: 'service',
-      targetMarket: 'general',
-      uniqueValue: 'quality',
-      competitiveEdge: 'expertise',
-      brandPersonality: 'professional'
-    };
-    
-    // Enhanced industry detection with more keywords
-    if (text.includes('t-shirt') || text.includes('clothing') || text.includes('fashion') || text.includes('apparel') || 
-        text.includes('shirt') || text.includes('wear') || text.includes('style') || text.includes('outfit')) {
-      analysis.industry = 'fashion';
-      analysis.businessModel = 'product';
-      analysis.targetMarket = 'lifestyle';
-      analysis.uniqueValue = 'style';
-      analysis.competitiveEdge = 'design';
-      analysis.brandPersonality = 'trendy';
-    } else if (text.includes('restaurant') || text.includes('food') || text.includes('dining') || text.includes('cafe') ||
-               text.includes('kitchen') || text.includes('chef') || text.includes('cuisine') || text.includes('meal')) {
-      analysis.industry = 'food';
-      analysis.businessModel = 'service';
-      analysis.targetMarket = 'foodies';
-      analysis.uniqueValue = 'taste';
-      analysis.competitiveEdge = 'experience';
-      analysis.brandPersonality = 'welcoming';
-    } else if (text.includes('tech') || text.includes('software') || text.includes('app') || text.includes('digital') ||
-               text.includes('computer') || text.includes('programming') || text.includes('development') || text.includes('startup')) {
-      analysis.industry = 'technology';
-      analysis.businessModel = 'product';
-      analysis.targetMarket = 'professionals';
-      analysis.uniqueValue = 'innovation';
-      analysis.competitiveEdge = 'technology';
-      analysis.brandPersonality = 'innovative';
-    } else if (text.includes('consulting') || text.includes('agency') || text.includes('service') ||
-               text.includes('business') || text.includes('professional') || text.includes('corporate') || text.includes('company')) {
-      analysis.industry = 'professional';
-      analysis.businessModel = 'service';
-      analysis.targetMarket = 'businesses';
-      analysis.uniqueValue = 'expertise';
-      analysis.competitiveEdge = 'knowledge';
-      analysis.brandPersonality = 'trustworthy';
-    } else if (text.includes('creative') || text.includes('design') || text.includes('art') ||
-               text.includes('photography') || text.includes('videography') || text.includes('studio') || text.includes('creative')) {
-      analysis.industry = 'creative';
-      analysis.businessModel = 'service';
-      analysis.targetMarket = 'creatives';
-      analysis.uniqueValue = 'creativity';
-      analysis.competitiveEdge = 'talent';
-      analysis.brandPersonality = 'artistic';
-    } else if (text.includes('fitness') || text.includes('gym') || text.includes('workout') || text.includes('health') ||
-               text.includes('wellness') || text.includes('training') || text.includes('exercise')) {
-      analysis.industry = 'fitness';
-      analysis.businessModel = 'service';
-      analysis.targetMarket = 'health-conscious';
-      analysis.uniqueValue = 'transformation';
-      analysis.competitiveEdge = 'results';
-      analysis.brandPersonality = 'motivational';
-    } else if (text.includes('real estate') || text.includes('property') || text.includes('home') || text.includes('house') ||
-               text.includes('realtor') || text.includes('agent') || text.includes('buy') || text.includes('sell')) {
-      analysis.industry = 'real estate';
-      analysis.businessModel = 'service';
-      analysis.targetMarket = 'homebuyers';
-      analysis.uniqueValue = 'expertise';
-      analysis.competitiveEdge = 'local knowledge';
-      analysis.brandPersonality = 'trustworthy';
-    }
-    
-    return analysis;
-  }
-  
-  function analyzeTargetAudience(text) {
-    const analysis = {
-      ageRange: '25-45',
-      demographics: 'professionals',
-      interests: 'business',
-      lifestyle: 'urban',
-      painPoints: 'efficiency',
-      aspirations: 'success'
-    };
-    
-    // Age range detection
-    if (text.includes('young') || text.includes('millennial') || text.includes('25-35')) {
-      analysis.ageRange = '18-35';
-      analysis.demographics = 'young professionals';
-      analysis.interests = 'lifestyle';
-      analysis.lifestyle = 'urban';
-      analysis.painPoints = 'convenience';
-      analysis.aspirations = 'work-life balance';
-    } else if (text.includes('mature') || text.includes('40-55') || text.includes('established')) {
-      analysis.ageRange = '35-55';
-      analysis.demographics = 'established professionals';
-      analysis.interests = 'stability';
-      analysis.lifestyle = 'suburban';
-      analysis.painPoints = 'reliability';
-      analysis.aspirations = 'security';
-    }
-    
-    // Interest detection
-    if (text.includes('fitness') || text.includes('health') || text.includes('wellness')) {
-      analysis.interests = 'health and fitness';
-      analysis.lifestyle = 'active';
-      analysis.painPoints = 'time management';
-      analysis.aspirations = 'wellness';
-    } else if (text.includes('luxury') || text.includes('premium') || text.includes('high-end')) {
-      analysis.interests = 'luxury';
-      analysis.lifestyle = 'affluent';
-      analysis.painPoints = 'quality';
-      analysis.aspirations = 'exclusivity';
-    }
-    
-    return analysis;
-  }
-  
-  function analyzeContentType(text) {
-    const analysis = {
-      primaryType: 'brand',
-      secondaryType: 'story',
-      platform: 'multi',
-      duration: 'medium',
-      style: 'narrative'
-    };
-    
-    // Content type detection
-    if (text.includes('explainer') || text.includes('explain')) {
-      analysis.primaryType = 'explainer';
-      analysis.duration = 'short';
-      analysis.style = 'educational';
-    } else if (text.includes('social') || text.includes('instagram') || text.includes('tiktok')) {
-      analysis.primaryType = 'social';
-      analysis.platform = 'social';
-      analysis.duration = 'short';
-      analysis.style = 'engaging';
-    } else if (text.includes('product') || text.includes('showcase')) {
-      analysis.primaryType = 'product';
-      analysis.duration = 'medium';
-      analysis.style = 'demonstrative';
-    } else if (text.includes('behind') || text.includes('scenes')) {
-      analysis.primaryType = 'behind-the-scenes';
-      analysis.style = 'authentic';
-    } else if (text.includes('testimonial') || text.includes('review')) {
-      analysis.primaryType = 'testimonial';
-      analysis.style = 'trust-building';
-    }
-    
-    return analysis;
-  }
-  
-  function analyzeVisualStyle(text) {
-    const analysis = {
-      primaryStyle: 'professional',
-      colorPalette: 'neutral',
-      lighting: 'natural',
-      composition: 'balanced',
-      movement: 'smooth'
-    };
-    
-    // Style detection
-    if (text.includes('cinematic') || text.includes('dramatic')) {
-      analysis.primaryStyle = 'cinematic';
-      analysis.lighting = 'dramatic';
-      analysis.movement = 'dynamic';
-    } else if (text.includes('minimalist') || text.includes('clean')) {
-      analysis.primaryStyle = 'minimalist';
-      analysis.colorPalette = 'monochrome';
-      analysis.composition = 'simple';
-    } else if (text.includes('vibrant') || text.includes('colorful')) {
-      analysis.primaryStyle = 'vibrant';
-      analysis.colorPalette = 'bold';
-      analysis.composition = 'energetic';
-    } else if (text.includes('corporate') || text.includes('business')) {
-      analysis.primaryStyle = 'corporate';
-      analysis.colorPalette = 'professional';
-      analysis.composition = 'structured';
-    }
-    
-    return analysis;
-  }
-  
-  function analyzeEmotionalGoals(text) {
-    const analysis = {
-      primaryEmotion: 'trust',
-      secondaryEmotion: 'confidence',
-      emotionalArc: 'positive',
-      callToAction: 'inform'
-    };
-    
-    // Emotion detection
-    if (text.includes('inspired') || text.includes('inspiration')) {
-      analysis.primaryEmotion = 'inspiration';
-      analysis.secondaryEmotion = 'motivation';
-      analysis.emotionalArc = 'uplifting';
-      analysis.callToAction = 'act';
-    } else if (text.includes('excited') || text.includes('excitement')) {
-      analysis.primaryEmotion = 'excitement';
-      analysis.secondaryEmotion = 'enthusiasm';
-      analysis.emotionalArc = 'energizing';
-      analysis.callToAction = 'engage';
-    } else if (text.includes('trust') || text.includes('confident')) {
-      analysis.primaryEmotion = 'trust';
-      analysis.secondaryEmotion = 'confidence';
-      analysis.emotionalArc = 'reassuring';
-      analysis.callToAction = 'trust';
-    }
-    
-    return analysis;
-  }
-  
-  function determineProjectType(contentAnalysis, businessAnalysis) {
-    // Advanced project type determination with business context
-    if (contentAnalysis.primaryType === 'explainer') {
-      return 'Brand Explainer Video';
-    } else if (contentAnalysis.primaryType === 'social') {
-      return 'Social Media Content Series';
-    } else if (contentAnalysis.primaryType === 'product') {
-      return 'Product Showcase Video';
-    } else if (contentAnalysis.primaryType === 'behind-the-scenes') {
-      return 'Behind-the-Scenes Series';
-    } else if (contentAnalysis.primaryType === 'testimonial') {
-      return 'Customer Testimonial Video';
-    } else if (businessAnalysis.industry === 'fashion') {
-      return 'Fashion Brand Story Video';
-    } else if (businessAnalysis.industry === 'food') {
-      return 'Restaurant Experience Video';
-    } else if (businessAnalysis.industry === 'technology') {
-      return 'Tech Product Demo Video';
-    } else {
-      return 'Brand Story Video';
-    }
-  }
-  
-  function determineEmotionalGoal(emotionAnalysis, businessAnalysis) {
-    // Advanced emotional goal determination
-    if (emotionAnalysis.primaryEmotion === 'inspiration') {
-      return 'Inspire Action and Motivation';
-    } else if (emotionAnalysis.primaryEmotion === 'excitement') {
-      return 'Generate Excitement and Engagement';
-    } else if (emotionAnalysis.primaryEmotion === 'trust') {
-      return 'Build Trust and Credibility';
-    } else if (businessAnalysis.industry === 'fashion') {
-      return 'Create Desire and Aspiration';
-    } else if (businessAnalysis.industry === 'food') {
-      return 'Evoke Appetite and Comfort';
-    } else if (businessAnalysis.industry === 'technology') {
-      return 'Demonstrate Innovation and Reliability';
-    } else {
-      return 'Establish Trust and Authority';
-    }
-  }
-  
-  function determineVisualStyle(styleAnalysis, businessAnalysis) {
-    // Advanced visual style determination
-    if (styleAnalysis.primaryStyle === 'cinematic') {
-      return 'Cinematic';
-    } else if (styleAnalysis.primaryStyle === 'minimalist') {
-      return 'Minimalist';
-    } else if (styleAnalysis.primaryStyle === 'vibrant') {
-      return 'Vibrant';
-    } else if (styleAnalysis.primaryStyle === 'corporate') {
-      return 'Corporate';
-    } else if (businessAnalysis.industry === 'fashion') {
-      return 'Fashion Editorial';
-    } else if (businessAnalysis.industry === 'food') {
-      return 'Culinary Cinematic';
-    } else if (businessAnalysis.industry === 'technology') {
-      return 'Tech Modern';
-    } else {
-      return 'Professional';
-    }
-  }
-  
-  function determineTargetAudience(audienceAnalysis, businessAnalysis) {
-    // Advanced target audience determination
-    if (audienceAnalysis.ageRange === '18-35') {
-      return `${audienceAnalysis.demographics} (${audienceAnalysis.ageRange})`;
-    } else if (audienceAnalysis.ageRange === '35-55') {
-      return `${audienceAnalysis.demographics} (${audienceAnalysis.ageRange})`;
-    } else if (businessAnalysis.industry === 'fashion') {
-      return 'Fashion-conscious consumers (18-45)';
-    } else if (businessAnalysis.industry === 'food') {
-      return 'Food enthusiasts and diners (25-65)';
-    } else if (businessAnalysis.industry === 'technology') {
-      return 'Tech-savvy professionals (25-50)';
-    } else {
-      return `${audienceAnalysis.demographics} (${audienceAnalysis.ageRange})`;
-    }
-  }
-  
-  function generateAdvancedKeyMessage(userMessage, businessAnalysis, audienceAnalysis) {
-    // Advanced key message generation based on business and audience analysis
-    if (businessAnalysis.industry === 'fashion') {
-      return `Showcase your unique ${businessAnalysis.uniqueValue} and ${businessAnalysis.competitiveEdge} to ${audienceAnalysis.demographics} who value ${audienceAnalysis.interests} and ${audienceAnalysis.aspirations}`;
-    } else if (businessAnalysis.industry === 'food') {
-      return `Highlight your ${businessAnalysis.uniqueValue} and ${businessAnalysis.competitiveEdge} to create memorable experiences for ${audienceAnalysis.demographics} seeking ${audienceAnalysis.interests}`;
-    } else if (businessAnalysis.industry === 'technology') {
-      return `Demonstrate your ${businessAnalysis.uniqueValue} and ${businessAnalysis.competitiveEdge} to ${audienceAnalysis.demographics} who need ${audienceAnalysis.painPoints} solutions`;
-    } else if (businessAnalysis.industry === 'creative') {
-      return `Showcase your ${businessAnalysis.uniqueValue} and ${businessAnalysis.competitiveEdge} to ${audienceAnalysis.demographics} who appreciate ${audienceAnalysis.interests}`;
-    } else {
-      return `Communicate your ${businessAnalysis.uniqueValue} and ${businessAnalysis.competitiveEdge} to ${audienceAnalysis.demographics} who value ${audienceAnalysis.interests}`;
-    }
-  }
-  
-  function generateAdvancedCallToAction(userMessage, businessAnalysis, projectType) {
-    // Advanced call-to-action generation based on business type and project
-    if (businessAnalysis.industry === 'fashion') {
-      return 'Drive viewers to explore your collection and make a purchase decision';
-    } else if (businessAnalysis.industry === 'food') {
-      return 'Motivate viewers to visit your restaurant and experience your cuisine';
-    } else if (businessAnalysis.industry === 'technology') {
-      return 'Guide viewers to try your product and experience the innovation';
-    } else if (projectType.includes('Social')) {
-      return 'Encourage viewers to engage with your content and follow your brand';
-    } else if (projectType.includes('Explainer')) {
-      return 'Direct viewers to learn more about your services and contact you';
-    } else {
-      return 'Inspire viewers to take action and connect with your brand';
-    }
-  }
-  
-  function generateAdvancedStrategicApproach(userMessage, businessAnalysis, projectType, audienceAnalysis) {
-    // Advanced strategic approach based on comprehensive analysis
-    if (businessAnalysis.industry === 'fashion') {
-      return `Create aspirational content that showcases your ${businessAnalysis.uniqueValue} through ${businessAnalysis.brandPersonality} storytelling, targeting ${audienceAnalysis.demographics} who value ${audienceAnalysis.interests}`;
-    } else if (businessAnalysis.industry === 'food') {
-      return `Develop sensory-rich content that highlights your ${businessAnalysis.uniqueValue} and ${businessAnalysis.competitiveEdge}, appealing to ${audienceAnalysis.demographics} seeking ${audienceAnalysis.interests}`;
-    } else if (businessAnalysis.industry === 'technology') {
-      return `Create innovative content that demonstrates your ${businessAnalysis.uniqueValue} and solves ${audienceAnalysis.painPoints} for ${audienceAnalysis.demographics}`;
-    } else {
-      return `Build authentic connections through ${businessAnalysis.brandPersonality} storytelling that showcases your ${businessAnalysis.uniqueValue} to ${audienceAnalysis.demographics}`;
-    }
-  }
-  
-  function generateAdvancedProductionRecommendations(visualStyle, projectType, businessAnalysis) {
-    // Advanced production recommendations based on style and business
-    if (visualStyle === 'Cinematic') {
-      return 'High-quality cinematography with dramatic lighting, smooth camera movements, and professional color grading for premium brand perception';
-    } else if (visualStyle === 'Fashion Editorial') {
-      return 'Editorial-style photography with fashion-forward lighting, dynamic compositions, and trend-setting visual aesthetics';
-    } else if (visualStyle === 'Culinary Cinematic') {
-      return 'Food-focused cinematography with appetizing lighting, close-up details, and sensory-rich visual storytelling';
-    } else if (visualStyle === 'Tech Modern') {
-      return 'Clean, modern cinematography with sleek lighting, smooth transitions, and innovative visual effects';
-    } else if (visualStyle === 'Minimalist') {
-      return 'Clean, simple compositions with plenty of white space, subtle animations, and focused messaging';
-    } else {
-      return 'Professional production with balanced lighting, steady camera work, and polished presentation';
-    }
-  }
-  
-  function generateBusinessInsights(businessAnalysis) {
-    return `Your ${businessAnalysis.industry} business thrives on ${businessAnalysis.uniqueValue} and ${businessAnalysis.competitiveEdge}, targeting ${businessAnalysis.targetMarket} with a ${businessAnalysis.brandPersonality} brand personality`;
-  }
-  
-  function generateCompetitiveAdvantage(businessAnalysis, audienceAnalysis) {
-    return `Your ${businessAnalysis.competitiveEdge} in ${businessAnalysis.uniqueValue} positions you uniquely to serve ${audienceAnalysis.demographics} who value ${audienceAnalysis.interests}`;
-  }
-  
-  function generateContentStrategy(projectType, businessAnalysis, audienceAnalysis) {
-    return `A ${projectType.toLowerCase()} that leverages your ${businessAnalysis.uniqueValue} to connect with ${audienceAnalysis.demographics} through ${businessAnalysis.brandPersonality} storytelling`;
-  }
-  
-  function generateStrategicApproach(text, projectType) {
-    const approaches = {
-      'Brand Explainer Video': 'Focus on clear, concise messaging with strong visual storytelling to quickly communicate your value proposition.',
-      'Social Media Content Series': 'Create shareable, authentic content that builds community and encourages engagement across platforms.',
-      'Product Showcase Video': 'Highlight key features and benefits through dynamic visuals and customer testimonials.',
-      'Behind-the-Scenes Series': 'Build authenticity and trust by showing the human side of your business and process.',
-      'Brand Story Video': 'Create emotional connections through compelling narrative and authentic storytelling.'
-    };
-    return approaches[projectType] || approaches['Brand Story Video'];
-  }
-  
-  function generateProductionRecommendations(visualStyle, projectType) {
-    const recommendations = {
-      'Cinematic': 'High-quality cinematography with dramatic lighting, smooth camera movements, and professional color grading.',
-      'Minimalist': 'Clean, simple compositions with plenty of white space, subtle animations, and focused messaging.',
-      'Vibrant': 'Bold colors, dynamic graphics, energetic pacing, and engaging visual effects.',
-      'Corporate': 'Professional lighting, steady camera work, business-appropriate styling, and polished presentation.',
-      'Professional': 'Balanced approach with high production value, clear messaging, and professional presentation.'
-    };
-    return recommendations[visualStyle] || recommendations['Professional'];
-  }
-  
-  function generateMoodboard(visualStyle, projectType, targetAudience) {
-    const moodboardGrid = document.getElementById('moodboardGrid');
-    const moodboardImages = getMoodboardImages(visualStyle, projectType, targetAudience);
-    
-    if (!moodboardGrid) {
-      console.error('Moodboard grid not found');
-      return;
-    }
-    
-    moodboardGrid.innerHTML = '';
-    
-    if (moodboardImages && moodboardImages.length > 0) {
-      moodboardImages.forEach(image => {
-        const item = document.createElement('div');
-        item.className = 'moodboard-item';
-        item.style.backgroundImage = `url(${image})`;
-        item.style.backgroundSize = 'cover';
-        item.style.backgroundPosition = 'center';
-        item.style.borderRadius = '10px';
-        item.style.margin = '5px';
-        item.style.minHeight = '150px';
-        item.style.cursor = 'pointer';
-        item.style.transition = 'transform 0.3s ease';
-        
-        // Add hover effect
-        item.addEventListener('mouseenter', () => {
-          item.style.transform = 'scale(1.05)';
-        });
-        
-        item.addEventListener('mouseleave', () => {
-          item.style.transform = 'scale(1)';
-        });
-        
-        moodboardGrid.appendChild(item);
-      });
-    } else {
-      // Fallback moodboard images
-      const fallbackImages = [
-        'https://images.unsplash.com/photo-1486406146926-c627a99b2d8b?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=300&h=300&fit=crop'
-      ];
-      
-      fallbackImages.forEach(image => {
-        const item = document.createElement('div');
-        item.className = 'moodboard-item';
-        item.style.backgroundImage = `url(${image})`;
-        item.style.backgroundSize = 'cover';
-        item.style.backgroundPosition = 'center';
-        item.style.borderRadius = '10px';
-        item.style.margin = '5px';
-        item.style.minHeight = '150px';
-        item.style.cursor = 'pointer';
-        item.style.transition = 'transform 0.3s ease';
-        
-        item.addEventListener('mouseenter', () => {
-          item.style.transform = 'scale(1.05)';
-        });
-        
-        item.addEventListener('mouseleave', () => {
-          item.style.transform = 'scale(1)';
-        });
-        
-        moodboardGrid.appendChild(item);
-      });
-    }
-    
-    // Store moodboard images for PDF generation
-    if (moodboardImages && moodboardImages.length > 0) {
-      window.currentMoodboardImages = moodboardImages;
-    }
-  }
-  
-  function getMoodboardImages(style, projectType, targetAudience) {
-    // Enhanced AI-powered moodboard generation with input-specific analysis
-    const messages = conversationHistory.map(msg => msg.message.toLowerCase());
-    const allText = messages.join(' ');
-    const userMessage = messages.find(msg => msg.length > 10) || allText;
-    
-    // Advanced business type detection with confidence scoring
-    const businessAnalysis = analyzeBusinessType(userMessage);
-    const audienceAnalysis = analyzeTargetAudience(userMessage);
-    const contentAnalysis = analyzeContentType(userMessage);
-    
-    // Extract key terms from user input for dynamic image generation
-    const userKeywords = extractUserKeywords(userMessage);
-    const industry = businessAnalysis.industry;
-    const visualStyle = style.toLowerCase();
-    
-    // Generate dynamic image URLs based on user input and industry
-    const dynamicImages = generateDynamicImages(userKeywords, industry, visualStyle, projectType);
-    
-    // Return the dynamically generated images
-    return dynamicImages;
-  }
-  
-  function extractUserKeywords(userMessage) {
-    // Extract meaningful keywords from user input
-    const keywords = [];
-    const lowerMessage = userMessage.toLowerCase();
-    
-    // Industry-specific keywords with better detection
-    const industryKeywords = {
-      'fitness': ['fitness', 'trainer', 'workout', 'exercise', 'health', 'gym', 'training', 'coach', 'personal trainer', 'wellness', 'nutrition', 'diet', 'weight loss', 'muscle', 'strength', 'cardio', 'yoga', 'pilates', 'crossfit', 'bootcamp', 'athletic', 'sports'],
-      'fashion': ['fashion', 'clothing', 'apparel', 'style', 'outfit', 'wear', 'shirt', 't-shirt', 'design', 'trendy', 'lifestyle', 'boutique', 'retail', 'accessories'],
-      'food': ['restaurant', 'food', 'dining', 'cafe', 'kitchen', 'chef', 'cuisine', 'meal', 'culinary', 'cooking', 'dining experience', 'catering', 'bakery', 'coffee'],
-      'technology': ['tech', 'software', 'app', 'digital', 'computer', 'programming', 'development', 'startup', 'innovation', 'modern', 'digital', 'saas', 'platform', 'web', 'mobile'],
-      'real estate': ['real estate', 'property', 'house', 'home', 'realty', 'architecture', 'interior', 'exterior', 'construction', 'development', 'investment'],
-      'automotive': ['car', 'automotive', 'vehicle', 'auto', 'dealership', 'transportation', 'luxury', 'performance', 'motorcycle', 'truck', 'rv'],
-      'beauty': ['beauty', 'cosmetic', 'makeup', 'skincare', 'aesthetic', 'salon', 'spa', 'wellness', 'glamour', 'hair', 'nails', 'esthetician'],
-      'professional': ['consulting', 'agency', 'service', 'business', 'professional', 'corporate', 'company', 'expertise', 'marketing', 'advertising', 'branding']
-    };
-    
-    // Extract keywords based on user input with improved matching
-    Object.entries(industryKeywords).forEach(([industry, terms]) => {
-      terms.forEach(term => {
-        if (lowerMessage.includes(term)) {
-          keywords.push(term);
-        }
-      });
-    });
-    
-    // Add visual style keywords
-    const styleKeywords = ['cinematic', 'minimalist', 'vibrant', 'professional', 'modern', 'editorial', 'lifestyle', 'dramatic', 'elegant', 'bold', 'subtle', 'clean', 'sophisticated'];
-    styleKeywords.forEach(style => {
-      if (lowerMessage.includes(style)) {
-        keywords.push(style);
-      }
-    });
-    
-    // Add project type keywords
-    if (projectType) {
-      const projectKeywords = projectType.toLowerCase().split(' ');
-      keywords.push(...projectKeywords);
-    }
-    
-    return keywords.length > 0 ? keywords : ['professional', 'modern'];
-  }
-  
-  function generateDynamicImages(userKeywords, industry, visualStyle, projectType) {
-    // Generate dynamic Unsplash URLs based on user input
-    const baseUrl = 'https://images.unsplash.com/photo-';
-    const sizeParams = 'w=300&h=300&fit=crop';
-    
-    // Get relevant photo IDs based on industry and user keywords
-    const photoIds = getPhotoIdsForIndustry(industry, visualStyle, userKeywords);
-    
-    // Generate 6 diverse images based on the photo IDs
-    const images = [];
-    
-    // Create more relevant images based on user keywords
-    const keywordBasedImages = createKeywordBasedImages(userKeywords, industry, visualStyle);
-    
-    // Combine keyword-based images with industry-specific images
-    const allImages = [...keywordBasedImages, ...photoIds.map(id => `${baseUrl}${id}?${sizeParams}`)];
-    
-    // Return 6 unique images
-    for (let i = 0; i < 6; i++) {
-      const imageUrl = allImages[i % allImages.length];
-      images.push(imageUrl);
-    }
-    
-    return images;
-  }
-  
-  function createKeywordBasedImages(userKeywords, industry, visualStyle) {
-    // Create more relevant images based on user keywords
-    const baseUrl = 'https://images.unsplash.com/photo-';
-    const sizeParams = 'w=300&h=300&fit=crop';
-    const images = [];
-    
-    // Map keywords to specific Unsplash photo IDs
-    const keywordToPhotoMap = {
-      'fitness': ['1571019613454-1cb2f99b2d8b', '1506744038136-46273834b3fb'],
-      'workout': ['1519864600265-abb23847ef2c', '1464983953574-0892a716854b'],
-      'gym': ['1504196606672-aef5c9cefc92', '1518611012118-696072aa579a'],
-      'fashion': ['1441986300917-64674bd600d8', '1507003211169-0a1dd7228f2d'],
-      'clothing': ['1521572163474-6864f9cf17ab', '1441984904996-e0b6ba687e04'],
-      'restaurant': ['1414235077428-338989a2e8c0', '1559339352-11d035aa65de'],
-      'food': ['1517248135467-4c7edcad34c4', '1552566626-52f8b828add9'],
-      'tech': ['1518709268805-4e9042af2176', '1486312338219-ce68d2c6f44d'],
-      'software': ['1506905925346-21bda4d32df4', '1516321318423-f06f85e504b3'],
-      'real estate': ['1568605114967-8130f3a36994', '1507089947368-19c1da9775ae'],
-      'property': ['1464983953574-0892a716854b', '1506744038136-46273834b3fb'],
-      'car': ['1503736334956-4c8f8e92946d', '1511918984145-48de785d4c4e'],
-      'automotive': ['1517841905240-472988babdf9', '1503736317-1b8b7b1e1b1e'],
-      'beauty': ['1441986300917-64674bd600d8', '1507003211169-0a1dd7228f2d'],
-      'cosmetic': ['1521572163474-6864f9cf17ab', '1441984904996-e0b6ba687e04'],
-      'professional': ['1486406146926-c627a92ad1ab', '1556761175-b413da4baf72'],
-      'business': ['1552664730-d307ca884978', '1521791136064-7986c2920216'],
-      'modern': ['1518709268805-4e9042af2176', '1486312338219-ce68d2c6f44d'],
-      'cinematic': ['1441986300917-64674bd600d8', '1507003211169-0a1dd7228f2d'],
-      'minimalist': ['1518709268805-4e9042af2176', '1486312338219-ce68d2c6f44d'],
-      'vibrant': ['1441986300917-64674bd600d8', '1507003211169-0a1dd7228f2d'],
-      'elegant': ['1521572163474-6864f9cf17ab', '1441984904996-e0b6ba687e04'],
-      'lifestyle': ['1441986300917-64674bd600d8', '1507003211169-0a1dd7228f2d'],
-      'brand': ['1486406146926-c627a92ad1ab', '1556761175-b413da4baf72'],
-      'marketing': ['1552664730-d307ca884978', '1521791136064-7986c2920216'],
-      'advertising': ['1518709268805-4e9042af2176', '1486312338219-ce68d2c6f44d']
-    };
-    
-    // Find relevant images based on user keywords
-    userKeywords.forEach(keyword => {
-      const photos = keywordToPhotoMap[keyword.toLowerCase()];
-      if (photos) {
-        photos.forEach(photoId => {
-          images.push(`${baseUrl}${photoId}?${sizeParams}`);
-        });
-      }
-    });
-    
-    return images;
-  }
-  
-  function getPhotoIdsForIndustry(industry, visualStyle, userKeywords) {
-    // Enhanced photo selection based on user keywords and industry
-    const keyword = userKeywords.join(' ').toLowerCase();
-    
-    // Industry-specific photo IDs with better relevance and variety
-    const photoIds = {
-      'fitness': [
-        '1571019613454-1cb2f99b2d8b', // Fitness workout
-        '1506744038136-46273834b3fb', // Gym weights
-        '1519864600265-abb23847ef2c', // Running outdoors
-        '1464983953574-0892a716854b', // Yoga
-        '1504196606672-aef5c9cefc92', // Crossfit
-        '1518611012118-696072aa579a', // Group exercise
-        '1571019613454-1cb2f99b2d8b', // Personal training
-        '1506744038136-46273834b3fb'  // Fitness lifestyle
-      ],
-      'fashion': [
-        '1441986300917-64674bd600d8', // Fashion lifestyle
-        '1507003211169-0a1dd7228f2d', // Style photography
-        '1521572163474-6864f9cf17ab', // Fashion design
-        '1441984904996-e0b6ba687e04', // Trendy fashion
-        '1551698618-1dfe5d97d256',    // Fashion editorial
-        '1517841905240-472988babdf9', // Street style
-        '1441986300917-64674bd600d8', // Fashion boutique
-        '1507003211169-0a1dd7228f2d'  // Fashion retail
-      ],
-      'food': [
-        '1414235077428-338989a2e8c0', // Restaurant dining
-        '1559339352-11d035aa65de',    // Culinary cooking
-        '1517248135467-4c7edcad34c4', // Food photography
-        '1552566626-52f8b828add9',    // Chef kitchen
-        '1504674900247-0877df9cc836', // Plated dish
-        '1464306076886-debca5e8a6b0', // Fresh ingredients
-        '1414235077428-338989a2e8c0', // Cafe atmosphere
-        '1559339352-11d035aa65de'     // Food service
-      ],
-      'technology': [
-        '1518709268805-4e9042af2176', // Modern workspace
-        '1486312338219-ce68d2c6f44d', // Tech innovation
-        '1506905925346-21bda4d32df4', // Digital technology
-        '1516321318423-f06f85e504b3', // Startup environment
-        '1557804506-669a67965ba0',    // Professional tech
-        '1485846234645-a62644f84728', // Modern office
-        '1518709268805-4e9042af2176', // Software development
-        '1486312338219-ce68d2c6f44d'  // Digital workspace
-      ],
-      'real estate': [
-        '1568605114967-8130f3a36994', // Modern home
-        '1507089947368-19c1da9775ae', // Luxury property
-        '1464983953574-0892a716854b', // Interior design
-        '1506744038136-46273834b3fb', // Architecture
-        '1512918728675-ed5a9ecdebfd', // Real estate agent
-        '1503389152951-9c3d8b6e0f98', // Suburban house
-        '1568605114967-8130f3a36994', // Property investment
-        '1507089947368-19c1da9775ae'  // Real estate marketing
-      ],
-      'automotive': [
-        '1503736334956-4c8f8e92946d', // Sports car
-        '1511918984145-48de785d4c4e', // Car interior
-        '1517841905240-472988babdf9', // Classic car
-        '1503736317-1b8b7b1e1b1e',    // Car dealership
-        '1503736317-1b8b7b1e1b1e',    // Modern automotive
-        '1503736334956-4c8f8e92946d', // Car lifestyle
-        '1503736334956-4c8f8e92946d', // Luxury vehicle
-        '1511918984145-48de785d4c4e'  // Automotive service
-      ],
-      'beauty': [
-        '1441986300917-64674bd600d8', // Beauty makeup
-        '1507003211169-0a1dd7228f2d', // Cosmetic lifestyle
-        '1521572163474-6864f9cf17ab', // Salon spa
-        '1441984904996-e0b6ba687e04', // Aesthetic beauty
-        '1551698618-1dfe5d97d256',    // Glamour photography
-        '1517841905240-472988babdf9', // Beauty industry
-        '1441986300917-64674bd600d8', // Beauty salon
-        '1507003211169-0a1dd7228f2d'  // Cosmetic retail
-      ],
-      'professional': [
-        '1486406146926-c627a92ad1ab', // Professional workspace
-        '1556761175-b413da4baf72',    // Corporate environment
-        '1552664730-d307ca884978',    // Business meeting
-        '1521791136064-7986c2920216', // Modern office
-        '1556761175-b413da4baf72',    // Professional service
-        '1486406146926-c627a92ad1ab', // Business lifestyle
-        '1486406146926-c627a92ad1ab', // Consulting
-        '1556761175-b413da4baf72'     // Corporate branding
-      ]
-    };
-    
-    // Return industry-specific photos or professional as fallback
-    return photoIds[industry] || photoIds['professional'];
-  }
-  
-  async function downloadBrief() {
-    return new Promise(async (resolve, reject) => {
-      // Show loading state
-      showNotification('Generating PDF...', 'info');
-      
-      // Get brief content with proper formatting
-      const briefContent = document.getElementById('briefContent');
-      const moodboardSection = document.getElementById('moodboardSection');
-      
-      // Check if brief content exists and is not the placeholder
-      if (!briefContent || briefContent.querySelector('.brief-placeholder')) {
-        showNotification('Please generate a creative brief first!', 'error');
-        reject(new Error('No brief content available'));
-        return;
-      }
-      
-      // Extract structured content from the brief
-      const briefData = extractBriefData(briefContent);
-      
-      // Validate that we have at least some content
-      if (!briefData.paragraph && Object.keys(briefData.projectDetails).length === 0) {
-        showNotification('Unable to extract brief content. Please regenerate the brief and try again.', 'error');
-        reject(new Error('Invalid brief content'));
-        return;
-      }
-      
-      // Create PDF content with full data and resolve promise after successful download
-      await generatePDF(briefData, moodboardSection, resolve, reject);
-    });
-  }
-
-  function handleDownloadAndScroll() {
-    downloadBrief().then(() => {
-      // Scroll to the send brief section after successful download
-      const sendBriefSection = document.querySelector('#briefSubmissionCTA');
-      if (sendBriefSection) {
-        sendBriefSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }).catch((error) => {
-      console.error('Download failed:', error);
-      // Error handling is already done in downloadBrief function
-    });
-  }
-  
-  function extractBriefData(briefContent) {
-    // Extract all the structured data from the brief content
-    const briefData = {
-      title: 'Your Creative Brief',
-      paragraph: '',
-      projectDetails: {},
-      strategicApproach: '',
-      productionRecommendations: '',
-      ctaText: ''
-    };
-    
-    // Extract the main paragraph (first paragraph after the title)
-    const paragraphs = briefContent.querySelectorAll('p');
-    if (paragraphs.length > 0) {
-      // Get the first substantial paragraph (skip any short ones)
-      for (let i = 0; i < paragraphs.length; i++) {
-        const text = paragraphs[i].textContent.trim();
-        if (text.length > 50) { // Only get substantial paragraphs
-          briefData.paragraph = text;
-          break;
-        }
-      }
-    }
-    
-    // Extract project details
-    const projectDetailsSection = briefContent.querySelector('div[style*="display: grid"]');
-    if (projectDetailsSection) {
-      const detailElements = projectDetailsSection.querySelectorAll('p');
-      detailElements.forEach(element => {
-        const text = element.textContent.trim();
-        if (text.includes('Project Type:')) {
-          briefData.projectDetails.projectType = text.replace('Project Type:', '').trim();
-        } else if (text.includes('Target Audience:')) {
-          briefData.projectDetails.targetAudience = text.replace('Target Audience:', '').trim();
-        } else if (text.includes('Emotional Goal:')) {
-          briefData.projectDetails.emotionalGoal = text.replace('Emotional Goal:', '').trim();
-        } else if (text.includes('Visual Style:')) {
-          briefData.projectDetails.visualStyle = text.replace('Visual Style:', '').trim();
-        } else if (text.includes('Key Message:')) {
-          briefData.projectDetails.keyMessage = text.replace('Key Message:', '').trim();
-        } else if (text.includes('Call to Action:')) {
-          briefData.projectDetails.callToAction = text.replace('Call to Action:', '').trim();
-        }
-      });
-    }
-    
-    // Extract strategic approach
-    const strategicSections = briefContent.querySelectorAll('h5');
-    strategicSections.forEach(section => {
-      if (section.textContent.includes('Strategic Approach')) {
-        const nextElement = section.nextElementSibling;
-        if (nextElement && nextElement.tagName === 'P') {
-          briefData.strategicApproach = nextElement.textContent.trim();
-        }
-      }
-    });
-    
-    // Extract production recommendations
-    const productionSections = briefContent.querySelectorAll('h5');
-    productionSections.forEach(section => {
-      if (section.textContent.includes('Production Recommendations')) {
-        const nextElement = section.nextElementSibling;
-        if (nextElement && nextElement.tagName === 'P') {
-          briefData.productionRecommendations = nextElement.textContent.trim();
-        }
-      }
-    });
-    
-    return briefData;
-  }
-  
-  async function generatePDF(briefData, moodboardSection, resolve, reject) {
-    // Check if jsPDF is available
-    if (!window.jspdf) {
-      showNotification('PDF library not loaded. Please refresh the page and try again.', 'error');
-      return;
-    }
-    
-    try {
-      // Create a comprehensive PDF using jsPDF
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-    
-    // Set up the document with proper styling
-    doc.setFontSize(20);
-    doc.setTextColor(255, 178, 0);
-    doc.text('Creative Brief - Cochran Films', 105, 20, { align: 'center' });
-    
-    // Add brief text with proper formatting
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0); // Black text for better readability
-    doc.setFillColor(255, 255, 255); // White background
-    doc.rect(0, 0, 210, 297, 'F');
-    
-    let y = 40;
-    
-    // Add main brief paragraph
-    if (briefData.paragraph) {
-      doc.setFontSize(14);
-      doc.setTextColor(255, 178, 0);
-      doc.setFont(undefined, 'bold');
-      doc.text('Your Creative Brief', 15, y);
-      y += 15;
-      
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      doc.setFont(undefined, 'normal');
-      const paragraphLines = doc.splitTextToSize(briefData.paragraph, 180);
-      paragraphLines.forEach(line => {
-        doc.text(line, 15, y);
-        y += 8;
-      });
-      y += 15;
-    }
-    
-    // Add project details section
-    if (briefData.projectDetails && Object.keys(briefData.projectDetails).length > 0) {
-      doc.setFontSize(16);
-      doc.setTextColor(255, 178, 0);
-      doc.setFont(undefined, 'bold');
-      doc.text('Project Details', 15, y);
-      y += 15;
-      
-      doc.setFontSize(12);
-      doc.setFont(undefined, 'normal');
-      
-      Object.entries(briefData.projectDetails).forEach(([key, value]) => {
-        if (value) {
-          // Format the key for display
-          const displayKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-          
-          doc.setFontSize(12);
-          doc.setTextColor(255, 178, 0);
-          doc.setFont(undefined, 'bold');
-          doc.text(`${displayKey}:`, 15, y);
-          y += 8; // Move to next line for value
-          doc.setFontSize(12);
-          doc.setTextColor(0, 0, 0);
-          doc.setFont(undefined, 'normal');
-          const valueLines = doc.splitTextToSize(value, 150);
-          valueLines.forEach(line => {
-            doc.text(line, 25, y);
-            y += 8;
-          });
-          y += 5;
-        }
-      });
-      y += 10;
-    }
-    
-    // Add strategic approach section
-    if (briefData.strategicApproach) {
-      doc.setFontSize(16);
-      doc.setTextColor(255, 178, 0);
-      doc.setFont(undefined, 'bold');
-      doc.text('Strategic Approach', 15, y);
-      y += 15;
-      
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      doc.setFont(undefined, 'normal');
-      const strategicLines = doc.splitTextToSize(briefData.strategicApproach, 180);
-      strategicLines.forEach(line => {
-        doc.text(line, 15, y);
-        y += 8;
-      });
-      y += 15;
-    }
-    
-    // Add production recommendations section
-    if (briefData.productionRecommendations) {
-      doc.setFontSize(16);
-      doc.setTextColor(255, 178, 0);
-      doc.setFont(undefined, 'bold');
-      doc.text('Production Recommendations', 15, y);
-      y += 15;
-      
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      doc.setFont(undefined, 'normal');
-      const productionLines = doc.splitTextToSize(briefData.productionRecommendations, 180);
-      productionLines.forEach(line => {
-        doc.text(line, 15, y);
-        y += 8;
-      });
-      y += 15;
-    }
-    
-    // Add moodboard images section (embed images)
-    if (window.currentMoodboardImages && window.currentMoodboardImages.length > 0) {
-      doc.setFontSize(16);
-      doc.setTextColor(255, 178, 0);
-      doc.setFont(undefined, 'bold');
-      doc.text('Visual Moodboard References', 15, y);
-      y += 15;
-      
-      // Add moodboard description
-      doc.setFontSize(10);
-      doc.setTextColor(100, 100, 100);
-      doc.text('Based on your input, we\'ve curated relevant visual references for your project style:', 15, y);
-      y += 10;
-      
-      // Embed up to 6 images, 2 per row
-      const images = window.currentMoodboardImages.slice(0, 6);
-      const imgSize = 35; // Smaller size for better fit
-      const padding = 15;
-      let imgX = 15;
-      let imgY = y;
-      let col = 0;
-      let row = 0;
-      
-      // Helper to fetch and convert image to base64 with error handling
-      async function fetchImageAsBase64(url) {
-        try {
-          // Add CORS-friendly parameters
-          const response = await fetch(url + '&auto=format&w=300&h=300&fit=crop', {
-            mode: 'cors',
-            headers: {
-              'Accept': 'image/*'
-            }
-          });
-          
-          if (!response.ok) {
-            console.warn('Failed to fetch image:', url);
-            return null;
-          }
-          
-          const blob = await response.blob();
-          return await new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result);
-            reader.onerror = () => {
-              console.warn('Failed to convert image to base64:', url);
-              resolve(null);
-            };
-            reader.readAsDataURL(blob);
-          });
-        } catch (e) {
-          console.warn('Error fetching image:', url, e);
-          return null;
-        }
-      }
-      
-      // Process images sequentially to avoid overwhelming the browser
-      for (let i = 0; i < images.length; i++) {
-        const imgUrl = images[i];
-        try {
-          const base64 = await fetchImageAsBase64(imgUrl);
-          if (base64) {
-            doc.addImage(base64, 'JPEG', imgX, imgY, imgSize, imgSize);
-          }
-        } catch (e) {
-          console.warn('Failed to add image to PDF:', imgUrl, e);
-        }
-        
-        col++;
-        if (col === 2) {
-          col = 0;
-          row++;
-          imgX = 15;
-          imgY += imgSize + padding;
-        } else {
-          imgX += imgSize + padding;
-        }
-      }
-      
-      // Move y down after images
-      y = imgY + imgSize + 15;
-    }
-    
-    // Add comprehensive footer with contact information
-    y = 280;
-    doc.setFontSize(10);
-    doc.setTextColor(100, 100, 100);
-    doc.text('Generated by Cochran Films Creative Brief AI', 105, y, { align: 'center' });
-    doc.text('Contact: info@cochranfilms.com | www.cochranfilms.com', 105, y + 5, { align: 'center' });
-    doc.text(new Date().toLocaleDateString(), 105, y + 10, { align: 'center' });
-    
-      // Save the PDF
-      doc.save('creative-brief.pdf');
-      showNotification('PDF downloaded successfully!', 'success');
-      // Resolve the promise after successful download
-      if (resolve) resolve();
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      showNotification('Error generating PDF. Please try again.', 'error');
-      // Reject the promise on error
-      if (reject) reject(error);
-    }
-  }
-  
-  function regenerateBrief() {
     // Show loading state
-    const briefContent = document.getElementById('briefContent');
-    briefContent.innerHTML = `
-      <div class="loading-state">
-        <i class="fas fa-spinner fa-spin"></i>
-        <p>Regenerating your creative brief...</p>
+    const quizStep1 = document.getElementById('quizStep1');
+    const quizResult = document.getElementById('quizResult');
+    const recommendationContent = document.getElementById('recommendationContent');
+    
+    quizStep1.style.display = 'none';
+    quizResult.style.display = 'block';
+    recommendationContent.innerHTML = '<p>Analyzing your brand and generating personalized recommendations...</p>';
+    
+    // Simulate analysis delay
+    setTimeout(() => {
+      const recommendation = generateVideoRecommendation(brandDescription, imageUpload);
+      recommendationContent.innerHTML = recommendation;
+    }, 2000);
+  }
+  
+  function generateVideoRecommendation(brandDescription, imageFile) {
+    const recommendations = [
+      {
+        title: "Brand Explainer Video",
+        description: "Perfect for introducing your brand to new audiences. Combines storytelling with your unique value proposition to create lasting impressions.",
+        keywords: ["explain", "introduce", "brand", "story", "value"]
+      },
+      {
+        title: "2-Part Series: Behind-the-Scenes + Testimonial",
+        description: "Build trust and authenticity with a behind-the-scenes look at your process, followed by customer testimonials that validate your expertise.",
+        keywords: ["behind", "scenes", "testimonial", "trust", "authentic", "process"]
+      },
+      {
+        title: "Product Showcase Video",
+        description: "Highlight your products or services with dynamic visuals and compelling narratives that drive conversions and sales.",
+        keywords: ["product", "showcase", "service", "conversion", "sales"]
+      },
+      {
+        title: "Event Coverage Package",
+        description: "Comprehensive event documentation including highlights, interviews, and promotional content for maximum exposure.",
+        keywords: ["event", "coverage", "documentation", "highlights", "interviews"]
+      },
+      {
+        title: "Social Media Content Series",
+        description: "Multiple short-form videos optimized for different platforms to maximize your social media presence and engagement.",
+        keywords: ["social", "media", "content", "series", "short", "platform"]
+      }
+    ];
+    
+    // Analyze brand description for keywords
+    let bestMatch = recommendations[0];
+    let maxScore = 0;
+    
+    if (brandDescription) {
+      const words = brandDescription.toLowerCase().split(' ');
+      
+      recommendations.forEach(rec => {
+        let score = 0;
+        rec.keywords.forEach(keyword => {
+          if (words.some(word => word.includes(keyword) || keyword.includes(word))) {
+            score += 1;
+          }
+        });
+        if (score > maxScore) {
+          maxScore = score;
+          bestMatch = rec;
+        }
+      });
+    }
+    
+    // If no good match found, provide a general recommendation
+    if (maxScore === 0) {
+      bestMatch = recommendations[Math.floor(Math.random() * recommendations.length)];
+    }
+    
+    return `
+      <h4>${bestMatch.title}</h4>
+      <p>${bestMatch.description}</p>
+      <div style="margin-top: 1rem; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 10px; border-left: 3px solid #4CAF50; border: 1px solid rgba(76, 175, 80, 0.3); transition: all 0.3s ease;">
+        <strong style="color: #4CAF50; font-weight: 600;">Why this works for you:</strong>
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; line-height: 1.5;">Based on your brand description, this format will effectively communicate your message and engage your target audience.</p>
       </div>
     `;
-    
-    // Add AI message with loading
-    addMessageToChat('ai', 'Regenerating your creative brief with fresh insights and recommendations...', true);
-    
-    // Generate new brief after a short delay
-    setTimeout(() => {
-      generateCreativeBrief();
-      // Remove loading dots and show completion message
-      const lastAIMessage = document.querySelector('.ai-message:last-child .message-content');
-      if (lastAIMessage) {
-        lastAIMessage.innerHTML = '<p>Perfect! I\'ve regenerated your creative brief with new insights. Check the updated preview panel on the right!</p>';
-      }
-    }, 2500);
   }
   
-  function shareBrief() {
-    const briefContent = document.getElementById('briefContent').innerText;
-    const moodboardSection = document.getElementById('moodboardSection');
+  function resetQuiz() {
+    const quizStep1 = document.getElementById('quizStep1');
+    const quizResult = document.getElementById('quizResult');
+    const brandDescription = document.getElementById('brandDescription');
+    const imageUpload = document.getElementById('imageUpload');
     
-    // Create shareable content including moodboard info
-    let shareText = briefContent;
-    if (moodboardSection.style.display !== 'none') {
-      shareText += '\n\n📸 Visual Moodboard: Check out the curated visual references above for your project style.';
-    }
-    
-    if (navigator.share) {
-      navigator.share({
-        title: 'My Creative Brief - Cochran Films',
-        text: shareText,
-        url: window.location.href
-      }).catch(err => {
-        console.log('Share failed:', err);
-        copyToClipboard(shareText);
-      });
-    } else {
-      copyToClipboard(shareText);
-    }
+    quizStep1.style.display = 'block';
+    quizResult.style.display = 'none';
+    brandDescription.value = '';
+    imageUpload.value = '';
   }
   
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-      showNotification('Creative brief copied to clipboard!', 'success');
-    }).catch(() => {
-      // Fallback for older browsers
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      showNotification('Creative brief copied to clipboard!', 'success');
-    });
-  }
-  
-  function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.innerHTML = `
-      <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
-      <span>${message}</span>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => {
-      notification.classList.add('show');
-    }, 100);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-      notification.classList.remove('show');
-      setTimeout(() => {
-        document.body.removeChild(notification);
-      }, 300);
-    }, 3000);
-  }
-  
-  // Handle Enter key in chat input
+  // Handle image upload
   document.addEventListener('DOMContentLoaded', function() {
-    const chatInput = document.getElementById('chatInput');
-    if (chatInput) {
-      chatInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          sendMessage();
+    const imageUpload = document.getElementById('imageUpload');
+    if (imageUpload) {
+      imageUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          // You could add image preview or validation here
+          console.log('Image uploaded:', file.name);
         }
       });
     }
   });
+  
+  // Initialize masonry gallery
+  function initializeMasonryGallery() {
+    const galleryItems = document.querySelectorAll('.masonry-item');
+    
+    galleryItems.forEach(item => {
+      item.addEventListener('click', function() {
+        // Add any gallery interaction logic here
+        console.log('Gallery item clicked');
+      });
+    });
+  }
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
   
   // Video quiz functions
@@ -20361,7 +19256,7 @@
         modal.className = 'modal-overlay';
         modal.innerHTML = `
           <div class="modal-content brief-submission-modal">
-            <button class="modal-close" onclick="this.parentElement.parentElement.remove()">×</button>
+            <button class="modal-close" onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 1rem; right: 1rem; z-index: 1000; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 40px; height: 40px; color: #fff; font-size: 1.5rem; cursor: pointer;">×</button>
             <div class="modal-header">
               <div class="modal-icon">
                 <i class="fas fa-file-invoice"></i>
