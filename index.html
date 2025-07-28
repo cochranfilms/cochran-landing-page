@@ -1213,7 +1213,7 @@
       }
       
           /* Enhanced Mobile Services Section */
-    .mobile-services {
+      .mobile-services {
       padding: 3rem 1rem;
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
       position: relative;
@@ -1233,24 +1233,24 @@
         radial-gradient(circle at 20% 20%, rgba(255,178,0,0.05) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255,178,0,0.05) 0%, transparent 50%);
       pointer-events: none;
-    }
-    
-    .mobile-services-container {
+      }
+      
+      .mobile-services-container {
       position: relative;
       z-index: 1;
       max-width: 500px;
-      margin: 0 auto;
+        margin: 0 auto;
       padding: 0;
-    }
-    
-    .mobile-section-title {
-      font-size: 2rem;
+      }
+      
+      .mobile-section-title {
+        font-size: 2rem;
       font-weight: 800;
-      color: #000;
-      text-align: center;
+        color: #000;
+        text-align: center;
       margin-bottom: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       position: relative;
     }
     
@@ -1264,10 +1264,10 @@
       height: 3px;
       background: var(--primary);
       border-radius: 2px;
-    }
-    
-    .mobile-service-cards {
-      display: grid;
+      }
+      
+      .mobile-service-cards {
+        display: grid;
       grid-template-columns: 1fr;
       gap: 1rem;
       padding: 0.5rem;
@@ -1307,7 +1307,7 @@
     
     .mobile-service-card:hover::before {
       opacity: 1;
-    }
+      }
       
       .mobile-service-card {
         background: #fff;
@@ -1364,6 +1364,8 @@
       .mobile-gallery {
         padding: 4rem 1rem;
         background: #000;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
       }
       
       .mobile-gallery-container {
@@ -2664,9 +2666,10 @@
         position: relative;
         width: 100%;
         min-height: 100vh;
+        height: 100% !important;
         padding-bottom: 4rem;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: auto !important;
         -webkit-overflow-scrolling: touch;
       }
       
@@ -9740,11 +9743,14 @@
     
     /* 📱 MOBILE OVERFLOW AND ANIMATION FIXES */
     @media (max-width: 768px) {
-      /* Prevent horizontal scrolling */
+      /* Prevent horizontal scrolling and ensure smooth scroll */
       html, body {
+        height: 100% !important;
         overflow-x: hidden !important;
+        overflow-y: auto !important;
         width: 100% !important;
         max-width: 100% !important;
+        -webkit-overflow-scrolling: touch;
       }
       
       /* Fix common overflow issues */
@@ -12739,10 +12745,17 @@
       }
       
       /* Optimize mobile touch targets */
-      button, a, input, select, textarea {
+      button, .btn, a, input, select, textarea, .mobile-service-card, .mobile-gallery-item, .nav-item a {
         min-height: 44px !important;
         touch-action: manipulation !important;
         -webkit-tap-highlight-color: transparent !important;
+      }
+      
+      /* Optimize images for mobile interaction */
+      img {
+        user-select: none;
+        -webkit-user-select: none;
+        /* Remove pointer-events: none unless you want to block all interaction */
       }
       
       /* Ensure proper mobile flow */
@@ -13083,14 +13096,14 @@
                 <span class="nav-text">Book</span>
               </a>
             </div>
-          </div>
+        </div>
       </div>
     </div>
 
     <!-- Mobile Content Container -->
     <div class="mobile-content">
-      <!-- Mobile Hero Section -->
-      <section class="mobile-hero" id="mobileHero">
+    <!-- Mobile Hero Section -->
+    <section class="mobile-hero" id="mobileHero">
       <div class="mobile-hero-content">
         <div class="mobile-hero-header">
           <img src="Logo.png" alt="Cochran Films Logo" class="mobile-hero-logo">
@@ -13522,40 +13535,6 @@
       <img id="mobileLightboxImg" src="" alt="Gallery Image">
     </div>
     </div> <!-- End mobile-content -->
-  </div>
-
-
-          <a href="javascript:void(0)" onclick="openBookingModal(); closeMobileNav()">
-            <i class="fas fa-calendar-check"></i>
-            <span>🎯 BOOK NOW</span>
-          </a>
-        </div>
-        <div class="cta-secondary">
-          <a href="javascript:void(0)" onclick="openMobileContactForm(); closeMobileNav()">
-            <i class="fas fa-envelope"></i>
-            <span>💬 Get Quote</span>
-          </a>
-        </div>
-      </div>
-      
-      <div class="mobile-nav-footer">
-        <div class="nav-social-links">
-          <a href="#" class="nav-social-link">
-            <i class="fab fa-instagram"></i>
-            <div class="social-glow"></div>
-          </a>
-          <a href="#" class="nav-social-link">
-            <i class="fab fa-facebook"></i>
-            <div class="social-glow"></div>
-          </a>
-          <a href="#" class="nav-social-link">
-            <i class="fab fa-youtube"></i>
-            <div class="social-glow"></div>
-          </a>
-        </div>
-        <p class="nav-tagline">🎬 Storytelling That Converts</p>
-      </div>
-    </div>
   </div>
 
   <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
@@ -15437,7 +15416,23 @@
     function scrollToMobileSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+        // Close navigation using available function
+        if (typeof closeMobileNav === 'function') {
+          closeMobileNav();
+        } else if (typeof toggleMobileNav === 'function') {
+          toggleMobileNav();
+        }
+        
+        // Wait for navigation to close, then scroll
+        setTimeout(() => {
+          const yOffset = -20; // Offset for any fixed header
+          const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+        }, 300);
       }
     }
     
@@ -17880,8 +17875,8 @@
     uploadStatus.style.display = 'none';
   }
   
-  
 
+  
   // Video quiz functions
   function analyzeVideoNeeds() {
     const brandDescription = document.getElementById('brandDescription').value.trim();
@@ -17902,7 +17897,7 @@
     recommendationContent.innerHTML = '<p>Analyzing your brand and generating personalized recommendations...</p>';
     
     // Simulate analysis delay
-    setTimeout(() => {
+        setTimeout(() => {
       const recommendation = generateVideoRecommendation(brandDescription, imageUpload);
       recommendationContent.innerHTML = recommendation;
     }, 2000);
@@ -18287,15 +18282,20 @@
       }
     }
     
+    // Robust scrollToMobileSection with offset and nav close
     function scrollToMobileSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (section) {
-        // Close navigation
-        toggleMobileNav();
+        // Close navigation using available function
+        if (typeof closeMobileNav === 'function') {
+          closeMobileNav();
+        } else if (typeof toggleMobileNav === 'function') {
+          toggleMobileNav();
+        }
         
         // Wait for navigation to close, then scroll
         setTimeout(() => {
-          const yOffset = -60; // Account for fixed header
+          const yOffset = -20; // Offset for any fixed header
           const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
           
           window.scrollTo({
@@ -18472,6 +18472,23 @@
       });
     }
     
+    // Initialize mobile optimizations when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add mobile-section class to all mobile sections if not present
+      document.querySelectorAll('section[class^="mobile-"]').forEach(section => {
+        if (!section.classList.contains('mobile-section')) {
+          section.classList.add('mobile-section');
+        }
+      });
+      
+      // Ensure all images have loading="lazy"
+      document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+      });
+    });
+
     // Initialize service package builder when DOM is ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function() {
@@ -19383,7 +19400,7 @@
         // Send the project with customer information
         sendToWaveApps(invoiceData);
       }
-
+      
       // Make functions globally available
       window.removeServiceFromPackage = removeServiceFromPackage;
       window.sendToWaveApps = sendToWaveApps;
