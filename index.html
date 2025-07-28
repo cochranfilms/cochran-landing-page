@@ -752,23 +752,21 @@
       }
       
       .hamburger-lines {
-        width: 20px;
-        height: 16px;
+        width: 24px;
+        height: 18px;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
       
       .hamburger-lines .line {
         width: 100%;
         height: 2px;
-        background: #000;
-        position: absolute;
-        left: 0;
+        background: #FFB200;
+        border-radius: 2px;
         transition: all 0.3s ease;
       }
-      
-      .hamburger-lines .line:nth-child(1) { top: 0; }
-      .hamburger-lines .line:nth-child(2) { top: 7px; }
-      .hamburger-lines .line:nth-child(3) { top: 14px; }
       
       /* Mobile Navigation Overlay */
       .mobile-nav-overlay {
@@ -777,12 +775,113 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.9);
+        background: #FFB200;
         display: none;
+        z-index: 10001;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .mobile-nav-container {
+        padding: 1rem;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .mobile-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 2rem;
+      }
+      
+      .nav-logo-img {
+        height: 40px;
+        width: auto;
+        filter: brightness(0);
+      }
+      
+      .mobile-nav-close {
+        background: none;
+        border: none;
+        color: #000;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 9999;
-        backdrop-filter: blur(10px);
+      }
+      
+      .mobile-nav-menu {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 1rem;
+      }
+      
+      .nav-item a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        color: #000;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 8px;
+        background: rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+      }
+      
+      .nav-item a:active {
+        background: rgba(0,0,0,0.2);
+        transform: scale(0.98);
+      }
+      
+      .nav-text {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      
+      .nav-icon {
+        font-size: 1.4rem;
+      }
+      
+      .mobile-nav-footer {
+        padding: 2rem 1rem;
+      }
+      
+      .nav-cta-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      
+      .nav-cta-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: rgba(0,0,0,0.1);
+        border: 2px solid #000;
+        border-radius: 8px;
+        color: #000;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-cta-button:active {
+        background: rgba(0,0,0,0.2);
+        transform: scale(0.98);
       }
       
       .mobile-nav-overlay.active {
@@ -1050,32 +1149,102 @@
         transform: translateY(-2px);
       }
       
-      /* Mobile Services Section */
-      .mobile-services {
-        padding: 4rem 1rem;
-        background: #fff;
-      }
-      
-      .mobile-services-container {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      
-      .mobile-section-title {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #000;
-        text-align: center;
-        margin-bottom: 3rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-      
-      .mobile-service-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-      }
+          /* Enhanced Mobile Services Section */
+    .mobile-services {
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      position: relative;
+      overflow: hidden;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    .mobile-services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255,178,0,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,178,0,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .mobile-services-container {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    
+    .mobile-section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #000;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      position: relative;
+    }
+    
+    .mobile-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .mobile-service-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0.5rem;
+    }
+    
+    /* Enhanced service cards */
+    .mobile-service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 
+        0 4px 15px rgba(0,0,0,0.1),
+        0 2px 8px rgba(255,178,0,0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateZ(0);
+      will-change: transform;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mobile-service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,178,0,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .mobile-service-card:active {
+      transform: scale(0.98);
+    }
+    
+    .mobile-service-card:hover::before {
+      opacity: 1;
+    }
       
       .mobile-service-card {
         background: #fff;
@@ -1345,7 +1514,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     
-    /* Mobile Hero Section */
+    /* Enhanced Mobile Hero Section */
     .mobile-hero {
       min-height: 100vh;
       background: linear-gradient(135deg, #FFB200 0%, #FF9000 100%);
@@ -1355,6 +1524,69 @@
       padding: 2rem 1rem;
       position: relative;
       overflow: hidden;
+      transform: translateZ(0);
+      will-change: transform;
+      contain: content;
+    }
+    
+    /* Optimize hero performance */
+    .mobile-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+      transform: translateZ(0);
+      will-change: transform;
+      z-index: 1;
+    }
+    
+    .mobile-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    /* Optimize hero animations */
+    @keyframes mobileHeroFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .mobile-hero-title,
+    .mobile-hero-subtitle,
+    .mobile-hero-stats,
+    .mobile-hero-buttons {
+      animation: mobileHeroFadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .mobile-hero-subtitle {
+      animation-delay: 0.2s;
+    }
+    
+    .mobile-hero-stats {
+      animation-delay: 0.4s;
+    }
+    
+    .mobile-hero-buttons {
+      animation-delay: 0.6s;
     }
     
     .mobile-hero::before {
@@ -1663,12 +1895,57 @@
       transform: scale(1.05);
     }
     
-    /* Mobile gallery touch optimizations */
+    /* Mobile gallery optimizations */
     @media (max-width: 768px) {
+      .mobile-gallery {
+        padding: 3rem 0.5rem;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .mobile-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin: 0 auto;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      
       .mobile-gallery-item {
-        min-height: 180px;
-        touch-action: manipulation;
+        aspect-ratio: 1;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+        touch-action: none;
         -webkit-tap-highlight-color: transparent;
+        transform: translateZ(0);
+        will-change: transform;
+        contain: content;
+      }
+      
+      .mobile-gallery-item img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        transform: translateZ(0);
+        will-change: transform;
+        pointer-events: none;
+        transition: transform 0.3s ease;
+      }
+      
+      /* Prevent scroll issues when modal is open */
+      body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
       }
     }
     
@@ -1884,14 +2161,16 @@
       }
     }
     
-    /* Mobile Navigation */
+    /* Enhanced Mobile Navigation */
     .mobile-nav-toggle {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, rgba(255,178,0,0.95), rgba(255,178,0,0.85));
+      width: 50px;
+      height: 50px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 2px solid rgba(255,178,0,0.3);
       border-radius: 50%;
       display: none;
@@ -1900,11 +2179,23 @@
       cursor: pointer;
       z-index: 10002;
       box-shadow: 
-        0 8px 25px rgba(255,178,0,0.4),
-        0 4px 15px rgba(0,0,0,0.2),
-        inset 0 1px 0 rgba(255,255,255,0.2);
+        0 4px 15px rgba(0,0,0,0.3),
+        0 2px 8px rgba(255,178,0,0.2);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
+      transform: translateZ(0);
+      will-change: transform;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Scroll-based nav styling */
+    .mobile-nav-toggle.scrolled {
+      background: rgba(255,178,0,0.95);
+      transform: scale(0.9);
+    }
+    
+    .mobile-nav-toggle.scrolled .line {
+      background: #000;
     }
     
     /* Force mobile nav to show on mobile */
@@ -2347,31 +2638,154 @@
       }
     }
     
-    /* Mobile touch optimizations */
+    /* Mobile touch and scroll optimizations */
     @media (max-width: 768px) {
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+        overscroll-behavior-y: none;
+      }
+      
       * {
         -webkit-tap-highlight-color: transparent;
         touch-action: manipulation;
       }
       
-      button, .mobile-service-card, .mobile-gallery-item {
+      /* Optimize scrolling performance */
+      section {
+        transform: translateZ(0);
+        will-change: transform;
+        contain: content;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+      
+      /* Optimize touch targets */
+      button, 
+      .mobile-service-card, 
+      .mobile-gallery-item,
+      .nav-item a {
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+        min-height: 44px;
+        padding: 12px;
+      }
+      
+      /* Prevent unwanted touch effects */
+      img {
+        user-select: none;
+        -webkit-user-select: none;
+        pointer-events: none;
+      }
+      
+      /* Optimize fixed elements */
+      .mobile-nav-toggle,
+      .theme-toggle {
+        transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
       }
     }
     
-    /* Mobile performance optimizations */
+    /* Enhanced Mobile Performance and Animations */
     @media (max-width: 768px) {
+      /* Optimize animations */
       .particle {
-        animation-duration: 6s !important;
+        animation-duration: 4s !important;
       }
       
       .lens-flare {
-        animation-duration: 8s !important;
+        animation-duration: 6s !important;
       }
       
       .spotlight {
-        animation-duration: 5s !important;
+        animation-duration: 4s !important;
+      }
+      
+      /* Smooth section transitions */
+      section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+        will-change: opacity, transform;
+      }
+      
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Optimize image loading */
+      img {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        will-change: opacity;
+      }
+      
+      img.loaded {
+        opacity: 1;
+      }
+      
+      /* Enhanced modal transitions */
+      .modal-overlay {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        transition: 
+          opacity 0.3s ease,
+          backdrop-filter 0.3s ease;
+        will-change: opacity, backdrop-filter;
+      }
+      
+      .modal-overlay.active {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+      }
+      
+      .modal-content {
+        transform: scale(0.95) translateY(20px);
+        opacity: 0;
+        transition: 
+          transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.3s ease;
+        will-change: transform, opacity;
+      }
+      
+      .modal-overlay.active .modal-content {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+      
+      /* Smooth gallery interactions */
+      .mobile-gallery-item {
+        transform: scale(1);
+        transition: transform 0.2s ease;
+        will-change: transform;
+      }
+      
+      .mobile-gallery-item:active {
+        transform: scale(0.98);
+      }
+      
+      /* Optimize button feedback */
+      button {
+        transform: translateY(0);
+        transition: 
+          transform 0.2s ease,
+          background-color 0.2s ease,
+          box-shadow 0.2s ease;
+        will-change: transform, background-color, box-shadow;
+      }
+      
+      button:active {
+        transform: translateY(2px);
       }
     }
     
@@ -11746,6 +12160,108 @@
       }
     }
     
+    /* Contact Form Section Styles */
+    .contact-form-section {
+      margin: 2rem 0;
+      padding: 2rem;
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,178,0,0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .contact-form-section h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .contact-form-section p {
+      color: var(--text);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+    
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .contact-form label {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .contact-form input {
+      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,178,0,0.3);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: var(--text);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+    
+    .contact-form input:focus {
+      outline: none;
+      border-color: rgba(255,178,0,0.6);
+      box-shadow: 0 0 0 3px rgba(255,178,0,0.1);
+      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+    }
+    
+    .contact-form input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    
+    /* Light mode adjustments */
+    body[data-theme="light"] .contact-form-section {
+      background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      border: 1px solid rgba(255,178,0,0.3);
+    }
+    
+    body[data-theme="light"] .contact-form input {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,178,0,0.4);
+      color: #333;
+    }
+    
+    body[data-theme="light"] .contact-form input::placeholder {
+      color: rgba(0,0,0,0.5);
+    }
+    
+    body[data-theme="light"] .contact-form input:focus {
+      background: rgba(255,255,255,1);
+      border-color: rgba(255,178,0,0.7);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-form-section {
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+      }
+      
+      .contact-form input {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+    }
+    
   </style>
   <!-- 🔒 SECURE FONT AWESOME CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==">
@@ -11768,30 +12284,71 @@
       <div class="mobile-nav-container">
         <div class="mobile-nav-header">
           <img src="Logo.png" alt="Cochran Films" class="nav-logo-img">
-          <button class="mobile-nav-close" onclick="toggleMobileNav()">×</button>
+          <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
         </div>
         
         <nav class="mobile-nav-menu">
           <div class="nav-item">
-            <a href="#mobileHero" onclick="scrollToMobileSection('mobileHero')">🏠 Home</a>
+            <a href="#mobileHero" onclick="scrollToMobileSection('mobileHero')">
+              <span class="nav-text">Home</span>
+              <span class="nav-icon">🏠</span>
+            </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileServices" onclick="scrollToMobileSection('mobileServices')">👷 Services</a>
+            <a href="#mobileAbout" onclick="scrollToMobileSection('mobileAbout')">
+              <span class="nav-text">About</span>
+              <span class="nav-icon">👤</span>
+            </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileGallery" onclick="scrollToMobileSection('mobileGallery')">🎬 Portfolio</a>
+            <a href="#mobileServices" onclick="scrollToMobileSection('mobileServices')">
+              <span class="nav-text">Services</span>
+              <span class="nav-icon">👷</span>
+            </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileContact" onclick="scrollToMobileSection('mobileContact')">📧 Contact</a>
+            <a href="#mobilePortfolio" onclick="scrollToMobileSection('mobilePortfolio')">
+              <span class="nav-text">Portfolio</span>
+              <span class="nav-icon">🎬</span>
+            </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileAbout" onclick="scrollToMobileSection('mobileAbout')">👤 About</a>
+            <a href="#mobilePhotography" onclick="scrollToMobileSection('mobilePhotography')">
+              <span class="nav-text">Photography</span>
+              <span class="nav-icon">📸</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#mobilePricing" onclick="scrollToMobileSection('mobilePricing')">
+              <span class="nav-text">Pricing</span>
+              <span class="nav-icon">💰</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#mobileContact" onclick="scrollToMobileSection('mobileContact')">
+              <span class="nav-text">Contact</span>
+              <span class="nav-icon">✉️</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#mobileBlog" onclick="scrollToMobileSection('mobileBlog')">
+              <span class="nav-text">Blog</span>
+              <span class="nav-icon">✍️</span>
+            </a>
           </div>
         </nav>
         
-        <div class="mobile-nav-cta">
-          <button class="nav-cta-primary" onclick="openBookingModal()">Book Now</button>
-          <button class="nav-cta-secondary" onclick="openContactModal()">Get Quote</button>
+        <div class="mobile-nav-footer">
+          <div class="nav-cta-buttons">
+            <a href="#mobilePricing" class="nav-cta-button" onclick="scrollToMobileSection('mobilePricing')">
+              <span class="nav-icon">💰</span>
+              <span class="nav-text">Pricing</span>
+            </a>
+            <a href="#mobileContact" class="nav-cta-button" onclick="scrollToMobileSection('mobileContact')">
+              <span class="nav-icon">💻</span>
+              <span class="nav-text">Book</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -17834,17 +18391,171 @@
     </button>
   </div>
 
-  <!-- AOS Initialization -->
+  <!-- AOS and Mobile Optimizations -->
   <script>
-    // Initialize AOS with custom settings for premium experience
+    // Initialize AOS with optimized settings
     AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
+      duration: 600,
+      easing: 'ease-out',
       once: true,
-      offset: 100,
-      delay: 0,
-      anchorPlacement: 'top-bottom'
+      disable: 'mobile',
+      offset: 50
     });
+    
+    // Mobile Navigation Functions
+    function toggleMobileNav() {
+      const overlay = document.getElementById('mobileNavOverlay');
+      const body = document.body;
+      
+      if (overlay.style.display === 'block') {
+        // Close navigation
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          body.style.overflow = '';
+        }, 300);
+      } else {
+        // Open navigation
+        overlay.style.display = 'block';
+        setTimeout(() => {
+          overlay.style.opacity = '1';
+          body.style.overflow = 'hidden';
+        }, 10);
+      }
+    }
+    
+    function scrollToMobileSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        toggleMobileNav(); // Close the navigation
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+    
+    // Mobile Performance Optimizations
+    if (window.innerWidth <= 768) {
+      document.addEventListener('DOMContentLoaded', function() {
+        // Optimize scroll performance
+        let ticking = false;
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('.mobile-nav-toggle');
+        
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+              } else {
+                nav.classList.remove('scrolled');
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+        
+        // Lazy load images
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+              }
+            }
+          });
+        }, {
+          rootMargin: '50px 0px',
+          threshold: 0.1
+        });
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+          imageObserver.observe(img);
+        });
+        
+        // Animate sections on scroll
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        
+        document.querySelectorAll('.mobile-hero, .mobile-services, .mobile-gallery').forEach(section => {
+          section.classList.add('fade-in');
+          sectionObserver.observe(section);
+        });
+        
+        // Optimize gallery scrolling
+        const gallery = document.querySelector('.mobile-gallery');
+        if (gallery) {
+          let touchStartY;
+          
+          gallery.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+          }, { passive: true });
+          
+          gallery.addEventListener('touchmove', (e) => {
+            if (!touchStartY) return;
+            
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchY;
+            
+            // If scrolling up at the top or down at the bottom
+            if ((deltaY < 0 && gallery.scrollTop === 0) ||
+                (deltaY > 0 && gallery.scrollTop + gallery.clientHeight >= gallery.scrollHeight)) {
+              e.preventDefault();
+            }
+          }, { passive: false });
+        }
+        
+        // Optimize modal handling
+        let activeModal = null;
+        
+        window.openModal = function(modal) {
+          if (activeModal) {
+            closeModal(activeModal);
+          }
+          modal.style.display = 'flex';
+          document.body.classList.add('modal-open');
+          activeModal = modal;
+          
+          requestAnimationFrame(() => {
+            modal.classList.add('active');
+          });
+        };
+        
+        window.closeModal = function(modal) {
+          modal.classList.remove('active');
+          document.body.classList.remove('modal-open');
+          setTimeout(() => {
+            modal.style.display = 'none';
+          }, 300);
+          activeModal = null;
+        };
+        
+        // Close modal on backdrop click
+        document.addEventListener('click', (e) => {
+          if (e.target.classList.contains('modal-overlay')) {
+            closeModal(e.target);
+          }
+        });
+        
+        // Handle back button with modals
+        window.addEventListener('popstate', () => {
+          if (activeModal) {
+            closeModal(activeModal);
+          }
+        });
+      });
+    }
     
     // Initialize service package builder when DOM is ready
     if (document.readyState === 'loading') {
@@ -18671,12 +19382,34 @@
               </div>
             </div>
             
+            <div class="contact-form-section">
+              <h3>Contact Information</h3>
+              <p>Please provide your contact details to send your project request</p>
+              
+              <div class="contact-form">
+                <div class="form-group">
+                  <label for="customerName">Full Name *</label>
+                  <input type="text" id="customerName" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                  <label for="customerEmail">Email Address *</label>
+                  <input type="email" id="customerEmail" required placeholder="Enter your email address">
+                </div>
+                
+                <div class="form-group">
+                  <label for="customerPhone">Phone Number *</label>
+                  <input type="tel" id="customerPhone" required placeholder="Enter your phone number">
+                </div>
+              </div>
+            </div>
+            
             <div class="form-actions">
               <button class="btn-secondary" onclick="this.parentElement.parentElement.parentElement.remove()">
                 <i class="fas fa-times"></i>
                 Close
               </button>
-              <button class="btn-primary" onclick="sendToWaveApps(${JSON.stringify(invoiceData).replace(/"/g, '&quot;')})">
+              <button class="btn-primary" onclick="validateAndSendProject(${JSON.stringify(invoiceData).replace(/"/g, '&quot;')})">
                 <i class="fas fa-paper-plane"></i>
                 Send Your Project
               </button>
@@ -18687,9 +19420,54 @@
         document.body.appendChild(modal);
       }
       
+      // Validate contact information and send project
+      function validateAndSendProject(invoiceData) {
+        const customerName = document.getElementById('customerName').value.trim();
+        const customerEmail = document.getElementById('customerEmail').value.trim();
+        const customerPhone = document.getElementById('customerPhone').value.trim();
+        
+        // Validate required fields
+        if (!customerName) {
+          showNotification('Please enter your full name', 'error');
+          document.getElementById('customerName').focus();
+          return;
+        }
+        
+        if (!customerEmail) {
+          showNotification('Please enter your email address', 'error');
+          document.getElementById('customerEmail').focus();
+          return;
+        }
+        
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(customerEmail)) {
+          showNotification('Please enter a valid email address', 'error');
+          document.getElementById('customerEmail').focus();
+          return;
+        }
+        
+        if (!customerPhone) {
+          showNotification('Please enter your phone number', 'error');
+          document.getElementById('customerPhone').focus();
+          return;
+        }
+        
+        // Add customer information to invoice data
+        invoiceData.customer = {
+          name: customerName,
+          email: customerEmail,
+          phone: customerPhone
+        };
+        
+        // Send the project with customer information
+        sendToWaveApps(invoiceData);
+      }
+
       // Make functions globally available
       window.removeServiceFromPackage = removeServiceFromPackage;
       window.sendToWaveApps = sendToWaveApps;
+      window.validateAndSendProject = validateAndSendProject;
       
       function sendToWaveApps(invoiceData) {
         // Enhanced project request handling with email integration
@@ -18711,13 +19489,19 @@
           return serviceDetail;
         }).join('\n');
         
+        // Prepare customer information
+        const customerInfo = invoiceData.customer || {};
+        const customerName = customerInfo.name || 'Unknown Customer';
+        const customerEmail = customerInfo.email || 'No email provided';
+        const customerPhone = customerInfo.phone || 'No phone provided';
+        
         // Send project request via EmailJS
         emailjs.send('service_t11yvru', 'template_aluwel1', {
           service: 'Project Generation',
-          name: 'Cochran Films Client',
-          email: 'info@cochranfilms.com',
-          phone: 'Generated via Package Builder',
-          notes: `Invoice #${invoiceData.invoiceNumber}\n\nServices:\n${serviceDetails}\n\nSubtotal: $${invoiceData.subtotal.toFixed(2)}\nTotal: $${invoiceData.total.toFixed(2)}\n\nGenerated: ${new Date(invoiceData.date).toLocaleString()}`,
+          name: customerName,
+          email: customerEmail,
+          phone: customerPhone,
+          notes: `Invoice #${invoiceData.invoiceNumber}\n\nCustomer Details:\nName: ${customerName}\nEmail: ${customerEmail}\nPhone: ${customerPhone}\n\nServices:\n${serviceDetails}\n\nSubtotal: $${invoiceData.subtotal.toFixed(2)}\nTotal: $${invoiceData.total.toFixed(2)}\n\nGenerated: ${new Date(invoiceData.date).toLocaleString()}`,
           invoice_number: invoiceData.invoiceNumber,
           total_amount: `$${invoiceData.total.toFixed(2)}`,
           title: 'Service Package Request'
