@@ -1046,13 +1046,21 @@
       border-radius: 15px;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,178,0,0.2);
+      position: relative;
     }
     
     .mobile-gallery-item:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 12px 35px rgba(255,178,0,0.3);
+      border-color: rgba(255,178,0,0.5);
+    }
+    
+    .mobile-gallery-item:active {
+      transform: scale(0.98);
     }
     
     .mobile-gallery-item img {
@@ -1060,6 +1068,20 @@
       height: 200px;
       object-fit: cover;
       display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Mobile gallery touch optimizations */
+    @media (max-width: 768px) {
+      .mobile-gallery-item {
+        min-height: 180px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
     }
     
     /* Mobile Contact Section */
@@ -1199,28 +1221,43 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(0,0,0,0.98));
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 10001;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .mobile-lightbox.active {
+      opacity: 1;
     }
     
     .mobile-lightbox img {
       max-width: 95%;
-      max-height: 95%;
+      max-height: 90%;
       object-fit: contain;
-      border-radius: 10px;
+      border-radius: 15px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,178,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-lightbox img:hover {
+      transform: scale(1.02);
     }
     
     .mobile-lightbox-close {
       position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: #fff;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, rgba(255,178,0,0.9), rgba(255,178,0,0.8));
+      border: 2px solid rgba(255,178,0,0.3);
+      font-size: 1.5rem;
+      color: #000;
       cursor: pointer;
       width: 50px;
       height: 50px;
@@ -1229,10 +1266,34 @@
       justify-content: center;
       border-radius: 50%;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 10002;
     }
     
     .mobile-lightbox-close:hover {
-      background: rgba(255,255,255,0.2);
+      background: linear-gradient(135deg, rgba(255,178,0,1), rgba(255,178,0,0.9));
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(255,178,0,0.4);
+    }
+    
+    /* Mobile lightbox touch optimizations */
+    @media (max-width: 768px) {
+      .mobile-lightbox {
+        padding: 1rem;
+      }
+      
+      .mobile-lightbox img {
+        max-width: 100%;
+        max-height: 85%;
+      }
+      
+      .mobile-lightbox-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+      }
     }
     
     /* Mobile Navigation */
@@ -1312,23 +1373,24 @@
     }
     
     .mobile-nav-container {
-      width: 90%;
-      max-width: 400px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-      border-radius: 20px;
-      padding: 2rem;
+      width: 95%;
+      max-width: 350px;
+      background: linear-gradient(145deg, rgba(0,0,0,0.95), rgba(0,0,0,0.9));
+      border-radius: 15px;
+      padding: 0;
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255,178,0,0.3);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+      overflow: hidden;
     }
     
     .mobile-nav-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255,178,0,0.3);
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
+      border-bottom: 2px solid rgba(0,0,0,0.1);
     }
     
     .mobile-nav-logo {
@@ -1376,44 +1438,27 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      color: #FFB200;
+      color: #fff;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
-      padding: 1rem;
-      border-radius: 15px;
+      padding: 1rem 1.5rem;
+      border-radius: 0;
       transition: all 0.3s ease;
-      background: rgba(255,178,0,0.1);
-      border: 1px solid transparent;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     
     .nav-item a:hover {
-      background: rgba(255,178,0,0.2);
-      border-color: rgba(255,178,0,0.5);
-      transform: translateX(10px);
-      color: #fff;
+      background: rgba(255,178,0,0.1);
+      color: #FFB200;
+      transform: translateX(5px);
     }
     
     .nav-item a:hover .nav-item-glow {
       opacity: 1;
-      transform: scale(1.1);
-    }
-    
-    .nav-item.featured a {
-      background: linear-gradient(135deg, rgba(255,178,0,0.3), rgba(255,178,0,0.1));
-      border-color: rgba(255,178,0,0.6);
-      color: #FFB200;
-      font-weight: 700;
-    }
-    
-    .nav-item.featured a:hover {
-      background: linear-gradient(135deg, rgba(255,178,0,0.4), rgba(255,178,0,0.2));
-      transform: translateX(10px) scale(1.05);
-    }
-    
-    .nav-item.featured a:hover .featured-glow {
-      opacity: 1;
-      transform: scale(1.2);
+      transform: scale(1.05);
     }
     
     .nav-icon-wrapper {
@@ -1514,11 +1559,69 @@
       opacity: 1;
     }
     
+    /* Million Dollar CTA Section */
+    .mobile-nav-cta {
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(255,178,0,0.1), rgba(255,178,0,0.05));
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .cta-primary {
+      margin-bottom: 1rem;
+    }
+    
+    .cta-primary a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
+      color: #000;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 15px rgba(255,178,0,0.3);
+    }
+    
+    .cta-primary a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,178,0,0.5);
+    }
+    
+    .cta-secondary a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: #FFB200;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border: 2px solid #FFB200;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .cta-secondary a:hover {
+      background: #FFB200;
+      color: #000;
+      transform: translateY(-2px);
+    }
+    
     .mobile-nav-footer {
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,178,0,0.3);
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.3);
       text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
     
     .nav-social-links {
@@ -6255,27 +6358,11 @@
       
       /* 🎯 CONVERSION-FOCUSED MOBILE UX ENHANCEMENTS */
       
-      /* Quick action floating button */
+      /* Quick action floating button - DISABLED FOR MOBILE */
       body::after {
-        content: "📞 Book Now" !important;
-        position: fixed !important;
-        bottom: 20px !important;
-        right: 20px !important;
-        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
-        color: #000 !important;
-        padding: 0.8rem 1.2rem !important;
-        border-radius: 30px !important;
-        font-weight: 700 !important;
-        font-size: 0.9rem !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5) !important;
-        z-index: 9999 !important;
-        cursor: pointer !important;
-        transform: scale(1) !important;
-        transition: all 0.3s ease !important;
-        animation: pulseGlow 3s ease-in-out infinite !important;
-        pointer-events: none !important; /* Will be handled by JS */
+        content: none !important;
+        display: none !important;
+        visibility: hidden !important;
       }
       
       @keyframes pulseGlow {
@@ -10862,6 +10949,62 @@
         padding: 2rem 1rem !important;
       }
       
+      /* 📱 FINAL MOBILE PUBLISH OPTIMIZATIONS */
+      
+      /* Ensure mobile navigation is properly positioned */
+      .mobile-nav-toggle {
+        position: fixed !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        z-index: 10002 !important;
+        display: flex !important;
+      }
+      
+      /* Ensure mobile loader shows properly */
+      .mobile-loader {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 99999 !important;
+        display: flex !important;
+      }
+      
+      /* Optimize mobile touch targets */
+      button, a, input, select, textarea {
+        min-height: 44px !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      
+      /* Ensure proper mobile flow */
+      .mobile-hero {
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 2rem 1rem !important;
+      }
+      
+      /* Optimize mobile booking flow */
+      .mobile-contact-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        margin-top: 2rem !important;
+      }
+      
+      .mobile-contact-btn {
+        width: 100% !important;
+        min-height: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        border-radius: 25px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+      }
+      
       /* Fix any text readability issues */
       p,
       .text {
@@ -11123,7 +11266,7 @@
               <i class="fas fa-home"></i>
               <div class="icon-glow"></div>
             </div>
-            <span>🎬 Home</span>
+            <span>🏠 Home</span>
             <div class="nav-item-glow"></div>
           </a>
         </li>
@@ -11133,7 +11276,7 @@
               <i class="fas fa-cogs"></i>
               <div class="icon-glow"></div>
             </div>
-            <span>⚡ Services</span>
+            <span>👷 Services</span>
             <div class="nav-item-glow"></div>
           </a>
         </li>
@@ -11143,7 +11286,7 @@
               <i class="fas fa-images"></i>
               <div class="icon-glow"></div>
             </div>
-            <span>📸 Portfolio</span>
+            <span>🎬 Portfolio</span>
             <div class="nav-item-glow"></div>
           </a>
         </li>
@@ -11153,21 +11296,57 @@
               <i class="fas fa-envelope"></i>
               <div class="icon-glow"></div>
             </div>
-            <span>💬 Contact</span>
+            <span>📧 Contact</span>
             <div class="nav-item-glow"></div>
           </a>
         </li>
-        <li class="nav-item featured">
-          <a href="javascript:void(0)" onclick="openBookingModal(); closeMobileNav()">
+        <li class="nav-item">
+          <a href="#mobileAbout" onclick="scrollToMobileSection('mobileAbout'); closeMobileNav()">
             <div class="nav-icon-wrapper">
-              <i class="fas fa-calendar-check"></i>
+              <i class="fas fa-user"></i>
               <div class="icon-glow"></div>
             </div>
-            <span>🎯 Book Now</span>
-            <div class="nav-item-glow featured-glow"></div>
+            <span>👤 About</span>
+            <div class="nav-item-glow"></div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#mobilePricing" onclick="scrollToMobileSection('mobilePricing'); closeMobileNav()">
+            <div class="nav-icon-wrapper">
+              <i class="fas fa-dollar-sign"></i>
+              <div class="icon-glow"></div>
+            </div>
+            <span>💰 Pricing</span>
+            <div class="nav-item-glow"></div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#mobileBlog" onclick="scrollToMobileSection('mobileBlog'); closeMobileNav()">
+            <div class="nav-icon-wrapper">
+              <i class="fas fa-pen"></i>
+              <div class="icon-glow"></div>
+            </div>
+            <span>✍️ Blog</span>
+            <div class="nav-item-glow"></div>
           </a>
         </li>
       </ul>
+      
+      <!-- Million Dollar CTA Section -->
+      <div class="mobile-nav-cta">
+        <div class="cta-primary">
+          <a href="javascript:void(0)" onclick="openBookingModal(); closeMobileNav()">
+            <i class="fas fa-calendar-check"></i>
+            <span>🎯 BOOK NOW</span>
+          </a>
+        </div>
+        <div class="cta-secondary">
+          <a href="javascript:void(0)" onclick="openMobileContactForm(); closeMobileNav()">
+            <i class="fas fa-envelope"></i>
+            <span>💬 Get Quote</span>
+          </a>
+        </div>
+      </div>
       
       <div class="mobile-nav-footer">
         <div class="nav-social-links">
@@ -13409,20 +13588,38 @@
         
         if (lightbox && img && element) {
           const imageSrc = element.querySelector('img').src;
+          const imageAlt = element.querySelector('img').alt;
+          
           img.src = imageSrc;
+          img.alt = imageAlt;
+          
           lightbox.style.display = 'flex';
           
+          // Add active class for smooth animation
+          setTimeout(() => {
+            lightbox.classList.add('active');
+          }, 10);
+          
           // Add haptic feedback
-          if (navigator.vibrate) {
-            navigator.vibrate(30);
+          if ('vibrate' in navigator) {
+            navigator.vibrate(50);
           }
+          
+          // Prevent body scroll
+          document.body.style.overflow = 'hidden';
         }
       };
       
       window.closeMobileLightbox = function() {
         const lightbox = document.getElementById('mobileLightbox');
         if (lightbox) {
-          lightbox.style.display = 'none';
+          lightbox.classList.remove('active');
+          
+          setTimeout(() => {
+            lightbox.style.display = 'none';
+            // Restore body scroll
+            document.body.style.overflow = '';
+          }, 300);
         }
       };
       
@@ -13441,6 +13638,26 @@
           });
         }
       };
+      
+      // Mobile lightbox keyboard and touch support
+      document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('mobileLightbox');
+        if (lightbox && lightbox.style.display === 'flex') {
+          if (e.key === 'Escape') {
+            closeMobileLightbox();
+          }
+        }
+      });
+      
+      // Close lightbox when clicking outside image
+      document.addEventListener('click', function(e) {
+        const lightbox = document.getElementById('mobileLightbox');
+        const lightboxImg = document.getElementById('mobileLightboxImg');
+        
+        if (lightbox && lightbox.style.display === 'flex' && e.target === lightbox) {
+          closeMobileLightbox();
+        }
+      });
       
       // Mobile section scrolling
       window.scrollToMobileSection = function(sectionId) {
