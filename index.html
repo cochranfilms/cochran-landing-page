@@ -3,18 +3,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  
-  <!-- 🚀 CRITICAL PERFORMANCE OPTIMIZATIONS -->
-  <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="//www.youtube.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
   <title>Cochran Films | Atlanta's Full-Stack Media Powerhouse</title>
   <meta name="description" content="From concept to creation, Cochran Films builds bold brand stories through high-impact video, photography, design, and development. Experience a seamless fusion of media and strategy, built for entrepreneurs and businesses who want to stand out.">
-  
-  <!-- 🔗 SEO OPTIMIZATION -->
-  <link rel="canonical" href="https://vision.cochranfilms.com">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -43,25 +36,14 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#000000">
   
-  <!-- 🎨 ENHANCED FAVICON IMPLEMENTATION -->
+  <!-- 🎨 FAVICON -->
   <link rel="icon" type="image/png" sizes="32x32" href="./CF_Favicon2025.png?v=2025">
   <link rel="icon" type="image/png" sizes="16x16" href="./CF_Favicon2025.png?v=2025">
-  <link rel="icon" type="image/png" sizes="192x192" href="./CF_Favicon2025.png?v=2025">
   <link rel="apple-touch-icon" sizes="180x180" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="152x152" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="144x144" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="120x120" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="114x114" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="76x76" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="72x72" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="60x60" href="./CF_Favicon2025.png?v=2025">
-  <link rel="apple-touch-icon" sizes="57x57" href="./CF_Favicon2025.png?v=2025">
   <link rel="shortcut icon" type="image/x-icon" href="./CF_Favicon2025.png?v=2025">
-  <link rel="icon" type="image/x-icon" href="./CF_Favicon2025.png?v=2025">
   <meta name="msapplication-TileImage" content="./CF_Favicon2025.png?v=2025">
-  <meta name="msapplication-TileColor" content="#FFB200">
-  <meta name="theme-color" content="#FFB200">
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -75,12 +57,12 @@
       location.replace('https:' + window.location.href.substring(window.location.protocol.length));
     }
   </script>
-  <!-- 🔒 SECURE EXTERNAL SCRIPTS WITH DEFERRED LOADING -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-  <!-- AOS Animation Library - Deferred for Performance -->
+  <!-- 🔒 SECURE EXTERNAL SCRIPTS WITH INTEGRITY CHECKS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- 🔒 SECURE EMAILJS CONFIGURATION -->
   <script>
     (function(){
@@ -88,448 +70,16 @@
       try {
         if (typeof emailjs !== 'undefined') {
           emailjs.init('p4pF3OWvh-DXtae4c');
-                  // EmailJS initialized securely
-      } else {
-        // EmailJS not loaded - forms will fallback to manual submission
+          console.log('✅ EmailJS initialized securely');
+        } else {
+          console.warn('⚠️ EmailJS not loaded - forms will fallback to manual submission');
+        }
+      } catch (error) {
+        console.error('❌ EmailJS initialization failed:', error);
       }
-    } catch (error) {
-            console.error('❌ EmailJS initialization failed:', error);
-    }
-  })();
-</script>
-
-<!-- 🏢 STRUCTURED DATA FOR SEO & RICH RESULTS -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Cochran Films",
-  "url": "https://vision.cochranfilms.com",
-  "logo": "https://static.wixstatic.com/media/aeef42_1464482357144945be578af2b9a0d850~mv2.jpg",
-  "sameAs": [
-    "https://www.instagram.com/cochran.films",
-    "https://www.facebook.com/cochranfilmsllc/",
-    "https://www.linkedin.com/company/cochranfilms",
-    "https://www.youtube.com/@cochranfilmsllc"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-470-420-2169",
-    "contactType": "Customer Service",
-    "areaServed": "US"
-  }
-}
-</script>
+    })();
+  </script>
   <style>
-    /* ===================================================================
-     * 🎬 COCHRAN FILMS LANDING PAGE - MOBILE OPTIMIZATION GUIDE
-     * ===================================================================
-     * 
-     * 📱 MOBILE EDITING GUIDE:
-     * ----------------------
-     * 
-     * 🎨 LOGO SCALING:
-     * - Desktop: Lines ~522-540 (header img)
-     * - Mobile 768px: Lines ~150-170 (header img - max-height: 60px)
-     * - Mobile 480px: Lines ~250-270 (header img - max-height: 50px)
-     * 
-     * 📝 FONT SIZES:
-     * - Header Title Mobile: Lines ~175-185 (header h1 - font-size: 1.6rem)
-     * - Header Subtitle Mobile: Lines ~190-200 (header p - font-size: 1rem)
-     * - Ultra-small Mobile: Lines ~260-280 (0.9rem and 1.4rem)
-     * - Loading Screen: Lines ~220-240 (.brand-name, .tagline)
-     * 
-     * 📐 SPACING & PADDING:
-     * - Header Mobile: Lines ~160-170 (padding: 6rem 1rem 2rem 1rem)
-     * - Sections Mobile: Lines ~200-210 (padding: 3rem 1rem)
-     * - Navigation Toggle: Lines ~130-150 (top: 1rem, right: 1rem)
-     * 
-     * 🔧 BUTTON TOUCH TARGETS:
-     * - All buttons: Lines ~180-200 (min-height: 44px, padding: 12px 16px)
-     * - Navigation links: Lines ~195-205 (min-height: 60px)
-     * 
-     * ⚡ PERFORMANCE OPTIMIZATIONS:
-     * - Animations disabled on mobile: Lines ~230-240
-     * - Complex effects hidden: Lines ~235-245
-     * - Reduced motion support: Lines ~270-280
-     * 
-     * 🎬 LOADING SCREEN:
-     * - Desktop timing: ~12260 (5 seconds)
-     * - Mobile timing: ~12265 (4 seconds) 
-     * - Ultra-mobile timing: ~12267 (3 seconds)
-     * ===================================================================
-     */
-    
-    /* 📱 CRITICAL MOBILE PERFORMANCE OPTIMIZATIONS */
-    * {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      box-sizing: border-box; /* Ensure consistent box model */
-    }
-    
-    /* GPU acceleration for smooth scrolling */
-    body, html {
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
-      will-change: scroll-position;
-      max-width: 100vw; /* Prevent horizontal overflow */
-      overflow-x: hidden; /* Ensure no horizontal scroll */
-    }
-    
-    /* 📱 COMPREHENSIVE MOBILE OPTIMIZATION - CONSOLIDATED & FIXED */
-    @media (max-width: 768px) {
-      /* Performance optimizations */
-      *, *::before, *::after {
-        animation-duration: 0.3s !important;
-        transition-duration: 0.2s !important;
-        box-sizing: border-box !important;
-        max-width: 100% !important;
-      }
-      
-      /* Critical layout fixes */
-      html, body {
-        max-width: 100vw !important;
-        overflow-x: hidden !important;
-        position: relative !important;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        width: 100% !important;
-      }
-      
-      /* Prevent zoom on input focus */
-      input, select, textarea {
-        font-size: 16px !important; /* Prevents iOS zoom */
-        max-width: 100% !important;
-      }
-      
-      /* 📱 MOBILE NAVIGATION - OPTIMIZED POSITIONING */
-      .mobile-nav-toggle {
-        display: flex !important;
-        position: fixed !important;
-        top: 1rem !important;
-        right: 1rem !important;
-        z-index: 10001 !important;
-        background: linear-gradient(135deg, rgba(255, 178, 0, 0.95), rgba(255, 193, 7, 0.9)) !important;
-        border: 2px solid rgba(0, 0, 0, 0.1) !important;
-        border-radius: 16px !important;
-        width: 56px !important;
-        height: 56px !important;
-        cursor: pointer !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        backdrop-filter: blur(15px) saturate(180%) !important;
-        box-shadow: 
-          0 8px 32px rgba(255, 178, 0, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        font-size: 1.4rem !important;
-        color: rgba(0, 0, 0, 0.8) !important;
-        font-weight: bold !important;
-      }
-      
-      .mobile-nav-toggle:hover {
-        transform: scale(1.08) rotateZ(5deg) !important;
-        background: linear-gradient(135deg, rgba(255, 193, 7, 0.98), rgba(255, 178, 0, 0.95)) !important;
-        box-shadow: 
-          0 12px 40px rgba(255, 178, 0, 0.5),
-          inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
-        color: rgba(0, 0, 0, 1) !important;
-      }
-      
-      .mobile-nav-toggle.active {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 178, 0, 0.9)) !important;
-        transform: scale(1.1) rotateZ(90deg) !important;
-        color: rgba(0, 0, 0, 1) !important;
-        box-shadow: 
-          0 15px 50px rgba(0, 0, 0, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-      }
-      
-      .mobile-nav-overlay {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background: rgba(0, 0, 0, 0.95) !important;
-        z-index: 10000 !important; /* Below nav toggle but above content */
-        backdrop-filter: blur(20px) !important;
-        display: none !important;
-      }
-      
-      .mobile-nav-overlay.active {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
-      
-      /* Header mobile optimization */
-      header {
-        padding: 1.5rem 1rem 2rem 1rem !important;
-        min-height: auto !important;
-        text-align: center !important;
-        position: relative !important;
-        z-index: 1 !important;
-        margin-top: 0 !important;
-      }
-      
-      header img {
-        max-height: 60px !important;
-        max-width: 250px !important;
-        margin: 0 auto 1.5rem !important;
-        display: block !important;
-      }
-      
-      header h1 {
-        font-size: 1.6rem !important;
-        line-height: 1.3 !important;
-        max-width: 350px !important;
-        margin: 1rem auto !important;
-        text-align: center !important;
-      }
-      
-      header p {
-        font-size: 1rem !important;
-        line-height: 1.5 !important;
-        max-width: 350px !important;
-        margin: 0 auto !important;
-        text-align: center !important;
-        padding: 0 0.5rem !important;
-      }
-      
-      /* Button touch targets - 44px minimum */
-      button, .btn, .btn-primary, .btn-secondary, .service-item {
-        min-height: 44px !important;
-        padding: 12px 16px !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-      }
-      
-      .mobile-nav-menu a {
-        padding: 16px 20px !important;
-        min-height: 60px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
-      
-      /* Sections - no horizontal scroll */
-      section {
-        padding: 3rem 1rem !important;
-        width: 100% !important;
-        max-width: 100vw !important;
-        overflow-x: hidden !important;
-      }
-      
-      .container, .hero-content, .service-builder-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 1rem !important;
-        margin: 0 auto !important;
-        overflow-x: hidden !important;
-      }
-      
-      /* Typography optimization */
-      h1, h2, h3 {
-        line-height: 1.3 !important;
-        text-align: center !important;
-        word-wrap: break-word !important;
-      }
-      
-      p, li {
-        line-height: 1.5 !important;
-        font-size: 1rem !important;
-        word-wrap: break-word !important;
-      }
-      
-      /* Hide complex desktop effects */
-      .header-shape, .particle, .light-trail, .tilt-card {
-        display: none !important;
-      }
-      
-      /* Disable AOS animations on mobile */
-      .aos-animate, [data-aos] {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      
-      /* 🔥 ENHANCED ACCESSIBILITY & PERFORMANCE */
-      
-      /* Screen reader only content */
-      .sr-only {
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 0, 0) !important;
-        white-space: nowrap !important;
-        border: 0 !important;
-      }
-      
-      /* 📱 MOBILE/DESKTOP SPECIFIC BEHAVIORS */
-      
-      /* Mobile device specific styles */
-      .mobile-device .mobile-navigation {
-        display: block !important;
-        z-index: 9999 !important;
-      }
-      
-      /* Desktop device specific styles */
-      .desktop-device .mobile-navigation {
-        display: none !important;
-      }
-      
-      /* Ensure mobile nav toggle is properly visible on mobile */
-      @media (max-width: 768px) {
-        .mobile-nav-toggle {
-          display: flex !important;
-          position: fixed !important;
-          top: 20px !important;
-          right: 20px !important;
-          z-index: 10000 !important;
-          background: rgba(0, 0, 0, 0.8) !important;
-          color: white !important;
-          border: none !important;
-          border-radius: 8px !important;
-          padding: 12px 15px !important;
-          font-size: 18px !important;
-          cursor: pointer !important;
-          backdrop-filter: blur(10px) !important;
-          transition: all 0.3s ease !important;
-        }
-        
-        .mobile-nav-toggle:hover,
-        .mobile-nav-toggle.active {
-          background: rgba(255, 178, 0, 0.9) !important;
-          color: black !important;
-          transform: scale(1.05) !important;
-        }
-        
-        /* Mobile nav overlay */
-        .mobile-nav-overlay {
-          display: none !important;
-          position: fixed !important;
-          top: 0 !important;
-          left: 0 !important;
-          width: 100% !important;
-          height: 100% !important;
-          background: rgba(0, 0, 0, 0.95) !important;
-          z-index: 9998 !important;
-          backdrop-filter: blur(20px) !important;
-        }
-        
-        .mobile-nav-overlay.active {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-        }
-        
-        .mobile-nav-menu {
-          display: flex !important;
-          flex-direction: column !important;
-          gap: 20px !important;
-          text-align: center !important;
-        }
-        
-        .mobile-nav-menu a {
-          color: white !important;
-          text-decoration: none !important;
-          font-size: 18px !important;
-          font-weight: 600 !important;
-          padding: 15px 25px !important;
-          border-radius: 10px !important;
-          background: rgba(255, 255, 255, 0.1) !important;
-          transition: all 0.3s ease !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          gap: 10px !important;
-        }
-        
-        .mobile-nav-menu a:hover,
-        .mobile-nav-menu a:focus {
-          background: rgba(255, 178, 0, 0.8) !important;
-          color: black !important;
-          transform: translateY(-2px) !important;
-        }
-        
-        /* Hide desktop elements on mobile */
-        .theme-toggle-portal {
-          z-index: 9997 !important;
-        }
-      }
-      
-      /* Desktop specific overrides */
-      @media (min-width: 769px) {
-        .mobile-navigation {
-          display: none !important;
-        }
-        
-        .mobile-nav-toggle {
-          display: none !important;
-        }
-        
-        .mobile-nav-overlay {
-          display: none !important;
-        }
-      }
-      
-      /* Enhanced focus management */
-      *:focus-visible {
-        outline: 3px solid #FFB200 !important;
-        outline-offset: 2px !important;
-        border-radius: 4px !important;
-        z-index: 9999 !important;
-      }
-      
-      /* High contrast mode support */
-      @media (prefers-contrast: high) {
-        * {
-          filter: contrast(2) !important;
-        }
-        
-        button, .btn {
-          border: 2px solid currentColor !important;
-        }
-      }
-
-      /* Reduce motion for accessibility */
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
-        
-        .cinematic-loader * {
-          animation: none !important;
-          transition: none !important;
-        }
-      }
-      
-      /* Performance optimizations for touch devices */
-      @media (hover: none) and (pointer: coarse) {
-        * {
-          -webkit-tap-highlight-color: transparent !important;
-          touch-action: manipulation !important;
-        }
-        
-        button, .btn, a, input, select, textarea {
-          -webkit-tap-highlight-color: rgba(255, 178, 0, 0.3) !important;
-          min-height: 44px !important;
-          min-width: 44px !important;
-        }
-      }
-    }
-    
     /* Premium Interactive Enhancements */
     
     /* Magnetic Cursor Effect */
@@ -1117,7 +667,7 @@
         0 4px 12px rgba(255, 178, 0, 0.2),
         inset 0 1px 0 rgba(255,255,255,0.1);
       transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-      z-index: 9998 !important; /* Below mobile nav but above content */
+      z-index: 999999 !important;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       pointer-events: auto !important;
@@ -1159,112 +709,33 @@
       background: transparent !important;
     }
     
-      /* 📱 ENHANCED MOBILE THEME TOGGLE OPTIMIZATION */
-  /* 🚀 PRODUCTION-READY GLOBAL OPTIMIZATIONS */
-  html {
-    -webkit-text-size-adjust: 100% !important;
-    text-size-adjust: 100% !important;
-    scroll-behavior: smooth !important;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-  }
-  
-  /* Universal image optimization */
-  img {
-    height: auto !important;
-    max-width: 100% !important;
-    image-rendering: -webkit-optimize-contrast !important;
-    object-fit: cover !important;
-  }
-  
-  /* Button and interaction optimization for mobile */
-  button, a[role="button"], [onclick] {
-    min-height: 44px !important;
-    touch-action: manipulation !important;
-    -webkit-user-select: none !important;
-    user-select: none !important;
-  }
-  
-  /* Form elements optimization - prevent iOS zoom */
-  input, textarea, select {
-    font-size: 16px !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-  }
-  
-  /* Animation performance optimization */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+    /* 📱 MOBILE THEME TOGGLE OPTIMIZATION */
+    @media (max-width: 768px) {
+      .theme-toggle-portal {
+        top: 1rem !important;
+        right: 1rem !important;
+        z-index: 10002 !important;
+      }
+      
+      .theme-toggle {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1rem !important;
+        background: rgba(255, 178, 0, 0.9) !important;
+        border: 2px solid rgba(255, 178, 0, 0.3) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3) !important;
+        backdrop-filter: blur(10px) !important;
+      }
+      
+      .theme-toggle i {
+        color: #000 !important;
+        font-size: 1rem !important;
+      }
     }
-  }
-  
-  @media (max-width: 768px) {
-    .theme-toggle-portal {
-      top: 1rem !important;
-      right: 60px !important; /* Positioned left of mobile nav toggle */
-      z-index: 9999 !important; /* Below mobile nav toggle */
-    }
-    
-    .theme-toggle {
-      width: 44px !important;
-      height: 44px !important;
-      font-size: 1rem !important;
-      background: rgba(255, 255, 255, 0.95) !important;
-      border: 2px solid rgba(255, 178, 0, 0.4) !important;
-      border-radius: 50% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-      backdrop-filter: blur(10px) !important;
-      transition: all 0.3s ease !important;
-      cursor: pointer !important;
-    }
-    
-    .theme-toggle:hover,
-    .theme-toggle:active {
-      transform: scale(1.05) !important;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-    }
-    
-    .theme-toggle i {
-      color: #000 !important;
-      font-size: 1rem !important;
-      transition: all 0.3s ease !important;
-    }
-    
-    /* Ensure all interactive elements are touch-friendly */
-    .mobile-nav-toggle,
-    .theme-toggle,
-    button,
-    .btn,
-    .service-item,
-    .masonry-item {
-      min-height: 44px !important;
-      min-width: 44px !important;
-      touch-action: manipulation !important;
-      -webkit-tap-highlight-color: transparent !important;
-      cursor: pointer !important;
-    }
-    
-    /* Prevent accidental double-tap zoom */
-    * {
-      touch-action: manipulation !important;
-      -webkit-touch-callout: none !important;
-      -webkit-user-select: none !important;
-      user-select: none !important;
-    }
-    
-    /* Allow text selection for inputs and content */
-    input, textarea, p, li, span {
-      -webkit-user-select: text !important;
-      user-select: text !important;
-    }
-  }
     
     /* Ensure no other elements appear behind the theme toggle */
     .theme-toggle-portal::before,
@@ -1290,32 +761,6 @@
     /* Light mode when scrolled */
     body[data-theme="light"].scrolled .theme-toggle {
       color: #000 !important;
-    }
-    
-    /* 📱 FINAL MOBILE OPTIMIZATION LAYER */
-    @media (max-width: 768px) {
-      /* Ensure consistent mobile experience */
-      .touching * {
-        pointer-events: none !important;
-      }
-      
-      .touching button,
-      .touching .btn,
-      .touching a {
-        pointer-events: auto !important;
-      }
-      
-      /* Fix any remaining layout issues */
-      iframe, img, video {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-      
-      /* Optimize touch targets */
-      button, .btn, a, input, select, textarea {
-        min-height: 44px !important; /* Apple's recommended minimum */
-        min-width: 44px !important;
-      }
     }
     
     /* Hide theme toggle when lightbox is active */
@@ -1344,64 +789,6 @@
       z-index: 0;
       background: var(--section-bg);
       transition: background 0.3s ease;
-      border-bottom: 1px solid rgba(255, 178, 0, 0.1);
-      margin-bottom: 2rem;
-    }
-    
-    /* Enhanced section separators */
-    section::after {
-      content: '';
-      position: absolute;
-      bottom: -2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 1px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(255, 178, 0, 0.3) 20%, 
-        rgba(255, 178, 0, 0.6) 50%, 
-        rgba(255, 178, 0, 0.3) 80%, 
-        transparent 100%);
-      opacity: 0.7;
-    }
-    
-    /* Remove separator from last section and specific sections */
-    section:last-child::after,
-    footer::after,
-    .cinematic-loader::after {
-      display: none;
-    }
-    
-    /* Special decorative separators for key sections */
-    .timeline-section::before {
-      content: '◆';
-      position: absolute;
-      top: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--primary);
-      font-size: 1.5rem;
-      background: var(--bg);
-      padding: 0 1rem;
-      z-index: 10;
-    }
-    
-    .services-section::before {
-      content: '🎬';
-      position: absolute;
-      top: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      background: var(--bg);
-      padding: 0 1rem;
-      z-index: 10;
-    }
-    
-    /* Enhanced section spacing */
-    section + section {
-      margin-top: 4rem;
     }
     .grid {
       display: flex;
@@ -1872,7 +1259,7 @@
     }
     .hero-line.highlight {
       color: var(--primary);
-      text-shadow: 0 0 20px rgba(255,178,0,0.3);
+      text-shadow: 0 0 20px rgba(255,178,0,0.5);
     }
     .hero-subtitle {
       color: var(--text);
@@ -2066,12 +1453,10 @@
     @media (max-width: 768px) {
       .hero-section {
         min-height: 100vh !important;
-        padding: 8rem 0 2rem 0 !important; /* Increased top padding to avoid mobile nav overlap */
+        padding: 6rem 0 2rem 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        position: relative !important;
-        z-index: 1 !important;
       }
       
       .hero-content {
@@ -2224,8 +1609,8 @@
       }
       
       .cinematic-services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
       }
       
       .service-card.cinematic {
@@ -2418,20 +1803,11 @@
     .cinematic-services-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
+      gap: 2.5rem;
       margin-top: 3rem;
-      max-width: 1200px;
+      max-width: 1000px;
       margin-left: auto;
       margin-right: auto;
-    }
-    
-    /* For larger screens, consider 4 columns if space allows */
-    @media (min-width: 1400px) {
-      .cinematic-services-grid {
-        grid-template-columns: repeat(4, 1fr);
-        max-width: 1400px;
-        gap: 2rem;
-      }
     }
     
     .service-card.cinematic {
@@ -3155,7 +2531,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden; /* Ensure content stays within card */
     }
     
     .milestone-card.visible {
@@ -3239,8 +2614,6 @@
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
-      overflow: hidden; /* Prevent content overflow */
-      max-height: 100%; /* Ensure it doesn't exceed parent */
     }
     
     .milestone-year {
@@ -3287,22 +2660,13 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* Changed from flex-end to flex-start */
-      max-height: 200px; /* Limit the maximum height */
-      text-overflow: ellipsis; /* Add ellipsis for long text */
+      justify-content: flex-end;
     }
     
     .milestone-story p {
       margin: 0;
       color: var(--text);
       transition: color 0.3s ease;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 6; /* Limit to 6 lines of text */
-      line-clamp: 6; /* Standard property for compatibility */
-      -webkit-box-orient: vertical;
-      line-height: 1.6;
-      max-height: calc(1.6em * 6); /* 6 lines maximum */
     }
     
     .milestone-connection {
@@ -3391,11 +2755,10 @@
       .milestone-card {
         width: 100%;
         max-width: 350px;
-        height: 420px; /* Fixed height to prevent overflow */
+        height: auto;
         padding: 1.5rem;
         margin: 0 auto;
         flex-shrink: 0;
-        overflow: hidden; /* Ensure content stays within card */
       }
       
       .milestone-connection {
@@ -3439,10 +2802,9 @@
       .milestone-card {
         width: 100%;
         max-width: 100%;
-        height: 380px; /* Fixed height for mobile to prevent overflow */
+        height: auto;
         padding: 1.2rem;
         margin: 0;
-        overflow: hidden; /* Ensure content stays within card */
       }
       
       .milestone-icon {
@@ -3470,13 +2832,6 @@
       .milestone-story {
         font-size: 0.85rem;
         line-height: 1.5;
-        max-height: 150px; /* Smaller max height for mobile */
-      }
-      
-      .milestone-story p {
-        -webkit-line-clamp: 5; /* Fewer lines on mobile */
-        line-clamp: 5; /* Standard property for compatibility */
-        max-height: calc(1.5em * 5); /* 5 lines maximum on mobile */
       }
       
       .milestone-card:hover {
@@ -3492,8 +2847,6 @@
       .milestone-card {
         padding: 1rem;
         margin: 0;
-        height: 350px; /* Fixed height for smallest screens */
-        overflow: hidden; /* Ensure content stays within card */
       }
       
       .milestone-icon {
@@ -3517,13 +2870,6 @@
       
       .milestone-story {
         font-size: 0.8rem;
-        max-height: 120px; /* Even smaller for smallest screens */
-      }
-      
-      .milestone-story p {
-        -webkit-line-clamp: 4; /* Even fewer lines on smallest screens */
-        line-clamp: 4; /* Standard property for compatibility */
-        max-height: calc(1.5em * 4); /* 4 lines maximum on smallest screens */
       }
     }
     /* Video section animation for timeline hover */
@@ -3592,21 +2938,17 @@
       padding: 2rem 1rem;
       transition: background 0.3s, color 0.3s;
     }
-    /* 🎬 OPTIMIZED RESPONSIVE MODAL THEME */
+    /* 🎬 RESPONSIVE GREEN SUCCESS MODAL THEME */
     .modal-overlay {
       position: fixed;
-      top: 0; 
-      left: 0; 
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.8);
-      z-index: 99999;
-      display: none;
+      z-index: 9999;
+      display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
     }
     
     /* Dark mode modal */
@@ -3619,11 +2961,6 @@
       background: rgba(0,0,0,0.6);
     }
     
-    /* Ensure modal shows when active */
-    .modal-overlay[style*="display: flex"] {
-      display: flex !important;
-    }
-    
     .modal-content {
       background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
       color: #ffffff;
@@ -3633,40 +2970,13 @@
         0 20px 60px rgba(0,0,0,0.6),
         0 0 40px rgba(76, 175, 80, 0.3),
         inset 0 1px 0 rgba(255,255,255,0.1);
-      padding: 2rem;
+      padding: 2.5rem 2rem 2rem 2rem;
       min-width: 320px;
       max-width: 95vw;
-      width: 500px;
-      max-height: 90vh;
+      width: 450px;
       position: relative;
-      margin: auto;
       animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1);
       transition: all 0.3s ease;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* 🖥️ DESKTOP BOOKING FORM OPTIMIZATION */
-    @media (min-width: 769px) {
-      .modal-content {
-        width: 550px;
-        padding: 2.5rem;
-        max-height: 85vh;
-        overflow-y: auto;
-      }
-      
-      #bookingForm {
-        gap: 1.5rem;
-      }
-      
-      #bookingForm label {
-        font-size: 1.1rem;
-        margin-bottom: 0.6rem;
-      }
-      
-      #bookingForm input, #bookingForm select, #bookingForm textarea {
-        padding: 1rem 1.2rem;
-        font-size: 1.05rem;
-      }
     }
     
     /* Light mode modal content */
@@ -3709,9 +3019,7 @@
     #bookingForm {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      max-height: none;
-      overflow: visible;
+      gap: 1.2rem;
     }
     #bookingForm label {
       font-weight: 600;
@@ -3945,35 +3253,13 @@
         transform: scale(1.1) !important;
       }
       
-      /* 📱 MOBILE MODAL OPTIMIZATIONS */
-      .modal-overlay {
-        padding: 1rem;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-      }
-      
-      .modal-content {
-        max-height: 95vh;
-        overflow-y: auto;
-        margin: 0;
-        width: 95vw;
-        max-width: 450px;
-      }
-      
-      /* 📱 MOBILE MODAL OVERLAY SPECIFIC POSITIONING */
-      .modal-overlay {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        z-index: 9999 !important;
-        display: flex !important;
+      /* 📱 ADDITIONAL MOBILE MODAL OPTIMIZATIONS */
+      .modal {
+        padding: 1rem !important;
         align-items: flex-start !important;
         justify-content: center !important;
-        padding-top: 2rem !important;
-        box-sizing: border-box !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
       }
       
       .modal-content h2 {
@@ -5799,8 +5085,13 @@
         max-width: 260px !important;
       }
       
-      /* Floating book button - ultra mobile - REMOVED TO PREVENT CONFLICTS */
-      /* Using dedicated mobile-book-btn instead of pseudo-element */
+      /* Floating book button - ultra mobile */
+      body::after {
+        bottom: 15px !important;
+        right: 15px !important;
+        padding: 0.6rem 1rem !important;
+        font-size: 0.8rem !important;
+      }
       
       /* Hero section - ultra mobile */
       .hero-title {
@@ -5842,8 +5133,39 @@
       
       /* 🎯 CONVERSION-FOCUSED MOBILE UX ENHANCEMENTS */
       
-      /* Quick action floating button - REMOVED TO PREVENT CONFLICTS */
-      /* Using dedicated mobile navigation and booking buttons instead */
+      /* Quick action floating button */
+      body::after {
+        content: "📞 Book Now" !important;
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        color: #000 !important;
+        padding: 0.8rem 1.2rem !important;
+        border-radius: 30px !important;
+        font-weight: 700 !important;
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5) !important;
+        z-index: 9999 !important;
+        cursor: pointer !important;
+        transform: scale(1) !important;
+        transition: all 0.3s ease !important;
+        animation: pulseGlow 3s ease-in-out infinite !important;
+        pointer-events: none !important; /* Will be handled by JS */
+      }
+      
+      @keyframes pulseGlow {
+        0%, 100% { 
+          box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5);
+          transform: scale(1);
+        }
+        50% { 
+          box-shadow: 0 8px 25px rgba(255, 178, 0, 0.7);
+          transform: scale(1.05);
+        }
+      }
       
       /* Enhanced mobile hero section */
       .hero-section {
@@ -6917,8 +6239,8 @@
       -webkit-overflow-scrolling: touch;
     }
     
-    /* Main Loading Container - Advanced Loading Screen */
-    #cinematicLoader {
+    /* Main Loading Container */
+    .cinematic-loader {
       position: fixed;
       top: 0;
       left: 0;
@@ -6939,167 +6261,13 @@
       -webkit-backface-visibility: hidden;
     }
     
-    body.loaded #cinematicLoader {
+    body.loaded .cinematic-loader {
       opacity: 0;
       pointer-events: none;
       transform: translateZ(0);
     }
     
-    /* 🎬 CINEMATIC LOADING ANIMATIONS */
-    @keyframes aperture-open {
-      0% { transform: scale(0) rotate(0deg); opacity: 0; }
-      50% { transform: scale(0.8) rotate(180deg); opacity: 0.8; }
-      100% { transform: scale(1) rotate(360deg); opacity: 1; }
-    }
-    
-    @keyframes wave-pulse {
-      0%, 100% { transform: scaleY(0.3); opacity: 0.5; }
-      50% { transform: scaleY(1); opacity: 1; }
-    }
-    
-    @keyframes progress-fill {
-      0% { width: 0%; }
-      20% { width: 25%; }
-      50% { width: 60%; }
-      80% { width: 85%; }
-      100% { width: 100%; }
-    }
-    
-    @keyframes particle-float {
-      0% { transform: translateY(100px) translateX(0px) scale(0); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-100px) translateX(20px) scale(1); opacity: 0; }
-    }
-    
-    /* Aperture Animation Styling */
-    .aperture {
-      width: 80px;
-      height: 80px;
-      border: 3px solid var(--primary);
-      border-radius: 50%;
-      position: relative;
-      margin-bottom: 2rem;
-    }
-    
-    .aperture-blades {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, transparent, var(--primary), transparent);
-      animation: spin 2s linear infinite;
-    }
-    
-    /* Sound Wave Styling */
-    .sound-waves {
-      display: flex;
-      gap: 4px;
-      align-items: end;
-      height: 40px;
-      margin: 1rem 0;
-    }
-    
-    .wave-bar {
-      width: 3px;
-      height: 10px;
-      background: var(--primary);
-      border-radius: 2px;
-      animation: wave-pulse 1.5s ease-in-out infinite;
-    }
-    
-    /* Progress Bar Styling */
-    .cinematic-progress {
-      width: 200px;
-      height: 3px;
-      background: rgba(255, 178, 0, 0.2);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-    
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), #FFD700);
-      border-radius: 2px;
-      width: 0%;
-    }
-    
-    /* Particles System */
-    .particles-system {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-    
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 50%;
-      animation: particle-float 4s ease-in-out infinite;
-    }
-    
-    .particle:nth-child(1) { left: 20%; animation-delay: 0s; }
-    .particle:nth-child(2) { left: 40%; animation-delay: 0.8s; }
-    .particle:nth-child(3) { left: 60%; animation-delay: 1.6s; }
-    .particle:nth-child(4) { left: 80%; animation-delay: 2.4s; }
-         .particle:nth-child(5) { left: 10%; animation-delay: 3.2s; }
-     
-     /* Loader Content Container */
-     .loader-content {
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       justify-content: center;
-       text-align: center;
-       z-index: 10;
-       position: relative;
-     }
-     
-     /* Cinematic Text Styling */
-     .cinematic-text {
-       margin: 2rem 0;
-     }
-     
-     .brand-name {
-       font-family: 'Cinzel', serif;
-       font-size: 3rem;
-       font-weight: 700;
-       color: var(--primary);
-       text-shadow: 0 0 20px rgba(255, 178, 0, 0.5);
-       letter-spacing: 0.2em;
-       margin: 0 0 1rem 0;
-       animation: glow-pulse 2s ease-in-out infinite;
-     }
-     
-     .tagline {
-       font-family: 'Inter', sans-serif;
-       font-size: 1.1rem;
-       color: rgba(255, 255, 255, 0.8);
-       font-weight: 300;
-       margin: 0;
-       letter-spacing: 0.05em;
-     }
-     
-     @keyframes glow-pulse {
-       0%, 100% { text-shadow: 0 0 20px rgba(255, 178, 0, 0.5); }
-       50% { text-shadow: 0 0 30px rgba(255, 178, 0, 0.8), 0 0 40px rgba(255, 178, 0, 0.3); }
-     }
-     
-     /* Screen Reader Only Content */
-     .sr-only {
-       position: absolute;
-       width: 1px;
-       height: 1px;
-       padding: 0;
-       margin: -1px;
-       overflow: hidden;
-       clip: rect(0, 0, 0, 0);
-       white-space: nowrap;
-       border: 0;
-     }
-     
-     /* Professional Camera Viewfinder Overlay */
+    /* Professional Camera Viewfinder Overlay */
     .viewfinder-overlay {
       position: absolute;
       top: 0;
@@ -7582,43 +6750,40 @@
       }
     }
     
-    /* 📱 MOBILE SERVICE BUILDER OPTIMIZATION */
+    /* 📱 MOBILE OVERFLOW AND ANIMATION FIXES */
     @media (max-width: 768px) {
-      .service-builder-section {
-        padding: 2rem 1rem !important;
-      }
-      
-      .builder-content {
-        flex-direction: column !important;
-        gap: 2rem !important;
-      }
-      
-      .service-catalog {
+      /* Prevent horizontal scrolling */
+      html, body {
+        overflow-x: hidden !important;
         width: 100% !important;
-        height: auto !important;
-        padding: 1.5rem !important;
-        order: 1;
+        max-width: 100% !important;
       }
       
-      .package-builder {
+      /* Fix common overflow issues */
+      *, *::before, *::after {
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+      
+      /* Disable problematic animations on mobile */
+      .aos-animate {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      
+      /* Touch-friendly animations */
+      .hero-title, .hero-subtitle, .hero-line, .hero-stats, .hero-cta {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      
+      /* Ensure no elements exceed viewport width */
+      .hero-content, .service-builder-container, .container, section {
         width: 100% !important;
-        order: 2;
-        position: sticky !important;
-        top: 80px !important; /* Below nav toggle */
-        z-index: 100 !important;
-        background: rgba(0, 0, 0, 0.95) !important;
-        backdrop-filter: blur(20px) !important;
-        border-radius: 15px !important;
-        padding: 1.5rem !important;
-        border: 2px solid rgba(255, 178, 0, 0.3) !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7) !important;
-      }
-      
-      .service-items {
-        grid-template-columns: 1fr !important;
-        gap: 0.8rem !important;
-        max-height: 400px !important;
-        overflow-y: auto !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
       }
       
       /* Fix video container overflow */
@@ -7629,140 +6794,59 @@
       }
     }
     
-    /* 🎬 PREMIUM LOADING SCREEN - GUARANTEED VISIBILITY */
-    .cinematic-loader {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      z-index: 999999 !important;
-      background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%) !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: auto !important;
-      overflow: hidden !important;
-      transform: translateZ(0) !important;
-    }
-    
-    /* Ensure loading screen shows immediately */
-    body:not(.loaded) {
-      overflow: hidden !important;
-      height: 100vh !important;
-    }
-    
-    body:not(.loaded) .cinematic-loader {
-      opacity: 1 !important;
-      visibility: visible !important;
-      display: flex !important;
-    }
-    
-    /* Hide loading screen when loaded */
-    body.loaded .cinematic-loader {
-      opacity: 0 !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
-      transition: opacity 0.8s ease-out, visibility 0.8s ease-out !important;
-    }
-    
-    /* 📱 MOBILE LOADING SCREEN OPTIMIZATION */
+    /* 📱 MOBILE LOADING SCREEN OPTIMIZATION - COMPLETE FIX */
     @media (max-width: 768px) {
       .cinematic-loader {
-        padding: 2rem 1rem !important;
-        background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 9999 !important;
       }
       
-      /* Simplify complex elements on mobile for performance */
-      .viewfinder-overlay,
-      .studio-lights,
-      .film-reels,
-      .camera-equipment,
-      .lens-flare,
-      .clapperboard {
-        display: none !important;
-      }
-      
-      /* Keep essential elements visible */
       .aperture-container {
-        order: 1;
-        margin-bottom: 2rem !important;
-        width: 120px !important;
-        height: 120px !important;
-      }
-      
-      .aperture {
-        width: 100px !important;
-        height: 100px !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 10000 !important;
       }
       
       .cinematic-text {
-        order: 2;
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        width: 100% !important;
-        max-width: 350px !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90% !important;
+        max-width: 400px !important;
         text-align: center !important;
         padding: 0 1rem !important;
-        z-index: 10 !important;
-        margin-bottom: 2rem !important;
+        z-index: 10001 !important;
       }
       
       .brand-name {
-        font-size: 2.5rem !important;
+        font-size: 2.2rem !important;
         line-height: 1.1 !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 auto 1rem !important;
         color: #FFD700 !important;
-        text-shadow: 0 3px 15px rgba(255, 215, 0, 0.6) !important;
-        margin-bottom: 1rem !important;
-        font-weight: 900 !important;
-        letter-spacing: 0.1em !important;
+        text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5) !important;
       }
       
       .tagline {
-        font-size: 1.1rem !important;
-        color: #FFF !important;
-        opacity: 0.95 !important;
-        letter-spacing: 0.05em !important;
-        font-weight: 500 !important;
-      }
-      
-      .cinematic-progress {
-        order: 3;
-        position: relative !important;
-        bottom: auto !important;
-        left: auto !important;
-        transform: none !important;
-        width: 280px !important;
-        margin: 1rem auto 0 auto !important;
-      }
-      
-      .sound-waves {
-        order: 4;
-        position: relative !important;
-        bottom: auto !important;
-        left: auto !important;
-        transform: none !important;
-        margin: 1rem auto 0 auto !important;
-      }
-      
-      /* Optimize particles for mobile */
-      .particles-system {
+        font-size: 1rem !important;
+        text-align: center !important;
         display: block !important;
-      }
-      
-      .particle {
-        width: 1px !important;
-        height: 1px !important;
-        animation-duration: 8s !important;
-      }
-      
-      .particle:nth-child(n+6) {
-        display: none !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        opacity: 0.9 !important;
+        color: #FFF !important;
       }
     }
     
@@ -8014,62 +7098,43 @@
         animation-duration: 2s; /* Optimized for mobile */
       }
       
-          /* Add ultra-small mobile rules */
-      .brand-name {
-        font-size: 1.8rem !important;
-      }
-      
-      .tagline {
-        font-size: 0.9rem !important;
-      }
-      
-             .mobile-nav-toggle {
-         width: 45px;
-         height: 45px;
-         top: 0.8rem;
-         right: 0.8rem;
-       }
+          /* 🎬 MOBILE LOADING SCREEN - PREMIUM OPTIMIZED VERSION */
+    .cinematic-loader {
+      background: 
+        radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+      will-change: opacity;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      z-index: 999999 !important;
     }
     
-          /* 📱 ULTRA-SMALL MOBILE DEVICES (iPhone SE, etc.) */
-    @media (max-width: 480px) {
-      header {
-        padding: 4rem 0.5rem 1.5rem 0.5rem !important;
-      }
-      
-      header img {
-        max-height: 50px !important;
-        max-width: 200px !important;
-      }
-      
-      header h1 {
-        font-size: 1.4rem !important;
-        max-width: 300px !important;
-      }
-      
-      header p {
-        font-size: 0.9rem !important;
-        max-width: 300px !important;
-      }
-      
-      .brand-name {
-        font-size: 1.8rem !important;
-      }
-      
-      .tagline {
-        font-size: 0.9rem !important;
-      }
-      
-      section {
-        padding: 2rem 0.5rem !important;
-      }
-      
-      .mobile-nav-toggle {
-        width: 45px;
-        height: 45px;
-        top: 3.5rem !important; /* Moved down for smaller screens */
-        right: 0.8rem;
-      }
+    /* Hide ALL complex elements on mobile for ultra-clean look */
+    .viewfinder-overlay,
+    .studio-lights,
+    .film-reels,
+    .camera-equipment,
+    .lens-flare,
+    .countdown-container,
+    .clapperboard,
+    .particles-system {
+      display: none !important;
+    }
+    
+    /* Elegant film strip borders */
+    .film-strip::before,
+    .film-strip::after {
+      height: 1px !important;
+      background: linear-gradient(90deg, transparent, #FFB200, transparent) !important;
+      animation: none !important;
+      opacity: 0.8 !important;
     }
     
     .film-strip::before {
@@ -8337,6 +7402,7 @@
       will-change: auto !important;
       perspective: 1000;
     }
+  }
   
   /* Ultra-small mobile devices optimization */
   @media (max-width: 480px) {
@@ -10219,17 +9285,17 @@
     
     .lightbox-close {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
+      top: 2rem;
+      right: 2rem;
       color: #FFD700;
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: bold;
       cursor: pointer;
-      z-index: 10000;
+      z-index: 100000;
       text-shadow: 0 2px 8px #000;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
       background: rgba(255,178,0,0.2);
       border-radius: 50%;
       display: flex;
@@ -10240,7 +9306,7 @@
     }
     .lightbox-close:hover { 
       color: #FFD700;
-      transform: scale(1.1);
+      transform: scale(1.1) rotate(90deg);
       background: rgba(255,178,0,0.3);
       box-shadow: 0 8px 32px rgba(255,178,0,0.4);
     }
@@ -10266,7 +9332,7 @@
       position: fixed;
       top: 1rem;
       right: 1rem;
-      z-index: 10001; /* Proper hierarchy: above nav overlay */
+      z-index: 9999;
       background: rgba(255, 178, 0, 0.9);
       border: none;
       border-radius: 8px;
@@ -10279,40 +9345,28 @@
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3);
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
     }
     
-    .mobile-nav-toggle .hamburger-line {
+    .mobile-nav-toggle span {
       display: block;
-      width: 28px;
+      width: 25px;
       height: 3px;
-      background: rgba(0, 0, 0, 0.8);
-      margin: 4px 0;
+      background: #000;
+      margin: 3px 0;
+      transition: all 0.3s ease;
       border-radius: 2px;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-      position: relative;
     }
     
-    .mobile-nav-toggle:hover .hamburger-line {
-      background: rgba(0, 0, 0, 1);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    .mobile-nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
     }
     
-    .mobile-nav-toggle.active .hamburger-line:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 7px);
-      background: rgba(0, 0, 0, 1);
-    }
-    
-    .mobile-nav-toggle.active .hamburger-line:nth-child(2) {
+    .mobile-nav-toggle.active span:nth-child(2) {
       opacity: 0;
-      transform: scale(0);
     }
     
-    .mobile-nav-toggle.active .hamburger-line:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
-      background: rgba(0, 0, 0, 1);
+    .mobile-nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
     }
     
     .mobile-nav-overlay {
@@ -10322,53 +9376,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        135deg, 
-        rgba(255, 178, 0, 0.98) 0%,
-        rgba(255, 144, 0, 0.95) 25%,
-        rgba(218, 165, 32, 0.97) 50%,
-        rgba(255, 193, 7, 0.96) 75%,
-        rgba(255, 178, 0, 0.98) 100%
-      );
-      backdrop-filter: blur(25px) saturate(180%);
-      z-index: 10000;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.98));
+      backdrop-filter: blur(20px);
+      z-index: 9998;
       opacity: 0;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      overflow: hidden;
-    }
-    
-    /* Cinematic film grain overlay */
-    .mobile-nav-overlay::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(0,0,0,0.1)" opacity="0.3"/><circle cx="80" cy="40" r="1" fill="rgba(0,0,0,0.1)" opacity="0.2"/><circle cx="40" cy="80" r="1" fill="rgba(0,0,0,0.1)" opacity="0.25"/></svg>') repeat;
-      animation: filmGrain 0.1s steps(8) infinite;
-      pointer-events: none;
-      z-index: -1;
-    }
-    
-    /* Animated diagonal stripes */
-    .mobile-nav-overlay::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 255, 255, 0.03) 2px,
-        rgba(255, 255, 255, 0.03) 4px
-      );
-      animation: slideStripes 20s linear infinite;
-      pointer-events: none;
-      z-index: -1;
+      transition: opacity 0.3s ease;
     }
     
     .mobile-nav-overlay.active {
@@ -10378,7 +9390,6 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      animation: fadeInOverlay 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
     
     .mobile-nav-menu {
@@ -10386,36 +9397,6 @@
       padding: 0;
       margin: 0;
       text-align: center;
-      position: relative;
-      max-width: 90%;
-      width: 100%;
-    }
-    
-    /* Cinematic frame border */
-    .mobile-nav-menu::before {
-      content: '';
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.8), transparent);
-      border-radius: 2px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    .mobile-nav-menu::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.8), transparent);
-      border-radius: 2px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
     
     .mobile-nav-menu li {
@@ -10432,261 +9413,35 @@
     .mobile-nav-menu li:nth-child(5) { animation-delay: 0.5s; }
     
     .mobile-nav-menu a {
-      color: rgba(0, 0, 0, 0.9);
+      color: #fff;
       text-decoration: none;
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.2rem 2rem;
-      margin: 0.5rem 0;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .mobile-nav-menu a i {
-      margin-right: 12px;
-      font-size: 1.2rem;
-      opacity: 0.8;
+      font-size: 2rem;
+      font-weight: 600;
       transition: all 0.3s ease;
+      display: block;
+      padding: 1rem;
+      border-radius: 10px;
     }
     
-    .mobile-nav-menu a span {
-      position: relative;
-      z-index: 2;
-    }
-    
-    /* Cinematic hover effect */
-    .mobile-nav-menu a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-      );
-      transition: left 0.6s ease;
-      z-index: 1;
-    }
-    
-    .mobile-nav-menu a:hover,
-    .mobile-nav-menu a:focus {
-      color: rgba(0, 0, 0, 1);
-      background: rgba(255, 255, 255, 0.4);
-      border-color: rgba(0, 0, 0, 0.3);
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    }
-    
-    .mobile-nav-menu a:hover::before,
-    .mobile-nav-menu a:focus::before {
-      left: 100%;
-    }
-    
-    .mobile-nav-menu a:hover i,
-    .mobile-nav-menu a:focus i {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-    
-    .mobile-nav-menu a:active {
-      transform: translateY(-1px) scale(0.98);
-      transition: transform 0.1s ease;
+    .mobile-nav-menu a:hover {
+      color: #FFB200;
+      background: rgba(255, 178, 0, 0.1);
+      transform: scale(1.05);
     }
     
     @keyframes slideInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-      }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
     
-    @keyframes fadeInOverlay {
-      from {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-      }
-      to {
-        opacity: 1;
-        backdrop-filter: blur(25px) saturate(180%);
+    /* Show mobile nav on tablets and phones */
+    @media (max-width: 768px) {
+      .mobile-nav-toggle {
+        display: flex;
       }
     }
-    
-    @keyframes filmGrain {
-      0%, 100% { transform: translateX(0) translateY(0); }
-      10% { transform: translateX(-1px) translateY(-1px); }
-      20% { transform: translateX(1px) translateY(1px); }
-      30% { transform: translateX(-1px) translateY(1px); }
-      40% { transform: translateX(1px) translateY(-1px); }
-      50% { transform: translateX(-1px) translateY(-1px); }
-      60% { transform: translateX(1px) translateY(1px); }
-      70% { transform: translateX(-1px) translateY(1px); }
-      80% { transform: translateX(1px) translateY(-1px); }
-      90% { transform: translateX(-1px) translateY(-1px); }
-    }
-    
-    @keyframes slideStripes {
-      0% { transform: translateX(-50%) translateY(-50%); }
-      100% { transform: translateX(-40%) translateY(-40%); }
-    }
-    
-    /* 🎬 CINEMATIC MOBILE NAV HEADER & FOOTER */
-    .mobile-nav-header {
-      position: absolute;
-      top: 4rem;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 10;
-      opacity: 0;
-      animation: fadeInFromTop 0.8s ease 0.3s forwards;
-    }
-    
-    .mobile-nav-logo {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    .nav-logo-text {
-      display: block;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: rgba(0, 0, 0, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 8px;
-      margin-bottom: -0.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-      font-family: 'Arial Black', sans-serif;
-    }
-    
-    .nav-logo-subtitle {
-      display: block;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: rgba(0, 0, 0, 0.7);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      opacity: 0.8;
-    }
-    
-    .mobile-nav-footer {
-      position: absolute;
-      bottom: 4rem;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 10;
-      opacity: 0;
-      animation: fadeInFromBottom 0.8s ease 0.7s forwards;
-    }
-    
-    .nav-tagline {
-      font-size: 1rem;
-      font-weight: 500;
-      color: rgba(0, 0, 0, 0.6);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-style: italic;
-    }
-    
-    @keyframes fadeInFromTop {
-      from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-    }
-    
-    @keyframes fadeInFromBottom {
-      from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-    }
-    
-    /* DUPLICATE MOBILE SECTION REMOVED - CONSOLIDATED ABOVE */
-      
-      /* DUPLICATE HEADER SECTION REMOVED - ALREADY CONSOLIDATED ABOVE */
-      
-      header h1 {
-        font-size: 1.5rem !important;
-        margin: 1rem 0 0.5rem 0 !important;
-        line-height: 1.3 !important;
-      }
-      
-      header p {
-        font-size: 0.9rem !important;
-        line-height: 1.5 !important;
-        max-width: 90% !important;
-        margin: 0 auto !important;
-      }
-      
-      /* 📱 IMPROVED BUTTON STYLES */
-      .cta-primary, .cta-secondary, .btn, button {
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        min-height: 48px !important;
-        font-size: 1rem !important;
-        padding: 1rem 1.5rem !important;
-        border-radius: 8px !important;
-        cursor: pointer !important;
-        transition: all 0.2s ease !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-      }
-      
-      /* 📱 IMPROVED IMAGE OPTIMIZATION */
-      img {
-        max-width: 100% !important;
-        height: auto !important;
-        object-fit: cover !important;
-        border-radius: 8px !important;
-      }
-      
-      /* 📱 CARD RESPONSIVENESS */
-      .card, .service-card, .testimonial-card {
-        margin: 1rem 0 !important;
-        padding: 1.5rem !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-      }
-      
-      /* 📱 GRID STACKING */
-      .grid, .hero-content, .comparison-grid, .cinematic-services-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-      }
     
     /* 📱 MOBILE-FIRST RESPONSIVE BREAKPOINTS */
     /* Mobile Portrait (320px - 479px) */
@@ -10717,52 +9472,12 @@
       }
       
       /* Button optimization */
-      button, .btn, .cta-primary, .cta-secondary, .book-btn, .add-service-btn {
+      button, .btn, .cta-primary, .cta-secondary {
         font-size: 0.9rem !important;
         padding: 0.8rem 1.5rem !important;
         min-height: 44px !important;
         width: 100% !important;
         margin: 0.5rem 0 !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        white-space: normal !important;
-        word-wrap: break-word !important;
-        text-align: center !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        box-sizing: border-box !important;
-      }
-      
-      /* 📱 MASONRY GALLERY MOBILE FIX */
-      .masonry-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-      }
-      
-      .masonry-item {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-bottom: 1rem !important;
-      }
-      
-      /* 📱 SERVICE BUILDER MOBILE OPTIMIZATION */
-      .service-builder-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-      }
-      
-      .service-catalog, .package-builder {
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-      
-      .service-item {
-        flex-direction: column !important;
-        padding: 1rem !important;
-        margin-bottom: 1rem !important;
-        align-items: center !important;
-        text-align: center !important;
       }
     }
     
@@ -10785,37 +9500,12 @@
       }
       
       /* Button optimization */
-      button, .btn, .cta-primary, .cta-secondary, .book-btn, .view-btn {
+      button, .btn, .cta-primary, .cta-secondary {
         font-size: 1rem !important;
         padding: 1rem 2rem !important;
         min-height: 48px !important;
         max-width: 300px !important;
         margin: 0.5rem auto !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        white-space: normal !important;
-        text-align: center !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        box-sizing: border-box !important;
-      }
-      
-      /* 📱 PHOTO GALLERY MOBILE OPTIMIZATION */
-      .masonry-overlay {
-        padding: 1rem !important;
-      }
-      
-      .overlay-actions {
-        flex-direction: column !important;
-        gap: 0.5rem !important;
-        width: 100% !important;
-      }
-      
-      .view-btn, .book-btn {
-        width: 100% !important;
-        min-height: 44px !important;
-        margin: 0.25rem 0 !important;
       }
     }
     
@@ -11032,28 +9722,19 @@
         box-sizing: border-box !important;
       }
       
-      /* 📱 OPTIMIZED MODAL SYSTEM */
+      /* 📱 MILLION DOLLAR MODAL SYSTEM */
       #bookingModal {
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        background: rgba(0, 0, 0, 0.8);
-        animation: modalFadeIn 0.3s ease;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 99999;
-        display: none;
-        align-items: center;
-        justify-content: center;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+        animation: modalFadeIn 0.3s ease !important;
       }
       
       #bookingModal .modal-content {
-        transform: translateY(0);
-        animation: modalSlideIn 0.4s ease;
-        border: 2px solid #4CAF50;
-        box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        transform: translateY(0) !important;
+        animation: modalSlideIn 0.4s ease !important;
+        border: 2px solid #FFB200 !important;
+        box-shadow: 0 20px 60px rgba(255, 178, 0, 0.3) !important;
       }
       
       #closeModal {
@@ -11107,47 +9788,128 @@
 </head>
 <body>
   <!-- 📱 MOBILE NAVIGATION SYSTEM -->
-  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open menu" aria-expanded="false">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
+  <button class="mobile-nav-toggle" id="mobileNavToggle">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
   
-  <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
-    <ul class="mobile-nav-menu" role="menu">
-      <li role="none"><a href="#hero" onclick="closeMobileNav()" role="menuitem">Home</a></li>
-      <li role="none"><a href="#serviceBuilder" onclick="closeMobileNav()" role="menuitem">Services</a></li>
-      <li role="none"><a href="#portfolio" onclick="closeMobileNav()" role="menuitem">Portfolio</a></li>
-      <li role="none"><a href="#about" onclick="closeMobileNav()" role="menuitem">About</a></li>
-      <li role="none"><a href="javascript:void(0)" onclick="openBookingModal(true); closeMobileNav()" role="menuitem">Book Now</a></li>
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <ul class="mobile-nav-menu">
+      <li><a href="#hero" onclick="closeMobileNav()">Home</a></li>
+      <li><a href="#serviceBuilder" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="#portfolio" onclick="closeMobileNav()">Portfolio</a></li>
+      <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+      <li><a href="javascript:void(0)" onclick="openBookingModal(); closeMobileNav()">Book Now</a></li>
     </ul>
   </div>
 
-  <!-- 🎨 THEME TOGGLE BUTTON -->
-  <div class="theme-toggle-portal">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
-      <i class="fas fa-sun" aria-hidden="true"></i>
-    </button>
+  <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
+  <div class="cinematic-loader">
+    <!-- Film Strip Borders -->
+    <div class="film-strip"></div>
+    
+    <!-- Professional Camera Viewfinder Overlay -->
+    <div class="viewfinder-overlay">
+      <div class="viewfinder-grid"></div>
+      <div class="viewfinder-corners">
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+      </div>
+    </div>
+    
+    <!-- Production Studio Lights -->
+    <div class="studio-lights">
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+    </div>
+    
+    <!-- Film Countdown Timer -->
+    <div class="countdown-container">
+      <div class="countdown-circle">
+        <div class="countdown-number">5</div>
+      </div>
+    </div>
+    
+    <!-- Director's Clapperboard -->
+    <div class="clapperboard">
+      <div class="clapper-top"></div>
+      <div class="clapper-text">
+        COCHRAN<br>
+        FILMS<br>
+        LOADING
+      </div>
+    </div>
+    
+    <!-- Film Reels Animation -->
+    <div class="film-reels">
+      <div class="film-reel"></div>
+      <div class="film-reel"></div>
+    </div>
+    
+    <!-- Camera Equipment -->
+    <div class="camera-equipment">
+      <div class="camera-lens"></div>
+      <div class="camera-body"></div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles-system">
+      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
+      <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
+      <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
+      <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
+      <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
+      <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
+    </div>
+    
+    <!-- Lens Flares -->
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    
+    <!-- Main Aperture Container -->
+    <div class="aperture-container">
+      <div class="aperture"></div>
+      
+      <!-- Cinematic Typography -->
+      <div class="cinematic-text">
+        <div class="brand-name">COCHRAN FILMS</div>
+        <div class="tagline">STORYTELLING THAT CONVERTS</div>
+      </div>
+    </div>
+    
+    <!-- Sound Waves -->
+    <div class="sound-waves">
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="cinematic-progress">
+      <div class="progress-fill"></div>
+    </div>
   </div>
-
-
-  <!-- 🎬 ENHANCED MAIN HEADER WITH ACCESSIBILITY -->
-  <header role="banner" class="main-header" id="mainHeader">
+  <header>
     <!-- Cinematic background shapes -->
-    <div class="header-shape" aria-hidden="true"></div>
-    <div class="header-shape" aria-hidden="true"></div>
-    <div class="header-shape" aria-hidden="true"></div>
+    <div class="header-shape"></div>
+    <div class="header-shape"></div>
+    <div class="header-shape"></div>
     
     <!-- Header content -->
     <div class="header-content">
-      <img src="https://static.wixstatic.com/media/aeef42_7240b3023a8246e9977ddd74c43b8025~mv2.png" 
-           alt="Cochran Films - Atlanta's Full-Stack Media Powerhouse" 
-           loading="eager"
-           width="280" 
-           height="80"
-           fetchpriority="high"
-           decoding="async">
-      <div class="header-divider" aria-hidden="true"></div>
+      <img src="https://static.wixstatic.com/media/aeef42_7240b3023a8246e9977ddd74c43b8025~mv2.png" alt="Cochran Films Logo">
+      <div class="header-divider"></div>
       <h1>Work with a Full-Stack Digital Strategist</h1>
       <p>You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</p>
     </div>
@@ -11185,8 +9947,8 @@
         
         <div class="hero-cta" data-aos="fade-up" data-aos-delay="1100">
           <!-- AI: Insert scroll-depth-based CTA logic here -->
-          <button class="cta-primary" onclick="openBookingModal(true)" data-aos="zoom-in" data-aos-delay="1200">Start Your Project</button>
-          <button class="cta-secondary" onclick="window.location.href='https://www.cochranfilms.com/portfolio'" data-aos="zoom-in" data-aos-delay="1300">View Portfolio</button>
+          <button class="cta-primary" onclick="openBookingModal()" data-aos="zoom-in" data-aos-delay="1200">Start Your Project</button>
+          <button class="cta-secondary" onclick="window.open('https://www.cochranfilms.com/portfolio', '_blank')" data-aos="zoom-in" data-aos-delay="1300">View Portfolio</button>
         </div>
       </div>
       
@@ -11203,7 +9965,7 @@
     <div class="photo-section-header">
       <h2><i class="fas fa-camera-retro"></i> Professional Event Photography and On-Site Printing</h2>
       <p>From timeless portraits to dynamic brand visuals, our photography services are tailored to tell your story with clarity, creativity, and style. With years of experience and a deep understanding of visual impact, we're here to help your moments shine—whether it's personal, professional, or promotional.</p>
-      <button class="book-now-btn" onclick="openBookingModal(true)">Book Now</button>
+      <button class="book-now-btn" onclick="openPhotoBookingModal()">Book Now</button>
     </div>
     
     <!-- Cinematic Masonry Gallery -->
@@ -11211,14 +9973,14 @@
       <div class="masonry-grid">
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_e273fde6086f492fafe4a59fb195360b~mv2.jpg" alt="Professional Event Photography" loading="lazy" decoding="async" width="400" height="300">
+            <img src="https://static.wixstatic.com/media/aeef42_e273fde6086f492fafe4a59fb195360b~mv2.jpg" alt="Professional Event Photography" loading="lazy">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
                 <p>Capturing your special moments</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11227,14 +9989,14 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Portrait Photography" loading="lazy" decoding="async" width="400" height="300">
+            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Portrait Photography" loading="lazy">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
                 <p>High-quality image capture</p>
                 <div class="overlay-actions">
-                  <button class="view-btn" onclick="openLightbox(this)" aria-label="View portrait photography">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()" aria-label="Go to Service Package Builder">Book Now</button>
+                  <button class="view-btn" onclick="openLightbox(this)">View</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11243,14 +10005,14 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy" decoding="async" width="400" height="300">
+            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
                 <p>Creative visual storytelling</p>
                 <div class="overlay-actions">
-                  <button class="view-btn" onclick="openLightbox(this)" aria-label="View brand photography">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()" aria-label="Go to Service Package Builder">Book Now</button>
+                  <button class="view-btn" onclick="openLightbox(this)">View</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11259,14 +10021,14 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy" decoding="async" width="400" height="300">
+            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
                 <p>Event coverage excellence</p>
                 <div class="overlay-actions">
-                  <button class="view-btn" onclick="openLightbox(this)" aria-label="View corporate event photography">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()" aria-label="Go to Service Package Builder">Book Now</button>
+                  <button class="view-btn" onclick="openLightbox(this)">View</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11282,7 +10044,7 @@
                 <p>On-site printing services</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11298,7 +10060,7 @@
                 <p>Business portrait sessions</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11314,7 +10076,7 @@
                 <p>Product showcase excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11330,7 +10092,7 @@
                 <p>Special event coverage</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11346,7 +10108,7 @@
                 <p>Instant print services</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11362,7 +10124,7 @@
                 <p>Portrait session excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11378,7 +10140,7 @@
                 <p>Creative visual solutions</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
+                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -11415,6 +10177,288 @@
     <div class="lightbox-modal" id="lightboxModal">
       <span class="lightbox-close" id="lightboxClose">&times;</span>
       <img class="lightbox-content" id="lightboxImg" src="" alt="Large Photo">
+    </div>
+  </section>
+
+
+
+  <!-- Premium Agency Comparison Section -->
+  <section class="agency-comparison-section">
+    <div class="comparison-container">
+      <h2 class="section-title">📉 What Most Agencies Still Don't Know</h2>
+      <p class="section-subtitle">The gap between average agencies and true professionals</p>
+      
+      <div class="comparison-grid">
+        <div class="comparison-column">
+          <div class="column-header negative">
+            <div class="header-icon">
+              <i class="fas fa-chart-line-down"></i>
+            </div>
+            <h3>What Most Agencies Still Don't Know</h3>
+          </div>
+          <div class="comparison-list">
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>Schema Markup?</span>
+            </div>
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>Google Search Console Setup</span>
+            </div>
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>Missing Rich Results</span>
+            </div>
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>No Backend Validation</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comparison-column">
+          <div class="column-header positive">
+            <div class="header-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>What We Deliver at Cochran Films</h3>
+          </div>
+          <div class="comparison-list">
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>SEO Mastery</span>
+            </div>
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>CRM + Workflow Setup</span>
+            </div>
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>Conversion-Driven UI/UX</span>
+            </div>
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>Visual Media</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="deliver-section">
+    <div class="deliver-container">
+      <h2 class="section-title">✅ What We Deliver at Cochran Films</h2>
+      <p class="section-subtitle">Comprehensive solutions that drive results and exceed expectations</p>
+      
+      <div class="deliver-grid">
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>SEO Mastery</h3>
+          <p>Schema, metadata, indexation, rich results</p>
+        </div>
+        
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>CRM + Workflow Setup</h3>
+          <p>Lead forms, automations, integrations</p>
+        </div>
+        
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-mouse-pointer"></i>
+          </div>
+          <h3>Conversion-Driven UI/UX</h3>
+          <p>From homepage to booking</p>
+        </div>
+        
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3>Visual Media</h3>
+          <p>Photography, branded content, promotional reels, podcasts, full video production, and more!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Real stories from real clients who trusted us with their vision</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Cochran Films transformed our event into a cinematic masterpiece. The quality exceeded our expectations and the turnaround time was incredible. Worth every penny!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Sarah Johnson</h4>
+                <span>Event Director, TechCorp</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card featured glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="400">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Working with Cody was a game-changer for our brand. His attention to detail and creative vision brought our story to life in ways we never imagined possible."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Michael Chen</h4>
+                <span>CEO, StartupXYZ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="600">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"The consultation alone was worth the investment. Cody's expertise helped us understand exactly what we needed and delivered beyond our expectations."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Emily Rodriguez</h4>
+                <span>Marketing Manager, GrowthCo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- AI: Insert testimonial interaction tracking here -->
+      <div class="testimonials-stats">
+        <div class="stat-item">
+          <div class="stat-number" data-target="150">0</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="24">0</div>
+          <div class="stat-label">Hour Turnaround</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison-section">
+    <div class="comparison-container">
+      <h2 class="section-title">📊 How We Compare</h2>
+      <p class="section-subtitle">See why clients choose Cochran Films over typical agencies</p>
+      
+      <div class="comparison-content">
+        <div class="comparison-key">
+          <span class="cf-key"><i class="fas fa-star"></i> Cochran Films</span>
+          <span class="ta-key"><i class="fas fa-building"></i> Typical Agency</span>
+        </div>
+        
+        <div class="comparison-bars">
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-dollar-sign"></i> Value for Money</span>
+              <div class="metric-details">
+                <span class="cf-value">$1200</span>
+                <span class="ta-value">$2500</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: $1200">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: $2500">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-bolt"></i> Turnaround Time</span>
+              <div class="metric-details">
+                <span class="cf-value">24-48 hours</span>
+                <span class="ta-value">1-2 weeks</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: 24-48 hours">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: 1-2 weeks">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-trophy"></i> Quality/Results</span>
+              <div class="metric-details">
+                <span class="cf-value">Premium quality</span>
+                <span class="ta-value">Standard quality</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: Premium quality">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: Standard quality">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-headset"></i> Customer Support</span>
+              <div class="metric-details">
+                <span class="cf-value">Direct communication</span>
+                <span class="ta-value">Account managers</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: Direct communication">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: Account managers">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -12139,923 +11183,8 @@
     </div>
   </section>
 
-  <!-- Premium Agency Comparison Section -->
-  <section class="agency-comparison-section">
-    <div class="comparison-container">
-      <h2 class="section-title">📉 What Most Agencies Still Don't Know</h2>
-      <p class="section-subtitle">The gap between average agencies and true professionals</p>
-      
-      <div class="comparison-grid">
-        <div class="comparison-column">
-          <div class="column-header negative">
-            <div class="header-icon">
-              <i class="fas fa-chart-line-down"></i>
-            </div>
-            <h3>What Most Agencies Still Don't Know</h3>
-          </div>
-          <div class="comparison-list">
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>Schema Markup?</span>
-            </div>
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>Google Search Console Setup</span>
-            </div>
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>Missing Rich Results</span>
-            </div>
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>No Backend Validation</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="comparison-column">
-          <div class="column-header positive">
-            <div class="header-icon">
-              <i class="fas fa-check-circle"></i>
-            </div>
-            <h3>What We Deliver at Cochran Films</h3>
-          </div>
-          <div class="comparison-list">
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>SEO Mastery</span>
-            </div>
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>CRM + Workflow Setup</span>
-            </div>
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>Conversion-Driven UI/UX</span>
-            </div>
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>Visual Media</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="deliver-section">
-    <div class="deliver-container">
-      <h2 class="section-title">✅ What We Deliver at Cochran Films</h2>
-      <p class="section-subtitle">Comprehensive solutions that drive results and exceed expectations</p>
-      
-      <div class="deliver-grid">
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-search"></i>
-          </div>
-          <h3>SEO Mastery</h3>
-          <p>Schema, metadata, indexation, rich results</p>
-        </div>
-        
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-cogs"></i>
-          </div>
-          <h3>CRM + Workflow Setup</h3>
-          <p>Lead forms, automations, integrations</p>
-        </div>
-        
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-mouse-pointer"></i>
-          </div>
-          <h3>Conversion-Driven UI/UX</h3>
-          <p>From homepage to booking</p>
-        </div>
-        
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-camera"></i>
-          </div>
-          <h3>Visual Media</h3>
-          <p>Photography, branded content, promotional reels, podcasts, full video production, and more!</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium Testimonials Section -->
-  <section class="testimonials-section">
-    <div class="testimonials-container">
-      <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Real stories from real clients who trusted us with their vision</p>
-      
-      <div class="testimonials-grid">
-        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="200">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Cochran Films transformed our event into a cinematic masterpiece. The quality exceeded our expectations and the turnaround time was incredible. Worth every penny!"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="author-info">
-                <h4>Sarah Johnson</h4>
-                <span>Event Director, TechCorp</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card featured glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="400">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Working with Cody was a game-changer for our brand. His attention to detail and creative vision brought our story to life in ways we never imagined possible."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="author-info">
-                <h4>Michael Chen</h4>
-                <span>CEO, StartupXYZ</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="600">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"The consultation alone was worth the investment. Cody's expertise helped us understand exactly what we needed and delivered beyond our expectations."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="author-info">
-                <h4>Emily Rodriguez</h4>
-                <span>Marketing Manager, GrowthCo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- AI: Insert testimonial interaction tracking here -->
-      <div class="testimonials-stats">
-        <div class="stat-item">
-          <div class="stat-number" data-target="150">0</div>
-          <div class="stat-label">Happy Clients</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="500">0</div>
-          <div class="stat-label">Projects Completed</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="98">0</div>
-          <div class="stat-label">Satisfaction Rate</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="24">0</div>
-          <div class="stat-label">Hour Turnaround</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="comparison-section">
-    <div class="comparison-container">
-      <h2 class="section-title">📊 How We Compare</h2>
-      <p class="section-subtitle">See why clients choose Cochran Films over typical agencies</p>
-      
-      <div class="comparison-content">
-        <div class="comparison-key">
-          <span class="cf-key"><i class="fas fa-star"></i> Cochran Films</span>
-          <span class="ta-key"><i class="fas fa-building"></i> Typical Agency</span>
-        </div>
-        
-        <div class="comparison-bars">
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-dollar-sign"></i> Value for Money</span>
-              <div class="metric-details">
-                <span class="cf-value">$1200</span>
-                <span class="ta-value">$2500</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: $1200">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: $2500">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-bolt"></i> Turnaround Time</span>
-              <div class="metric-details">
-                <span class="cf-value">24-48 hours</span>
-                <span class="ta-value">1-2 weeks</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: 24-48 hours">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: 1-2 weeks">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-trophy"></i> Quality/Results</span>
-              <div class="metric-details">
-                <span class="cf-value">Premium quality</span>
-                <span class="ta-value">Standard quality</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: Premium quality">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: Standard quality">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-headset"></i> Customer Support</span>
-              <div class="metric-details">
-                <span class="cf-value">Direct communication</span>
-                <span class="ta-value">Account managers</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: Direct communication">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: Account managers">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 🎬 Our Media Services (Breakdown) Section -->
+  <!-- Cinematic Services Section -->
   <section class="services-section">
-    <div class="services-container">
-      <h2 class="section-title" data-aos="fade-up">🎬 Our Media Services (Breakdown)</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Comprehensive solutions that transform your vision into compelling content</p>
-      
-      <div class="cinematic-services-grid">
-        <div class="service-card cinematic glass-enhanced neon-glow" data-aos="flip-left" data-aos-delay="200">
-          <div class="service-glow"></div>
-          <div class="service-icon">
-            <i class="fas fa-video"></i>
-          </div>
-          <div class="service-content">
-            <h3>Full-Service Videography</h3>
-            <p>Professional video production from concept to final cut. We handle everything from pre-production planning to post-production editing, ensuring your story is told with cinematic quality.</p>
-            <div class="service-features">
-              <span>Pre-Production</span>
-              <span>On-Site Filming</span>
-              <span>Post-Production</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="service-card cinematic featured glass-enhanced neon-glow" data-aos="flip-left" data-aos-delay="400">
-          <div class="service-glow"></div>
-          <div class="service-icon">
-            <i class="fas fa-camera"></i>
-          </div>
-          <div class="service-content">
-            <h3>Event Photography & Instant Prints</h3>
-            <p>Capture every moment with professional event photography and on-site instant printing. Perfect for corporate events, weddings, and special occasions.</p>
-            <div class="service-features">
-              <span>Live Photography</span>
-              <span>Instant Prints</span>
-              <span>Event Coverage</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="service-card cinematic glass-enhanced neon-glow" data-aos="flip-left" data-aos-delay="600">
-          <div class="service-glow"></div>
-          <div class="service-icon">
-            <i class="fas fa-code"></i>
-          </div>
-          <div class="service-content">
-            <h3>Web Design + SEO</h3>
-            <p>Custom websites that convert visitors into customers. Professional design combined with search engine optimization to grow your online presence.</p>
-            <div class="service-features">
-              <span>Custom Design</span>
-              <span>SEO Optimization</span>
-              <span>Mobile Responsive</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="service-card cinematic glass-enhanced neon-glow" data-aos="flip-left" data-aos-delay="800">
-          <div class="service-glow"></div>
-          <div class="service-icon">
-            <i class="fas fa-palette"></i>
-          </div>
-          <div class="service-content">
-            <h3>Brand Development</h3>
-            <p>Complete brand identity packages that tell your story. From logo design to brand guidelines, we create cohesive visual identities that resonate with your audience.</p>
-            <div class="service-features">
-              <span>Logo Design</span>
-              <span>Brand Guidelines</span>
-              <span>Marketing Materials</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="hero-cta" style="margin-top: 3rem; justify-content: center;">
-        <button class="cta-primary" onclick="openBookingModal(true)">Start Your Project</button>
-        <button class="cta-secondary" onclick="window.location.href='https://www.cochranfilms.com/portfolio'">View Portfolio</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cinematic Timeline Section -->
-  <section class="timeline-section">
-    <div class="timeline-container">
-      <h2 class="section-title" data-aos="fade-up">📅 Our Journey: Timeline</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">The story of how passion became profession</p>
-      
-      <div class="cinematic-timeline">
-        <div class="timeline-track">
-          <div class="timeline-progress"></div>
-        </div>
-        
-        <div class="timeline-milestones">
-          <div class="milestone-card glass-enhanced neon-glow" data-year="2020" data-aos="fade-right" data-aos-delay="200">
-            <div class="milestone-glow"></div>
-            <div class="milestone-icon">
-              <i class="fas fa-magic"></i>
-            </div>
-            <div class="milestone-content">
-              <div class="milestone-year">2020</div>
-              <div class="milestone-title">KoKhran FX is Born</div>
-              <div class="milestone-description">Specializing in music visuals & effects</div>
-              <div class="milestone-story">
-                <p>Countless late nights learning editing software, hustling for the first clients, and turning passion into skill. Every project was a new challenge, and every mistake was a lesson. This is where the foundation was built—one frame at a time.</p>
-              </div>
-            </div>
-            <div class="milestone-connection"></div>
-          </div>
-          
-          <div class="milestone-card glass-enhanced neon-glow" data-year="2022" data-aos="fade-left" data-aos-delay="400">
-            <div class="milestone-glow"></div>
-            <div class="milestone-icon">
-              <i class="fas fa-handshake"></i>
-            </div>
-            <div class="milestone-content">
-              <div class="milestone-year">2022</div>
-              <div class="milestone-title">Back in FX Launches</div>
-              <div class="milestone-description">Business merger with Moe</div>
-              <div class="milestone-story">
-                <p>Strategic partnership that expanded our creative capabilities and client base. Learning the business side of creativity while maintaining artistic integrity. This merger taught us that collaboration amplifies innovation.</p>
-              </div>
-            </div>
-            <div class="milestone-connection"></div>
-          </div>
-          
-          <div class="milestone-card graduate glass-enhanced neon-glow" data-year="2024" data-aos="fade-right" data-aos-delay="600">
-            <div class="milestone-glow"></div>
-            <div class="milestone-icon">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="milestone-content">
-              <div class="milestone-year">Summer 2024</div>
-              <div class="milestone-title">Full Sail Graduate</div>
-              <div class="milestone-description">Degree in Film achieved!</div>
-              <div class="milestone-story">
-                <p>Hard studying, late-night editing sessions, and relentless pursuit of creative excellence. Proud to graduate from Full Sail University with a degree in Film. New skills, new network, and a world of opportunity ahead!</p>
-              </div>
-            </div>
-            <div class="milestone-connection"></div>
-          </div>
-          
-          <div class="milestone-card glass-enhanced neon-glow" data-year="2024" data-aos="fade-left" data-aos-delay="800">
-            <div class="milestone-glow"></div>
-            <div class="milestone-icon">
-              <i class="fas fa-film"></i>
-            </div>
-            <div class="milestone-content">
-              <div class="milestone-year">2024</div>
-              <div class="milestone-title">Cochran Films Scales</div>
-              <div class="milestone-description">Professional brand evolution</div>
-              <div class="milestone-story">
-                <p>Transitioning from individual projects to building a brand that serves clients at scale. Every story matters, and we're here to tell them all. This is where passion meets professionalism—delivering premium results for every client.</p>
-              </div>
-            </div>
-            <div class="milestone-connection"></div>
-          </div>
-          
-          <div class="milestone-card glass-enhanced neon-glow" data-year="2025" data-aos="fade-right" data-aos-delay="1000">
-            <div class="milestone-glow"></div>
-            <div class="milestone-icon">
-              <i class="fas fa-camera"></i>
-            </div>
-            <div class="milestone-content">
-              <div class="milestone-year">2025</div>
-              <div class="milestone-title">Mobile Event Printing</div>
-              <div class="milestone-description">On-site photography services</div>
-              <div class="milestone-story">
-                <p>Expanding our services to include on-site event photography with instant printing capabilities. Bringing professional photography and immediate gratification to events, weddings, and corporate functions.</p>
-              </div>
-            </div>
-            <div class="milestone-connection"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium Testimonials Section -->
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="live-production-5hr">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-satellite-dish"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Live Production (Up to 3 Cameras)</h4>
-                  <p>5 Hours + Production Edit with multi-camera setup</p>
-                </div>
-              </div>
-              <div class="service-price">$3,000</div>
-              <div class="service-duration">5 Hours + Edit</div>
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="live-production-8hr">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-tower-broadcast"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Live Production (Up to 3 Cameras)</h4>
-                  <p>8 Hours + Production Edit with multi-camera setup</p>
-                </div>
-              </div>
-              <div class="service-price">$4,000</div>
-              <div class="service-duration">8 Hours + Edit</div>
-            </div>
-            
-            <!-- Podcast Services -->
-            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-1hr">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-podcast"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Podcast + Edits (2 Cameras)</h4>
-                  <p>1 Hour podcast recording with full editing</p>
-                </div>
-              </div>
-              <div class="service-price">$750</div>
-              <div class="service-duration">1 Hour</div>
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-2hr">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-microphone"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Podcast + Edits (2 Cameras)</h4>
-                  <p>2 Hour podcast recording with full editing</p>
-                </div>
-              </div>
-              <div class="service-price">$1,000</div>
-              <div class="service-duration">2 Hours</div>
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-3hr">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-headphones"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Podcast + Edits (2 Cameras)</h4>
-                  <p>3 Hour podcast recording with full editing</p>
-                </div>
-              </div>
-              <div class="service-price">$1,500</div>
-              <div class="service-duration">3 Hours</div>
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-shoot-only">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-camera-retro"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Podcast Shoot Only</h4>
-                  <p>Recording only, no editing included</p>
-                </div>
-              </div>
-              <div class="service-price">$250</div>
-              <div class="service-duration">Per Hour</div>
-            </div>
-            
-            <!-- Commercial Services -->
-            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-basic">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-ad"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Basic Commercial Shoot</h4>
-                  <p>Single camera operator, 3 hours, no direction</p>
-                </div>
-              </div>
-              <div class="service-price">$750</div>
-
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-edit">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-cut"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Commercial Shoot + Edit</h4>
-                  <p>Single camera operator, 3-5 hours filming + edit</p>
-                </div>
-              </div>
-              <div class="service-price">$1,500</div>
-              <div class="service-duration">Single Camera, 3-5 hrs + Edit</div>
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-directed">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-bullhorn"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Directed Commercial Shoot</h4>
-                  <p>Pre-production planning + script direction + 4-6 hrs filming + full edit</p>
-                </div>
-              </div>
-              <div class="service-price">$2,500</div>
-              <div class="service-duration">Pre-Production + 4-6 hrs + Edit</div>
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-full">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-crown"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Full Commercial Package</h4>
-                  <p>Full creative direction + full-day shoot with 4-5 person crew + script, production, and editing</p>
-                </div>
-              </div>
-              <div class="service-price">$5,500</div>
-              <div class="service-duration">Full Creative Direction + Crew</div>
-            </div>
-            
-            <!-- Retainer Category -->
-            <div class="service-section-header" data-category="retainer">Monthly Packages</div>
-            
-            <div class="service-item" data-category="retainer" draggable="true" data-service="fast-frame-monthly">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-bolt"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Fast Frame (1 Month)</h4>
-                  <p>Perfect for quick turnaround - 4 professionally crafted videos OR 3 fully produced podcasts</p>
-                </div>
-              </div>
-              <div class="service-price">$2,500</div>
-              <div class="service-duration">4 Videos OR 3 Podcasts</div>
-            </div>
-            
-            <div class="service-item" data-category="retainer" draggable="true" data-service="cinematic-spotlight">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-star"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Cinematic Spotlight (2 Months)</h4>
-                  <p>Consistent, impactful content - 6 expertly produced videos OR 5 fully produced podcasts</p>
-                </div>
-              </div>
-              <div class="service-price">$4,800</div>
-              <div class="service-duration">6 Videos OR 5 Podcasts</div>
-            </div>
-            
-            <div class="service-item" data-category="retainer" draggable="true" data-service="masterpiece-collection">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-trophy"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Masterpiece Collection (3 Months)</h4>
-                  <p>Sustained professional touch - 9 high-quality videos OR 7 seamless podcasts with 24/7 support</p>
-                </div>
-              </div>
-              <div class="service-price">$7,000</div>
-              <div class="service-duration">9 Videos OR 7 Podcasts</div>
-            </div>
-            
-            <!-- Videography Add-ons -->
-            <div class="service-section-header" data-category="videography">Add-ons</div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="rush-editing-video">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-clock"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Rush Editing</h4>
-                  <p>Rush delivery for urgent projects</p>
-                </div>
-              </div>
-              <div class="service-price">$75</div>
-              <div class="service-duration">Rush delivery</div>
-            </div>
-            
-            <div class="service-item" data-category="videography" draggable="true" data-service="travel-fee-video">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-car"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Travel Fee</h4>
-                  <p>Additional fee for travel to location</p>
-                </div>
-              </div>
-              <div class="service-price">$50</div>
-              <div class="service-duration">Per event</div>
-            </div>
-            
-            <!-- Branding Category -->
-            <div class="service-section-header" data-category="branding">Main Services</div>
-            
-            <div class="service-item" data-category="branding" draggable="true" data-service="ignite-brand">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-fire"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Ignite Package</h4>
-                  <p>Custom Logo Design, 1-Page Landing Website, Basic Content Strategy</p>
-                </div>
-              </div>
-              <div class="service-price">$900</div>
-
-            </div>
-            
-            <div class="service-item" data-category="branding" draggable="true" data-service="collaborate-brand">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-handshake"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Collaborate Package</h4>
-                  <p>Everything in Ignite + Multi-Page Website, Social Media Setup</p>
-                </div>
-              </div>
-              <div class="service-price">$1,800</div>
-
-            </div>
-            
-            <div class="service-item" data-category="branding" draggable="true" data-service="transform-brand">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-magic"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Transform Package</h4>
-                  <p>Everything in Collaborate + E-Commerce, Advanced Website Features</p>
-                </div>
-              </div>
-              <div class="service-price">$3,500</div>
-
-            </div>
-            
-            <!-- Branding Add-ons -->
-            <div class="service-section-header" data-category="branding">Add-ons</div>
-            
-            <div class="service-item" data-category="branding" draggable="true" data-service="logo-design">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-palette"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Logo Design</h4>
-                  <p>3 custom concepts, 2 revision rounds, Full branding kit</p>
-                </div>
-              </div>
-              <div class="service-price">$250</div>
-              <div class="service-duration">Color palette & fonts</div>
-            </div>
-            
-            <!-- Printing Category -->
-            <div class="service-section-header" data-category="printing">Main Services</div>
-            
-            <div class="service-item" data-category="printing" draggable="true" data-service="quick-print-4x6">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-print"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Quick Print Booth (4x6)</h4>
-                  <p>1 Hour operation, Up to 100 prints, On-site technician</p>
-                </div>
-              </div>
-              <div class="service-price">$500</div>
-              <div class="service-duration">4x6 Prints</div>
-            </div>
-            
-            <div class="service-item" data-category="printing" draggable="true" data-service="signature-snap-4x6">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-images"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Signature Snap Station (4x6)</h4>
-                  <p>2 Hours operation, Up to 200 prints, Premium backdrop</p>
-                </div>
-              </div>
-              <div class="service-price">$800</div>
-              <div class="service-duration">Table Setup & Lighting</div>
-            </div>
-            
-            <div class="service-item" data-category="printing" draggable="true" data-service="legacy-lab-4x6">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-trophy"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Legacy Lab Experience (4x6)</h4>
-                  <p>3 Hours operation, Up to 350 prints, 2-Person print team</p>
-                </div>
-              </div>
-              <div class="service-price">$1,100</div>
-              <div class="service-duration">Real-time photo review</div>
-            </div>
-            
-            <!-- Website Add-ons -->
-            <div class="service-section-header" data-category="website">Add-ons</div>
-            
-            <div class="service-item" data-category="website" draggable="true" data-service="seo-boost">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="service-info">
-                  <h4>SEO Boost Package</h4>
-                  <p>Keyword research, Meta tag optimization, Sitemap submission</p>
-                </div>
-              </div>
-              <div class="service-price">$250</div>
-              <div class="service-duration">Google submission</div>
-            </div>
-            
-            <div class="service-item" data-category="website" draggable="true" data-service="google-business">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fab fa-google"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Google Business Profile Setup</h4>
-                  <p>Claim, verify, and fully set up your business profile</p>
-                </div>
-              </div>
-              <div class="service-price">$100</div>
-              <div class="service-duration">Link to website</div>
-            </div>
-            
-            <div class="service-item" data-category="website" draggable="true" data-service="newsletter-integration">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Newsletter Integration</h4>
-                  <p>Mailchimp/ConvertKit setup, Signup forms, Welcome sequence</p>
-                </div>
-              </div>
-              <div class="service-price">$125</div>
-              <div class="service-duration">Email platform link</div>
-            </div>
-            
-
-            
-            <!-- Website Maintenance -->
-            <div class="service-section-header" data-category="website">Website Maintenance</div>
-            
-            <div class="service-item" data-category="website" draggable="true" data-service="basic-maintenance">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-tools"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Basic Maintenance</h4>
-                  <p>Monthly security checks, Plugin/theme updates, Performance monitoring</p>
-                </div>
-              </div>
-              <div class="service-price">$45</div>
-              <div class="service-duration">Per month</div>
-            </div>
-            
-            <div class="service-item" data-category="website" draggable="true" data-service="business-maintenance">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-cogs"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Business Maintenance</h4>
-                  <p>All Basic features + 1 monthly update request, Priority support</p>
-                </div>
-              </div>
-              <div class="service-price">$95</div>
-              <div class="service-duration">Per month</div>
-            </div>
-            
-            <div class="service-item" data-category="website" draggable="true" data-service="full-support">
-              <div class="service-item-header">
-                <div class="service-icon">
-                  <i class="fas fa-shield-alt"></i>
-                </div>
-                <div class="service-info">
-                  <h4>Full Support Plan</h4>
-                  <p>All Business features + Up to 3 updates/month, Emergency bug fixing</p>
-                </div>
-              </div>
-              <div class="service-price">$195</div>
-              <div class="service-duration">Per month</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Package Builder -->
-        <div class="package-builder">
-          <div class="builder-header">
-            <h3>Your Package</h3>
-            <p>Drag services here to build your custom package</p>
-          </div>
-          
-          <div class="package-dropzone" id="packageDropzone">
-            <div class="dropzone-placeholder">
-              <div class="dropzone-icon">
-                <i class="fas fa-plus"></i>
-              </div>
-              <p>Drag services here to start building your package</p>
-              <small>Mix and match services to create your perfect solution</small>
-            </div>
-          </div>
-          
-          <div class="selected-services" id="selectedServices" style="display: none;">
-            <!-- Selected services will be added here -->
-          </div>
-          
-          <div class="quote-summary" id="quoteSummary" style="display: none;">
-            <div class="quote-header">
-              <h4>Quote Summary</h4>
-            </div>
-            <div class="quote-total" id="quoteTotal">$0</div>
-            <div class="quote-breakdown" id="quoteBreakdown">
-              <!-- Quote breakdown will be populated here -->
-            </div>
-            <div class="quote-actions">
-              <button class="btn-generate-invoice" id="generateInvoice">
-                <i class="fas fa-file-invoice-dollar"></i>
-                Create Project Request
-              </button>
-              <button class="btn-clear-package" id="clearPackage">
-                <i class="fas fa-trash"></i>
-                Clear Package
-              </button>
-            </div>
-          </div>
-        </div>
     <div class="services-container">
       <h2 class="section-title" data-aos="fade-up">🎬 Our Media Services (Breakdown)</h2>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Comprehensive solutions that transform your vision into compelling content</p>
@@ -13129,8 +11258,8 @@
       <!-- CTA Buttons -->
       <!-- AI: Insert service-card interaction tracking here -->
       <div class="hero-cta service-cta-buttons">
-        <button class="cta-primary" onclick="openBookingModal(true)">Start Your Project</button>
-        <button class="cta-secondary" onclick="window.location.href='https://www.cochranfilms.com/portfolio'">View Portfolio</button>
+        <button class="cta-primary" onclick="openBookingModal()">Start Your Project</button>
+        <button class="cta-secondary" onclick="window.open('https://www.cochranfilms.com/portfolio', '_blank')">View Portfolio</button>
       </div>
     </div>
   </section>
@@ -13338,99 +11467,32 @@
 
 
   <script>
-  // 📱 ENHANCED MOBILE OPTIMIZATION SYSTEM WITH ACCESSIBILITY
+  // 📱 MILLION DOLLAR MOBILE OPTIMIZATION SYSTEM
   
-  // 📱 ENHANCED GLOBAL MOBILE STATE MANAGEMENT
+  // Global mobile state management
   window.mobileState = {
     modalOpen: false,
     navOpen: false,
-    preventAutoModal: true,
-    isMobile: window.innerWidth <= 768,
-    isUltraMobile: window.innerWidth <= 480,
-    touchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
-    reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    preventAutoModal: true
   };
   
-  // 📱 UNIFIED MOBILE DETECTION FUNCTION
-  function isMobileDevice() {
-    // Always return current mobile state to handle orientation changes
-    return window.innerWidth <= 768;
-  }
-  
-  // 📱 UPDATE MOBILE STATE ON RESIZE
-  function updateMobileState() {
-    const wasMobile = window.mobileState.isMobile;
-    window.mobileState.isMobile = isMobileDevice();
-    window.mobileState.isUltraMobile = window.innerWidth <= 480;
-    
-    // If switching between mobile/desktop, close any open mobile navigation
-    if (wasMobile !== window.mobileState.isMobile && window.mobileState.navOpen) {
-      closeMobileNav();
-    }
-    
-    // Re-initialize behaviors for the new screen size
-    initializeMobileDesktopBehavior();
-  }
-  
-  // Listen for orientation/resize changes
-  window.addEventListener('resize', updateMobileState);
-  window.addEventListener('orientationchange', () => {
-    setTimeout(updateMobileState, 100); // Small delay for orientation change
-  });
-  
-  // 📱 ENHANCED MOBILE NAVIGATION FUNCTIONS
+  // 📱 Enhanced Mobile Navigation Functions
   function toggleMobileNav() {
     const toggle = document.getElementById('mobileNavToggle');
     const overlay = document.getElementById('mobileNavOverlay');
     
-    if (!toggle || !overlay) {
-      return;
-    }
-    
-    const isOpen = window.mobileState.navOpen;
-    
-    if (isOpen) {
-      closeMobileNav();
-    } else {
-      openMobileNav();
-    }
-  }
-  
-  function openMobileNav() {
-    const toggle = document.getElementById('mobileNavToggle');
-    const overlay = document.getElementById('mobileNavOverlay');
-    
-    if (!toggle || !overlay) return;
-    
-    try {
-      // Update state
-      window.mobileState.navOpen = true;
+    if (toggle && overlay) {
+      const isActive = overlay.classList.contains('active');
       
-      // Update UI with proper hamburger menu transformation
-      toggle.classList.add('active');
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Close menu');
-      
-      overlay.classList.add('active');
-      overlay.style.display = 'flex';
-      overlay.setAttribute('aria-hidden', 'false');
-      
-      // Prevent body scrolling
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      
-      // Focus management for accessibility
-      const firstMenuItem = overlay.querySelector('a');
-      if (firstMenuItem) {
-        setTimeout(() => firstMenuItem.focus(), 150);
+      if (isActive) {
+        closeMobileNav();
+      } else {
+        toggle.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        window.mobileState.navOpen = true;
+        console.log('📱 Mobile nav opened');
       }
-      
-      // Add escape key listener
-      document.addEventListener('keydown', handleMobileNavKeydown);
-      
-    } catch (error) {
-      console.error('Error opening mobile nav:', error);
     }
   }
   
@@ -13438,151 +11500,14 @@
     const toggle = document.getElementById('mobileNavToggle');
     const overlay = document.getElementById('mobileNavOverlay');
     
-    if (!toggle || !overlay) return;
-    
-    try {
-      // Update state
-      window.mobileState.navOpen = false;
-      
-      // Update UI
+    if (toggle && overlay) {
       toggle.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
-      
       overlay.classList.remove('active');
-      overlay.setAttribute('aria-hidden', 'true');
-      
-      setTimeout(() => {
-        if (!window.mobileState.navOpen) {
-          overlay.style.display = 'none';
-        }
-      }, 300);
-      
-      // Restore body scrolling
       document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      
-      // Return focus to toggle button
-      if (document.activeElement !== toggle) {
-        toggle.focus();
-      }
-      
-      // Remove escape key listener
-      document.removeEventListener('keydown', handleMobileNavKeydown);
-      
-    } catch (error) {
-      console.error('Error closing mobile nav:', error);
+      window.mobileState.navOpen = false;
+      console.log('📱 Mobile nav closed');
     }
   }
-  
-  function handleMobileNavKeydown(e) {
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      closeMobileNav();
-    }
-  }
-  
-  // Initialize mobile navigation
-  document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.getElementById('mobileNavToggle');
-    if (toggle) {
-      toggle.addEventListener('click', toggleMobileNav);
-    }
-    
-    // Close nav when clicking outside
-    const overlay = document.getElementById('mobileNavOverlay');
-    if (overlay) {
-      overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) {
-          closeMobileNav();
-        }
-      });
-    }
-    
-    // Make functions globally available
-    window.toggleMobileNav = toggleMobileNav;
-    window.closeMobileNav = closeMobileNav;
-  });
-  
-  // 📱 ENHANCED MOBILE/DESKTOP BEHAVIOR HANDLING
-  function initializeMobileDesktopBehavior() {
-    if (isMobileDevice()) {
-      console.log('📱 Mobile device detected - initializing mobile behaviors');
-      
-      // Prevent double-tap zoom on buttons and interactive elements
-      document.addEventListener('touchend', function(e) {
-        if (e.target.tagName === 'BUTTON' || 
-            e.target.classList.contains('btn') || 
-            e.target.classList.contains('service-item') ||
-            e.target.classList.contains('masonry-item')) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-      
-      // Add mobile-specific touch handling
-      document.addEventListener('touchstart', function() {
-        document.body.classList.add('touching');
-      }, { passive: true });
-      
-      document.addEventListener('touchend', function() {
-        setTimeout(() => {
-          document.body.classList.remove('touching');
-        }, 300);
-      }, { passive: true });
-      
-      // Close mobile nav on scroll for better UX
-      document.addEventListener('scroll', function() {
-        if (window.mobileState.navOpen) {
-          closeMobileNav();
-        }
-      }, { passive: true });
-      
-      // Ensure mobile-specific modal behavior
-      document.body.classList.add('mobile-device');
-      
-      console.log('📱 Mobile optimizations complete');
-    } else {
-      console.log('🖥️ Desktop device detected - initializing desktop behaviors');
-      document.body.classList.add('desktop-device');
-      document.body.classList.remove('mobile-device');
-    }
-  }
-  
-  // Initialize on load and orientation change
-  initializeMobileDesktopBehavior();
-  
-  // 📱 DEBUG FUNCTION FOR MOBILE/DESKTOP DETECTION (PRODUCTION MODE)
-  function debugDeviceDetection() {
-    // Debug information available in development mode
-  }
-  
-  // Make debug function globally available
-  window.debugDeviceDetection = debugDeviceDetection;
-  
-  // 📱 ENHANCED EVENT HANDLING FOR MOBILE/DESKTOP
-  function initializeEventHandling() {
-    // Ensure proper event delegation for mobile vs desktop
-    document.addEventListener('click', function(e) {
-      // Log click events for debugging
-      if (e.target.classList.contains('service-item') || 
-          e.target.classList.contains('masonry-item') ||
-          e.target.closest('.service-item') ||
-          e.target.closest('.masonry-item')) {
-        
-        console.log('📱 Click detected on interactive element:', {
-          target: e.target.className,
-          isMobile: isMobileDevice(),
-          touchDevice: window.mobileState.touchDevice
-        });
-      }
-    });
-  }
-  
-  // Initialize enhanced event handling
-  initializeEventHandling();
-  
-  // 📱 Mobile Navigation Functions (Duplicate removed - using enhanced version above)
   
   // 📱 PREVENT AUTO-MODAL OPENING
   function preventAutoModalOpening() {
@@ -13614,9 +11539,7 @@
   
   // Enhanced cinematic loading animation with production elements
   document.addEventListener('DOMContentLoaded', () => {
-    // Loading screen timing now handled by advanced loader
-    
-    // Cochran Films Production Studio Loading...
+    console.log('🎬 Cochran Films Production Studio Loading...');
     
     // 📱 MILLION DOLLAR MOBILE INITIALIZATION
     
@@ -13806,7 +11729,10 @@
   
   // Mobile optimization function
   function optimizeForMobile() {
-    if (isMobileDevice()) {
+    const isMobile = window.innerWidth <= 768;
+    const isUltraMobile = window.innerWidth <= 480;
+    
+    if (isMobile) {
       console.log('📱 Mobile optimization active');
       
       // Reduce animation complexity for better performance
@@ -13844,7 +11770,9 @@
   
   // 📱 MOBILE SERVICE BUILDER - TAP TO SELECT SYSTEM
   function initializeMobileServiceBuilder() {
-    if (!isMobileDevice()) return; // Only run on mobile
+    const isMobile = window.innerWidth <= 768;
+    
+    if (!isMobile) return; // Only run on mobile
     
     console.log('📱 Initializing Mobile Service Builder...');
     
@@ -13870,7 +11798,7 @@
           </div>
           <div class="mobile-services-list"></div>
           <div class="mobile-quick-actions">
-            <button class="mobile-book-btn" onclick="openBookingModal(true)">
+            <button class="mobile-book-btn" onclick="openBookingModal()">
               📞 Book Now
             </button>
             <button class="mobile-clear-btn" onclick="clearMobilePackage()">
@@ -14070,34 +11998,42 @@
      }, 1000); // Wait for other scripts to load
    }
   
-  // Advanced loading screen styles are in CSS section above
-  
-  // Loading screen now handled by advanced loader script
-  
-  // Initialize features when page loads
   window.addEventListener('load', () => {
-        // Initialize features with error handling
+    console.log('🎬 Rolling cameras... Action!');
+    
+    const isMobile = window.innerWidth <= 768;
+    const isUltraMobile = window.innerWidth <= 480;
+    
+    // Optimize loading time based on device capabilities
+    const loadingDuration = isUltraMobile ? 3000 : isMobile ? 4000 : 5000;
+    const transitionDuration = isMobile ? 0.8 : 1.2;
+    const staggerDelay = isMobile ? 150 : 300;
+    
+    // Allow the cinematic experience to play (optimized for mobile)
+    setTimeout(() => {
+      document.body.classList.add('loaded');
+      console.log('🎬 And... CUT! Welcome to Cochran Films.');
+      
+      // Initialize premium features after the cinematic experience
+      setTimeout(() => {
         try {
-          if (typeof initializePremiumFeatures === 'function') {
-            initializePremiumFeatures();
-          }
-          if (typeof optimizeForMobile === 'function') {
-            optimizeForMobile();
-          }
-          
-          // Initialize AOS if available and not mobile
-          const isMobile = window.innerWidth <= 768;
-          if (!isMobile && typeof AOS !== 'undefined') {
-            AOS.init({
-              duration: 800,
-              easing: 'ease-out',
-              once: true,
-              offset: 100
-            });
-          }
+          initializePremiumFeatures();
+          // Add cinematic entrance effects to main content (mobile optimized)
+          document.querySelectorAll('header, .hero-section').forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = isMobile ? 'translateY(20px)' : 'translateY(30px) scale(0.95)';
+            setTimeout(() => {
+              element.style.transition = `all ${transitionDuration}s cubic-bezier(0.4, 0, 0.2, 1)`;
+              element.style.opacity = '1';
+              element.style.transform = isMobile ? 'translateY(0)' : 'translateY(0) scale(1)';
+            }, index * staggerDelay);
+          });
         } catch (error) {
-          console.error('Feature initialization error:', error);
+          console.error('Production error during initialization:', error);
+          // Ensure page is still functional even if initialization fails
         }
+      }, isMobile ? 200 : 400);
+    }, loadingDuration);
   });
   
   // Countdown Timer Function
@@ -14126,8 +12062,10 @@
   // Production Elements Animation (Mobile Optimized)
   function animateProductionElements() {
     // Detect mobile device
+    const isMobile = window.innerWidth <= 768;
+    
     // Reduce flash effects on mobile to prevent blinking
-    if (!isMobileDevice()) {
+    if (!isMobile) {
       setInterval(() => {
         if (Math.random() < 0.15) { // Reduced frequency for better UX
           createCameraFlash();
@@ -14173,8 +12111,8 @@
     const particleSystem = document.querySelector('.particles-system');
     if (!particleSystem) return;
     
-    const isMobile = isMobileDevice();
-    const isUltraMobile = window.mobileState.isUltraMobile;
+    const isMobile = window.innerWidth <= 768;
+    const isUltraMobile = window.innerWidth <= 480;
     
     // Reduce particle frequency on mobile for better performance
     const interval = isMobile ? (isUltraMobile ? 2000 : 1500) : 800;
@@ -14214,7 +12152,8 @@
   // Handle orientation changes for mobile
   window.addEventListener('orientationchange', () => {
     setTimeout(() => {
-          if (isMobileDevice()) {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
         console.log('📱 Orientation changed - optimizing layout');
         optimizeForMobile();
       }
@@ -14226,77 +12165,27 @@
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-          if (isMobileDevice() && !document.body.classList.contains('loaded')) {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile && !document.body.classList.contains('loaded')) {
         optimizeForMobile();
       }
     }, 250);
   });
   
-  // 🎬 EMERGENCY FALLBACK - LOADING SCREEN SAFETY NET
+  // Fallback safety net (mobile optimized)
   setTimeout(() => {
     if (!document.body.classList.contains('loaded')) {
-      console.log('🎬 Emergency cut: Fallback loading completion');
       document.body.classList.add('loaded');
-      
-      // Re-enable scrolling
-      document.body.style.overflow = '';
-      document.body.style.height = '';
-      
-      // 📱 MOBILE PERFORMANCE INITIALIZATION
-      if (window.innerWidth <= 768) {
-        document.body.style.webkitOverflowScrolling = 'touch';
-        document.body.style.touchAction = 'manipulation';
-        console.log('📱 Emergency mobile optimizations applied');
-      }
+      console.log('🎬 Final cut: Production loading complete');
     }
-  }, 8000); // Maximum 8 seconds before forcing completion
-  
-  // 🎬 ENHANCED CINEMATIC LOADING SCREEN ACTIVATION
-  (function() {
-    // Ensure body is prepared for loading screen
-    document.body.style.overflow = 'hidden';
-    document.body.style.height = '100vh';
-    
-    // Apply enhanced loading screen styles immediately
-    const style = document.createElement('style');
-    style.innerHTML = `
-      #cinematicLoader {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 999999 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        background: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%), linear-gradient(45deg, #000000 0%, #0d0d0d 100%) !important;
-      }
-      
-      .cinematic-loader {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 999999 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-    `;
-    document.head.appendChild(style);
-    
-  })();
+  }, window.innerWidth <= 480 ? 6000 : window.innerWidth <= 768 ? 8000 : 10000);
   
   // Pre-production setup
+  console.log('🎬 Setting up production studio... Lights, Camera, Loading!');
   
   // Performance monitoring for mobile
   if (window.innerWidth <= 768) {
+    console.log('📱 Mobile performance monitoring active');
     
     // Monitor frame rate and adjust accordingly
     let frameCount = 0;
@@ -14313,7 +12202,7 @@
         
         // If FPS is low, reduce animation complexity
         if (fps < 30 && !document.body.classList.contains('loaded')) {
-          // Low FPS detected - reducing animations
+          console.log('📱 Low FPS detected - reducing animations');
           const complexAnimations = document.querySelectorAll('.aperture, .film-reel, .spotlight');
           complexAnimations.forEach(element => {
             element.style.animationDuration = '8s';
@@ -14772,7 +12661,6 @@
       initializeSoundEffects();
       initializeGamification();
       initializeHeaderInteractions();
-      initializeBookingModal(); // Ensure modal is properly initialized
       
       console.log('🎬 Premium features initialized - Level 100 achieved!');
     } catch (error) {
@@ -14824,21 +12712,10 @@
   // Initialize EmailJS
   emailjs.init('p4pF3OWvh-DXtae4c');
 
-  // 🔧 INITIALIZE BOOKING MODAL - FIXED TIMING ISSUE
-  function initializeBookingModal() {
-    console.log('🔧 Initializing booking modal...');
-    
-    // Booking Modal Logic
-    const bookingModal = document.getElementById('bookingModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    const bookingForm = document.getElementById('bookingForm');
-    
-    // Debug: Check if elements were found
-    console.log('Modal elements found:', {
-      modal: !!bookingModal,
-      closeBtn: !!closeModalBtn,
-      form: !!bookingForm
-    });
+  // Booking Modal Logic
+  const bookingModal = document.getElementById('bookingModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const bookingForm = document.getElementById('bookingForm');
   const serviceLinks = {
     video: 'https://www.cochranfilms.com/service-page/on-site-event-photo-printing',
     web: 'https://www.cochranfilms.com/service-page/custom-website-design',
@@ -14880,7 +12757,6 @@
   
   // 📱 ENHANCED BOOKING MODAL CLOSE FUNCTIONALITY
   if (closeModalBtn && bookingModal) {
-    console.log('✅ Setting up modal close functionality...');
     // Close button click
     closeModalBtn.onclick = function(e) {
       e.preventDefault();
@@ -15027,23 +12903,6 @@
     document.getElementById('successPopup').style.display = 'none';
     window.open(url, '_blank');
   }
-  
-  } // End of initializeBookingModal function
-
-  // Initialize booking modal when DOM is ready
-  document.addEventListener('DOMContentLoaded', function() {
-    // Small delay to ensure all elements are available
-    setTimeout(initializeBookingModal, 100);
-    
-    // Fallback initialization if elements weren't found
-    setTimeout(function() {
-      const closeBtn = document.getElementById('closeModal');
-      if (!closeBtn || !closeBtn.onclick) {
-        console.log('🔄 Retrying modal initialization...');
-        initializeBookingModal();
-      }
-    }, 1000);
-  });
 
   // Timeline hover detection for video movement
   function setupTimelineHover() {
@@ -15265,13 +13124,11 @@
   }); // Close the second DOMContentLoaded event listener
 
       // Function to open booking modal
-    // 📱 ENHANCED BOOKING MODAL OPENING - IMPROVED UX
+    // 📱 MILLION DOLLAR BOOKING MODAL OPENING
     function openBookingModal() {
-      // Always allow manual button clicks - improved detection
-      const userInitiated = arguments.length > 0 || window.event || document.activeElement || event;
-      
-      // Skip prevention for manual clicks
-      if (window.mobileState && window.mobileState.preventAutoModal && !userInitiated && arguments.length === 0) {
+      // Prevent auto-opening if triggered automatically
+      if (window.mobileState && window.mobileState.preventAutoModal && !event) {
+        console.log('🚫 Auto-modal opening prevented');
         return;
       }
       
@@ -15285,9 +13142,8 @@
         // Set modal state
         window.mobileState.modalOpen = true;
         
-        // Prevent body scroll IMMEDIATELY
+        // Prevent body scroll
         document.body.style.overflow = 'hidden';
-        document.body.style.height = '100vh';
         
         // Clear any previous selection
         serviceSelect.value = '';
@@ -15298,26 +13154,11 @@
           option.style.display = 'block';
         });
         
-        // Show modal with IMMEDIATE display and proper styling
+                 // Show modal with proper styling and manual flag
         modal.style.display = 'flex';
         modal.style.visibility = 'visible';
         modal.style.opacity = '1';
-        modal.style.position = 'fixed';
-        modal.style.top = '0';
-        modal.style.left = '0';
-        modal.style.width = '100vw';
-        modal.style.height = '100vh';
-        modal.style.zIndex = '99999';
-        modal.style.background = 'rgba(0,0,0,0.8)';
-        modal.style.backdropFilter = 'blur(8px)';
         modal.setAttribute('data-manual-open', 'true');
-        
-        // Ensure modal is positioned at top on mobile
-        if (window.innerWidth <= 768) {
-          modal.scrollTop = 0;
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
-        }
         
         // Add focus to first input for better UX
         setTimeout(() => {
@@ -15331,49 +13172,23 @@
       }
     }
     
-    // Function to scroll to Service Package Builder
-    function scrollToServiceBuilder() {
-      const serviceBuilder = document.getElementById('serviceBuilder');
-      if (serviceBuilder) {
-        // Close any open modals first
-        closeMobileNav();
-        
-        // Smooth scroll with better positioning
-        serviceBuilder.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'center',
-          inline: 'nearest'
-        });
-        
-        // Optional: Add subtle focus without intrusive highlighting
-        setTimeout(() => {
-          const firstInput = serviceBuilder.querySelector('input, select, button');
-          if (firstInput) {
-            firstInput.focus();
-          }
-        }, 800);
-      }
-    }
-    
-    // Function to open photo-specific booking modal (kept for backwards compatibility)
+    // Function to open photo-specific booking modal
     function openPhotoBookingModal() {
       const modal = document.getElementById('bookingModal');
       const serviceSelect = document.getElementById('service');
       if (modal && serviceSelect) {
         // Clear any previous selection
         serviceSelect.value = '';
-        // Show all options but pre-select photo
+        // Show only photo and prints options
         const options = serviceSelect.querySelectorAll('option');
         options.forEach(option => {
-          option.style.display = 'block';
+          if (option.value === 'photo' || option.value === 'prints') {
+            option.style.display = 'block';
+          } else {
+            option.style.display = 'none';
+          }
         });
-        // Pre-select photography service
-        serviceSelect.value = 'photo';
         modal.style.display = 'flex';
-        
-        // Prevent body scrolling when modal is open
-        document.body.style.overflow = 'hidden';
-        window.mobileState.modalOpen = true;
       }
     }
     
@@ -15459,75 +13274,26 @@
     });
   }
   
-  // Enhanced lightbox functionality 
+  // Enhanced lightbox functionality with video quiz
   function openLightbox(button) {
     const masonryItem = button.closest('.masonry-item');
     const img = masonryItem.querySelector('img');
+    const title = masonryItem.querySelector('.overlay-content h3').textContent;
+    const description = masonryItem.querySelector('.overlay-content p').textContent;
     
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
+    const quizTitle = document.getElementById('quizTitle');
+    const quizSubtitle = document.getElementById('quizSubtitle');
     
-    if (lightboxModal && lightboxImg) {
-      // Set content
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      
-      // Show lightbox
-      lightboxModal.style.display = 'flex';
-      lightboxModal.style.opacity = '1';
-      lightboxModal.style.visibility = 'visible';
-      
-      // Prevent body scroll
-      document.body.style.overflow = 'hidden';
-    }
-  }
-  
-  // Lightbox close functionality
-  function closeLightbox() {
-    const lightboxModal = document.getElementById('lightboxModal');
-    if (lightboxModal) {
-      lightboxModal.style.display = 'none';
-      lightboxModal.style.opacity = '0';
-      lightboxModal.style.visibility = 'hidden';
-      
-      // Restore body scroll
-      document.body.style.overflow = '';
-    }
-  }
-  
-  // Add lightbox close event listeners
-  document.addEventListener('DOMContentLoaded', function() {
-    const lightboxClose = document.getElementById('lightboxClose');
-    const lightboxModal = document.getElementById('lightboxModal');
+    // Set content
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    quizTitle.textContent = 'What Type of Video Do You Need?';
+    quizSubtitle.textContent = 'Get personalized recommendations';
     
-    if (lightboxClose) {
-      lightboxClose.addEventListener('click', closeLightbox);
-    }
-    
-    if (lightboxModal) {
-      lightboxModal.addEventListener('click', function(e) {
-        if (e.target === lightboxModal) {
-          closeLightbox();
-        }
-      });
-    }
-    
-    // ESC key to close lightbox
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    });
-  });
-  
-  // Open lightbox function
-  function openLightbox(imageSrc, button) {
-    const lightboxModal = document.getElementById('lightboxModal');
-    const lightboxImg = document.getElementById('lightboxImg');
-    
-    if (!lightboxModal || !lightboxImg) return;
-    
-    lightboxImg.src = imageSrc;
+    // Reset quiz to initial state
+    resetQuiz();
     
     // Show modal with animation
     lightboxModal.classList.add('active');
@@ -15544,12 +13310,10 @@
     }
     
     // Add click animation to the button
-    if (button) {
-      button.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        button.style.transform = '';
-      }, 150);
-    }
+    button.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      button.style.transform = '';
+    }, 150);
   }
   
   // Close lightbox
@@ -17333,209 +15097,25 @@
   document.addEventListener('DOMContentLoaded', () => {
     initializeMasonryGallery();
   });
-    </script>
-
-</head>
-<body>
-  <!-- 🎬 PREMIUM LOADING SCREEN WITH ACCESSIBILITY -->
-  <div class="cinematic-loader" id="cinematicLoader" role="status" aria-label="Loading Cochran Films website">
-    <div class="loader-content">
-      <!-- Cinematic Aperture Animation -->
-      <div class="aperture-container">
-        <div class="aperture" aria-hidden="true">
-          <div class="aperture-blades"></div>
-        </div>
-      </div>
-      
-      <!-- Brand Text -->
-      <div class="cinematic-text">
-        <h1 class="brand-name">COCHRAN FILMS</h1>
-        <p class="tagline">Empowering Stories Through Film, Education & Innovation</p>
-      </div>
-      
-      <!-- Progress Indicator -->
-      <div class="cinematic-progress" aria-label="Loading progress">
-        <div class="progress-fill"></div>
-      </div>
-      
-      <!-- Sound Wave Animation -->
-      <div class="sound-waves" aria-hidden="true">
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-      </div>
-      
-      <!-- Loading Text for Screen Readers -->
-      <div class="sr-only" aria-live="polite">Loading Cochran Films website...</div>
-    </div>
-    
-    <!-- Particles System -->
-    <div class="particles-system" aria-hidden="true">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
-  </div>
-
-  <!-- 📱 ENHANCED MOBILE NAVIGATION -->
-  <nav class="mobile-navigation" id="mobileNavigation" role="navigation" aria-label="Mobile navigation">
-    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-    
-    <div class="mobile-nav-overlay" id="mobileNavOverlay" role="dialog" aria-modal="true" aria-labelledby="mobileNavTitle">
-      <!-- 🎬 Cinematic Logo Header -->
-      <div class="mobile-nav-header">
-        <div class="mobile-nav-logo">
-          <span class="nav-logo-text">COCHRAN</span>
-          <span class="nav-logo-subtitle">FILMS</span>
-        </div>
-      </div>
-      
-      <div class="mobile-nav-menu" role="menu">
-        <h2 id="mobileNavTitle" class="sr-only">Navigation Menu</h2>
-        <a href="#services" role="menuitem" onclick="closeMobileNav()">
-          <i class="fas fa-briefcase" aria-hidden="true"></i>
-          <span>Services</span>
-        </a>
-        <a href="#serviceBuilder" role="menuitem" onclick="closeMobileNav()">
-          <i class="fas fa-tools" aria-hidden="true"></i>
-          <span>Package Builder</span>
-        </a>
-        <a href="#testimonials" role="menuitem" onclick="closeMobileNav()">
-          <i class="fas fa-star" aria-hidden="true"></i>
-          <span>Testimonials</span>
-        </a>
-        <a href="#timeline" role="menuitem" onclick="closeMobileNav()">
-          <i class="fas fa-history" aria-hidden="true"></i>
-          <span>Our Story</span>
-        </a>
-        <a href="https://www.cochranfilms.com/portfolio" target="_blank" rel="noopener noreferrer" role="menuitem">
-          <i class="fas fa-camera" aria-hidden="true"></i>
-          <span>Portfolio</span>
-        </a>
-        <a href="tel:+14704202169" role="menuitem" onclick="closeMobileNav()">
-          <i class="fas fa-phone" aria-hidden="true"></i>
-          <span>Call Now</span>
-        </a>
-        <a href="#book" role="menuitem" onclick="closeMobileNav(); setTimeout(() => openBookingModal(true), 300);">
-          <i class="fas fa-calendar-check" aria-hidden="true"></i>
-          <span>Book Now</span>
-        </a>
-      </div>
-      
-      <!-- 🎬 Cinematic Footer -->
-      <div class="mobile-nav-footer">
-        <div class="nav-tagline">Full-Stack Digital Strategist</div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Enhanced Theme Toggle Button -->
+  </script>
+  
+  <!-- Theme Toggle Button - Portal Element -->
   <div class="theme-toggle-portal">
-    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle between light and dark themes">
-      <i class="fas fa-moon" aria-hidden="true"></i>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+      <i class="fas fa-moon"></i>
     </button>
   </div>
 
-  <!-- 🎬 ENHANCED LOADING & INITIALIZATION -->
+  <!-- AOS Initialization -->
   <script>
-    // 🎬 ENHANCED CINEMATIC LOADING SCREEN MANAGEMENT
-    document.addEventListener('DOMContentLoaded', function() {
-      const loader = document.getElementById('cinematicLoader');
-      
-      // Initialize cinematic loading screen
-      if (loader) {
-        console.log('🎬 Initializing cinematic loading screen...');
-        
-        // Ensure loader is visible immediately
-        loader.style.display = 'flex';
-        loader.style.opacity = '1';
-        loader.style.visibility = 'visible';
-        
-        // Start cinematic animations
-        setTimeout(() => {
-          const aperture = loader.querySelector('.aperture');
-          const waves = loader.querySelectorAll('.wave-bar');
-          const progress = loader.querySelector('.progress-fill');
-          
-          if (aperture) {
-            aperture.style.animation = 'aperture-open 2s ease-out forwards';
-          }
-          
-          if (waves.length > 0) {
-            waves.forEach((wave, index) => {
-              wave.style.animationDelay = `${index * 0.1}s`;
-              wave.style.animation = 'wave-pulse 1.5s ease-in-out infinite';
-            });
-          }
-          
-          if (progress) {
-            progress.style.animation = 'progress-fill 3s ease-out forwards';
-          }
-        }, 100);
-        
-        // Hide loader with cinematic timing
-        function hideLoader() {
-          console.log('🎬 Hiding cinematic loading screen...');
-          
-          // Start fade out animation
-          loader.style.transition = 'opacity 1s ease-out';
-          loader.style.opacity = '0';
-          document.body.classList.add('loaded');
-          
-          setTimeout(() => {
-            loader.style.display = 'none';
-            document.body.style.overflow = '';
-            document.body.style.height = '';
-            console.log('✅ Cinematic loading screen hidden');
-          }, 1000);
-        }
-        
-        // Optimal timing for cinematic experience
-        const isMobile = window.innerWidth <= 768;
-        const loadingDuration = isMobile ? 3500 : 4500; // Allow time for animations
-        
-        // Primary timer - ensures minimum display time for cinematic effect
-        setTimeout(hideLoader, loadingDuration);
-        
-        // Backup timer for content ready
-        window.addEventListener('load', () => {
-          setTimeout(hideLoader, Math.max(loadingDuration - 1000, 2000));
-        });
-        
-        // Maximum timeout safety net
-        setTimeout(() => {
-          if (loader.style.opacity !== '0') {
-            console.log('🚨 Emergency timeout - hiding loader');
-            hideLoader();
-          }
-        }, 8000);
-      }
-    });
-
-    // Initialize AOS with enhanced settings
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: window.mobileState?.reducedMotion ? 0 : 800,
-          easing: 'ease-out-cubic',
-          once: true,
-          offset: 100,
-          delay: 0,
-          anchorPlacement: 'top-bottom',
-          disable: window.mobileState?.reducedMotion ? true : false
-        });
-      }
+    // Initialize AOS with custom settings for premium experience
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100,
+      delay: 0,
+      anchorPlacement: 'top-bottom'
     });
     
     // Initialize service package builder when DOM is ready
@@ -17843,7 +15423,7 @@
            'live-production-5hr': {
              description: 'Extended 5-hour live production with professional streaming and comprehensive editing.',
              includes: ['5 hours live production', 'Professional streaming setup', 'Advanced switching', 'Comprehensive editing'],
-             deliverables: ['Live stream production', 'Professional edited video', 'Multiple format delivery'],
+             deliverables: ['Live stream production', 'Professional edited video', 'Multi-format delivery'],
              timeline: 'Live + 7-10 days for edited version'
            },
            'live-production-8hr': {
