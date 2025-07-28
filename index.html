@@ -162,7 +162,7 @@
         max-width: 100% !important;
       }
       
-      /* Mobile navigation fixes */
+      /* Mobile navigation fixes - CORRECTED POSITIONING */
       .mobile-nav-toggle {
         display: flex !important;
         position: fixed;
@@ -189,13 +189,20 @@
         z-index: 10000 !important; /* Below nav toggle but above content */
       }
       
-      /* Header mobile optimization */
+      /* Header mobile optimization - INCREASED PADDING TO AVOID LOGO OVERLAP */
       header {
-        padding: 6rem 1rem 2rem 1rem !important; /* Extra top padding for nav toggle */
+        padding: 5rem 1rem 2rem 1rem !important; /* Increased top padding for nav toggle */
         min-height: auto !important;
         text-align: center !important;
         position: relative !important;
         z-index: 1 !important; /* Below navigation */
+        margin-top: 0 !important;
+      }
+      
+      /* MOBILE NAV TOGGLE - MOVED DOWN TO AVOID LOGO */
+      .mobile-nav-toggle {
+        top: 4.5rem !important; /* Moved down below logo area */
+        right: 1rem !important;
       }
       
       header img {
@@ -3175,7 +3182,7 @@
       padding: 2rem 1rem;
       transition: background 0.3s, color 0.3s;
     }
-    /* 🎬 RESPONSIVE GREEN SUCCESS MODAL THEME */
+    /* 🎬 FIXED RESPONSIVE MODAL THEME - NO EXCESSIVE SCROLLING */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -3186,6 +3193,8 @@
       justify-content: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(8px);
+      overflow-y: auto;
+      padding: 2rem 1rem;
     }
     
     /* Dark mode modal */
@@ -3207,13 +3216,17 @@
         0 20px 60px rgba(0,0,0,0.6),
         0 0 40px rgba(76, 175, 80, 0.3),
         inset 0 1px 0 rgba(255,255,255,0.1);
-      padding: 2.5rem 2rem 2rem 2rem;
+      padding: 2rem 1.5rem;
       min-width: 320px;
       max-width: 95vw;
       width: 450px;
+      max-height: 80vh;
+      overflow-y: auto;
       position: relative;
+      margin: auto;
       animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1);
       transition: all 0.3s ease;
+      -webkit-overflow-scrolling: touch;
     }
     
     /* Light mode modal content */
@@ -3490,12 +3503,19 @@
         transform: scale(1.1) !important;
       }
       
-      /* 📱 ADDITIONAL MOBILE MODAL OPTIMIZATIONS */
-      .modal, .modal-overlay {
+      /* 📱 FIXED MOBILE MODAL OPTIMIZATIONS */
+      .modal-overlay {
         padding: 1rem !important;
         align-items: flex-start !important;
         justify-content: center !important;
         overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+      
+      .modal-content {
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+        margin: auto !important;
         -webkit-overflow-scrolling: touch !important;
       }
       
@@ -7013,14 +7033,31 @@
       }
     }
     
-    /* 📱 MOBILE LOADING SCREEN - OPTIMIZED FOR PERFORMANCE */
+    /* LOADING SCREEN - DESKTOP AND MOBILE UNIFIED */
+    .cinematic-loader {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 999999 !important;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      opacity: 1 !important;
+      transition: opacity 1s ease-out !important;
+    }
+    
+    body.loaded .cinematic-loader {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transition: opacity 1s ease-out !important;
+    }
+    
+    /* Mobile optimizations for loading screen */
     @media (max-width: 768px) {
-      .cinematic-loader {
-        background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-        will-change: opacity;
-      }
-      
-      /* Hide complex elements on mobile for better performance */
+      /* Hide complex elements on mobile for performance */
       .viewfinder-overlay,
       .studio-lights,
       .film-reels,
@@ -7029,14 +7066,6 @@
       .clapperboard,
       .particles-system {
         display: none !important;
-      }
-      
-      /* Keep essential loading elements */
-      .countdown-container,
-      .aperture-container,
-      .cinematic-text,
-      .cinematic-progress {
-        display: block !important;
       }
       
       .cinematic-text {
@@ -7331,10 +7360,10 @@
        }
     }
     
-    /* 📱 ULTRA-SMALL MOBILE DEVICES (iPhone SE, etc.) */
+          /* 📱 ULTRA-SMALL MOBILE DEVICES (iPhone SE, etc.) */
     @media (max-width: 480px) {
       header {
-        padding: 5rem 0.5rem 1.5rem 0.5rem !important;
+        padding: 4rem 0.5rem 1.5rem 0.5rem !important;
       }
       
       header img {
@@ -7367,7 +7396,7 @@
       .mobile-nav-toggle {
         width: 45px;
         height: 45px;
-        top: 0.8rem;
+        top: 3.5rem !important; /* Moved down for smaller screens */
         right: 0.8rem;
       }
     }
@@ -12386,42 +12415,26 @@
      }, 1000); // Wait for other scripts to load
    }
   
+  // FIXED LOADING SCREEN - SINGLE EVENT LISTENER
   window.addEventListener('load', () => {
     console.log('🎬 Rolling cameras... Action!');
     
-    const isMobile = window.innerWidth <= 768;
-    const isUltraMobile = window.innerWidth <= 480;
-    
-    // Optimize loading time based on device capabilities
-    const loadingDuration = isUltraMobile ? 3000 : isMobile ? 4000 : 5000;
-    const transitionDuration = isMobile ? 0.8 : 1.2;
-    const staggerDelay = isMobile ? 150 : 300;
-    
-    // Allow the cinematic experience to play (optimized for mobile)
+    // Simple, reliable timing
     setTimeout(() => {
       document.body.classList.add('loaded');
       console.log('🎬 And... CUT! Welcome to Cochran Films.');
       
-      // Initialize premium features after the cinematic experience
+      // Initialize features after loading
       setTimeout(() => {
         try {
-          initializePremiumFeatures();
-          // Add cinematic entrance effects to main content (mobile optimized)
-          document.querySelectorAll('header, .hero-section').forEach((element, index) => {
-            element.style.opacity = '0';
-            element.style.transform = isMobile ? 'translateY(20px)' : 'translateY(30px) scale(0.95)';
-            setTimeout(() => {
-              element.style.transition = `all ${transitionDuration}s cubic-bezier(0.4, 0, 0.2, 1)`;
-              element.style.opacity = '1';
-              element.style.transform = isMobile ? 'translateY(0)' : 'translateY(0) scale(1)';
-            }, index * staggerDelay);
-          });
+          if (typeof initializePremiumFeatures === 'function') {
+            initializePremiumFeatures();
+          }
         } catch (error) {
-          console.error('Production error during initialization:', error);
-          // Ensure page is still functional even if initialization fails
+          console.error('Feature initialization error:', error);
         }
-      }, isMobile ? 200 : 400);
-    }, loadingDuration);
+      }, 500);
+    }, 4000); // Fixed 4 seconds for all devices
   });
   
   // Countdown Timer Function
