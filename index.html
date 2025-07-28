@@ -314,6 +314,114 @@
         border: 0 !important;
       }
       
+      /* 📱 MOBILE/DESKTOP SPECIFIC BEHAVIORS */
+      
+      /* Mobile device specific styles */
+      .mobile-device .mobile-navigation {
+        display: block !important;
+        z-index: 9999 !important;
+      }
+      
+      /* Desktop device specific styles */
+      .desktop-device .mobile-navigation {
+        display: none !important;
+      }
+      
+      /* Ensure mobile nav toggle is properly visible on mobile */
+      @media (max-width: 768px) {
+        .mobile-nav-toggle {
+          display: flex !important;
+          position: fixed !important;
+          top: 20px !important;
+          right: 20px !important;
+          z-index: 10000 !important;
+          background: rgba(0, 0, 0, 0.8) !important;
+          color: white !important;
+          border: none !important;
+          border-radius: 8px !important;
+          padding: 12px 15px !important;
+          font-size: 18px !important;
+          cursor: pointer !important;
+          backdrop-filter: blur(10px) !important;
+          transition: all 0.3s ease !important;
+        }
+        
+        .mobile-nav-toggle:hover,
+        .mobile-nav-toggle.active {
+          background: rgba(255, 178, 0, 0.9) !important;
+          color: black !important;
+          transform: scale(1.05) !important;
+        }
+        
+        /* Mobile nav overlay */
+        .mobile-nav-overlay {
+          display: none !important;
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          background: rgba(0, 0, 0, 0.95) !important;
+          z-index: 9998 !important;
+          backdrop-filter: blur(20px) !important;
+        }
+        
+        .mobile-nav-overlay.active {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        
+        .mobile-nav-menu {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 20px !important;
+          text-align: center !important;
+        }
+        
+        .mobile-nav-menu a {
+          color: white !important;
+          text-decoration: none !important;
+          font-size: 18px !important;
+          font-weight: 600 !important;
+          padding: 15px 25px !important;
+          border-radius: 10px !important;
+          background: rgba(255, 255, 255, 0.1) !important;
+          transition: all 0.3s ease !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 10px !important;
+        }
+        
+        .mobile-nav-menu a:hover,
+        .mobile-nav-menu a:focus {
+          background: rgba(255, 178, 0, 0.8) !important;
+          color: black !important;
+          transform: translateY(-2px) !important;
+        }
+        
+        /* Hide desktop elements on mobile */
+        .theme-toggle-portal {
+          z-index: 9997 !important;
+        }
+      }
+      
+      /* Desktop specific overrides */
+      @media (min-width: 769px) {
+        .mobile-navigation {
+          display: none !important;
+        }
+        
+        .mobile-nav-toggle {
+          display: none !important;
+        }
+        
+        .mobile-nav-overlay {
+          display: none !important;
+        }
+      }
+      
       /* Enhanced focus management */
       *:focus-visible {
         outline: 3px solid #FFB200 !important;
@@ -12008,7 +12116,7 @@
   <script>
   // 📱 ENHANCED MOBILE OPTIMIZATION SYSTEM WITH ACCESSIBILITY
   
-  // Global mobile state management
+  // 📱 ENHANCED GLOBAL MOBILE STATE MANAGEMENT
   window.mobileState = {
     modalOpen: false,
     navOpen: false,
@@ -12018,6 +12126,33 @@
     touchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
     reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
   };
+  
+  // 📱 UNIFIED MOBILE DETECTION FUNCTION
+  function isMobileDevice() {
+    // Always return current mobile state to handle orientation changes
+    return window.innerWidth <= 768;
+  }
+  
+  // 📱 UPDATE MOBILE STATE ON RESIZE
+  function updateMobileState() {
+    const wasMobile = window.mobileState.isMobile;
+    window.mobileState.isMobile = isMobileDevice();
+    window.mobileState.isUltraMobile = window.innerWidth <= 480;
+    
+    // If switching between mobile/desktop, close any open mobile navigation
+    if (wasMobile !== window.mobileState.isMobile && window.mobileState.navOpen) {
+      closeMobileNav();
+    }
+    
+    // Re-initialize behaviors for the new screen size
+    initializeMobileDesktopBehavior();
+  }
+  
+  // Listen for orientation/resize changes
+  window.addEventListener('resize', updateMobileState);
+  window.addEventListener('orientationchange', () => {
+    setTimeout(updateMobileState, 100); // Small delay for orientation change
+  });
   
   // 📱 ENHANCED MOBILE NAVIGATION FUNCTIONS
   function toggleMobileNav() {
@@ -12122,76 +12257,91 @@
     window.closeMobileNav = closeMobileNav;
   });
   
-  // 📱 COMPREHENSIVE MOBILE OPTIMIZATION INITIALIZATION
-  if (window.mobileState.isMobile) {
-    console.log('📱 Mobile device detected - initializing optimizations');
-    
-    // Prevent double-tap zoom on buttons
-    document.addEventListener('touchend', function(e) {
-      if (e.target.tagName === 'BUTTON' || e.target.classList.contains('btn')) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-    
-    // Add mobile-specific touch handling
-    document.addEventListener('touchstart', function() {
-      document.body.classList.add('touching');
-    }, { passive: true });
-    
-    document.addEventListener('touchend', function() {
-      setTimeout(() => {
-        document.body.classList.remove('touching');
-      }, 300);
-    }, { passive: true });
-    
-    // Optimize scroll performance
-    document.addEventListener('scroll', function() {
-      if (window.mobileState.navOpen) {
-        document.getElementById('mobileNavOverlay').classList.remove('active');
-        document.getElementById('mobileNavToggle').classList.remove('active');
-        window.mobileState.navOpen = false;
-      }
-    }, { passive: true });
-    
-    console.log('📱 Mobile optimizations complete');
-  }
-  
-  // 📱 Enhanced Mobile Navigation Functions
-  function toggleMobileNav() {
-    const toggle = document.getElementById('mobileNavToggle');
-    const overlay = document.getElementById('mobileNavOverlay');
-    
-    if (toggle && overlay) {
-      const isActive = overlay.classList.contains('active');
+  // 📱 ENHANCED MOBILE/DESKTOP BEHAVIOR HANDLING
+  function initializeMobileDesktopBehavior() {
+    if (isMobileDevice()) {
+      console.log('📱 Mobile device detected - initializing mobile behaviors');
       
-      if (isActive) {
-        closeMobileNav();
-      } else {
-        toggle.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        window.mobileState.navOpen = true;
-        console.log('📱 Mobile nav opened');
-      }
+      // Prevent double-tap zoom on buttons and interactive elements
+      document.addEventListener('touchend', function(e) {
+        if (e.target.tagName === 'BUTTON' || 
+            e.target.classList.contains('btn') || 
+            e.target.classList.contains('service-item') ||
+            e.target.classList.contains('masonry-item')) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+      
+      // Add mobile-specific touch handling
+      document.addEventListener('touchstart', function() {
+        document.body.classList.add('touching');
+      }, { passive: true });
+      
+      document.addEventListener('touchend', function() {
+        setTimeout(() => {
+          document.body.classList.remove('touching');
+        }, 300);
+      }, { passive: true });
+      
+      // Close mobile nav on scroll for better UX
+      document.addEventListener('scroll', function() {
+        if (window.mobileState.navOpen) {
+          closeMobileNav();
+        }
+      }, { passive: true });
+      
+      // Ensure mobile-specific modal behavior
+      document.body.classList.add('mobile-device');
+      
+      console.log('📱 Mobile optimizations complete');
+    } else {
+      console.log('🖥️ Desktop device detected - initializing desktop behaviors');
+      document.body.classList.add('desktop-device');
+      document.body.classList.remove('mobile-device');
     }
   }
   
-  function closeMobileNav() {
-    const toggle = document.getElementById('mobileNavToggle');
-    const overlay = document.getElementById('mobileNavOverlay');
-    
-    if (toggle && overlay) {
-      toggle.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      window.mobileState.navOpen = false;
-      console.log('📱 Mobile nav closed');
-    }
+  // Initialize on load and orientation change
+  initializeMobileDesktopBehavior();
+  
+  // 📱 DEBUG FUNCTION FOR MOBILE/DESKTOP DETECTION
+  function debugDeviceDetection() {
+    console.log('=== DEVICE DETECTION DEBUG ===');
+    console.log('Window width:', window.innerWidth);
+    console.log('isMobileDevice():', isMobileDevice());
+    console.log('window.mobileState.isMobile:', window.mobileState.isMobile);
+    console.log('Touch device:', window.mobileState.touchDevice);
+    console.log('Body classes:', document.body.className);
+    console.log('Mobile nav open:', window.mobileState.navOpen);
+    console.log('================================');
   }
+  
+  // Make debug function globally available
+  window.debugDeviceDetection = debugDeviceDetection;
+  
+  // 📱 ENHANCED EVENT HANDLING FOR MOBILE/DESKTOP
+  function initializeEventHandling() {
+    // Ensure proper event delegation for mobile vs desktop
+    document.addEventListener('click', function(e) {
+      // Log click events for debugging
+      if (e.target.classList.contains('service-item') || 
+          e.target.classList.contains('masonry-item') ||
+          e.target.closest('.service-item') ||
+          e.target.closest('.masonry-item')) {
+        
+        console.log('📱 Click detected on interactive element:', {
+          target: e.target.className,
+          isMobile: isMobileDevice(),
+          touchDevice: window.mobileState.touchDevice
+        });
+      }
+    });
+  }
+  
+  // Initialize enhanced event handling
+  initializeEventHandling();
+  
+  // 📱 Mobile Navigation Functions (Duplicate removed - using enhanced version above)
   
   // 📱 PREVENT AUTO-MODAL OPENING
   function preventAutoModalOpening() {
@@ -12413,10 +12563,7 @@
   
   // Mobile optimization function
   function optimizeForMobile() {
-    const isMobile = window.innerWidth <= 768;
-    const isUltraMobile = window.innerWidth <= 480;
-    
-    if (isMobile) {
+    if (isMobileDevice()) {
       console.log('📱 Mobile optimization active');
       
       // Reduce animation complexity for better performance
@@ -12454,9 +12601,7 @@
   
   // 📱 MOBILE SERVICE BUILDER - TAP TO SELECT SYSTEM
   function initializeMobileServiceBuilder() {
-    const isMobile = window.innerWidth <= 768;
-    
-    if (!isMobile) return; // Only run on mobile
+    if (!isMobileDevice()) return; // Only run on mobile
     
     console.log('📱 Initializing Mobile Service Builder...');
     
@@ -12706,8 +12851,7 @@
   window.addEventListener('load', () => {
     console.log('🎬 Page loaded - starting countdown...');
     
-    const isMobile = window.innerWidth <= 768;
-    const loadingTime = isMobile ? 3500 : 4500; // Shorter on mobile for better UX
+    const loadingTime = isMobileDevice() ? 3500 : 4500; // Shorter on mobile for better UX
     
     setTimeout(() => {
       console.log('🎬 Action! Revealing main content...');
@@ -12763,10 +12907,8 @@
   // Production Elements Animation (Mobile Optimized)
   function animateProductionElements() {
     // Detect mobile device
-    const isMobile = window.innerWidth <= 768;
-    
     // Reduce flash effects on mobile to prevent blinking
-    if (!isMobile) {
+    if (!isMobileDevice()) {
       setInterval(() => {
         if (Math.random() < 0.15) { // Reduced frequency for better UX
           createCameraFlash();
@@ -12812,8 +12954,8 @@
     const particleSystem = document.querySelector('.particles-system');
     if (!particleSystem) return;
     
-    const isMobile = window.innerWidth <= 768;
-    const isUltraMobile = window.innerWidth <= 480;
+    const isMobile = isMobileDevice();
+    const isUltraMobile = window.mobileState.isUltraMobile;
     
     // Reduce particle frequency on mobile for better performance
     const interval = isMobile ? (isUltraMobile ? 2000 : 1500) : 800;
@@ -12853,8 +12995,7 @@
   // Handle orientation changes for mobile
   window.addEventListener('orientationchange', () => {
     setTimeout(() => {
-      const isMobile = window.innerWidth <= 768;
-      if (isMobile) {
+          if (isMobileDevice()) {
         console.log('📱 Orientation changed - optimizing layout');
         optimizeForMobile();
       }
@@ -12866,8 +13007,7 @@
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      const isMobile = window.innerWidth <= 768;
-      if (isMobile && !document.body.classList.contains('loaded')) {
+          if (isMobileDevice() && !document.body.classList.contains('loaded')) {
         optimizeForMobile();
       }
     }, 250);
