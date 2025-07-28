@@ -299,12 +299,66 @@
         transform: none !important;
       }
       
+      /* 🔥 ENHANCED ACCESSIBILITY & PERFORMANCE */
+      
+      /* Screen reader only content */
+      .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      
+      /* Enhanced focus management */
+      *:focus-visible {
+        outline: 3px solid #FFB200 !important;
+        outline-offset: 2px !important;
+        border-radius: 4px !important;
+        z-index: 9999 !important;
+      }
+      
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        * {
+          filter: contrast(2) !important;
+        }
+        
+        button, .btn {
+          border: 2px solid currentColor !important;
+        }
+      }
+
       /* Reduce motion for accessibility */
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+        
+        .cinematic-loader * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+      
+      /* Performance optimizations for touch devices */
+      @media (hover: none) and (pointer: coarse) {
+        * {
+          -webkit-tap-highlight-color: transparent !important;
+          touch-action: manipulation !important;
+        }
+        
+        button, .btn, a, input, select, textarea {
+          -webkit-tap-highlight-color: rgba(255, 178, 0, 0.3) !important;
+          min-height: 44px !important;
+          min-width: 44px !important;
         }
       }
     }
@@ -10381,16 +10435,22 @@
       <div class="progress-fill"></div>
     </div>
   </div>
-  <header>
+  <!-- 🎬 ENHANCED MAIN HEADER WITH ACCESSIBILITY -->
+  <header role="banner" class="main-header" id="mainHeader">
     <!-- Cinematic background shapes -->
-    <div class="header-shape"></div>
-    <div class="header-shape"></div>
-    <div class="header-shape"></div>
+    <div class="header-shape" aria-hidden="true"></div>
+    <div class="header-shape" aria-hidden="true"></div>
+    <div class="header-shape" aria-hidden="true"></div>
     
     <!-- Header content -->
     <div class="header-content">
-      <img src="https://static.wixstatic.com/media/aeef42_7240b3023a8246e9977ddd74c43b8025~mv2.png" alt="Cochran Films Logo">
-      <div class="header-divider"></div>
+      <img src="https://static.wixstatic.com/media/aeef42_7240b3023a8246e9977ddd74c43b8025~mv2.png" 
+           alt="Cochran Films - Atlanta's Full-Stack Media Powerhouse" 
+           loading="eager"
+           width="280" 
+           height="80"
+           fetchpriority="high">
+      <div class="header-divider" aria-hidden="true"></div>
       <h1>Work with a Full-Stack Digital Strategist</h1>
       <p>You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</p>
     </div>
@@ -11946,7 +12006,7 @@
 
 
   <script>
-  // 📱 MILLION DOLLAR MOBILE OPTIMIZATION SYSTEM
+  // 📱 ENHANCED MOBILE OPTIMIZATION SYSTEM WITH ACCESSIBILITY
   
   // Global mobile state management
   window.mobileState = {
@@ -11955,8 +12015,112 @@
     preventAutoModal: true,
     isMobile: window.innerWidth <= 768,
     isUltraMobile: window.innerWidth <= 480,
-    touchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    touchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+    reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
   };
+  
+  // 📱 ENHANCED MOBILE NAVIGATION FUNCTIONS
+  function toggleMobileNav() {
+    const toggle = document.getElementById('mobileNavToggle');
+    const overlay = document.getElementById('mobileNavOverlay');
+    
+    if (!toggle || !overlay) return;
+    
+    const isOpen = window.mobileState.navOpen;
+    
+    if (isOpen) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  }
+  
+  function openMobileNav() {
+    const toggle = document.getElementById('mobileNavToggle');
+    const overlay = document.getElementById('mobileNavOverlay');
+    
+    if (!toggle || !overlay) return;
+    
+    // Update state
+    window.mobileState.navOpen = true;
+    
+    // Update UI
+    toggle.classList.add('active');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.innerHTML = '✕';
+    
+    overlay.classList.add('active');
+    overlay.style.display = 'flex';
+    
+    // Prevent body scrolling
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management for accessibility
+    const firstMenuItem = overlay.querySelector('a[role="menuitem"]');
+    if (firstMenuItem) {
+      setTimeout(() => firstMenuItem.focus(), 100);
+    }
+    
+    // Add escape key listener
+    document.addEventListener('keydown', handleMobileNavKeydown);
+  }
+  
+  function closeMobileNav() {
+    const toggle = document.getElementById('mobileNavToggle');
+    const overlay = document.getElementById('mobileNavOverlay');
+    
+    if (!toggle || !overlay) return;
+    
+    // Update state
+    window.mobileState.navOpen = false;
+    
+    // Update UI
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '☰';
+    
+    overlay.classList.remove('active');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 300);
+    
+    // Restore body scrolling
+    document.body.style.overflow = '';
+    
+    // Return focus to toggle button
+    toggle.focus();
+    
+    // Remove escape key listener
+    document.removeEventListener('keydown', handleMobileNavKeydown);
+  }
+  
+  function handleMobileNavKeydown(e) {
+    if (e.key === 'Escape') {
+      closeMobileNav();
+    }
+  }
+  
+  // Initialize mobile navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('mobileNavToggle');
+    if (toggle) {
+      toggle.addEventListener('click', toggleMobileNav);
+    }
+    
+    // Close nav when clicking outside
+    const overlay = document.getElementById('mobileNavOverlay');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          closeMobileNav();
+        }
+      });
+    }
+    
+    // Make functions globally available
+    window.toggleMobileNav = toggleMobileNav;
+    window.closeMobileNav = closeMobileNav;
+  });
   
   // 📱 COMPREHENSIVE MOBILE OPTIMIZATION INITIALIZATION
   if (window.mobileState.isMobile) {
@@ -15686,25 +15850,152 @@
   document.addEventListener('DOMContentLoaded', () => {
     initializeMasonryGallery();
   });
-  </script>
-  
-  <!-- Theme Toggle Button - Portal Element -->
+    </script>
+
+</head>
+<body>
+  <!-- 🎬 PREMIUM LOADING SCREEN WITH ACCESSIBILITY -->
+  <div class="cinematic-loader" id="cinematicLoader" role="status" aria-label="Loading Cochran Films website">
+    <div class="loader-content">
+      <!-- Cinematic Aperture Animation -->
+      <div class="aperture-container">
+        <div class="aperture" aria-hidden="true">
+          <div class="aperture-blades"></div>
+        </div>
+      </div>
+      
+      <!-- Brand Text -->
+      <div class="cinematic-text">
+        <h1 class="brand-name">COCHRAN FILMS</h1>
+        <p class="tagline">Empowering Stories Through Film, Education & Innovation</p>
+      </div>
+      
+      <!-- Progress Indicator -->
+      <div class="cinematic-progress" aria-label="Loading progress">
+        <div class="progress-fill"></div>
+      </div>
+      
+      <!-- Sound Wave Animation -->
+      <div class="sound-waves" aria-hidden="true">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+      
+      <!-- Loading Text for Screen Readers -->
+      <div class="sr-only" aria-live="polite">Loading Cochran Films website...</div>
+    </div>
+    
+    <!-- Particles System -->
+    <div class="particles-system" aria-hidden="true">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+  </div>
+
+  <!-- 📱 ENHANCED MOBILE NAVIGATION -->
+  <nav class="mobile-navigation" id="mobileNavigation" role="navigation" aria-label="Mobile navigation">
+    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      ☰
+    </button>
+    
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" role="dialog" aria-modal="true" aria-labelledby="mobileNavTitle">
+      <div class="mobile-nav-menu" role="menu">
+        <h2 id="mobileNavTitle" class="sr-only">Navigation Menu</h2>
+        <a href="#services" role="menuitem" onclick="closeMobileNav()">
+          <i class="fas fa-briefcase" aria-hidden="true"></i>
+          <span>Services</span>
+        </a>
+        <a href="#serviceBuilder" role="menuitem" onclick="closeMobileNav()">
+          <i class="fas fa-tools" aria-hidden="true"></i>
+          <span>Package Builder</span>
+        </a>
+        <a href="#testimonials" role="menuitem" onclick="closeMobileNav()">
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <span>Testimonials</span>
+        </a>
+        <a href="#timeline" role="menuitem" onclick="closeMobileNav()">
+          <i class="fas fa-history" aria-hidden="true"></i>
+          <span>Our Story</span>
+        </a>
+        <a href="https://www.cochranfilms.com/portfolio" target="_blank" rel="noopener noreferrer" role="menuitem">
+          <i class="fas fa-camera" aria-hidden="true"></i>
+          <span>Portfolio</span>
+        </a>
+        <a href="tel:+14704202169" role="menuitem" onclick="closeMobileNav()">
+          <i class="fas fa-phone" aria-hidden="true"></i>
+          <span>Call Now</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Enhanced Theme Toggle Button -->
   <div class="theme-toggle-portal">
-    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
-      <i class="fas fa-moon"></i>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle between light and dark themes">
+      <i class="fas fa-moon" aria-hidden="true"></i>
     </button>
   </div>
 
-  <!-- AOS Initialization -->
+  <!-- 🎬 ENHANCED LOADING & INITIALIZATION -->
   <script>
-    // Initialize AOS with custom settings for premium experience
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 100,
-      delay: 0,
-      anchorPlacement: 'top-bottom'
+    // Enhanced loading screen management
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.getElementById('cinematicLoader');
+      
+      // Initialize loading screen
+      if (loader) {
+        // Show loader immediately
+        loader.style.display = 'flex';
+        loader.style.opacity = '1';
+        
+        // Hide loader after content is ready
+        function hideLoader() {
+          loader.style.opacity = '0';
+          document.body.classList.add('loaded');
+          
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 800);
+        }
+        
+        // Hide loader based on mobile state or timer
+        if (window.mobileState && window.mobileState.isMobile) {
+          setTimeout(hideLoader, 3000); // Faster on mobile
+        } else {
+          setTimeout(hideLoader, 4000); // Standard timing
+        }
+        
+        // Also hide when all images are loaded
+        if (document.readyState === 'complete') {
+          setTimeout(hideLoader, 2000);
+        } else {
+          window.addEventListener('load', () => setTimeout(hideLoader, 1500));
+        }
+      }
+    });
+
+    // Initialize AOS with enhanced settings
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: window.mobileState?.reducedMotion ? 0 : 800,
+          easing: 'ease-out-cubic',
+          once: true,
+          offset: 100,
+          delay: 0,
+          anchorPlacement: 'top-bottom',
+          disable: window.mobileState?.reducedMotion ? true : false
+        });
+      }
     });
     
     // Initialize service package builder when DOM is ready
