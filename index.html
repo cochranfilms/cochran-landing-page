@@ -725,6 +725,70 @@
       }
     }
     
+    /* Mobile Header Section */
+    .mobile-header {
+      background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 40px 0 rgba(255,178,0,0.25), 0 2px 24px 0 rgba(0,0,0,0.18);
+    }
+    
+    .mobile-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 30%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .mobile-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .mobile-logo {
+      max-height: 60px;
+      max-width: 200px;
+      width: auto;
+      height: auto;
+      margin: 0 auto 1rem;
+      display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    
+    .mobile-header-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+    
+    .mobile-header-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #000;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .mobile-header-subtitle {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.8);
+      line-height: 1.5;
+      margin: 0;
+    }
+    
     /* Mobile Hero Section */
     .mobile-hero {
       min-height: 100vh;
@@ -877,6 +941,36 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+    
+    /* Mobile Hero Stats */
+    .mobile-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .mobile-hero-stat {
+      text-align: center;
+      padding: 1rem 0.5rem;
+    }
+    
+    .mobile-stat-value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #000;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .mobile-stat-label {
+      font-size: 0.8rem;
+      color: rgba(0,0,0,0.7);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
     }
     
     /* Mobile Services Section */
@@ -1177,7 +1271,7 @@
     .mobile-nav-toggle {
       position: fixed;
       top: 1rem;
-      left: 1rem;
+      right: 1rem;
       width: 50px;
       height: 50px;
       background: rgba(255,178,0,0.9);
@@ -1190,6 +1284,12 @@
       cursor: pointer;
       z-index: 10002;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(255,178,0,0.4);
     }
     
     .mobile-nav-toggle span {
@@ -1206,34 +1306,155 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.98) 100%);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 10003;
+      backdrop-filter: blur(10px);
+    }
+    
+    .mobile-nav-container {
+      width: 90%;
+      max-width: 400px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,178,0,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,178,0,0.3);
+    }
+    
+    .mobile-nav-logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-logo-img {
+      height: 40px;
+      width: auto;
+      filter: brightness(1) contrast(1);
+    }
+    
+    .mobile-nav-close {
+      background: none;
+      border: none;
+      color: #FFB200;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-close:hover {
+      background: rgba(255,178,0,0.2);
+      transform: scale(1.1);
     }
     
     .mobile-nav-menu {
       list-style: none;
       padding: 0;
       margin: 0;
+    }
+    
+    .nav-item {
+      margin: 0.5rem 0;
+    }
+    
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #FFB200;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 1rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      background: rgba(255,178,0,0.1);
+      border: 1px solid transparent;
+    }
+    
+    .nav-item a:hover {
+      background: rgba(255,178,0,0.2);
+      border-color: rgba(255,178,0,0.5);
+      transform: translateX(10px);
+      color: #fff;
+    }
+    
+    .nav-item.featured a {
+      background: linear-gradient(135deg, rgba(255,178,0,0.3), rgba(255,178,0,0.1));
+      border-color: rgba(255,178,0,0.6);
+      color: #FFB200;
+      font-weight: 700;
+    }
+    
+    .nav-item.featured a:hover {
+      background: linear-gradient(135deg, rgba(255,178,0,0.4), rgba(255,178,0,0.2));
+      transform: translateX(10px) scale(1.05);
+    }
+    
+    .nav-item i {
+      width: 20px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    
+    .mobile-nav-footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,178,0,0.3);
       text-align: center;
     }
     
-    .mobile-nav-menu li {
-      margin: 1rem 0;
+    .nav-social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
     
-    .mobile-nav-menu a {
+    .nav-social-link {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,178,0,0.2);
+      border: 1px solid rgba(255,178,0,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #FFB200;
       text-decoration: none;
-      font-size: 1.5rem;
-      font-weight: 600;
       transition: all 0.3s ease;
     }
     
-    .mobile-nav-menu a:hover {
+    .nav-social-link:hover {
+      background: rgba(255,178,0,0.3);
+      transform: scale(1.1);
       color: #fff;
+    }
+    
+    .nav-tagline {
+      color: #FFB200;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0;
+      opacity: 0.8;
     }
     
     /* Mobile Theme Toggle Optimization */
@@ -3840,12 +4061,47 @@
         width: 95vw;
         max-width: 95vw;
         max-height: 90vh;
-        margin: 2.5rem auto;
+        margin: 1rem auto;
         border: 2px solid #4CAF50;
         transition: all 0.3s ease;
         overflow-y: auto;
         box-sizing: border-box;
+        border-radius: 15px;
       }
+      
+      /* Mobile-optimized form inputs */
+      #bookingForm input, #bookingForm select, #bookingForm textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 1rem !important;
+        border-radius: 10px !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      #bookingForm label {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+        font-weight: 600 !important;
+      }
+      
+      .modal-content h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .modal-book-btn {
+        padding: 1rem 2rem !important;
+        font-size: 1.1rem !important;
+        border-radius: 25px !important;
+        margin-top: 1rem !important;
+      }
+      
+      /* Mobile modal positioning */
+      .modal-overlay {
+        padding: 1rem !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+      }
+    }
       
       /* Ultra-mobile dark mode */
       body[data-theme="dark"] .modal-content {
@@ -3991,6 +4247,85 @@
       }
     }
     
+    /* Mobile Loading Screen */
+    @media (max-width: 768px) {
+      .cinematic-loader {
+        display: none !important;
+      }
+      
+      .mobile-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+      
+      .mobile-loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .mobile-loader-content {
+        text-align: center;
+        color: #000;
+      }
+      
+      .mobile-loader-logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 2rem;
+        animation: mobilePulse 2s ease-in-out infinite;
+      }
+      
+      @keyframes mobilePulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+      }
+      
+      .mobile-loader-title {
+        font-size: 1.5rem;
+        font-weight: 900;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      
+      .mobile-loader-subtitle {
+        font-size: 1rem;
+        opacity: 0.8;
+        margin-bottom: 2rem;
+      }
+      
+      .mobile-loader-bar {
+        width: 200px;
+        height: 4px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 2px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      
+      .mobile-loader-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #000 0%, #333 100%);
+        border-radius: 2px;
+        width: 0%;
+        animation: mobileProgress 3s ease-in-out forwards;
+      }
+      
+      @keyframes mobileProgress {
+        0% { width: 0%; }
+        100% { width: 100%; }
+      }
+    }
 
     /* Success Popup Styles */
     .success-overlay {
@@ -10502,14 +10837,40 @@
 <body>
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
   <div id="mobileVersion" style="display: none;">
+    <!-- Mobile Header with Logo -->
+    <header class="mobile-header">
+      <div class="mobile-header-content">
+        <img src="Logo.png" alt="Cochran Films Logo" class="mobile-logo">
+        <div class="mobile-header-divider"></div>
+        <h1 class="mobile-header-title">Work with a Full-Stack Digital Strategist</h1>
+        <p class="mobile-header-subtitle">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</p>
+      </div>
+    </header>
+
     <!-- Mobile Hero Section -->
-    <section class="mobile-hero">
+    <section class="mobile-hero" id="mobileHero">
       <div class="mobile-hero-content">
         <div class="mobile-hero-text">
-          <h1 class="mobile-hero-title">Cochran Films</h1>
-          <p class="mobile-hero-subtitle">Professional Photography & Video Production</p>
+          <h1 class="mobile-hero-title">STORY TELLING THAT CONVERTS</h1>
+          <p class="mobile-hero-subtitle">Professional video production that transforms your vision into compelling content that drives results.</p>
+          
+          <div class="mobile-hero-stats">
+            <div class="mobile-hero-stat">
+              <div class="mobile-stat-value">500+</div>
+              <div class="mobile-stat-label">Projects Delivered</div>
+            </div>
+            <div class="mobile-hero-stat">
+              <div class="mobile-stat-value">98%</div>
+              <div class="mobile-stat-label">Client Satisfaction</div>
+            </div>
+            <div class="mobile-hero-stat">
+              <div class="mobile-stat-value">24h</div>
+              <div class="mobile-stat-label">Average Turnaround</div>
+            </div>
+          </div>
+          
           <div class="mobile-hero-buttons">
-            <button class="mobile-cta-primary" onclick="openBookingModal()">Book Now</button>
+            <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
             <button class="mobile-cta-secondary" onclick="scrollToMobileServices()">View Services</button>
           </div>
         </div>
@@ -10569,7 +10930,7 @@
     </section>
 
     <!-- Mobile Gallery Section -->
-    <section class="mobile-gallery">
+    <section class="mobile-gallery" id="mobileGallery">
       <div class="mobile-gallery-container">
         <h2 class="mobile-section-title">Our Work</h2>
         <div class="mobile-gallery-grid">
@@ -10590,7 +10951,7 @@
     </section>
 
     <!-- Mobile Contact Section -->
-    <section class="mobile-contact">
+    <section class="mobile-contact" id="mobileContact">
       <div class="mobile-contact-container">
         <h2 class="mobile-section-title">Get Started</h2>
         <p class="mobile-contact-text">Ready to bring your vision to life? Let's create something amazing together.</p>
@@ -10624,7 +10985,7 @@
     </div>
   </div>
 
-  <!-- 📱 MOBILE NAVIGATION SYSTEM -->
+  <!-- 📱 CINEMATIC MOBILE NAVIGATION SYSTEM -->
   <button class="mobile-nav-toggle" id="mobileNavToggle">
     <span></span>
     <span></span>
@@ -10632,13 +10993,58 @@
   </button>
   
   <div class="mobile-nav-overlay" id="mobileNavOverlay">
-    <ul class="mobile-nav-menu">
-      <li><a href="#hero" onclick="closeMobileNav()">Home</a></li>
-      <li><a href="#serviceBuilder" onclick="closeMobileNav()">Services</a></li>
-      <li><a href="#portfolio" onclick="closeMobileNav()">Portfolio</a></li>
-      <li><a href="#about" onclick="closeMobileNav()">About</a></li>
-      <li><a href="javascript:void(0)" onclick="openBookingModal(); closeMobileNav()">Book Now</a></li>
-    </ul>
+    <div class="mobile-nav-container">
+      <div class="mobile-nav-header">
+        <div class="mobile-nav-logo">
+          <img src="Logo.png" alt="Cochran Films" class="nav-logo-img">
+        </div>
+        <div class="mobile-nav-close" onclick="closeMobileNav()">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      
+      <ul class="mobile-nav-menu">
+        <li class="nav-item">
+          <a href="#mobileHero" onclick="scrollToMobileSection('mobileHero'); closeMobileNav()">
+            <i class="fas fa-home"></i>
+            <span>🎬 Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#mobileServices" onclick="scrollToMobileSection('mobileServices'); closeMobileNav()">
+            <i class="fas fa-cogs"></i>
+            <span>⚡ Services</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#mobileGallery" onclick="scrollToMobileSection('mobileGallery'); closeMobileNav()">
+            <i class="fas fa-images"></i>
+            <span>📸 Portfolio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#mobileContact" onclick="scrollToMobileSection('mobileContact'); closeMobileNav()">
+            <i class="fas fa-envelope"></i>
+            <span>💬 Contact</span>
+          </a>
+        </li>
+        <li class="nav-item featured">
+          <a href="javascript:void(0)" onclick="openBookingModal(); closeMobileNav()">
+            <i class="fas fa-calendar-check"></i>
+            <span>🎯 Book Now</span>
+          </a>
+        </li>
+      </ul>
+      
+      <div class="mobile-nav-footer">
+        <div class="nav-social-links">
+          <a href="#" class="nav-social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="nav-social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="nav-social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="nav-tagline">🎬 Storytelling That Converts</p>
+      </div>
+    </div>
   </div>
 
   <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
@@ -10735,6 +11141,18 @@
     <!-- Progress Bar -->
     <div class="cinematic-progress">
       <div class="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
+  <div class="mobile-loader">
+    <div class="mobile-loader-content">
+      <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
+      <h1 class="mobile-loader-title">Cochran Films</h1>
+      <p class="mobile-loader-subtitle">Loading your experience...</p>
+      <div class="mobile-loader-bar">
+        <div class="mobile-loader-progress"></div>
+      </div>
     </div>
   </div>
   <header>
@@ -12868,6 +13286,17 @@
         }
       };
       
+      // Mobile section scrolling
+      window.scrollToMobileSection = function(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      };
+      
       // Mobile service data
       function getMobileServiceData(serviceType) {
         const serviceData = {
@@ -13086,6 +13515,15 @@
     setTimeout(() => {
       document.body.classList.add('loaded');
       console.log('🎬 And... CUT! Welcome to Cochran Films.');
+      
+      // Handle mobile loader
+      const mobileLoader = document.querySelector('.mobile-loader');
+      if (mobileLoader && window.innerWidth <= 768) {
+        mobileLoader.classList.add('hidden');
+        setTimeout(() => {
+          mobileLoader.style.display = 'none';
+        }, 500);
+      }
       
       // Initialize premium features after the cinematic experience
       setTimeout(() => {
