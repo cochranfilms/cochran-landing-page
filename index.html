@@ -9965,7 +9965,7 @@
     <div class="photo-section-header">
       <h2><i class="fas fa-camera-retro"></i> Professional Event Photography and On-Site Printing</h2>
       <p>From timeless portraits to dynamic brand visuals, our photography services are tailored to tell your story with clarity, creativity, and style. With years of experience and a deep understanding of visual impact, we're here to help your moments shine—whether it's personal, professional, or promotional.</p>
-      <button class="book-now-btn" onclick="openPhotoBookingModal()">Book Now</button>
+              <button class="book-now-btn" onclick="openBookingModal()">Book Now</button>
     </div>
     
     <!-- Cinematic Masonry Gallery -->
@@ -9980,7 +9980,7 @@
                 <p>Capturing your special moments</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -9996,7 +9996,7 @@
                 <p>High-quality image capture</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10012,7 +10012,7 @@
                 <p>Creative visual storytelling</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10028,7 +10028,7 @@
                 <p>Event coverage excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10044,7 +10044,7 @@
                 <p>On-site printing services</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10060,7 +10060,7 @@
                 <p>Business portrait sessions</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10076,7 +10076,7 @@
                 <p>Product showcase excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10092,7 +10092,7 @@
                 <p>Special event coverage</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10108,7 +10108,7 @@
                 <p>Instant print services</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10124,7 +10124,7 @@
                 <p>Portrait session excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10140,7 +10140,7 @@
                 <p>Creative visual solutions</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="openBookingModal()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -15723,9 +15723,9 @@
         console.log('Dropped service ID:', serviceId);
         
         if (serviceId) {
-          console.log('Showing service details for:', serviceId);
-          showServiceDetailsModal(serviceId);
-          showNotification('Review service details and add to package', 'info');
+          console.log('Adding service directly to package:', serviceId);
+          addServiceToPackage(serviceId);
+          showNotification('Service added to package!', 'success');
         } else {
           console.log('No service ID found in drop data');
         }
