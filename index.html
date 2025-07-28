@@ -13527,12 +13527,12 @@
   
   // Enhanced cinematic loading animation with production elements
   document.addEventListener('DOMContentLoaded', () => {
-    // 🚀 IMMEDIATE SCROLL ENABLEMENT - TOP PRIORITY
+    // 🚀 PROPER LOADING SCREEN TIMING - SHOW FOR 2.5 SECONDS
     setTimeout(() => {
       document.body.classList.add('loaded');
       document.body.style.overflow = '';
       document.body.style.height = '';
-    }, 50); // Immediate scroll enablement
+    }, 2500); // Show loading screen for 2.5 seconds
     
     // Cochran Films Production Studio Loading...
     
@@ -14037,21 +14037,23 @@
         document.body.style.overflow = '';
         document.body.style.height = '';
       }
-    }, 300); // Backup timer
+    }, 3000); // Backup timer - 3 seconds
   });
   
   // Optimized loading completion
   window.addEventListener('load', () => {
     
-    // Optimized loading time for immediate scrolling
+    // Proper loading time for better user experience
     const isMobile = window.innerWidth <= 768;
     const isSlowDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
-    const loadingTime = isMobile ? 800 : 1200; // Much faster for better UX
+    const loadingTime = isMobile ? 2000 : 2500; // Show loading screen for proper duration
     
-        // Enable scrolling immediately on page load
-    document.body.classList.add('loaded');
-    document.body.style.overflow = '';
-    document.body.style.height = '';
+    // Wait for proper loading duration before enabling scrolling
+    setTimeout(() => {
+      document.body.classList.add('loaded');
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+    }, loadingTime);
     
     setTimeout(() => {
         // Loading animation complete
