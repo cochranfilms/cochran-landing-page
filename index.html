@@ -162,47 +162,60 @@
         max-width: 100% !important;
       }
       
-      /* Mobile navigation fixes - CORRECTED POSITIONING */
+      /* 📱 MOBILE NAVIGATION - OPTIMIZED POSITIONING */
       .mobile-nav-toggle {
         display: flex !important;
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 10001 !important; /* Above nav overlay */
-        background: rgba(255, 178, 0, 0.95);
-        border: none;
-        border-radius: 8px;
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3);
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
+        position: fixed !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        z-index: 10001 !important; /* Above everything except loading screen */
+        background: rgba(255, 178, 0, 0.95) !important;
+        border: none !important;
+        border-radius: 12px !important;
+        width: 50px !important;
+        height: 50px !important;
+        cursor: pointer !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s ease !important;
+        backdrop-filter: blur(10px) !important;
+        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3) !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      
+      .mobile-nav-toggle:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.4) !important;
       }
       
       .mobile-nav-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.95) !important;
         z-index: 10000 !important; /* Below nav toggle but above content */
+        backdrop-filter: blur(20px) !important;
+        display: none !important;
       }
       
-      /* Header mobile optimization - INCREASED PADDING TO AVOID LOGO OVERLAP */
+      .mobile-nav-overlay.active {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      /* Header mobile optimization */
       header {
-        padding: 5rem 1rem 2rem 1rem !important; /* Increased top padding for nav toggle */
+        padding: 1.5rem 1rem 2rem 1rem !important;
         min-height: auto !important;
         text-align: center !important;
         position: relative !important;
-        z-index: 1 !important; /* Below navigation */
+        z-index: 1 !important;
         margin-top: 0 !important;
-      }
-      
-      /* MOBILE NAV TOGGLE - MOVED DOWN TO AVOID LOGO */
-      .mobile-nav-toggle {
-        top: 4.5rem !important; /* Moved down below logo area */
-        right: 1rem !important;
       }
       
       header img {
@@ -929,27 +942,42 @@
     @media (max-width: 768px) {
       .theme-toggle-portal {
         top: 1rem !important;
-        right: 70px !important; /* Moved left to avoid mobile nav toggle */
+        right: 60px !important; /* Positioned left of mobile nav toggle */
         z-index: 9999 !important; /* Below mobile nav toggle */
       }
       
       .theme-toggle {
-        width: 40px !important;
-        height: 40px !important;
+        width: 44px !important;
+        height: 44px !important;
         font-size: 1rem !important;
-        background: rgba(255, 178, 0, 0.9) !important;
-        border: 2px solid rgba(255, 178, 0, 0.3) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 2px solid rgba(255, 178, 0, 0.4) !important;
         border-radius: 50% !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
         backdrop-filter: blur(10px) !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .theme-toggle:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
       }
       
       .theme-toggle i {
         color: #000 !important;
         font-size: 1rem !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      /* Ensure both buttons are touch-friendly */
+      .mobile-nav-toggle,
+      .theme-toggle {
+        min-height: 44px !important;
+        min-width: 44px !important;
+        touch-action: manipulation !important;
       }
     }
     
@@ -7033,65 +7061,140 @@
       }
     }
     
-    /* LOADING SCREEN - DESKTOP AND MOBILE UNIFIED */
+    /* 🎬 PREMIUM LOADING SCREEN - GUARANTEED VISIBILITY */
     .cinematic-loader {
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
+      width: 100vw !important;
+      height: 100vh !important;
       z-index: 999999 !important;
-      background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%) !important;
       display: flex !important;
+      flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
       opacity: 1 !important;
-      transition: opacity 1s ease-out !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      overflow: hidden !important;
+      transform: translateZ(0) !important;
     }
     
+    /* Ensure loading screen shows immediately */
+    body:not(.loaded) {
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
+    
+    body:not(.loaded) .cinematic-loader {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: flex !important;
+    }
+    
+    /* Hide loading screen when loaded */
     body.loaded .cinematic-loader {
       opacity: 0 !important;
+      visibility: hidden !important;
       pointer-events: none !important;
-      transition: opacity 1s ease-out !important;
+      transition: opacity 0.8s ease-out, visibility 0.8s ease-out !important;
     }
     
-    /* Mobile optimizations for loading screen */
+    /* 📱 MOBILE LOADING SCREEN OPTIMIZATION */
     @media (max-width: 768px) {
-      /* Hide complex elements on mobile for performance */
+      .cinematic-loader {
+        padding: 2rem 1rem !important;
+        background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%) !important;
+      }
+      
+      /* Simplify complex elements on mobile for performance */
       .viewfinder-overlay,
       .studio-lights,
       .film-reels,
       .camera-equipment,
       .lens-flare,
-      .clapperboard,
-      .particles-system {
+      .clapperboard {
         display: none !important;
       }
       
+      /* Keep essential elements visible */
+      .aperture-container {
+        order: 1;
+        margin-bottom: 2rem !important;
+        width: 120px !important;
+        height: 120px !important;
+      }
+      
+      .aperture {
+        width: 100px !important;
+        height: 100px !important;
+      }
+      
       .cinematic-text {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        width: 90% !important;
-        max-width: 400px !important;
+        order: 2;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 350px !important;
         text-align: center !important;
         padding: 0 1rem !important;
-        z-index: 10001 !important;
+        z-index: 10 !important;
+        margin-bottom: 2rem !important;
       }
       
       .brand-name {
-        font-size: 2.2rem !important;
+        font-size: 2.5rem !important;
         line-height: 1.1 !important;
         color: #FFD700 !important;
-        text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5) !important;
+        text-shadow: 0 3px 15px rgba(255, 215, 0, 0.6) !important;
         margin-bottom: 1rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.1em !important;
       }
       
       .tagline {
-        font-size: 1rem !important;
+        font-size: 1.1rem !important;
         color: #FFF !important;
-        opacity: 0.9 !important;
+        opacity: 0.95 !important;
+        letter-spacing: 0.05em !important;
+        font-weight: 500 !important;
+      }
+      
+      .cinematic-progress {
+        order: 3;
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 280px !important;
+        margin: 1rem auto 0 auto !important;
+      }
+      
+      .sound-waves {
+        order: 4;
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin: 1rem auto 0 auto !important;
+      }
+      
+      /* Optimize particles for mobile */
+      .particles-system {
+        display: block !important;
+      }
+      
+      .particle {
+        width: 1px !important;
+        height: 1px !important;
+        animation-duration: 8s !important;
+      }
+      
+      .particle:nth-child(n+6) {
+        display: none !important;
       }
     }
     
@@ -12415,26 +12518,59 @@
      }, 1000); // Wait for other scripts to load
    }
   
-  // FIXED LOADING SCREEN - SINGLE EVENT LISTENER
-  window.addEventListener('load', () => {
-    console.log('🎬 Rolling cameras... Action!');
+  // 🎬 PREMIUM LOADING SCREEN - GUARANTEED VISIBILITY
+  
+  // Force loading screen to show immediately
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('🎬 Setting up loading screen...');
     
-    // Simple, reliable timing
+    // Ensure loading screen is visible
+    const loader = document.querySelector('.cinematic-loader');
+    if (loader) {
+      loader.style.display = 'flex';
+      loader.style.opacity = '1';
+      loader.style.visibility = 'visible';
+      console.log('🎬 Loading screen initialized');
+    }
+    
+    // Prevent scrolling during loading
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
+  });
+  
+  // Handle loading completion
+  window.addEventListener('load', () => {
+    console.log('🎬 Page loaded - starting countdown...');
+    
+    const isMobile = window.innerWidth <= 768;
+    const loadingTime = isMobile ? 3500 : 4500; // Shorter on mobile for better UX
+    
     setTimeout(() => {
-      document.body.classList.add('loaded');
-      console.log('🎬 And... CUT! Welcome to Cochran Films.');
+      console.log('🎬 Action! Revealing main content...');
       
-      // Initialize features after loading
+      // Add loaded class to trigger hiding animation
+      document.body.classList.add('loaded');
+      
+      // Re-enable scrolling
       setTimeout(() => {
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        console.log('🎬 And... CUT! Welcome to Cochran Films.');
+        
+        // Initialize features after loading
         try {
           if (typeof initializePremiumFeatures === 'function') {
             initializePremiumFeatures();
           }
+          if (typeof optimizeForMobile === 'function') {
+            optimizeForMobile();
+          }
         } catch (error) {
           console.error('Feature initialization error:', error);
         }
-      }, 500);
-    }, 4000); // Fixed 4 seconds for all devices
+      }, 800); // Wait for transition to complete
+      
+    }, loadingTime);
   });
   
   // Countdown Timer Function
@@ -12573,31 +12709,54 @@
     }, 250);
   });
   
-  // Fallback safety net (mobile optimized)
+  // 🎬 EMERGENCY FALLBACK - LOADING SCREEN SAFETY NET
   setTimeout(() => {
     if (!document.body.classList.contains('loaded')) {
+      console.log('🎬 Emergency cut: Fallback loading completion');
       document.body.classList.add('loaded');
-      console.log('🎬 Final cut: Production loading complete');
+      
+      // Re-enable scrolling
+      document.body.style.overflow = '';
+      document.body.style.height = '';
       
       // 📱 MOBILE PERFORMANCE INITIALIZATION
       if (window.innerWidth <= 768) {
-        // Initialize mobile-specific optimizations
         document.body.style.webkitOverflowScrolling = 'touch';
         document.body.style.touchAction = 'manipulation';
-        
-        // Remove any problematic animations on older devices
-        if (navigator.userAgent.includes('iPhone') && !navigator.userAgent.includes('iPhone 1')) {
-          document.querySelectorAll('*').forEach(el => {
-            if (el.style.animation) {
-              el.style.animationDuration = '0.1s';
-            }
-          });
-        }
-        
-        console.log('📱 Mobile optimizations initialized');
+        console.log('📱 Emergency mobile optimizations applied');
       }
     }
-  }, window.innerWidth <= 480 ? 4000 : window.innerWidth <= 768 ? 5000 : 8000); /* Reduced loading times */
+  }, 8000); // Maximum 8 seconds before forcing completion
+  
+  // 🎬 IMMEDIATE LOADING SCREEN ACTIVATION
+  (function() {
+    // Apply loading screen styles immediately
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .cinematic-loader {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 999999 !important;
+        background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      body:not(.loaded) {
+        overflow: hidden !important;
+        height: 100vh !important;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    console.log('🎬 Immediate loading screen styles applied');
+  })();
   
   // Pre-production setup
   console.log('🎬 Setting up production studio... Lights, Camera, Loading!');
