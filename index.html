@@ -2857,16 +2857,110 @@
         background: var(--bg);
       }
       
+      .mobile-portfolio-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
       .mobile-portfolio-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+        margin-top: 2rem;
+      }
+      
+      .mobile-portfolio-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-portfolio-item img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+      }
+      
+      .mobile-portfolio-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: #fff;
+        padding: 1rem;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+      
+      .mobile-portfolio-item:hover .mobile-portfolio-overlay {
+        transform: translateY(0);
+      }
+      
+      .mobile-portfolio-overlay h3 {
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+      }
+      
+      .mobile-portfolio-overlay p {
+        font-size: 0.8rem;
+        margin: 0;
+        opacity: 0.9;
+      }
+      
+      .mobile-portfolio-cta {
+        text-align: center;
+        margin-top: 2rem;
       }
       
       /* Mobile about section */
       .mobile-about {
         padding: 4rem 1rem;
+        background: #fff;
+      }
+      
+      .mobile-about-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      .mobile-about-text p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: rgba(0,0,0,0.8);
+      }
+      
+      .mobile-about-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      
+      .mobile-about-stat {
+        text-align: center;
+        padding: 1rem;
         background: var(--bg);
+        border-radius: 12px;
+      }
+      
+      .mobile-about-stat-number {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+      
+      .mobile-about-stat-label {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       
       /* Mobile photography section */
@@ -3080,22 +3174,82 @@
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       }
       
-      .mobile-testimonial-stars {
-        font-size: 1.5rem;
+      .mobile-testimonial-quote {
+        font-size: 3rem;
         color: var(--primary);
         margin-bottom: 1rem;
+        line-height: 1;
       }
       
       .mobile-testimonial-card p {
         font-style: italic;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         line-height: 1.6;
+        font-size: 1rem;
       }
       
       .mobile-testimonial-author {
-        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      
+      .mobile-author-avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        font-size: 1.2rem;
+      }
+      
+      .mobile-author-info h4 {
+        font-weight: 700;
+        margin: 0;
+        font-size: 1rem;
+      }
+      
+      .mobile-author-info span {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+      
+      .mobile-testimonial-card.featured {
+        background: linear-gradient(145deg, var(--primary), #FFC700);
+        color: #000;
+      }
+      
+      .mobile-testimonials-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 3rem;
+      }
+      
+      .mobile-stat-item {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+      }
+      
+      .mobile-stat-number {
+        font-size: 2rem;
+        font-weight: 900;
         color: var(--primary);
-        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .mobile-stat-label {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       
       /* Mobile pricing comparison section */
@@ -13173,6 +13327,81 @@
       </div>
     </section>
 
+    <!-- Mobile About Section -->
+    <section class="mobile-about" id="mobileAbout">
+      <div class="mobile-about-container">
+        <h2 class="mobile-section-title">About Cochran Films</h2>
+        <p class="mobile-section-subtitle">Your full-stack media powerhouse</p>
+        
+        <div class="mobile-about-content">
+          <div class="mobile-about-text">
+            <p>We're a full-service media production company specializing in video, photography, web design, and brand development. Our mission is to transform your vision into compelling content that drives results.</p>
+            
+            <div class="mobile-about-stats">
+              <div class="mobile-about-stat">
+                <div class="mobile-about-stat-number">500+</div>
+                <div class="mobile-about-stat-label">Projects Delivered</div>
+              </div>
+              <div class="mobile-about-stat">
+                <div class="mobile-about-stat-number">98%</div>
+                <div class="mobile-about-stat-label">Client Satisfaction</div>
+              </div>
+              <div class="mobile-about-stat">
+                <div class="mobile-about-stat-number">24h</div>
+                <div class="mobile-about-stat-label">Average Turnaround</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Portfolio Section -->
+    <section class="mobile-portfolio" id="mobilePortfolio">
+      <div class="mobile-portfolio-container">
+        <h2 class="mobile-section-title">Our Portfolio</h2>
+        <p class="mobile-section-subtitle">A showcase of our best work</p>
+        
+        <div class="mobile-portfolio-grid">
+          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
+            <div class="mobile-portfolio-overlay">
+              <h3>Event Photography</h3>
+              <p>Corporate event coverage</p>
+            </div>
+          </div>
+          
+          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
+            <div class="mobile-portfolio-overlay">
+              <h3>Brand Photography</h3>
+              <p>Professional headshots</p>
+            </div>
+          </div>
+          
+          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
+            <div class="mobile-portfolio-overlay">
+              <h3>Corporate Events</h3>
+              <p>Event documentation</p>
+            </div>
+          </div>
+          
+          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
+            <div class="mobile-portfolio-overlay">
+              <h3>On-Site Printing</h3>
+              <p>Instant photo service</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-portfolio-cta">
+          <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
+        </div>
+      </div>
+    </section>
+
     <!-- Mobile Services Section -->
     <section class="mobile-services" id="mobileServices">
       <div class="mobile-services-container">
@@ -13367,26 +13596,70 @@
     <!-- Mobile Testimonials Section -->
     <section class="mobile-testimonials" id="mobileTestimonials">
       <div class="mobile-testimonials-container">
-        <h2 class="mobile-section-title">Client Success Stories</h2>
-        <p class="mobile-section-subtitle">What our clients say about working with us</p>
+        <h2 class="mobile-section-title">What Our Clients Say</h2>
+        <p class="mobile-section-subtitle">Real stories from real clients who trusted us with their vision</p>
         
         <div class="mobile-testimonials-grid">
           <div class="mobile-testimonial-card">
-            <div class="mobile-testimonial-stars">★★★★★</div>
-            <p>"Exceptional work and lightning-fast delivery. Cochran Films transformed our online presence."</p>
-            <div class="mobile-testimonial-author">- Sarah Johnson, CEO</div>
+            <div class="mobile-testimonial-quote">❝</div>
+            <p>"Cochran Films transformed our event into a cinematic masterpiece. The quality exceeded our expectations and the turnaround time was incredible. Worth every penny!"</p>
+            <div class="mobile-testimonial-author">
+              <div class="mobile-author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="mobile-author-info">
+                <h4>Sarah Johnson</h4>
+                <span>Event Director, TechCorp</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mobile-testimonial-card featured">
+            <div class="mobile-testimonial-quote">❝</div>
+            <p>"Working with Cody was a game-changer for our brand. His attention to detail and creative vision brought our story to life in ways we never imagined possible."</p>
+            <div class="mobile-testimonial-author">
+              <div class="mobile-author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="mobile-author-info">
+                <h4>Michael Chen</h4>
+                <span>CEO, StartupXYZ</span>
+              </div>
+            </div>
           </div>
           
           <div class="mobile-testimonial-card">
-            <div class="mobile-testimonial-stars">★★★★★</div>
-            <p>"Professional, creative, and results-driven. Our event photography exceeded all expectations."</p>
-            <div class="mobile-testimonial-author">- Mike Chen, Event Coordinator</div>
+            <div class="mobile-testimonial-quote">❝</div>
+            <p>"The consultation alone was worth the investment. Cody's expertise helped us understand exactly what we needed and delivered beyond our expectations."</p>
+            <div class="mobile-testimonial-author">
+              <div class="mobile-author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="mobile-author-info">
+                <h4>Emily Rodriguez</h4>
+                <span>Marketing Manager, GrowthCo</span>
+              </div>
+            </div>
           </div>
-          
-          <div class="mobile-testimonial-card">
-            <div class="mobile-testimonial-stars">★★★★★</div>
-            <p>"The video production quality is outstanding. Our engagement rates have tripled."</p>
-            <div class="mobile-testimonial-author">- Lisa Rodriguez, Marketing Director</div>
+        </div>
+        
+        <!-- Mobile Testimonials Stats -->
+        <div class="mobile-testimonials-stats">
+          <div class="mobile-stat-item">
+            <div class="mobile-stat-number" data-target="150">0</div>
+            <div class="mobile-stat-label">Happy Clients</div>
+          </div>
+          <div class="mobile-stat-item">
+            <div class="mobile-stat-number" data-target="500">0</div>
+            <div class="mobile-stat-label">Projects Completed</div>
+          </div>
+          <div class="mobile-stat-item">
+            <div class="mobile-stat-number" data-target="98">0</div>
+            <div class="mobile-stat-label">Satisfaction Rate</div>
+          </div>
+          <div class="mobile-stat-item">
+            <div class="mobile-stat-number" data-target="24">0</div>
+            <div class="mobile-stat-label">Hour Turnaround</div>
           </div>
         </div>
       </div>
@@ -18548,6 +18821,26 @@
           img.style.display = 'block';
           img.style.visibility = 'visible';
           img.style.opacity = '1';
+        });
+        
+        // Ensure all mobile sections are visible
+        document.querySelectorAll('section[class^="mobile-"]').forEach(section => {
+          section.style.display = 'block';
+          section.style.visibility = 'visible';
+          section.style.opacity = '1';
+        });
+        
+        // Initialize mobile-specific functions
+        if (typeof initializeMobileExperience === 'function') {
+          initializeMobileExperience();
+        }
+        
+        // Ensure all mobile modals work
+        const mobileModals = document.querySelectorAll('.mobile-modal, .mobile-lightbox');
+        mobileModals.forEach(modal => {
+          modal.style.display = 'none';
+          modal.style.visibility = 'hidden';
+          modal.style.opacity = '0';
         });
       }
     });
