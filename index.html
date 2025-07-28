@@ -709,7 +709,534 @@
       background: transparent !important;
     }
     
-    /* 📱 MOBILE THEME TOGGLE OPTIMIZATION */
+    /* 📱 COMPREHENSIVE MOBILE OPTIMIZATION */
+    
+    /* Mobile Version Detection and Display */
+    @media (max-width: 768px) {
+      #mobileVersion {
+        display: block !important;
+      }
+      
+      /* Hide desktop elements on mobile */
+      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: none !important;
+      }
+    }
+    
+    /* Mobile Hero Section */
+    .mobile-hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FFB200 0%, #FF9000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mobile-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .mobile-hero-content {
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      max-width: 100%;
+    }
+    
+    .mobile-hero-title {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #000;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: mobileTitleSlideIn 1s ease-out;
+    }
+    
+    @keyframes mobileTitleSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .mobile-hero-subtitle {
+      font-size: 1.2rem;
+      color: rgba(0,0,0,0.8);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      animation: mobileSubtitleSlideIn 1s ease-out 0.3s both;
+    }
+    
+    @keyframes mobileSubtitleSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .mobile-hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 300px;
+      margin: 0 auto;
+      animation: mobileButtonsSlideIn 1s ease-out 0.6s both;
+    }
+    
+    @keyframes mobileButtonsSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .mobile-cta-primary {
+      background: #000;
+      color: #FFB200;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .mobile-cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    
+    .mobile-cta-secondary {
+      background: transparent;
+      color: #000;
+      border: 2px solid #000;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .mobile-cta-secondary:hover {
+      background: #000;
+      color: #FFB200;
+      transform: translateY(-2px);
+    }
+    
+    .mobile-hero-image {
+      margin-top: 2rem;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: mobileImageSlideIn 1s ease-out 0.9s both;
+    }
+    
+    @keyframes mobileImageSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .mobile-hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Mobile Services Section */
+    .mobile-services {
+      padding: 4rem 1rem;
+      background: #f8f9fa;
+    }
+    
+    .mobile-services-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .mobile-section-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #000;
+      text-align: center;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .mobile-service-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .mobile-service-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .mobile-service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      border-color: #FFB200;
+    }
+    
+    .mobile-service-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #FFB200, #FF9000);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 4px 15px rgba(255,178,0,0.3);
+    }
+    
+    .mobile-service-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .mobile-service-card p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .mobile-service-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #FFB200;
+      text-align: center;
+    }
+    
+    /* Mobile Gallery Section */
+    .mobile-gallery {
+      padding: 4rem 1rem;
+      background: #000;
+    }
+    
+    .mobile-gallery-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .mobile-gallery .mobile-section-title {
+      color: #FFB200;
+    }
+    
+    .mobile-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .mobile-gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .mobile-gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    
+    .mobile-gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* Mobile Contact Section */
+    .mobile-contact {
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, #FFB200 0%, #FF9000 100%);
+    }
+    
+    .mobile-contact-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .mobile-contact .mobile-section-title {
+      color: #000;
+    }
+    
+    .mobile-contact-text {
+      font-size: 1.1rem;
+      color: rgba(0,0,0,0.8);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .mobile-contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    .mobile-contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+    }
+    
+    .mobile-contact-btn.primary {
+      background: #000;
+      color: #FFB200;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .mobile-contact-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    
+    .mobile-contact-btn.secondary {
+      background: transparent;
+      color: #000;
+      border: 2px solid #000;
+    }
+    
+    .mobile-contact-btn.secondary:hover {
+      background: #000;
+      color: #FFB200;
+      transform: translateY(-2px);
+    }
+    
+    /* Mobile Modal Styles */
+    .mobile-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      backdrop-filter: blur(10px);
+    }
+    
+    .mobile-modal-content {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      position: relative;
+      animation: mobileModalSlideIn 0.3s ease-out;
+    }
+    
+    @keyframes mobileModalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .mobile-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #666;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-modal-close:hover {
+      background: #f0f0f0;
+      color: #000;
+    }
+    
+    /* Mobile Lightbox */
+    .mobile-lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10001;
+    }
+    
+    .mobile-lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    
+    .mobile-lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-lightbox-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    /* Mobile Navigation */
+    .mobile-nav-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(255,178,0,0.9);
+      border: none;
+      border-radius: 50%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10002;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .mobile-nav-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 2px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10003;
+    }
+    
+    .mobile-nav-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .mobile-nav-menu li {
+      margin: 1rem 0;
+    }
+    
+    .mobile-nav-menu a {
+      color: #FFB200;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-menu a:hover {
+      color: #fff;
+    }
+    
+    /* Mobile Theme Toggle Optimization */
     @media (max-width: 768px) {
       .theme-toggle-portal {
         top: 1rem !important;
@@ -734,6 +1261,146 @@
       .theme-toggle i {
         color: #000 !important;
         font-size: 1rem !important;
+      }
+      
+      .mobile-nav-toggle {
+        display: flex !important;
+      }
+    }
+    
+    /* 📱 ADDITIONAL MOBILE ENHANCEMENTS */
+    
+    /* Mobile-specific loading optimizations */
+    @media (max-width: 768px) {
+      .cinematic-loader {
+        animation-duration: 3s !important;
+      }
+      
+      .aperture {
+        animation-duration: 2s !important;
+      }
+      
+      .film-reel {
+        animation-duration: 4s !important;
+      }
+    }
+    
+    /* Mobile touch optimizations */
+    @media (max-width: 768px) {
+      * {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      
+      button, .mobile-service-card, .mobile-gallery-item {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+    }
+    
+    /* Mobile performance optimizations */
+    @media (max-width: 768px) {
+      .particle {
+        animation-duration: 6s !important;
+      }
+      
+      .lens-flare {
+        animation-duration: 8s !important;
+      }
+      
+      .spotlight {
+        animation-duration: 5s !important;
+      }
+    }
+    
+    /* Mobile accessibility improvements */
+    @media (max-width: 768px) {
+      .mobile-service-card:focus,
+      .mobile-cta-primary:focus,
+      .mobile-cta-secondary:focus {
+        outline: 3px solid #FFB200;
+        outline-offset: 2px;
+      }
+      
+      .mobile-modal-close:focus,
+      .mobile-lightbox-close:focus {
+        outline: 3px solid #FFB200;
+        outline-offset: 2px;
+      }
+    }
+    
+    /* Mobile landscape optimizations */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .mobile-hero {
+        min-height: 100vh;
+        padding: 1rem;
+      }
+      
+      .mobile-hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .mobile-hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .mobile-hero-buttons {
+        flex-direction: row;
+        max-width: 500px;
+      }
+    }
+    
+    /* Mobile ultra-small screen optimizations */
+    @media (max-width: 375px) {
+      .mobile-hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .mobile-hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .mobile-section-title {
+        font-size: 2rem;
+      }
+      
+      .mobile-service-card {
+        padding: 1.5rem;
+      }
+      
+      .mobile-service-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Mobile dark mode support */
+    @media (max-width: 768px) {
+      body[data-theme="dark"] .mobile-services {
+        background: #1a1a1a;
+      }
+      
+      body[data-theme="dark"] .mobile-service-card {
+        background: #2a2a2a;
+        color: #fff;
+      }
+      
+      body[data-theme="dark"] .mobile-service-card h3 {
+        color: #fff;
+      }
+      
+      body[data-theme="dark"] .mobile-service-card p {
+        color: #ccc;
+      }
+      
+      body[data-theme="dark"] .mobile-modal-content {
+        background: #2a2a2a;
+        color: #fff;
+      }
+      
+      body[data-theme="dark"] .detail-item {
+        border-bottom-color: #444;
       }
     }
     
@@ -9833,6 +10500,130 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==">
 </head>
 <body>
+  <!-- Mobile-Optimized Version (Hidden on Desktop) -->
+  <div id="mobileVersion" style="display: none;">
+    <!-- Mobile Hero Section -->
+    <section class="mobile-hero">
+      <div class="mobile-hero-content">
+        <div class="mobile-hero-text">
+          <h1 class="mobile-hero-title">Cochran Films</h1>
+          <p class="mobile-hero-subtitle">Professional Photography & Video Production</p>
+          <div class="mobile-hero-buttons">
+            <button class="mobile-cta-primary" onclick="openBookingModal()">Book Now</button>
+            <button class="mobile-cta-secondary" onclick="scrollToMobileServices()">View Services</button>
+          </div>
+        </div>
+        <div class="mobile-hero-image">
+          <img src="https://static.wixstatic.com/media/aeef42_e273fde6086f492fafe4a59fb195360b~mv2.jpg" alt="Professional Photography" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Services Section -->
+    <section class="mobile-services" id="mobileServices">
+      <div class="mobile-services-container">
+        <h2 class="mobile-section-title">Our Services</h2>
+        
+        <div class="mobile-service-cards">
+          <!-- Photography Service -->
+          <div class="mobile-service-card" onclick="openMobileServiceModal('photography')">
+            <div class="mobile-service-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3>Event Photography</h3>
+            <p>Professional event coverage with instant prints</p>
+            <div class="mobile-service-price">From $350</div>
+          </div>
+
+          <!-- Video Service -->
+          <div class="mobile-service-card" onclick="openMobileServiceModal('video')">
+            <div class="mobile-service-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3>Video Production</h3>
+            <p>Full-service video from concept to final cut</p>
+            <div class="mobile-service-price">From $250/hr</div>
+          </div>
+
+          <!-- Web Design Service -->
+          <div class="mobile-service-card" onclick="openMobileServiceModal('web')">
+            <div class="mobile-service-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Web Design</h3>
+            <p>Responsive websites that convert visitors</p>
+            <div class="mobile-service-price">From $750</div>
+          </div>
+
+          <!-- Branding Service -->
+          <div class="mobile-service-card" onclick="openMobileServiceModal('branding')">
+            <div class="mobile-service-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>Brand Development</h3>
+            <p>Complete brand identity and visual guidelines</p>
+            <div class="mobile-service-price">From $900</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Gallery Section -->
+    <section class="mobile-gallery">
+      <div class="mobile-gallery-container">
+        <h2 class="mobile-section-title">Our Work</h2>
+        <div class="mobile-gallery-grid">
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
+          </div>
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
+          </div>
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
+          </div>
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Contact Section -->
+    <section class="mobile-contact">
+      <div class="mobile-contact-container">
+        <h2 class="mobile-section-title">Get Started</h2>
+        <p class="mobile-contact-text">Ready to bring your vision to life? Let's create something amazing together.</p>
+        <div class="mobile-contact-buttons">
+          <button class="mobile-contact-btn primary" onclick="openBookingModal()">
+            <i class="fas fa-phone"></i>
+            Book Consultation
+          </button>
+          <button class="mobile-contact-btn secondary" onclick="openMobileContactForm()">
+            <i class="fas fa-envelope"></i>
+            Send Message
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Service Modal -->
+    <div id="mobileServiceModal" class="mobile-modal">
+      <div class="mobile-modal-content">
+        <button class="mobile-modal-close" onclick="closeMobileServiceModal()">&times;</button>
+        <div id="mobileServiceContent">
+          <!-- Content will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Lightbox -->
+    <div id="mobileLightbox" class="mobile-lightbox">
+      <button class="mobile-lightbox-close" onclick="closeMobileLightbox()">&times;</button>
+      <img id="mobileLightboxImg" src="" alt="Gallery Image">
+    </div>
+  </div>
+
   <!-- 📱 MOBILE NAVIGATION SYSTEM -->
   <button class="mobile-nav-toggle" id="mobileNavToggle">
     <span></span>
@@ -11979,6 +12770,244 @@
         updateMobilePackageDisplay();
         showMobileNotification('Package cleared', 'info');
       };
+      
+      // Mobile navigation functions
+      window.openMobileNav = function() {
+        const overlay = document.getElementById('mobileNavOverlay');
+        const toggle = document.getElementById('mobileNavToggle');
+        
+        if (overlay && toggle) {
+          overlay.style.display = 'flex';
+          toggle.classList.add('active');
+          
+          // Animate hamburger to X
+          const spans = toggle.querySelectorAll('span');
+          spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        }
+      };
+      
+      window.closeMobileNav = function() {
+        const overlay = document.getElementById('mobileNavOverlay');
+        const toggle = document.getElementById('mobileNavToggle');
+        
+        if (overlay && toggle) {
+          overlay.style.display = 'none';
+          toggle.classList.remove('active');
+          
+          // Reset hamburger
+          const spans = toggle.querySelectorAll('span');
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      };
+      
+      // Mobile service modal functions
+      window.openMobileServiceModal = function(serviceType) {
+        const modal = document.getElementById('mobileServiceModal');
+        const content = document.getElementById('mobileServiceContent');
+        
+        if (modal && content) {
+          const serviceData = getMobileServiceData(serviceType);
+          content.innerHTML = serviceData;
+          modal.style.display = 'flex';
+          
+          // Add haptic feedback
+          if (navigator.vibrate) {
+            navigator.vibrate(30);
+          }
+        }
+      };
+      
+      window.closeMobileServiceModal = function() {
+        const modal = document.getElementById('mobileServiceModal');
+        if (modal) {
+          modal.style.display = 'none';
+        }
+      };
+      
+      // Mobile lightbox functions
+      window.openMobileLightbox = function(element) {
+        const lightbox = document.getElementById('mobileLightbox');
+        const img = document.getElementById('mobileLightboxImg');
+        
+        if (lightbox && img && element) {
+          const imageSrc = element.querySelector('img').src;
+          img.src = imageSrc;
+          lightbox.style.display = 'flex';
+          
+          // Add haptic feedback
+          if (navigator.vibrate) {
+            navigator.vibrate(30);
+          }
+        }
+      };
+      
+      window.closeMobileLightbox = function() {
+        const lightbox = document.getElementById('mobileLightbox');
+        if (lightbox) {
+          lightbox.style.display = 'none';
+        }
+      };
+      
+      // Mobile contact form
+      window.openMobileContactForm = function() {
+        openBookingModal();
+      };
+      
+      // Mobile scroll functions
+      window.scrollToMobileServices = function() {
+        const servicesSection = document.getElementById('mobileServices');
+        if (servicesSection) {
+          servicesSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      };
+      
+      // Mobile service data
+      function getMobileServiceData(serviceType) {
+        const serviceData = {
+          photography: `
+            <h3><i class="fas fa-camera"></i> Event Photography</h3>
+            <p>Professional event coverage with high-quality images and instant prints.</p>
+            <div class="mobile-service-details">
+              <div class="detail-item">
+                <strong>Starting Price:</strong> $350
+              </div>
+              <div class="detail-item">
+                <strong>Includes:</strong> 1 hour coverage, unlimited digital photos, light editing
+              </div>
+              <div class="detail-item">
+                <strong>Add-ons:</strong> Rush editing, travel fee, additional hours
+              </div>
+            </div>
+            <button class="mobile-modal-btn" onclick="openBookingModal(); closeMobileServiceModal()">
+              Book Photography
+            </button>
+          `,
+          video: `
+            <h3><i class="fas fa-video"></i> Video Production</h3>
+            <p>Full-service video production from concept to final cut.</p>
+            <div class="mobile-service-details">
+              <div class="detail-item">
+                <strong>Starting Price:</strong> $250/hour
+              </div>
+              <div class="detail-item">
+                <strong>Includes:</strong> Pre-production planning, filming, editing, color grading
+              </div>
+              <div class="detail-item">
+                <strong>Services:</strong> Corporate videos, event coverage, promotional content
+              </div>
+            </div>
+            <button class="mobile-modal-btn" onclick="openBookingModal(); closeMobileServiceModal()">
+              Book Video Production
+            </button>
+          `,
+          web: `
+            <h3><i class="fas fa-laptop-code"></i> Web Design</h3>
+            <p>Responsive websites that convert visitors into customers.</p>
+            <div class="mobile-service-details">
+              <div class="detail-item">
+                <strong>Starting Price:</strong> $750
+              </div>
+              <div class="detail-item">
+                <strong>Includes:</strong> Custom design, mobile optimization, SEO basics
+              </div>
+              <div class="detail-item">
+                <strong>Features:</strong> Contact forms, social media integration, analytics
+              </div>
+            </div>
+            <button class="mobile-modal-btn" onclick="openBookingModal(); closeMobileServiceModal()">
+              Book Web Design
+            </button>
+          `,
+          branding: `
+            <h3><i class="fas fa-palette"></i> Brand Development</h3>
+            <p>Complete brand identity and visual guidelines for your business.</p>
+            <div class="mobile-service-details">
+              <div class="detail-item">
+                <strong>Starting Price:</strong> $900
+              </div>
+              <div class="detail-item">
+                <strong>Includes:</strong> Logo design, color palette, typography, brand guidelines
+              </div>
+              <div class="detail-item">
+                <strong>Deliverables:</strong> Logo files, style guide, business card design
+              </div>
+            </div>
+            <button class="mobile-modal-btn" onclick="openBookingModal(); closeMobileServiceModal()">
+              Book Brand Development
+            </button>
+          `
+        };
+        
+        return serviceData[serviceType] || serviceData.photography;
+      }
+      
+      // Initialize mobile navigation
+      const mobileNavToggle = document.getElementById('mobileNavToggle');
+      if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', openMobileNav);
+      }
+      
+      // Close mobile nav when clicking outside
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+      if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', (e) => {
+          if (e.target === mobileNavOverlay) {
+            closeMobileNav();
+          }
+        });
+      }
+      
+      // Close mobile nav when clicking links
+      document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', closeMobileNav);
+      });
+      
+      // Mobile-specific CSS for modal buttons
+      const style = document.createElement('style');
+      style.textContent = `
+        .mobile-modal-btn {
+          background: linear-gradient(135deg, #FFB200, #FF9000);
+          color: #000;
+          border: none;
+          padding: 1rem 2rem;
+          font-size: 1rem;
+          font-weight: 700;
+          border-radius: 25px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-top: 1rem;
+          width: 100%;
+        }
+        
+        .mobile-modal-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(255,178,0,0.4);
+        }
+        
+        .mobile-service-details {
+          margin: 1.5rem 0;
+        }
+        
+        .detail-item {
+          margin: 0.8rem 0;
+          padding: 0.5rem 0;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .detail-item:last-child {
+          border-bottom: none;
+        }
+      `;
+      document.head.appendChild(style);
       
       function showMobileNotification(message, type = 'info') {
         // 📱 DISABLED: Mobile notifications disabled for better UX
