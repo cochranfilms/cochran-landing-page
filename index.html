@@ -10737,7 +10737,7 @@
     <div class="photo-section-header">
       <h2><i class="fas fa-camera-retro"></i> Professional Event Photography and On-Site Printing</h2>
       <p>From timeless portraits to dynamic brand visuals, our photography services are tailored to tell your story with clarity, creativity, and style. With years of experience and a deep understanding of visual impact, we're here to help your moments shine—whether it's personal, professional, or promotional.</p>
-      <button class="book-now-btn" onclick="openPhotoBookingModal()">Book Now</button>
+      <button class="book-now-btn" onclick="openBookingModal(true)">Book Now</button>
     </div>
     
     <!-- Cinematic Masonry Gallery -->
@@ -10752,7 +10752,7 @@
                 <p>Capturing your special moments</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10768,7 +10768,7 @@
                 <p>High-quality image capture</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)" aria-label="View portrait photography">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()" aria-label="Book photography session">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()" aria-label="Go to Service Package Builder">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10784,7 +10784,7 @@
                 <p>Creative visual storytelling</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)" aria-label="View brand photography">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()" aria-label="Book photography session">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()" aria-label="Go to Service Package Builder">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10800,7 +10800,7 @@
                 <p>Event coverage excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)" aria-label="View corporate event photography">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()" aria-label="Book photography session">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()" aria-label="Go to Service Package Builder">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10816,7 +10816,7 @@
                 <p>On-site printing services</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10832,7 +10832,7 @@
                 <p>Business portrait sessions</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10848,7 +10848,7 @@
                 <p>Product showcase excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10864,7 +10864,7 @@
                 <p>Special event coverage</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10880,7 +10880,7 @@
                 <p>Instant print services</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10896,7 +10896,7 @@
                 <p>Portrait session excellence</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10912,7 +10912,7 @@
                 <p>Creative visual solutions</p>
                 <div class="overlay-actions">
                   <button class="view-btn" onclick="openLightbox(this)">View</button>
-                  <button class="book-btn" onclick="openPhotoBookingModal()">Book Now</button>
+                  <button class="book-btn" onclick="scrollToServiceBuilder()">Book Now</button>
                 </div>
               </div>
             </div>
@@ -10949,286 +10949,6 @@
     <div class="lightbox-modal" id="lightboxModal">
       <span class="lightbox-close" id="lightboxClose">&times;</span>
       <img class="lightbox-content" id="lightboxImg" src="" alt="Large Photo">
-    </div>
-  </section>
-
-  <!-- Premium Agency Comparison Section -->
-  <section class="agency-comparison-section">
-    <div class="comparison-container">
-      <h2 class="section-title">📉 What Most Agencies Still Don't Know</h2>
-      <p class="section-subtitle">The gap between average agencies and true professionals</p>
-      
-      <div class="comparison-grid">
-        <div class="comparison-column">
-          <div class="column-header negative">
-            <div class="header-icon">
-              <i class="fas fa-chart-line-down"></i>
-            </div>
-            <h3>What Most Agencies Still Don't Know</h3>
-          </div>
-          <div class="comparison-list">
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>Schema Markup?</span>
-            </div>
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>Google Search Console Setup</span>
-            </div>
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>Missing Rich Results</span>
-            </div>
-            <div class="comparison-item negative">
-              <i class="fas fa-times"></i>
-              <span>No Backend Validation</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="comparison-column">
-          <div class="column-header positive">
-            <div class="header-icon">
-              <i class="fas fa-check-circle"></i>
-            </div>
-            <h3>What We Deliver at Cochran Films</h3>
-          </div>
-          <div class="comparison-list">
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>SEO Mastery</span>
-            </div>
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>CRM + Workflow Setup</span>
-            </div>
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>Conversion-Driven UI/UX</span>
-            </div>
-            <div class="comparison-item positive">
-              <i class="fas fa-check"></i>
-              <span>Visual Media</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="deliver-section">
-    <div class="deliver-container">
-      <h2 class="section-title">✅ What We Deliver at Cochran Films</h2>
-      <p class="section-subtitle">Comprehensive solutions that drive results and exceed expectations</p>
-      
-      <div class="deliver-grid">
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-search"></i>
-          </div>
-          <h3>SEO Mastery</h3>
-          <p>Schema, metadata, indexation, rich results</p>
-        </div>
-        
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-cogs"></i>
-          </div>
-          <h3>CRM + Workflow Setup</h3>
-          <p>Lead forms, automations, integrations</p>
-        </div>
-        
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-mouse-pointer"></i>
-          </div>
-          <h3>Conversion-Driven UI/UX</h3>
-          <p>From homepage to booking</p>
-        </div>
-        
-        <div class="deliver-card glass-enhanced neon-glow">
-          <div class="deliver-icon">
-            <i class="fas fa-camera"></i>
-          </div>
-          <h3>Visual Media</h3>
-          <p>Photography, branded content, promotional reels, podcasts, full video production, and more!</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium Testimonials Section -->
-  <section class="testimonials-section">
-    <div class="testimonials-container">
-      <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Real stories from real clients who trusted us with their vision</p>
-      
-      <div class="testimonials-grid">
-        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="200">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Cochran Films transformed our event into a cinematic masterpiece. The quality exceeded our expectations and the turnaround time was incredible. Worth every penny!"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="author-info">
-                <h4>Sarah Johnson</h4>
-                <span>Event Director, TechCorp</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card featured glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="400">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"Working with Cody was a game-changer for our brand. His attention to detail and creative vision brought our story to life in ways we never imagined possible."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="author-info">
-                <h4>Michael Chen</h4>
-                <span>CEO, StartupXYZ</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="600">
-          <div class="testimonial-content">
-            <div class="quote-icon">❝</div>
-            <p>"The consultation alone was worth the investment. Cody's expertise helped us understand exactly what we needed and delivered beyond our expectations."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="author-info">
-                <h4>Emily Rodriguez</h4>
-                <span>Marketing Manager, GrowthCo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- AI: Insert testimonial interaction tracking here -->
-      <div class="testimonials-stats">
-        <div class="stat-item">
-          <div class="stat-number" data-target="150">0</div>
-          <div class="stat-label">Happy Clients</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="500">0</div>
-          <div class="stat-label">Projects Completed</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="98">0</div>
-          <div class="stat-label">Satisfaction Rate</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="24">0</div>
-          <div class="stat-label">Hour Turnaround</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="comparison-section">
-    <div class="comparison-container">
-      <h2 class="section-title">📊 How We Compare</h2>
-      <p class="section-subtitle">See why clients choose Cochran Films over typical agencies</p>
-      
-      <div class="comparison-content">
-        <div class="comparison-key">
-          <span class="cf-key"><i class="fas fa-star"></i> Cochran Films</span>
-          <span class="ta-key"><i class="fas fa-building"></i> Typical Agency</span>
-        </div>
-        
-        <div class="comparison-bars">
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-dollar-sign"></i> Value for Money</span>
-              <div class="metric-details">
-                <span class="cf-value">$1200</span>
-                <span class="ta-value">$2500</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: $1200">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: $2500">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-bolt"></i> Turnaround Time</span>
-              <div class="metric-details">
-                <span class="cf-value">24-48 hours</span>
-                <span class="ta-value">1-2 weeks</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: 24-48 hours">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: 1-2 weeks">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-trophy"></i> Quality/Results</span>
-              <div class="metric-details">
-                <span class="cf-value">Premium quality</span>
-                <span class="ta-value">Standard quality</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: Premium quality">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: Standard quality">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="compare-row">
-            <div class="metric-info">
-              <span class="metric-label"><i class="fas fa-headset"></i> Customer Support</span>
-              <div class="metric-details">
-                <span class="cf-value">Direct communication</span>
-                <span class="ta-value">Account managers</span>
-              </div>
-            </div>
-            <div class="bars-container">
-              <div class="bar cf-bar" data-tooltip="Cochran Films: Direct communication">
-                <div class="cf-inner"></div>
-                <div class="bar-label">Cochran Films</div>
-              </div>
-              <div class="bar ta-bar" data-tooltip="Typical Agency: Account managers">
-                <div class="ta-inner"></div>
-                <div class="bar-label">Typical Agency</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -11953,8 +11673,1003 @@
     </div>
   </section>
 
+  <!-- Premium Agency Comparison Section -->
+  <section class="agency-comparison-section">
+    <div class="comparison-container">
+      <h2 class="section-title">📉 What Most Agencies Still Don't Know</h2>
+      <p class="section-subtitle">The gap between average agencies and true professionals</p>
+      
+      <div class="comparison-grid">
+        <div class="comparison-column">
+          <div class="column-header negative">
+            <div class="header-icon">
+              <i class="fas fa-chart-line-down"></i>
+            </div>
+            <h3>What Most Agencies Still Don't Know</h3>
+          </div>
+          <div class="comparison-list">
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>Schema Markup?</span>
+            </div>
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>Google Search Console Setup</span>
+            </div>
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>Missing Rich Results</span>
+            </div>
+            <div class="comparison-item negative">
+              <i class="fas fa-times"></i>
+              <span>No Backend Validation</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comparison-column">
+          <div class="column-header positive">
+            <div class="header-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>What We Deliver at Cochran Films</h3>
+          </div>
+          <div class="comparison-list">
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>SEO Mastery</span>
+            </div>
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>CRM + Workflow Setup</span>
+            </div>
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>Conversion-Driven UI/UX</span>
+            </div>
+            <div class="comparison-item positive">
+              <i class="fas fa-check"></i>
+              <span>Visual Media</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="deliver-section">
+    <div class="deliver-container">
+      <h2 class="section-title">✅ What We Deliver at Cochran Films</h2>
+      <p class="section-subtitle">Comprehensive solutions that drive results and exceed expectations</p>
+      
+      <div class="deliver-grid">
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>SEO Mastery</h3>
+          <p>Schema, metadata, indexation, rich results</p>
+        </div>
+        
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>CRM + Workflow Setup</h3>
+          <p>Lead forms, automations, integrations</p>
+        </div>
+        
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-mouse-pointer"></i>
+          </div>
+          <h3>Conversion-Driven UI/UX</h3>
+          <p>From homepage to booking</p>
+        </div>
+        
+        <div class="deliver-card glass-enhanced neon-glow">
+          <div class="deliver-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3>Visual Media</h3>
+          <p>Photography, branded content, promotional reels, podcasts, full video production, and more!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Real stories from real clients who trusted us with their vision</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Cochran Films transformed our event into a cinematic masterpiece. The quality exceeded our expectations and the turnaround time was incredible. Worth every penny!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Sarah Johnson</h4>
+                <span>Event Director, TechCorp</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card featured glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="400">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"Working with Cody was a game-changer for our brand. His attention to detail and creative vision brought our story to life in ways we never imagined possible."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Michael Chen</h4>
+                <span>CEO, StartupXYZ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card glass-enhanced neon-glow" data-aos="fade-up" data-aos-delay="600">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p>"The consultation alone was worth the investment. Cody's expertise helped us understand exactly what we needed and delivered beyond our expectations."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Emily Rodriguez</h4>
+                <span>Marketing Manager, GrowthCo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- AI: Insert testimonial interaction tracking here -->
+      <div class="testimonials-stats">
+        <div class="stat-item">
+          <div class="stat-number" data-target="150">0</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="24">0</div>
+          <div class="stat-label">Hour Turnaround</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison-section">
+    <div class="comparison-container">
+      <h2 class="section-title">📊 How We Compare</h2>
+      <p class="section-subtitle">See why clients choose Cochran Films over typical agencies</p>
+      
+      <div class="comparison-content">
+        <div class="comparison-key">
+          <span class="cf-key"><i class="fas fa-star"></i> Cochran Films</span>
+          <span class="ta-key"><i class="fas fa-building"></i> Typical Agency</span>
+        </div>
+        
+        <div class="comparison-bars">
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-dollar-sign"></i> Value for Money</span>
+              <div class="metric-details">
+                <span class="cf-value">$1200</span>
+                <span class="ta-value">$2500</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: $1200">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: $2500">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-bolt"></i> Turnaround Time</span>
+              <div class="metric-details">
+                <span class="cf-value">24-48 hours</span>
+                <span class="ta-value">1-2 weeks</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: 24-48 hours">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: 1-2 weeks">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-trophy"></i> Quality/Results</span>
+              <div class="metric-details">
+                <span class="cf-value">Premium quality</span>
+                <span class="ta-value">Standard quality</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: Premium quality">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: Standard quality">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="compare-row">
+            <div class="metric-info">
+              <span class="metric-label"><i class="fas fa-headset"></i> Customer Support</span>
+              <div class="metric-details">
+                <span class="cf-value">Direct communication</span>
+                <span class="ta-value">Account managers</span>
+              </div>
+            </div>
+            <div class="bars-container">
+              <div class="bar cf-bar" data-tooltip="Cochran Films: Direct communication">
+                <div class="cf-inner"></div>
+                <div class="bar-label">Cochran Films</div>
+              </div>
+              <div class="bar ta-bar" data-tooltip="Typical Agency: Account managers">
+                <div class="ta-inner"></div>
+                <div class="bar-label">Typical Agency</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Cinematic Services Section -->
   <section class="services-section">
+    <div class="service-builder-container">
+      <div class="section-header">
+        <h2 class="section-title">Service Package Builder</h2>
+        <p class="section-subtitle">Build your perfect service package with our drag-and-drop builder. Select services, see real-time pricing, and generate instant invoices.</p>
+      </div>
+      
+      <div class="service-builder-grid">
+        <!-- Service Catalog -->
+        <div class="service-catalog">
+          <div class="catalog-header">
+            <h3>Service Catalog</h3>
+            <p>Drag services to build your package</p>
+          </div>
+          
+          <div class="service-categories">
+            <button class="category-tab active" data-category="website">Websites</button>
+            <button class="category-tab" data-category="photography">Photography</button>
+            <button class="category-tab" data-category="videography">Video</button>
+            <button class="category-tab" data-category="branding">Branding</button>
+            <button class="category-tab" data-category="printing">Printing</button>
+            <button class="category-tab" data-category="retainer">Retainer</button>
+          </div>
+          
+          <div class="service-items" id="serviceItems">
+            <!-- Website Category -->
+            <div class="service-section-header" data-category="website">Main Services</div>
+            
+            <!-- Website Development Packages -->
+            <div class="service-item" data-category="website" draggable="true" data-service="starter-site">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Starter Site</h4>
+                  <p>1-page scroll layout (Home + Contact), Mobile-friendly design</p>
+                </div>
+              </div>
+              <div class="service-price">$750</div>
+            </div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="business-pro-site">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-globe"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Business Pro Site</h4>
+                  <p>3-5 fully designed pages, Custom layout, Blog setup (optional)</p>
+                </div>
+              </div>
+              <div class="service-price">$1,250</div>
+            </div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="brand-builder-site">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Brand Builder Site</h4>
+                  <p>6-10 page fully branded website, E-commerce integration</p>
+                </div>
+              </div>
+              <div class="service-price">$2,500</div>
+            </div>
+            
+            <!-- Photography Category -->
+            <div class="service-section-header" data-category="photography">Main Services</div>
+            
+            <div class="service-item" data-category="photography" draggable="true" data-service="flash-start">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-camera"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Flash Start</h4>
+                  <p>1 Hour Photography, Unlimited Digital Photos, Light Photo Editing</p>
+                </div>
+              </div>
+              <div class="service-price">$350</div>
+            </div>
+            
+            <div class="service-item" data-category="photography" draggable="true" data-service="prime-exposure">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-camera-retro"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Prime Exposure</h4>
+                  <p>2 Hours Photography, Full Photo Editing, Download Access</p>
+                </div>
+              </div>
+              <div class="service-price">$600</div>
+            </div>
+            
+            <div class="service-item" data-category="photography" draggable="true" data-service="legacy-capture">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-award"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Legacy Capture</h4>
+                  <p>3 Hours Photography, Advanced Editing & Color Grading</p>
+                </div>
+              </div>
+              <div class="service-price">$900</div>
+
+            </div>
+            
+            <!-- Photography Add-ons -->
+            <div class="service-section-header" data-category="photography">Add-ons</div>
+            
+            <div class="service-item" data-category="photography" draggable="true" data-service="rush-editing">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Rush Editing</h4>
+                  <p>24-hour turnaround for urgent projects</p>
+                </div>
+              </div>
+              <div class="service-price">$75</div>
+            </div>
+            
+            <div class="service-item" data-category="photography" draggable="true" data-service="travel-fee">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-car"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Travel Fee</h4>
+                  <p>For locations outside standard service area</p>
+                </div>
+              </div>
+              <div class="service-price">$50</div>
+            </div>
+            
+            <!-- Videography Category -->
+            <div class="service-section-header" data-category="videography">Main Services</div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="hourly-video">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Hourly Video Service</h4>
+                  <p>Professional video production hourly rate</p>
+                </div>
+              </div>
+              <div class="service-price">$250</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="raw-files">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-file-video"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Raw Files (Additional)</h4>
+                  <p>Complete unedited project files for your archive</p>
+                </div>
+              </div>
+              <div class="service-price">$300</div>
+
+            </div>
+            
+            <!-- Event Video Services -->
+            <div class="service-item" data-category="videography" draggable="true" data-service="event-video-2hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-video"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Event Video + 60 Sec Recap</h4>
+                  <p>2 Hours filming with professional 60-second recap video</p>
+                </div>
+              </div>
+              <div class="service-price">$500</div>
+              <div class="service-duration">2 Hours</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="event-video-3hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-film"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Event Video + 60 Sec Recap</h4>
+                  <p>3 Hours filming with professional 60-second recap video</p>
+                </div>
+              </div>
+              <div class="service-price">$750</div>
+              <div class="service-duration">3 Hours</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="event-video-5hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-camera"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Event Video + 60-90 Sec Recap</h4>
+                  <p>5 Hours filming with extended professional recap video</p>
+                </div>
+              </div>
+              <div class="service-price">$1,250</div>
+
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="event-video-8hr-no-edit">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-video-camera"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Event Video (No Edits)</h4>
+                  <p>8 Hours professional filming, no post-production</p>
+                </div>
+              </div>
+              <div class="service-price">$2,000</div>
+              <div class="service-duration">8 Hours</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="event-video-8hr-recap">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-film"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Event Video + 60 Sec Recap</h4>
+                  <p>8 Hours filming with professional 60-second recap video</p>
+                </div>
+              </div>
+              <div class="service-price">$2,200</div>
+              <div class="service-duration">8 Hours</div>
+            </div>
+            
+            <!-- Live Production Services -->
+            <div class="service-item" data-category="videography" draggable="true" data-service="live-production-3hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-broadcast-tower"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Live Production (Up to 3 Cameras)</h4>
+                  <p>3 Hours + Production Edit with multi-camera setup</p>
+                </div>
+              </div>
+              <div class="service-price">$2,000</div>
+              <div class="service-duration">3 Hours + Edit</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="live-production-5hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-satellite-dish"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Live Production (Up to 3 Cameras)</h4>
+                  <p>5 Hours + Production Edit with multi-camera setup</p>
+                </div>
+              </div>
+              <div class="service-price">$3,000</div>
+              <div class="service-duration">5 Hours + Edit</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="live-production-8hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-tower-broadcast"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Live Production (Up to 3 Cameras)</h4>
+                  <p>8 Hours + Production Edit with multi-camera setup</p>
+                </div>
+              </div>
+              <div class="service-price">$4,000</div>
+              <div class="service-duration">8 Hours + Edit</div>
+            </div>
+            
+            <!-- Podcast Services -->
+            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-1hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-podcast"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Podcast + Edits (2 Cameras)</h4>
+                  <p>1 Hour podcast recording with full editing</p>
+                </div>
+              </div>
+              <div class="service-price">$750</div>
+              <div class="service-duration">1 Hour</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-2hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-microphone"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Podcast + Edits (2 Cameras)</h4>
+                  <p>2 Hour podcast recording with full editing</p>
+                </div>
+              </div>
+              <div class="service-price">$1,000</div>
+              <div class="service-duration">2 Hours</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-3hr">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-headphones"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Podcast + Edits (2 Cameras)</h4>
+                  <p>3 Hour podcast recording with full editing</p>
+                </div>
+              </div>
+              <div class="service-price">$1,500</div>
+              <div class="service-duration">3 Hours</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="podcast-shoot-only">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-camera-retro"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Podcast Shoot Only</h4>
+                  <p>Recording only, no editing included</p>
+                </div>
+              </div>
+              <div class="service-price">$250</div>
+              <div class="service-duration">Per Hour</div>
+            </div>
+            
+            <!-- Commercial Services -->
+            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-basic">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-ad"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Basic Commercial Shoot</h4>
+                  <p>Single camera operator, 3 hours, no direction</p>
+                </div>
+              </div>
+              <div class="service-price">$750</div>
+
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-edit">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-cut"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Commercial Shoot + Edit</h4>
+                  <p>Single camera operator, 3-5 hours filming + edit</p>
+                </div>
+              </div>
+              <div class="service-price">$1,500</div>
+              <div class="service-duration">Single Camera, 3-5 hrs + Edit</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-directed">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Directed Commercial Shoot</h4>
+                  <p>Pre-production planning + script direction + 4-6 hrs filming + full edit</p>
+                </div>
+              </div>
+              <div class="service-price">$2,500</div>
+              <div class="service-duration">Pre-Production + 4-6 hrs + Edit</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="commercial-full">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-crown"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Full Commercial Package</h4>
+                  <p>Full creative direction + full-day shoot with 4-5 person crew + script, production, and editing</p>
+                </div>
+              </div>
+              <div class="service-price">$5,500</div>
+              <div class="service-duration">Full Creative Direction + Crew</div>
+            </div>
+            
+            <!-- Retainer Category -->
+            <div class="service-section-header" data-category="retainer">Monthly Packages</div>
+            
+            <div class="service-item" data-category="retainer" draggable="true" data-service="fast-frame-monthly">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Fast Frame (1 Month)</h4>
+                  <p>Perfect for quick turnaround - 4 professionally crafted videos OR 3 fully produced podcasts</p>
+                </div>
+              </div>
+              <div class="service-price">$2,500</div>
+              <div class="service-duration">4 Videos OR 3 Podcasts</div>
+            </div>
+            
+            <div class="service-item" data-category="retainer" draggable="true" data-service="cinematic-spotlight">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Cinematic Spotlight (2 Months)</h4>
+                  <p>Consistent, impactful content - 6 expertly produced videos OR 5 fully produced podcasts</p>
+                </div>
+              </div>
+              <div class="service-price">$4,800</div>
+              <div class="service-duration">6 Videos OR 5 Podcasts</div>
+            </div>
+            
+            <div class="service-item" data-category="retainer" draggable="true" data-service="masterpiece-collection">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-trophy"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Masterpiece Collection (3 Months)</h4>
+                  <p>Sustained professional touch - 9 high-quality videos OR 7 seamless podcasts with 24/7 support</p>
+                </div>
+              </div>
+              <div class="service-price">$7,000</div>
+              <div class="service-duration">9 Videos OR 7 Podcasts</div>
+            </div>
+            
+            <!-- Videography Add-ons -->
+            <div class="service-section-header" data-category="videography">Add-ons</div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="rush-editing-video">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Rush Editing</h4>
+                  <p>Rush delivery for urgent projects</p>
+                </div>
+              </div>
+              <div class="service-price">$75</div>
+              <div class="service-duration">Rush delivery</div>
+            </div>
+            
+            <div class="service-item" data-category="videography" draggable="true" data-service="travel-fee-video">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-car"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Travel Fee</h4>
+                  <p>Additional fee for travel to location</p>
+                </div>
+              </div>
+              <div class="service-price">$50</div>
+              <div class="service-duration">Per event</div>
+            </div>
+            
+            <!-- Branding Category -->
+            <div class="service-section-header" data-category="branding">Main Services</div>
+            
+            <div class="service-item" data-category="branding" draggable="true" data-service="ignite-brand">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-fire"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Ignite Package</h4>
+                  <p>Custom Logo Design, 1-Page Landing Website, Basic Content Strategy</p>
+                </div>
+              </div>
+              <div class="service-price">$900</div>
+
+            </div>
+            
+            <div class="service-item" data-category="branding" draggable="true" data-service="collaborate-brand">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Collaborate Package</h4>
+                  <p>Everything in Ignite + Multi-Page Website, Social Media Setup</p>
+                </div>
+              </div>
+              <div class="service-price">$1,800</div>
+
+            </div>
+            
+            <div class="service-item" data-category="branding" draggable="true" data-service="transform-brand">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-magic"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Transform Package</h4>
+                  <p>Everything in Collaborate + E-Commerce, Advanced Website Features</p>
+                </div>
+              </div>
+              <div class="service-price">$3,500</div>
+
+            </div>
+            
+            <!-- Branding Add-ons -->
+            <div class="service-section-header" data-category="branding">Add-ons</div>
+            
+            <div class="service-item" data-category="branding" draggable="true" data-service="logo-design">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-palette"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Logo Design</h4>
+                  <p>3 custom concepts, 2 revision rounds, Full branding kit</p>
+                </div>
+              </div>
+              <div class="service-price">$250</div>
+              <div class="service-duration">Color palette & fonts</div>
+            </div>
+            
+            <!-- Printing Category -->
+            <div class="service-section-header" data-category="printing">Main Services</div>
+            
+            <div class="service-item" data-category="printing" draggable="true" data-service="quick-print-4x6">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-print"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Quick Print Booth (4x6)</h4>
+                  <p>1 Hour operation, Up to 100 prints, On-site technician</p>
+                </div>
+              </div>
+              <div class="service-price">$500</div>
+              <div class="service-duration">4x6 Prints</div>
+            </div>
+            
+            <div class="service-item" data-category="printing" draggable="true" data-service="signature-snap-4x6">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-images"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Signature Snap Station (4x6)</h4>
+                  <p>2 Hours operation, Up to 200 prints, Premium backdrop</p>
+                </div>
+              </div>
+              <div class="service-price">$800</div>
+              <div class="service-duration">Table Setup & Lighting</div>
+            </div>
+            
+            <div class="service-item" data-category="printing" draggable="true" data-service="legacy-lab-4x6">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-trophy"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Legacy Lab Experience (4x6)</h4>
+                  <p>3 Hours operation, Up to 350 prints, 2-Person print team</p>
+                </div>
+              </div>
+              <div class="service-price">$1,100</div>
+              <div class="service-duration">Real-time photo review</div>
+            </div>
+            
+            <!-- Website Add-ons -->
+            <div class="service-section-header" data-category="website">Add-ons</div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="seo-boost">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="service-info">
+                  <h4>SEO Boost Package</h4>
+                  <p>Keyword research, Meta tag optimization, Sitemap submission</p>
+                </div>
+              </div>
+              <div class="service-price">$250</div>
+              <div class="service-duration">Google submission</div>
+            </div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="google-business">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fab fa-google"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Google Business Profile Setup</h4>
+                  <p>Claim, verify, and fully set up your business profile</p>
+                </div>
+              </div>
+              <div class="service-price">$100</div>
+              <div class="service-duration">Link to website</div>
+            </div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="newsletter-integration">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Newsletter Integration</h4>
+                  <p>Mailchimp/ConvertKit setup, Signup forms, Welcome sequence</p>
+                </div>
+              </div>
+              <div class="service-price">$125</div>
+              <div class="service-duration">Email platform link</div>
+            </div>
+            
+
+            
+            <!-- Website Maintenance -->
+            <div class="service-section-header" data-category="website">Website Maintenance</div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="basic-maintenance">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-tools"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Basic Maintenance</h4>
+                  <p>Monthly security checks, Plugin/theme updates, Performance monitoring</p>
+                </div>
+              </div>
+              <div class="service-price">$45</div>
+              <div class="service-duration">Per month</div>
+            </div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="business-maintenance">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-cogs"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Business Maintenance</h4>
+                  <p>All Basic features + 1 monthly update request, Priority support</p>
+                </div>
+              </div>
+              <div class="service-price">$95</div>
+              <div class="service-duration">Per month</div>
+            </div>
+            
+            <div class="service-item" data-category="website" draggable="true" data-service="full-support">
+              <div class="service-item-header">
+                <div class="service-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="service-info">
+                  <h4>Full Support Plan</h4>
+                  <p>All Business features + Up to 3 updates/month, Emergency bug fixing</p>
+                </div>
+              </div>
+              <div class="service-price">$195</div>
+              <div class="service-duration">Per month</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Package Builder -->
+        <div class="package-builder">
+          <div class="builder-header">
+            <h3>Your Package</h3>
+            <p>Drag services here to build your custom package</p>
+          </div>
+          
+          <div class="package-dropzone" id="packageDropzone">
+            <div class="dropzone-placeholder">
+              <div class="dropzone-icon">
+                <i class="fas fa-plus"></i>
+              </div>
+              <p>Drag services here to start building your package</p>
+              <small>Mix and match services to create your perfect solution</small>
+            </div>
+          </div>
+          
+          <div class="selected-services" id="selectedServices" style="display: none;">
+            <!-- Selected services will be added here -->
+          </div>
+          
+          <div class="quote-summary" id="quoteSummary" style="display: none;">
+            <div class="quote-header">
+              <h4>Quote Summary</h4>
+            </div>
+            <div class="quote-total" id="quoteTotal">$0</div>
+            <div class="quote-breakdown" id="quoteBreakdown">
+              <!-- Quote breakdown will be populated here -->
+            </div>
+            <div class="quote-actions">
+              <button class="btn-generate-invoice" id="generateInvoice">
+                <i class="fas fa-file-invoice-dollar"></i>
+                Create Project Request
+              </button>
+              <button class="btn-clear-package" id="clearPackage">
+                <i class="fas fa-trash"></i>
+                Clear Package
+              </button>
+            </div>
+          </div>
+        </div>
     <div class="services-container">
       <h2 class="section-title" data-aos="fade-up">🎬 Our Media Services (Breakdown)</h2>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Comprehensive solutions that transform your vision into compelling content</p>
@@ -14228,7 +14943,25 @@
       }
     }
     
-    // Function to open photo-specific booking modal
+    // Function to scroll to Service Package Builder
+    function scrollToServiceBuilder() {
+      const serviceBuilder = document.getElementById('serviceBuilder');
+      if (serviceBuilder) {
+        serviceBuilder.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+        
+        // Optional: Add a visual highlight effect
+        serviceBuilder.style.transition = 'all 0.3s ease';
+        serviceBuilder.style.background = 'rgba(255, 178, 0, 0.1)';
+        setTimeout(() => {
+          serviceBuilder.style.background = '';
+        }, 2000);
+      }
+    }
+    
+    // Function to open photo-specific booking modal (kept for backwards compatibility)
     function openPhotoBookingModal() {
       const modal = document.getElementById('bookingModal');
       const serviceSelect = document.getElementById('service');
