@@ -4102,7 +4102,9 @@
         justify-content: center !important;
       }
     }
-      
+    
+    /* Additional mobile optimizations */
+    @media (max-width: 500px) {
       /* Ultra-mobile dark mode */
       body[data-theme="dark"] .modal-content {
         background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
@@ -4260,12 +4262,23 @@
         width: 100%;
         height: 100%;
         background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: center;
         z-index: 99999;
         opacity: 1;
         transition: opacity 0.5s ease;
+      }
+      
+      /* Ensure mobile loader is visible by default on mobile */
+      body:not(.loaded) .mobile-loader {
+        display: flex !important;
+        opacity: 1 !important;
+      }
+      
+      body.loaded .mobile-loader {
+        opacity: 0;
+        pointer-events: none;
       }
       
       .mobile-loader.hidden {
@@ -11145,7 +11158,7 @@
   </div>
 
   <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
-  <div class="mobile-loader">
+  <div class="mobile-loader" style="display: none;">
     <div class="mobile-loader-content">
       <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
       <h1 class="mobile-loader-title">Cochran Films</h1>
@@ -12794,6 +12807,15 @@
   document.addEventListener('DOMContentLoaded', () => {
     console.log('🎬 Cochran Films Production Studio Loading...');
     
+    // 📱 MOBILE LOADER INITIALIZATION
+    const isMobile = window.innerWidth <= 768;
+    const mobileLoader = document.querySelector('.mobile-loader');
+    
+    if (mobileLoader && isMobile) {
+      mobileLoader.style.display = 'flex';
+      console.log('📱 Mobile loader activated on DOMContentLoaded');
+    }
+    
     // 📱 MILLION DOLLAR MOBILE INITIALIZATION
     
     // CRITICAL: Prevent auto-modal opening immediately
@@ -13505,6 +13527,13 @@
     
     const isMobile = window.innerWidth <= 768;
     const isUltraMobile = window.innerWidth <= 480;
+    
+    // Show mobile loader on mobile devices
+    const mobileLoader = document.querySelector('.mobile-loader');
+    if (mobileLoader && isMobile) {
+      mobileLoader.style.display = 'flex';
+      console.log('📱 Mobile loader activated');
+    }
     
     // Optimize loading time based on device capabilities
     const loadingDuration = isUltraMobile ? 3000 : isMobile ? 4000 : 5000;
