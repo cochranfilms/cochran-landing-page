@@ -75,28 +75,30 @@
       const isMobile = window.innerWidth <= 768;
       console.log('📱 Immediate mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
       
-      // Function to show mobile version
+      // Function to show mobile version (only after loading is complete)
       function showMobileVersion() {
-        const mobileVersion = document.getElementById('mobileVersion');
-        if (mobileVersion) {
-          mobileVersion.style.display = 'block !important';
-          mobileVersion.style.visibility = 'visible !important';
-          mobileVersion.style.opacity = '1 !important';
-          mobileVersion.style.position = 'relative !important';
-          mobileVersion.style.zIndex = '1 !important';
-        }
-        
-        // Hide desktop elements
-        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-        desktopElements.forEach(el => {
-          el.style.display = 'none !important';
-          el.style.visibility = 'hidden !important';
-          el.style.opacity = '0 !important';
-          el.style.position = 'absolute !important';
-          el.style.zIndex = '-1 !important';
-        });
-        
-        // Show mobile navigation
+        // Only show mobile version if loading is complete
+        if (document.body.classList.contains('loaded')) {
+          const mobileVersion = document.getElementById('mobileVersion');
+          if (mobileVersion) {
+            mobileVersion.style.display = 'block !important';
+            mobileVersion.style.visibility = 'visible !important';
+            mobileVersion.style.opacity = '1 !important';
+            mobileVersion.style.position = 'relative !important';
+            mobileVersion.style.zIndex = '1 !important';
+          }
+          
+          // Hide desktop elements
+          const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+          desktopElements.forEach(el => {
+            el.style.display = 'none !important';
+            el.style.visibility = 'hidden !important';
+            el.style.opacity = '0 !important';
+            el.style.position = 'absolute !important';
+            el.style.zIndex = '-1 !important';
+          });
+          
+                  // Show mobile navigation
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
         if (mobileNavToggle) {
           mobileNavToggle.style.display = 'flex !important';
@@ -107,61 +109,93 @@
         
         document.body.classList.add('mobile-view');
         console.log('📱 Mobile version activated');
+        }
       }
       
-      // Function to show desktop version
+      // Function to show desktop version (only after loading is complete)
       function showDesktopVersion() {
-        const mobileVersion = document.getElementById('mobileVersion');
-        if (mobileVersion) {
-          mobileVersion.style.display = 'none !important';
-          mobileVersion.style.visibility = 'hidden !important';
-          mobileVersion.style.opacity = '0 !important';
-          mobileVersion.style.position = 'absolute !important';
-          mobileVersion.style.zIndex = '-1 !important';
+        // Only show desktop version if loading is complete
+        if (document.body.classList.contains('loaded')) {
+          const mobileVersion = document.getElementById('mobileVersion');
+          if (mobileVersion) {
+            mobileVersion.style.display = 'none !important';
+            mobileVersion.style.visibility = 'hidden !important';
+            mobileVersion.style.opacity = '0 !important';
+            mobileVersion.style.position = 'absolute !important';
+            mobileVersion.style.zIndex = '-1 !important';
+          }
+          
+          // Show desktop elements
+          const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+          desktopElements.forEach(el => {
+            el.style.display = 'block !important';
+            el.style.visibility = 'visible !important';
+            el.style.opacity = '1 !important';
+            el.style.position = 'relative !important';
+            el.style.zIndex = '1 !important';
+          });
+          
+          // Hide mobile navigation
+          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+          if (mobileNavToggle) {
+            mobileNavToggle.style.display = 'none !important';
+            mobileNavToggle.style.visibility = 'hidden !important';
+            mobileNavToggle.style.opacity = '0 !important';
+            mobileNavToggle.style.zIndex = '-1 !important';
+          }
+          
+          document.body.classList.add('desktop-view');
+          console.log('🖥️ Desktop version activated');
         }
-        
-        // Show desktop elements
-        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-        desktopElements.forEach(el => {
-          el.style.display = 'block !important';
-          el.style.visibility = 'visible !important';
-          el.style.opacity = '1 !important';
-          el.style.position = 'relative !important';
-          el.style.zIndex = '1 !important';
-        });
-        
-        // Hide mobile navigation
-        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-        if (mobileNavToggle) {
-          mobileNavToggle.style.display = 'none !important';
-          mobileNavToggle.style.visibility = 'hidden !important';
-          mobileNavToggle.style.opacity = '0 !important';
-          mobileNavToggle.style.zIndex = '-1 !important';
-        }
-        
-        document.body.classList.add('desktop-view');
-        console.log('🖥️ Desktop version activated');
       }
       
-      // Initialize based on screen size
+      // Initialize based on screen size (wait for loading to complete)
       if (isMobile) {
-        document.addEventListener('DOMContentLoaded', showMobileVersion);
+        document.addEventListener('DOMContentLoaded', function() {
+          // Wait for loading to complete before showing mobile version
+          if (document.body.classList.contains('loaded')) {
+            showMobileVersion();
+          } else {
+            // Wait for loading to complete
+            const checkLoading = setInterval(() => {
+              if (document.body.classList.contains('loaded')) {
+                clearInterval(checkLoading);
+                showMobileVersion();
+              }
+            }, 100);
+          }
+        });
       } else {
-        document.addEventListener('DOMContentLoaded', showDesktopVersion);
+        document.addEventListener('DOMContentLoaded', function() {
+          // Wait for loading to complete before showing desktop version
+          if (document.body.classList.contains('loaded')) {
+            showDesktopVersion();
+          } else {
+            // Wait for loading to complete
+            const checkLoading = setInterval(() => {
+              if (document.body.classList.contains('loaded')) {
+                clearInterval(checkLoading);
+                showDesktopVersion();
+              }
+            }, 100);
+          }
+        });
       }
       
-      // Force show mobile version for testing images
+      // Force show mobile version for testing images (only after loading)
       document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
-          console.log('🔧 Forcing mobile version to show for image testing');
-          showMobileVersion();
-        }, 1000);
+          if (document.body.classList.contains('loaded')) {
+            console.log('🔧 Forcing mobile version to show for image testing');
+            showMobileVersion();
+          }
+        }, 5000); // Wait for loading to complete
       });
       
-      // Handle window resize
+      // Handle window resize (only after loading is complete)
       window.addEventListener('resize', function() {
         const newIsMobile = window.innerWidth <= 768;
-        if (newIsMobile !== isMobile) {
+        if (newIsMobile !== isMobile && document.body.classList.contains('loaded')) {
           if (newIsMobile) {
             showMobileVersion();
           } else {
@@ -170,14 +204,14 @@
         }
       });
       
-      // Fallback: Force show appropriate version after 2 seconds if not working
+      // Fallback: Force show appropriate version after loading is complete
       setTimeout(function() {
         const mobileVersion = document.getElementById('mobileVersion');
         const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography');
         
         if (isMobile) {
-          // If mobile and mobile version is hidden, force show it
-          if (mobileVersion && mobileVersion.style.display === 'none') {
+          // If mobile and mobile version is hidden, force show it (only after loading)
+          if (mobileVersion && mobileVersion.style.display === 'none' && document.body.classList.contains('loaded')) {
             console.log('🔄 Fallback: Forcing mobile version to show');
             showMobileVersion();
           }
@@ -189,7 +223,7 @@
             showDesktopVersion();
           }
         }
-      }, 2000);
+      }, 6000); // Wait for loading to complete (4s) + buffer
     })();
   </script>
   <!-- 🔒 SECURE EXTERNAL SCRIPTS WITH INTEGRITY CHECKS -->
@@ -9961,6 +9995,20 @@
       -webkit-overflow-scrolling: touch;
     }
     
+    /* Main Content - Hidden during loading */
+    .main-content {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      transition: opacity 0.5s ease;
+    }
+    
+    body.loaded .main-content {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
     /* Unified Loading Screen */
     .loading-screen {
       position: fixed;
@@ -14561,7 +14609,7 @@
 
   
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
-  <div id="mobileVersion" style="display: none; visibility: hidden; opacity: 0; position: absolute; z-index: -1;">
+  <div id="mobileVersion" style="display: none; visibility: hidden; opacity: 0; position: absolute; z-index: -1;" class="main-content">
     
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
@@ -15508,7 +15556,7 @@
             }
             
             if (loadedImages >= totalImages) {
-              // All images loaded, hide loading screen
+              // All images loaded, hide loading screen after 4 seconds
               setTimeout(() => {
                 loadingScreen.style.opacity = '0';
                 loadingScreen.style.transition = 'opacity 0.5s ease';
@@ -15517,8 +15565,14 @@
                   loadingScreen.style.visibility = 'hidden';
                   loadingScreen.style.zIndex = '-1';
                   document.body.classList.add('loaded');
+                  
+                  // Show main content
+                  const mainContent = document.getElementById('mainContent');
+                  const mobileVersion = document.getElementById('mobileVersion');
+                  if (mainContent) mainContent.style.display = 'block';
+                  if (mobileVersion) mobileVersion.style.display = 'block';
                 }, 500);
-              }, 500);
+              }, 4000); // 4 seconds to match animation
             }
           };
           img.onerror = () => {
@@ -15529,21 +15583,27 @@
             }
             
             if (loadedImages >= totalImages) {
-              // All images processed, hide loading screen
+              // All images processed, hide loading screen after 4 seconds
               setTimeout(() => {
                 loadingScreen.style.opacity = '0';
                 loadingScreen.style.transition = 'opacity 0.5s ease';
                 setTimeout(() => {
                   loadingScreen.style.display = 'none';
                   document.body.classList.add('loaded');
+                  
+                  // Show main content
+                  const mainContent = document.getElementById('mainContent');
+                  const mobileVersion = document.getElementById('mobileVersion');
+                  if (mainContent) mainContent.style.display = 'block';
+                  if (mobileVersion) mobileVersion.style.display = 'block';
                 }, 500);
-              }, 500);
+              }, 4000); // 4 seconds to match animation
             }
           };
           img.src = src;
         });
         
-        // Fallback: Hide loading screen after timeout
+        // Fallback: Hide loading screen after 4 seconds
         setTimeout(() => {
           if (loadingScreen.style.opacity !== '0') {
             loadingScreen.style.opacity = '0';
@@ -15553,9 +15613,15 @@
               loadingScreen.style.visibility = 'hidden';
               loadingScreen.style.zIndex = '-1';
               document.body.classList.add('loaded');
+              
+              // Show main content
+              const mainContent = document.getElementById('mainContent');
+              const mobileVersion = document.getElementById('mobileVersion');
+              if (mainContent) mainContent.style.display = 'block';
+              if (mobileVersion) mobileVersion.style.display = 'block';
             }, 500);
           }
-        }, isMobile ? 3000 : 5000);
+        }, 4000); // 4 seconds to match animation
       }
     });
     
@@ -15631,6 +15697,9 @@
   </script>
 
 
+  <!-- Main Content Container (Hidden during loading) -->
+  <div id="mainContent" class="main-content" style="display: none; visibility: hidden; opacity: 0;">
+    
   <!-- Redesigned Hero Section -->
   <section class="hero-section">
     <div class="hero-background">
@@ -22440,6 +22509,8 @@
       });
     });
   </script>
+
+  </div> <!-- End of mainContent -->
 
 </body>
 </html>
