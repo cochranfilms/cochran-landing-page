@@ -86,8 +86,8 @@
           mobileVersion.style.zIndex = '1 !important';
         }
         
-        // Hide desktop elements
-        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+        // Hide desktop elements  
+        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
         desktopElements.forEach(el => {
           el.style.display = 'none !important';
           el.style.visibility = 'hidden !important';
@@ -121,13 +121,22 @@
         }
         
         // Show desktop elements
-        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
         desktopElements.forEach(el => {
-          el.style.display = 'block !important';
+          if (el.classList.contains('cinematic-loader')) {
+            el.style.display = 'flex !important';
+          } else {
+            el.style.display = 'block !important';
+          }
           el.style.visibility = 'visible !important';
           el.style.opacity = '1 !important';
-          el.style.position = 'relative !important';
-          el.style.zIndex = '1 !important';
+          if (el.classList.contains('cinematic-loader')) {
+            el.style.position = 'fixed !important';
+            el.style.zIndex = '999999 !important';
+          } else {
+            el.style.position = 'relative !important';
+            el.style.zIndex = '1 !important';
+          }
         });
         
         // Hide mobile navigation
@@ -11302,6 +11311,26 @@
     .particles-system {
       display: none !important;
     }
+    }
+    
+    /* Show complex loader elements on desktop */
+    @media (min-width: 769px) {
+      .cinematic-loader {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .viewfinder-overlay,
+      .studio-lights,
+      .film-reels,
+      .camera-equipment,
+      .lens-flare,
+      .countdown-container,
+      .clapperboard,
+      .particles-system {
+        display: block !important;
+      }
     
     /* Elegant film strip borders */
     .film-strip::before,
