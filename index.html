@@ -7472,7 +7472,7 @@
     
     /* Light mode footer logo - switch to black version */
     body[data-theme="light"] .footer-logo-img {
-      content: url("logo-white.png");
+      content: url("Logo.png");
     }
 
     .footer-logo-img:hover {
@@ -10169,7 +10169,7 @@
     /* Company Logo */
     .company-logo {
       position: absolute;
-      left: 15%;
+      left: 5%;
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
@@ -10181,10 +10181,18 @@
       height: auto;
       filter: brightness(0) invert(1);
       transition: all 0.3s ease;
+      content: url("Logo.png") !important;
     }
     
     .logo-image:hover {
       filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 178, 0, 0.8));
+    }
+    
+    /* Ensure header logo always uses Logo.png regardless of theme */
+    .company-logo .logo-image,
+    body[data-theme="light"] .company-logo .logo-image,
+    body[data-theme="dark"] .company-logo .logo-image {
+      content: url("Logo.png") !important;
     }
     
     @keyframes logoBounce {
@@ -10195,9 +10203,8 @@
     /* Floating Social Media Icons */
     .floating-social-icons {
       position: absolute;
-      right: 15%;
-      top: 65%;
-      transform: translateY(-50%);
+      right: 20%;
+      top: 70%;
       display: flex;
       flex-direction: row;
       gap: 1.5rem;
@@ -10235,16 +10242,17 @@
       .clapperboard {
         width: 100px;
         height: 70px;
-        margin-left: -10px;
+        right: 20%;
+        top: 35%;
       }
       
       .company-logo {
-        left: 10%;
+        left: 5%;
       }
       
       .floating-social-icons {
-        right: 10%;
-        top: 70%;
+        right: 15%;
+        top: 75%;
       }
       
       .logo-image {
@@ -10360,7 +10368,9 @@
     
     /* Director's Clapperboard */
     .clapperboard {
-      position: relative;
+      position: absolute;
+      right: 25%;
+      top: 40%;
       width: 120px;
       height: 80px;
       background: 
@@ -10375,7 +10385,6 @@
       visibility: visible;
       opacity: 1;
       box-shadow: 0 0 20px rgba(255, 178, 0, 0.3);
-      margin-left: -20px;
     }
     
     .clapper-top {
@@ -15225,11 +15234,6 @@
     
     <!-- Left Side Graphics -->
           <div class="header-left-graphics">
-        <!-- Company Logo -->
-        <div class="company-logo">
-          <img src="Logo.png" alt="Cochran Films" class="logo-image">
-        </div>
-        
         <!-- Floating Particles -->
       <div class="particles-system">
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
@@ -15244,6 +15248,11 @@
     
     <!-- Center Content -->
     <div class="header-center-content">
+      <!-- Company Logo -->
+      <div class="company-logo">
+        <img src="Logo.png" alt="Cochran Films" class="logo-image">
+      </div>
+      
       <!-- Cinematic Typography -->
       <div class="cinematic-text">
         <div class="tagline">STORYTELLING THAT CONVERTS</div>
