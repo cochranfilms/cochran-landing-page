@@ -15238,6 +15238,18 @@
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
   <div id="mobileVersion" style="display: none;">
     
+    <!-- Mobile Loading Screen -->
+    <div class="mobile-loader" id="mobileLoader">
+      <div class="mobile-loader-content">
+        <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
+        <h1 class="mobile-loader-title">Cochran Films</h1>
+        <p class="mobile-loader-subtitle">Loading your experience...</p>
+        <div class="mobile-loader-bar">
+          <div class="mobile-loader-progress"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
       <div class="mobile-header-content">
@@ -15252,8 +15264,6 @@
         </div>
       </div>
     </div>
-    
-
 
     <!-- Mobile Navigation Menu -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
@@ -15271,69 +15281,188 @@
             </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileAbout" onclick="scrollToMobileSection('mobileAbout')">
-              <span class="nav-text">About</span>
-              <span class="nav-icon">👤</span>
-            </a>
-          </div>
-          <div class="nav-item">
             <a href="#mobileServices" onclick="scrollToMobileSection('mobileServices')">
               <span class="nav-text">Services</span>
               <span class="nav-icon">👷</span>
             </a>
           </div>
-
-          <div class="nav-item">
-            <a href="#mobilePhotography" onclick="scrollToMobileSection('mobilePhotography')">
-              <span class="nav-text">Photography</span>
-              <span class="nav-icon">📸</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileServiceBuilder" onclick="scrollToMobileSection('mobileServiceBuilder')">
-              <span class="nav-text">Service Builder</span>
-              <span class="nav-icon">🔧</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileAgencyComparison" onclick="scrollToMobileSection('mobileAgencyComparison')">
-              <span class="nav-text">Why Us</span>
-              <span class="nav-icon">⭐</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileDeliver" onclick="scrollToMobileSection('mobileDeliver')">
-              <span class="nav-text">What We Deliver</span>
-              <span class="nav-icon">✅</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileTestimonials" onclick="scrollToMobileSection('mobileTestimonials')">
-              <span class="nav-text">Testimonials</span>
-              <span class="nav-icon">💬</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobilePricingComparison" onclick="scrollToMobileSection('mobilePricingComparison')">
-              <span class="nav-text">Pricing</span>
-              <span class="nav-icon">💰</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileServicesDetail" onclick="scrollToMobileSection('mobileServicesDetail')">
-              <span class="nav-text">Services Detail</span>
-              <span class="nav-icon">🎯</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileTimeline" onclick="scrollToMobileSection('mobileTimeline')">
-              <span class="nav-text">Our Process</span>
-              <span class="nav-icon">⏱️</span>
-            </a>
-          </div>
           <div class="nav-item">
             <a href="#mobileGallery" onclick="scrollToMobileSection('mobileGallery')">
               <span class="nav-text">Gallery</span>
+              <span class="nav-icon">🎨</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#mobileContact" onclick="scrollToMobileSection('mobileContact')">
+              <span class="nav-text">Contact</span>
+              <span class="nav-icon">✉️</span>
+            </a>
+          </div>
+        </nav>
+        
+        <div class="mobile-nav-footer">
+          <div class="nav-cta-buttons">
+            <a href="#mobileContact" class="nav-cta-button" onclick="scrollToMobileSection('mobileContact')">
+              <span class="nav-icon">💻</span>
+              <span class="nav-text">Book Now</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Content Container -->
+    <div class="mobile-content">
+      
+      <!-- Mobile Hero Section -->
+      <section class="mobile-hero" id="mobileHero">
+        <div class="mobile-hero-content">
+          <div class="mobile-hero-header">
+            <img src="Logo.png" alt="Cochran Films Logo" class="mobile-hero-logo">
+            <div class="mobile-hero-divider"></div>
+          </div>
+          
+          <div class="mobile-hero-text">
+            <h1 class="mobile-hero-title">STORY TELLING THAT CONVERTS</h1>
+            <p class="mobile-hero-subtitle">Professional video production that transforms your vision into compelling content that drives results.</p>
+            
+            <div class="mobile-hero-stats">
+              <div class="mobile-hero-stat">
+                <div class="mobile-stat-value">500+</div>
+                <div class="mobile-stat-label">Projects</div>
+              </div>
+              <div class="mobile-hero-stat">
+                <div class="mobile-stat-value">98%</div>
+                <div class="mobile-stat-label">Satisfaction</div>
+              </div>
+              <div class="mobile-hero-stat">
+                <div class="mobile-stat-value">24h</div>
+                <div class="mobile-stat-label">Turnaround</div>
+              </div>
+            </div>
+            
+            <div class="mobile-hero-buttons">
+              <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
+              <button class="mobile-cta-secondary" onclick="scrollToMobileSection('mobileServices')">View Services</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mobile Services Section -->
+      <section class="mobile-services" id="mobileServices">
+        <div class="mobile-services-container">
+          <h2 class="mobile-section-title">Our Services</h2>
+          
+          <div class="mobile-service-cards">
+            <div class="mobile-service-card" onclick="openMobileServiceModal('photography')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-camera"></i>
+              </div>
+              <h3>Event Photography</h3>
+              <p>Professional event coverage with instant prints</p>
+              <div class="mobile-service-price">From $350</div>
+            </div>
+
+            <div class="mobile-service-card" onclick="openMobileServiceModal('video')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <h3>Video Production</h3>
+              <p>Full-service video from concept to final cut</p>
+              <div class="mobile-service-price">From $250/hr</div>
+            </div>
+
+            <div class="mobile-service-card" onclick="openMobileServiceModal('web')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3>Web Design</h3>
+              <p>Responsive websites that convert visitors</p>
+              <div class="mobile-service-price">From $750</div>
+            </div>
+
+            <div class="mobile-service-card" onclick="openMobileServiceModal('branding')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-palette"></i>
+              </div>
+              <h3>Brand Development</h3>
+              <p>Complete brand identity and visual guidelines</p>
+              <div class="mobile-service-price">From $900</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mobile Gallery Section -->
+      <section class="mobile-gallery" id="mobileGallery">
+        <div class="mobile-gallery-container">
+          <h2 class="mobile-section-title">Our Work</h2>
+          <p class="mobile-section-subtitle">See our latest projects and creative work</p>
+          
+          <div class="mobile-gallery-grid">
+            <div class="mobile-gallery-item" onclick="openMobileLightbox('https://via.placeholder.com/400x300/FFB200/000?text=Project+1')">
+              <img src="https://via.placeholder.com/400x300/FFB200/000?text=Project+1" alt="Project 1">
+            </div>
+            <div class="mobile-gallery-item" onclick="openMobileLightbox('https://via.placeholder.com/400x300/FFB200/000?text=Project+2')">
+              <img src="https://via.placeholder.com/400x300/FFB200/000?text=Project+2" alt="Project 2">
+            </div>
+            <div class="mobile-gallery-item" onclick="openMobileLightbox('https://via.placeholder.com/400x300/FFB200/000?text=Project+3')">
+              <img src="https://via.placeholder.com/400x300/FFB200/000?text=Project+3" alt="Project 3">
+            </div>
+            <div class="mobile-gallery-item" onclick="openMobileLightbox('https://via.placeholder.com/400x300/FFB200/000?text=Project+4')">
+              <img src="https://via.placeholder.com/400x300/FFB200/000?text=Project+4" alt="Project 4">
+            </div>
+            <div class="mobile-gallery-item" onclick="openMobileLightbox('https://via.placeholder.com/400x300/FFB200/000?text=Project+5')">
+              <img src="https://via.placeholder.com/400x300/FFB200/000?text=Project+5" alt="Project 5">
+            </div>
+            <div class="mobile-gallery-item" onclick="openMobileLightbox('https://via.placeholder.com/400x300/FFB200/000?text=Project+6')">
+              <img src="https://via.placeholder.com/400x300/FFB200/000?text=Project+6" alt="Project 6">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mobile Contact Section -->
+      <section class="mobile-contact" id="mobileContact">
+        <div class="mobile-contact-container">
+          <h2 class="mobile-section-title">Ready to Start?</h2>
+          <p class="mobile-contact-text">Let's discuss your project and create something amazing together.</p>
+          
+          <div class="mobile-contact-buttons">
+            <button class="mobile-contact-btn primary" onclick="openBookingModal()">
+              <i class="fas fa-calendar"></i>
+              Book Consultation
+            </button>
+            <button class="mobile-contact-btn secondary" onclick="openContactModal()">
+              <i class="fas fa-envelope"></i>
+              Send Message
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mobile Service Modal -->
+      <div id="mobileServiceModal" class="mobile-service-modal">
+        <div class="mobile-service-modal-content">
+          <div class="mobile-service-modal-header">
+            <h3 id="mobileServiceTitle">Service Details</h3>
+            <button class="mobile-service-modal-close" onclick="closeMobileServiceModal()">✕</button>
+          </div>
+          <div id="mobileServiceContent" class="mobile-service-modal-body">
+            <!-- Content will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Lightbox -->
+      <div class="mobile-lightbox" id="mobileLightbox" onclick="closeMobileLightbox()">
+        <img id="mobileLightboxImage" src="" alt="Gallery Image">
+        <button class="mobile-lightbox-close" onclick="closeMobileLightbox()">✕</button>
+      </div>
+
+    </div>
+  </div>
               <span class="nav-icon">🎨</span>
             </a>
           </div>
@@ -23022,6 +23151,270 @@
       window.addServiceFromModal = addServiceFromModal;
       window.showServiceDetailsModal = showServiceDetailsModal;
     }
+  </script>
+
+  <!-- 📱 MOBILE OPTIMIZATION JAVASCRIPT -->
+  <script>
+    // Mobile Detection and Initialization
+    function initializeMobileExperience() {
+      const isMobile = window.innerWidth <= 768;
+      console.log('📱 Mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
+      
+      if (isMobile) {
+        // Show mobile loader
+        const mobileLoader = document.getElementById('mobileLoader');
+        if (mobileLoader) {
+          mobileLoader.style.display = 'flex';
+        }
+        
+        // Hide desktop elements
+        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+        desktopElements.forEach(el => {
+          el.style.display = 'none';
+        });
+        
+        // Show mobile version
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'block';
+        }
+        
+        // Add mobile class to body
+        document.body.classList.add('mobile-view');
+        
+        // Simulate loading
+        setTimeout(() => {
+          if (mobileLoader) {
+            mobileLoader.style.opacity = '0';
+            setTimeout(() => {
+              mobileLoader.style.display = 'none';
+            }, 500);
+          }
+        }, 2000);
+      }
+    }
+    
+    // Mobile Navigation Functions
+    function toggleMobileNav() {
+      const overlay = document.getElementById('mobileNavOverlay');
+      if (overlay) {
+        overlay.classList.toggle('active');
+      }
+    }
+    
+    function scrollToMobileSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        toggleMobileNav(); // Close nav after clicking
+      }
+    }
+    
+    // Mobile Service Modal Functions
+    function openMobileServiceModal(serviceType) {
+      const modal = document.getElementById('mobileServiceModal');
+      const title = document.getElementById('mobileServiceTitle');
+      const content = document.getElementById('mobileServiceContent');
+      
+      if (modal && title && content) {
+        const serviceData = {
+          photography: {
+            title: 'Event Photography',
+            content: `
+              <div class="mobile-service-details">
+                <h4>Professional Event Coverage</h4>
+                <p>Comprehensive event documentation with instant delivery and professional editing.</p>
+                <div class="mobile-service-features">
+                  <h5>What's Included:</h5>
+                  <ul>
+                    <li>Full event coverage (up to 8 hours)</li>
+                    <li>Professional editing and retouching</li>
+                    <li>High-resolution digital files</li>
+                    <li>Online gallery for sharing</li>
+                    <li>Print-ready files</li>
+                  </ul>
+                </div>
+                <div class="mobile-service-pricing">
+                  <h5>Pricing:</h5>
+                  <p><strong>Starting at $350</strong></p>
+                  <p>Additional hours: $50/hour</p>
+                </div>
+                <button class="mobile-cta-primary" onclick="openBookingModal()">Book This Service</button>
+              </div>
+            `
+          },
+          video: {
+            title: 'Video Production',
+            content: `
+              <div class="mobile-service-details">
+                <h4>Full-Service Video Production</h4>
+                <p>Complete video production from concept to final delivery with professional quality.</p>
+                <div class="mobile-service-features">
+                  <h5>What's Included:</h5>
+                  <ul>
+                    <li>Pre-production planning</li>
+                    <li>Professional filming</li>
+                    <li>Post-production editing</li>
+                    <li>Color grading and audio mixing</li>
+                    <li>Multiple format delivery</li>
+                  </ul>
+                </div>
+                <div class="mobile-service-pricing">
+                  <h5>Pricing:</h5>
+                  <p><strong>Starting at $250/hour</strong></p>
+                  <p>Package deals available</p>
+                </div>
+                <button class="mobile-cta-primary" onclick="openBookingModal()">Book This Service</button>
+              </div>
+            `
+          },
+          web: {
+            title: 'Web Design',
+            content: `
+              <div class="mobile-service-details">
+                <h4>Responsive Web Design</h4>
+                <p>Modern, responsive websites that convert visitors into customers.</p>
+                <div class="mobile-service-features">
+                  <h5>What's Included:</h5>
+                  <ul>
+                    <li>Custom responsive design</li>
+                    <li>SEO optimization</li>
+                    <li>Content management system</li>
+                    <li>Performance optimization</li>
+                    <li>Training and support</li>
+                  </ul>
+                </div>
+                <div class="mobile-service-pricing">
+                  <h5>Pricing:</h5>
+                  <p><strong>Starting at $750</strong></p>
+                  <p>E-commerce: $1,500+</p>
+                </div>
+                <button class="mobile-cta-primary" onclick="openBookingModal()">Book This Service</button>
+              </div>
+            `
+          },
+          branding: {
+            title: 'Brand Development',
+            content: `
+              <div class="mobile-service-details">
+                <h4>Complete Brand Identity</h4>
+                <p>Professional brand development that establishes your unique market position.</p>
+                <div class="mobile-service-features">
+                  <h5>What's Included:</h5>
+                  <ul>
+                    <li>Logo design and variations</li>
+                    <li>Brand guidelines</li>
+                    <li>Color palette and typography</li>
+                    <li>Business card design</li>
+                    <li>Social media templates</li>
+                  </ul>
+                </div>
+                <div class="mobile-service-pricing">
+                  <h5>Pricing:</h5>
+                  <p><strong>Starting at $900</strong></p>
+                  <p>Comprehensive packages available</p>
+                </div>
+                <button class="mobile-cta-primary" onclick="openBookingModal()">Book This Service</button>
+              </div>
+            `
+          }
+        };
+        
+        const service = serviceData[serviceType];
+        if (service) {
+          title.textContent = service.title;
+          content.innerHTML = service.content;
+          modal.style.display = 'flex';
+        }
+      }
+    }
+    
+    function closeMobileServiceModal() {
+      const modal = document.getElementById('mobileServiceModal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+    
+    // Mobile Lightbox Functions
+    function openMobileLightbox(imageSrc) {
+      const lightbox = document.getElementById('mobileLightbox');
+      const image = document.getElementById('mobileLightboxImage');
+      
+      if (lightbox && image) {
+        image.src = imageSrc;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    function closeMobileLightbox() {
+      const lightbox = document.getElementById('mobileLightbox');
+      if (lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+    
+    // Booking Modal Functions
+    function openBookingModal() {
+      // This would integrate with your existing booking system
+      alert('Booking modal would open here. This integrates with your existing booking system.');
+    }
+    
+    function openContactModal() {
+      // This would integrate with your existing contact system
+      alert('Contact modal would open here. This integrates with your existing contact system.');
+    }
+    
+    // Mobile Performance Optimizations
+    function optimizeMobilePerformance() {
+      // Reduce motion for better performance
+      if (window.innerWidth <= 768) {
+        const style = document.createElement('style');
+        style.textContent = `
+          * {
+            animation-duration: 0.3s !important;
+            transition-duration: 0.3s !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    }
+    
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeMobileExperience();
+      optimizeMobilePerformance();
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        initializeMobileExperience();
+      });
+      
+      // Close modals when clicking outside
+      document.addEventListener('click', function(e) {
+        const mobileServiceModal = document.getElementById('mobileServiceModal');
+        const mobileLightbox = document.getElementById('mobileLightbox');
+        
+        if (e.target === mobileServiceModal) {
+          closeMobileServiceModal();
+        }
+        
+        if (e.target === mobileLightbox) {
+          closeMobileLightbox();
+        }
+      });
+      
+      // Handle escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeMobileServiceModal();
+          closeMobileLightbox();
+          toggleMobileNav();
+        }
+      });
+    });
   </script>
 
 </body>
