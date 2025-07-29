@@ -124,7 +124,7 @@ Contact **Cochran Films** for a custom landing page built specifically for your 
 - **SEO Optimization** - Search engine optimization included
 - **Ongoing Support** - Maintenance and updates
 
-**Contact**: [vision.cochranfilms.com](https://vision.cochranfilms.com)
+**Contact**: [https://www.cochranfilms.com/contact](https://www.cochranfilms.com/contact)
 
 ### Option 2: Template Customization
 Use this codebase as a starting point for your own landing page:
@@ -244,9 +244,28 @@ Use this codebase as a starting point for your own landing page:
 - **Custom Development**: Contact Cochran Films for custom work
 
 ### Contact Information
-- **Website**: [vision.cochranfilms.com](https://vision.cochranfilms.com)
-- **Email**: [Contact through website](https://vision.cochranfilms.com)
+- **Website**: [https://www.cochranfilms.com](https://www.cochranfilms.com)
+- **Contact Page**: [https://www.cochranfilms.com/contact](https://www.cochranfilms.com/contact)
+- **Email**: contact@cochranfilms.com
 - **Services**: Video production, photography, web design
+
+### Social Media Links
+- **YouTube**: [https://www.youtube.com/@cochranfilmsllc](https://www.youtube.com/@cochranfilmsllc)
+- **Instagram**: [https://www.instagram.com/cochran.films/](https://www.instagram.com/cochran.films/)
+- **LinkedIn**: [https://www.linkedin.com/company/cochranfilms/](https://www.linkedin.com/company/cochranfilms/)
+- **Twitter/X**: [https://x.com/cochranfilms](https://x.com/cochranfilms)
+
+### Additional Links
+- **Portfolio**: [https://www.cochranfilms.com/portfolio](https://www.cochranfilms.com/portfolio)
+- **Video Production**: [https://www.cochranfilms.com/portfolio](https://www.cochranfilms.com/portfolio)
+- **Event Photography**: [https://www.cochranfilms.com/service-page/professional-event-photography](https://www.cochranfilms.com/service-page/professional-event-photography)
+- **Web Design**: [https://www.cochranfilms.com/service-page/custom-website-design](https://www.cochranfilms.com/service-page/custom-website-design)
+- **Brand Development**: [https://www.cochranfilms.com/brand-building](https://www.cochranfilms.com/brand-building)
+- **About Us**: [https://www.cochranfilms.com/about](https://www.cochranfilms.com/about)
+- **Blog**: [https://www.cochranfilms.com/blog](https://www.cochranfilms.com/blog)
+- **Privacy Policy**: [https://www.cochranfilms.com/privacy-policy](https://www.cochranfilms.com/privacy-policy)
+- **Terms of Service**: [https://www.cochranfilms.com/terms-of-service](https://www.cochranfilms.com/terms-of-service)
+- **Accessibility**: [https://www.cochranfilms.com/accessibilitystatement](https://www.cochranfilms.com/accessibilitystatement)
 
 ---
 
@@ -262,6 +281,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ by [Cochran Films](https://vision.cochranfilms.com)**
+**Built with ❤️ by [Cochran Films](https://www.cochranfilms.com)**
 
 *Professional video production that transforms your vision into compelling content that drives results.*
