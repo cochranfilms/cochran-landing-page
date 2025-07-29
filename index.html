@@ -170,51 +170,6 @@
         }
       }, 2000);
     })();
-    
-    // Debug override functions
-    function forceShowMobile() {
-      console.log('🔧 Debug: Forcing mobile version');
-      const mobileVersion = document.getElementById('mobileVersion');
-      const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-      
-      if (mobileVersion) {
-        mobileVersion.style.display = 'block !important';
-        mobileVersion.style.visibility = 'visible !important';
-        mobileVersion.style.opacity = '1 !important';
-        mobileVersion.style.position = 'relative !important';
-        mobileVersion.style.zIndex = '1 !important';
-      }
-      
-      desktopElements.forEach(el => {
-        el.style.display = 'none !important';
-        el.style.visibility = 'hidden !important';
-        el.style.opacity = '0 !important';
-        el.style.position = 'absolute !important';
-        el.style.zIndex = '-1 !important';
-      });
-    }
-    
-    function forceShowDesktop() {
-      console.log('🔧 Debug: Forcing desktop version');
-      const mobileVersion = document.getElementById('mobileVersion');
-      const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-      
-      if (mobileVersion) {
-        mobileVersion.style.display = 'none !important';
-        mobileVersion.style.visibility = 'hidden !important';
-        mobileVersion.style.opacity = '0 !important';
-        mobileVersion.style.position = 'absolute !important';
-        mobileVersion.style.zIndex = '-1 !important';
-      }
-      
-      desktopElements.forEach(el => {
-        el.style.display = 'block !important';
-        el.style.visibility = 'visible !important';
-        el.style.opacity = '1 !important';
-        el.style.position = 'relative !important';
-        el.style.zIndex = '1 !important';
-      });
-    }
   </script>
   <!-- 🔒 SECURE EXTERNAL SCRIPTS WITH INTEGRITY CHECKS -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -9991,7 +9946,7 @@
     .cinematic-header {
       position: relative !important;
       width: 100% !important;
-      height: 150px !important;
+      height: 400px !important;
       background: 
         radial-gradient(circle at center, #1a1a1a 0%, #000000 70%),
         linear-gradient(45deg, #000000 0%, #0d0d0d 100%) !important;
@@ -10008,8 +9963,8 @@
       margin: 0;
       border: none;
       outline: none;
-      min-height: 150px !important;
-      max-height: 150px !important;
+      min-height: 400px !important;
+      max-height: 400px !important;
       visibility: visible !important;
       opacity: 1 !important;
     }
@@ -14144,38 +14099,10 @@
   <!-- 🔒 SECURE FONT AWESOME CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==">
   
-  <!-- Debug Override Styles -->
-  <style>
-    .debug-override {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 99999;
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 12px;
-    }
-    .debug-override button {
-      margin: 2px;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 11px;
-    }
-    .debug-override .mobile-btn { background: #0066cc; color: white; }
-    .debug-override .desktop-btn { background: #cc6600; color: white; }
-  </style>
+
 </head>
 <body>
-  <!-- Debug Override Panel -->
-  <div class="debug-override">
-    <div>Debug Override:</div>
-    <button class="mobile-btn" onclick="forceShowMobile()">Show Mobile</button>
-    <button class="desktop-btn" onclick="forceShowDesktop()">Show Desktop</button>
-  </div>
+
   
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
   <div id="mobileVersion" style="display: none;">
