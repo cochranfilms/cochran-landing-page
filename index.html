@@ -812,20 +812,57 @@
     
     /* 📱 COMPREHENSIVE MOBILE OPTIMIZATION */
     
-    /* Mobile Version Detection and Display */
+    /* ======================================== */
+    /* MOBILE-ONLY EXPERIENCE (768px and below) */
+    /* ======================================== */
+    
     @media (max-width: 768px) {
+      /* Force mobile version to be visible */
       #mobileVersion {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
       }
       
-      /* Hide desktop elements on mobile */
+      /* Completely hide ALL desktop elements on mobile */
       header, .hero-section, .million-dollar-photography, .service-builder-section, 
       .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
-      .deliver-section, .timeline-section, .premium-footer {
+      .deliver-section, .timeline-section, .premium-footer, .cinematic-loader {
         display: none !important;
         visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      
+      /* Hide any other desktop elements that might interfere */
+      .desktop-only, [class*="desktop"], [class*="hero"], [class*="section"]:not([class*="mobile"]) {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      /* Ensure body doesn't have desktop-specific styles on mobile */
+      body {
+        overflow-x: hidden !important;
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      /* Ensure mobile navigation is visible */
+      .mobile-nav-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
       }
       
           /* Mobile Header Banner */
@@ -1638,332 +1675,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-      
-      /* Enhanced Mobile Navigation Footer */
-      .mobile-nav-footer {
-        padding: 2rem 1rem;
-        border-top: 1px solid rgba(255,178,0,0.3);
-        margin-top: 2rem;
-      }
-      
-      .mobile-nav-cta {
-        text-align: center;
-      }
-      
-      .mobile-nav-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 25px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-size: 1rem;
-        width: 100%;
-      }
-      
-      .mobile-nav-btn.primary {
-        background: #FFB200;
-        color: #000;
-        box-shadow: 0 4px 15px rgba(255,178,0,0.4);
-      }
-      
-      .mobile-nav-btn.primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255,178,0,0.6);
-      }
-      
-      /* Enhanced Mobile Services Section */
-      .mobile-services-subtitle {
-        text-align: center;
-        color: rgba(0,0,0,0.7);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-      }
-      
-      .mobile-service-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #FFB200, #FF9000);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-        font-size: 1.5rem;
-        margin: 0 auto 1.5rem;
-        box-shadow: 0 4px 15px rgba(255,178,0,0.3);
-      }
-      
-      .mobile-service-card h3 {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 0.5rem;
-        text-align: center;
-      }
-      
-      .mobile-service-card p {
-        color: #666;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-      
-      .mobile-service-price {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #FFB200;
-        text-align: center;
-        margin-bottom: 1rem;
-      }
-      
-      .mobile-service-btn {
-        display: block;
-        width: 100%;
-        padding: 0.75rem 1.5rem;
-        background: linear-gradient(135deg, #FFB200, #FF9000);
-        border: none;
-        border-radius: 25px;
-        color: #000;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-size: 0.9rem;
-      }
-      
-      .mobile-service-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255,178,0,0.4);
-      }
-      
-      /* Mobile Portfolio Section */
-      .mobile-portfolio {
-        padding: 4rem 1rem;
-        background: #000;
-        color: #fff;
-      }
-      
-      .mobile-portfolio-container {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      
-      .mobile-portfolio-subtitle {
-        text-align: center;
-        color: rgba(255,255,255,0.8);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-      }
-      
-      .mobile-portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-      
-      .mobile-portfolio-item {
-        border-radius: 15px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        position: relative;
-      }
-      
-      .mobile-portfolio-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 12px 35px rgba(255,178,0,0.3);
-      }
-      
-      .mobile-portfolio-item img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-        background: #f0f0f0;
-        min-height: 200px;
-      }
-      
-      .mobile-portfolio-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0,0,0,0.8));
-        padding: 1rem;
-        color: #fff;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-      }
-      
-      .mobile-portfolio-item:hover .mobile-portfolio-overlay {
-        transform: translateY(0);
-      }
-      
-      .mobile-portfolio-overlay h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-      }
-      
-      .mobile-portfolio-overlay p {
-        font-size: 0.8rem;
-        opacity: 0.8;
-      }
-      
-      /* Mobile About Section */
-      .mobile-about {
-        padding: 4rem 1rem;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      }
-      
-      .mobile-about-container {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center;
-      }
-      
-      .mobile-about-text {
-        font-size: 1.1rem;
-        color: rgba(0,0,0,0.8);
-        margin-bottom: 3rem;
-        line-height: 1.6;
-      }
-      
-      .mobile-about-features {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      
-      .mobile-feature {
-        text-align: center;
-        padding: 1.5rem;
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      }
-      
-      .mobile-feature-icon {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #FFB200, #FF9000);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-        font-size: 1.2rem;
-        margin: 0 auto 1rem;
-        box-shadow: 0 4px 15px rgba(255,178,0,0.3);
-      }
-      
-      .mobile-feature h3 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 0.5rem;
-      }
-      
-      .mobile-feature p {
-        color: #666;
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
-      
-      /* Mobile Service Modal Styles */
-      .service-modal-content {
-        padding: 1rem;
-      }
-      
-      .service-modal-content h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-      
-      .service-modal-content p {
-        color: #666;
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        text-align: center;
-      }
-      
-      .service-features {
-        margin-bottom: 1.5rem;
-      }
-      
-      .service-features h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #000;
-        margin-bottom: 0.5rem;
-      }
-      
-      .service-features ul {
-        list-style: none;
-        padding: 0;
-      }
-      
-      .service-features li {
-        padding: 0.5rem 0;
-        color: #666;
-        font-size: 0.9rem;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-      }
-      
-      .service-features li:before {
-        content: '✓';
-        color: #FFB200;
-        font-weight: bold;
-        margin-right: 0.5rem;
-      }
-      
-      .service-price {
-        text-align: center;
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #FFB200;
-        margin-bottom: 1.5rem;
-      }
-      
-      .service-cta-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        padding: 1rem 2rem;
-        background: linear-gradient(135deg, #FFB200, #FF9000);
-        border: none;
-        border-radius: 25px;
-        color: #000;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-size: 1rem;
-      }
-      
-      .service-cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255,178,0,0.4);
       }
     }
     
@@ -2804,6 +2515,54 @@
     /* Scroll-based nav styling */
     .mobile-nav-toggle.scrolled {
       background: rgba(255,178,0,0.95);
+      
+    /* ======================================== */
+    /* DESKTOP-ONLY EXPERIENCE (769px and above) */
+    /* ======================================== */
+    
+    @media (min-width: 769px) {
+      /* Completely hide mobile version on desktop */
+      #mobileVersion {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      
+      /* Hide all mobile-specific elements on desktop */
+      [class*="mobile-"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+      }
+      
+      /* Ensure desktop elements are visible */
+      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: auto !important;
+        pointer-events: auto !important;
+      }
+      
+      /* Ensure desktop navigation is visible */
+      .nav-menu, .nav-container {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
       transform: scale(0.9);
     }
     
@@ -14138,241 +13897,71 @@
             </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileServices" onclick="scrollToMobileSection('mobileServices')">
-              <span class="nav-text">Services</span>
-              <span class="nav-icon">🎬</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobilePortfolio" onclick="scrollToMobileSection('mobilePortfolio')">
-              <span class="nav-text">Portfolio</span>
-              <span class="nav-icon">📸</span>
-            </a>
-          </div>
-          <div class="nav-item">
             <a href="#mobileAbout" onclick="scrollToMobileSection('mobileAbout')">
               <span class="nav-text">About</span>
               <span class="nav-icon">👤</span>
             </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileContact" onclick="scrollToMobileSection('mobileContact')">
-              <span class="nav-text">Contact</span>
-              <span class="nav-icon">📞</span>
+            <a href="#mobileServices" onclick="scrollToMobileSection('mobileServices')">
+              <span class="nav-text">Services</span>
+              <span class="nav-icon">👷</span>
             </a>
           </div>
-        </nav>
-        
-        <div class="mobile-nav-footer">
-          <div class="mobile-nav-cta">
-            <button class="mobile-nav-btn primary" onclick="openBookingModal()">
-              <i class="fas fa-phone"></i>
-              Start Project
-            </button>
+          <div class="nav-item">
+            <a href="#mobilePortfolio" onclick="scrollToMobileSection('mobilePortfolio')">
+              <span class="nav-text">Portfolio</span>
+              <span class="nav-icon">🎬</span>
+            </a>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Hero Section -->
-    <section class="mobile-hero" id="mobileHero">
-      <div class="mobile-hero-content">
-        <div class="mobile-hero-header">
-          <img src="Logo.png" alt="Cochran Films" class="mobile-hero-logo">
-          <div class="mobile-hero-divider"></div>
-        </div>
-        
-        <h1 class="mobile-hero-title">STORYTELLING THAT CONVERTS</h1>
-        <p class="mobile-hero-subtitle">Atlanta's premier full-stack media powerhouse. From concept to creation, we build bold brand stories through high-impact video, photography, design, and development.</p>
-        
-        <div class="mobile-hero-stats">
-          <div class="mobile-hero-stat">
-            <div class="mobile-stat-value">500+</div>
-            <div class="mobile-stat-label">Projects</div>
+          <div class="nav-item">
+            <a href="#mobilePhotography" onclick="scrollToMobileSection('mobilePhotography')">
+              <span class="nav-text">Photography</span>
+              <span class="nav-icon">📸</span>
+            </a>
           </div>
-          <div class="mobile-hero-stat">
-            <div class="mobile-stat-value">50+</div>
-            <div class="mobile-stat-label">Clients</div>
+          <div class="nav-item">
+            <a href="#mobileServiceBuilder" onclick="scrollToMobileSection('mobileServiceBuilder')">
+              <span class="nav-text">Service Builder</span>
+              <span class="nav-icon">🔧</span>
+            </a>
           </div>
-          <div class="mobile-hero-stat">
-            <div class="mobile-stat-value">5+</div>
-            <div class="mobile-stat-label">Years</div>
+          <div class="nav-item">
+            <a href="#mobileAgencyComparison" onclick="scrollToMobileSection('mobileAgencyComparison')">
+              <span class="nav-text">Why Us</span>
+              <span class="nav-icon">⭐</span>
+            </a>
           </div>
-        </div>
-        
-        <div class="mobile-hero-buttons">
-          <button class="mobile-cta-primary" onclick="openBookingModal()">
-            <i class="fas fa-play"></i>
-            Start Your Project
-          </button>
-          <button class="mobile-cta-secondary" onclick="scrollToMobileSection('mobileServices')">
-            <i class="fas fa-eye"></i>
-            View Services
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Services Section -->
-    <section class="mobile-services" id="mobileServices">
-      <div class="mobile-services-container">
-        <h2 class="mobile-section-title">Our Services</h2>
-        <p class="mobile-services-subtitle">Comprehensive media solutions for modern businesses</p>
-        
-        <div class="mobile-service-cards">
-          <div class="mobile-service-card" data-service="video">
-            <div class="mobile-service-icon">
-              <i class="fas fa-video"></i>
-            </div>
-            <h3>Video Production</h3>
-            <p>Cinematic storytelling, commercials, corporate videos, and branded content that captivates your audience.</p>
-            <div class="mobile-service-price">Starting at $2,500</div>
-            <button class="mobile-service-btn" onclick="openServiceModal('video')">Learn More</button>
+          <div class="nav-item">
+            <a href="#mobileDeliver" onclick="scrollToMobileSection('mobileDeliver')">
+              <span class="nav-text">What We Deliver</span>
+              <span class="nav-icon">✅</span>
+            </a>
           </div>
-          
-          <div class="mobile-service-card" data-service="photography">
-            <div class="mobile-service-icon">
-              <i class="fas fa-camera"></i>
-            </div>
-            <h3>Photography</h3>
-            <p>Professional photography for brands, products, events, and lifestyle content that tells your story.</p>
-            <div class="mobile-service-price">Starting at $800</div>
-            <button class="mobile-service-btn" onclick="openServiceModal('photography')">Learn More</button>
+          <div class="nav-item">
+            <a href="#mobileTestimonials" onclick="scrollToMobileSection('mobileTestimonials')">
+              <span class="nav-text">Testimonials</span>
+              <span class="nav-icon">💬</span>
+            </a>
           </div>
-          
-          <div class="mobile-service-card" data-service="web">
-            <div class="mobile-service-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3>Web Development</h3>
-            <p>Custom websites, e-commerce platforms, and digital experiences that convert visitors into customers.</p>
-            <div class="mobile-service-price">Starting at $3,500</div>
-            <button class="mobile-service-btn" onclick="openServiceModal('web')">Learn More</button>
+          <div class="nav-item">
+            <a href="#mobilePricingComparison" onclick="scrollToMobileSection('mobilePricingComparison')">
+              <span class="nav-text">Pricing</span>
+              <span class="nav-icon">💰</span>
+            </a>
           </div>
-          
-          <div class="mobile-service-card" data-service="branding">
-            <div class="mobile-service-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3>Brand Design</h3>
-            <p>Logo design, brand identity, marketing materials, and visual systems that build recognition.</p>
-            <div class="mobile-service-price">Starting at $1,200</div>
-            <button class="mobile-service-btn" onclick="openServiceModal('branding')">Learn More</button>
+          <div class="nav-item">
+            <a href="#mobileServicesDetail" onclick="scrollToMobileSection('mobileServicesDetail')">
+              <span class="nav-text">Services Detail</span>
+              <span class="nav-icon">🎯</span>
+            </a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Portfolio Section -->
-    <section class="mobile-portfolio" id="mobilePortfolio">
-      <div class="mobile-portfolio-container">
-        <h2 class="mobile-section-title">Featured Work</h2>
-        <p class="mobile-portfolio-subtitle">Recent projects that showcase our expertise</p>
-        
-        <div class="mobile-portfolio-grid">
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Commercial Video" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Commercial Production</h3>
-              <p>Brand storytelling</p>
-            </div>
+          <div class="nav-item">
+            <a href="#mobileTimeline" onclick="scrollToMobileSection('mobileTimeline')">
+              <span class="nav-text">Our Process</span>
+              <span class="nav-icon">⏱️</span>
+            </a>
           </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="Product Photography" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Product Photography</h3>
-              <p>E-commerce imagery</p>
-            </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Web Design" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Web Design</h3>
-              <p>Digital experiences</p>
-            </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop" alt="Brand Identity" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Brand Identity</h3>
-              <p>Visual systems</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile About Section -->
-    <section class="mobile-about" id="mobileAbout">
-      <div class="mobile-about-container">
-        <h2 class="mobile-section-title">About Cochran Films</h2>
-        <p class="mobile-about-text">We're a full-stack media powerhouse based in Atlanta, specializing in high-impact video production, professional photography, custom web development, and strategic brand design. Our mission is to help businesses and entrepreneurs stand out in today's competitive digital landscape.</p>
-        
-        <div class="mobile-about-features">
-          <div class="mobile-feature">
-            <div class="mobile-feature-icon">
-              <i class="fas fa-rocket"></i>
-            </div>
-            <h3>Fast Turnaround</h3>
-            <p>Quick delivery without compromising quality</p>
-          </div>
-          
-          <div class="mobile-feature">
-            <div class="mobile-feature-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h3>Quality Guaranteed</h3>
-            <p>Professional results every time</p>
-          </div>
-          
-          <div class="mobile-feature">
-            <div class="mobile-feature-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <h3>Client Focused</h3>
-            <p>Your success is our priority</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Contact Section -->
-    <section class="mobile-contact" id="mobileContact">
-      <div class="mobile-contact-container">
-        <h2 class="mobile-section-title">Get Started</h2>
-        <p class="mobile-contact-text">Ready to bring your vision to life? Let's create something amazing together.</p>
-        <div class="mobile-contact-buttons">
-          <button class="mobile-contact-btn primary" onclick="openBookingModal()">
-            <i class="fas fa-phone"></i>
-            Book Consultation
-          </button>
-          <button class="mobile-contact-btn secondary" onclick="openMobileContactForm()">
-            <i class="fas fa-envelope"></i>
-            Send Message
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Service Modal -->
-    <div id="mobileServiceModal" class="mobile-modal">
-      <div class="mobile-modal-content">
-        <button class="mobile-modal-close" onclick="closeMobileServiceModal()">&times;</button>
-        <div id="mobileServiceContent">
-          <!-- Content will be populated by JavaScript -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Lightbox -->
-    <div id="mobileLightbox" class="mobile-lightbox">
-      <button class="mobile-lightbox-close" onclick="closeMobileLightbox()">&times;</button>
-      <img id="mobileLightboxImg" src="" alt="Gallery Image">
-    </div>
-  </div>
           <div class="nav-item">
             <a href="#mobileGallery" onclick="scrollToMobileSection('mobileGallery')">
               <span class="nav-text">Gallery</span>
@@ -17130,108 +16719,6 @@
       modal.style.visibility = 'hidden !important';
       modal.style.opacity = '0 !important';
       modal.removeAttribute('data-manual-open');
-      
-  // 📱 Enhanced Mobile Functions
-  function scrollToMobileSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      closeMobileNav();
-    }
-  }
-  
-  function openServiceModal(serviceType) {
-    const modal = document.getElementById('mobileServiceModal');
-    const content = document.getElementById('mobileServiceContent');
-    
-    if (modal && content) {
-      const serviceData = {
-        video: {
-          title: 'Video Production',
-          description: 'Professional video production services including commercials, corporate videos, branded content, and cinematic storytelling.',
-          features: ['4K/HD Quality', 'Professional Editing', 'Color Grading', 'Motion Graphics', 'Sound Design'],
-          price: 'Starting at $2,500'
-        },
-        photography: {
-          title: 'Photography',
-          description: 'High-quality photography for brands, products, events, and lifestyle content.',
-          features: ['Professional Equipment', 'Post-Processing', 'Multiple Formats', 'Quick Turnaround', 'Brand Consistency'],
-          price: 'Starting at $800'
-        },
-        web: {
-          title: 'Web Development',
-          description: 'Custom websites, e-commerce platforms, and digital experiences that convert visitors into customers.',
-          features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Custom Functionality', 'Ongoing Support'],
-          price: 'Starting at $3,500'
-        },
-        branding: {
-          title: 'Brand Design',
-          description: 'Complete brand identity including logo design, marketing materials, and visual systems.',
-          features: ['Logo Design', 'Brand Guidelines', 'Marketing Materials', 'Visual Identity', 'Brand Strategy'],
-          price: 'Starting at $1,200'
-        }
-      };
-      
-      const service = serviceData[serviceType] || serviceData.photography;
-      
-      content.innerHTML = `
-        <div class="service-modal-content">
-          <h2>${service.title}</h2>
-          <p>${service.description}</p>
-          <div class="service-features">
-            <h3>What's Included:</h3>
-            <ul>
-              ${service.features.map(feature => `<li>${feature}</li>`).join('')}
-            </ul>
-          </div>
-          <div class="service-price">
-            <strong>${service.price}</strong>
-          </div>
-          <button class="service-cta-btn" onclick="openBookingModal()">
-            <i class="fas fa-phone"></i>
-            Get Started
-          </button>
-        </div>
-      `;
-      
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-  }
-  
-  function closeMobileServiceModal() {
-    const modal = document.getElementById('mobileServiceModal');
-    if (modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  }
-  
-  function openMobileLightbox(element) {
-    const lightbox = document.getElementById('mobileLightbox');
-    const lightboxImg = document.getElementById('mobileLightboxImg');
-    const img = element.querySelector('img');
-    
-    if (lightbox && lightboxImg && img) {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-  }
-  
-  function closeMobileLightbox() {
-    const lightbox = document.getElementById('mobileLightbox');
-    if (lightbox) {
-      lightbox.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  }
-  
-  function openMobileContactForm() {
-    // Open the existing booking modal for contact
-    openBookingModal();
-  }
       
       // Additional safety measures
       modal.classList.remove('show', 'active', 'open');
