@@ -6997,107 +6997,10 @@
     
     /* Mobile Loading Screen */
     @media (max-width: 768px) {
+      /* Hide old cinematic loader on mobile */
+      /* Hide old cinematic loader - replaced with unified loading screen */
       .cinematic-loader {
         display: none !important;
-      }
-      
-      .mobile-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-        visibility: visible !important;
-      }
-      
-      /* Ensure mobile loader is visible by default on mobile */
-      body:not(.loaded) .mobile-loader {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-      
-      body.loaded .mobile-loader {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden !important;
-      }
-      
-      .mobile-loader.hidden {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden !important;
-      }
-      
-      .mobile-loader-content {
-        text-align: center;
-        color: #000;
-        max-width: 300px;
-        width: 90%;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .mobile-loader-logo {
-        width: 120px;
-        height: auto;
-        margin-bottom: 1.5rem;
-        animation: mobilePulse 2s ease-in-out infinite;
-        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-      }
-      
-      @keyframes mobilePulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.8; }
-      }
-      
-      .mobile-loader-title {
-        font-size: 2rem;
-        font-weight: 900;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      
-      .mobile-loader-subtitle {
-        font-size: 1rem;
-        opacity: 0.8;
-        margin-bottom: 2rem;
-        line-height: 1.4;
-      }
-      
-      .mobile-loader-bar {
-        width: 100%;
-        max-width: 200px;
-        height: 4px;
-        background: rgba(0,0,0,0.2);
-        border-radius: 2px;
-        margin: 0 auto;
-        overflow: hidden;
-      }
-      
-      .mobile-loader-progress {
-        height: 100%;
-        background: linear-gradient(90deg, #000 0%, #333 100%);
-        border-radius: 2px;
-        width: 0%;
-        animation: mobileProgress 3s ease-in-out forwards;
-      }
-      
-      @keyframes mobileProgress {
-        0% { width: 0%; }
-        100% { width: 100%; }
       }
     }
 
@@ -10033,7 +9936,7 @@
       }
     }
     
-    /* 🎬 AWARD-WINNING CINEMATIC LOADING EXPERIENCE */
+    /* 🎬 UNIFIED LOADING SCREEN - DESKTOP & MOBILE OPTIMIZED */
     :root {
       --loading-duration: 1s;
       --animation-speed: 1;
@@ -10056,6 +9959,88 @@
     body:not(.loaded) {
       overflow: hidden;
       -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Unified Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      visibility: visible;
+    }
+    
+    body.loaded .loading-screen {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    
+    .loading-content {
+      text-align: center;
+      color: #000;
+      max-width: 300px;
+      width: 90%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loading-logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      animation: loadingPulse 2s ease-in-out infinite;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    
+    @keyframes loadingPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .loading-title {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .loading-subtitle {
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+    
+    .loading-bar {
+      width: 100%;
+      max-width: 200px;
+      height: 4px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 2px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    
+    .loading-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #000 0%, #333 100%);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.3s ease;
     }
     
     /* Main Cinematic Header Container */
@@ -14562,95 +14547,15 @@
 </head>
 <body>
 
-  <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
-  <div class="cinematic-loader">
-    <!-- Film Strip Borders -->
-    <div class="film-strip"></div>
-    
-    <!-- Professional Camera Viewfinder Overlay -->
-    <div class="viewfinder-overlay">
-      <div class="viewfinder-grid"></div>
-      <div class="viewfinder-corners">
-        <div class="corner-tr"></div>
-        <div class="corner-bl"></div>
+  <!-- 🎬 UNIFIED LOADING SCREEN - DESKTOP & MOBILE OPTIMIZED -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+      <img src="Logo.png" alt="Cochran Films Logo" class="loading-logo">
+      <h1 class="loading-title">Cochran Films</h1>
+      <p class="loading-subtitle">Loading your experience...</p>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
       </div>
-    </div>
-    
-    <!-- Production Studio Lights -->
-    <div class="studio-lights">
-      <div class="spotlight"></div>
-      <div class="spotlight"></div>
-      <div class="spotlight"></div>
-    </div>
-    
-    <!-- Film Countdown Timer -->
-    <div class="countdown-container">
-      <div class="countdown-circle">
-        <div class="countdown-number">5</div>
-      </div>
-    </div>
-    
-    <!-- Director's Clapperboard -->
-    <div class="clapperboard">
-      <div class="clapper-top"></div>
-      <div class="clapper-text">
-        COCHRAN<br>
-        FILMS<br>
-        LOADING
-      </div>
-    </div>
-    
-    <!-- Film Reels Animation -->
-    <div class="film-reels">
-      <div class="film-reel"></div>
-      <div class="film-reel"></div>
-    </div>
-    
-    <!-- Camera Equipment -->
-    <div class="camera-equipment">
-      <div class="camera-lens"></div>
-      <div class="camera-body"></div>
-    </div>
-    
-    <!-- Floating Particles -->
-    <div class="particles-system">
-      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-      <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
-      <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
-      <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
-      <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
-      <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
-      <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
-      <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
-      <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
-    </div>
-    
-    <!-- Lens Flares -->
-    <div class="lens-flare"></div>
-    <div class="lens-flare"></div>
-    <div class="lens-flare"></div>
-    
-    <!-- Main Aperture Container -->
-    <div class="aperture-container">
-      <div class="aperture"></div>
-      
-      <!-- Cinematic Typography -->
-      <div class="cinematic-text">
-        <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
-        <div class="tagline">STORYTELLING THAT CONVERTS</div>
-      </div>
-    </div>
-    
-    <!-- Sound Waves -->
-    <div class="sound-waves">
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
     </div>
   </div>
 
@@ -15560,31 +15465,19 @@
     </div>
   </header>
 
-  <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
-  <div class="mobile-loader">
-    <div class="mobile-loader-content">
-      <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
-      <h1 class="mobile-loader-title">Cochran Films</h1>
-      <p class="mobile-loader-subtitle">Loading your experience...</p>
-      <div class="mobile-loader-bar">
-        <div class="mobile-loader-progress"></div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- 📱 MOBILE LOADING SCRIPT -->
+  <!-- 📱 UNIFIED LOADING SCRIPT -->
   <script>
-    // Ensure mobile loader works properly
+    // Unified loading screen management
     document.addEventListener('DOMContentLoaded', function() {
-      const mobileLoader = document.querySelector('.mobile-loader');
+      const loadingScreen = document.getElementById('loadingScreen');
       const isMobile = window.innerWidth <= 768;
       
-      if (mobileLoader) {
-        // Show loader immediately
-        mobileLoader.style.display = 'flex';
-        mobileLoader.style.visibility = 'visible';
-        mobileLoader.style.opacity = '1';
-        mobileLoader.style.zIndex = '99999';
+      if (loadingScreen) {
+        // Show loading screen immediately
+        loadingScreen.style.display = 'flex';
+        loadingScreen.style.visibility = 'visible';
+        loadingScreen.style.opacity = '1';
+        loadingScreen.style.zIndex = '99999';
         
         // Preload critical images
         const criticalImages = [
@@ -15602,19 +15495,27 @@
         let loadedImages = 0;
         const totalImages = criticalImages.length;
         
-        criticalImages.forEach(src => {
+        // Update progress bar
+        const progressBar = loadingScreen.querySelector('.loading-progress');
+        
+        criticalImages.forEach((src, index) => {
           const img = new Image();
           img.onload = () => {
             loadedImages++;
+            // Update progress bar
+            if (progressBar) {
+              progressBar.style.width = `${(loadedImages / totalImages) * 100}%`;
+            }
+            
             if (loadedImages >= totalImages) {
-              // All images loaded, hide loader
+              // All images loaded, hide loading screen
               setTimeout(() => {
-                mobileLoader.style.opacity = '0 !important';
-                mobileLoader.style.transition = 'opacity 0.5s ease';
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease';
                 setTimeout(() => {
-                  mobileLoader.style.display = 'none !important';
-                  mobileLoader.style.visibility = 'hidden !important';
-                  mobileLoader.style.zIndex = '-1 !important';
+                  loadingScreen.style.display = 'none';
+                  loadingScreen.style.visibility = 'hidden';
+                  loadingScreen.style.zIndex = '-1';
                   document.body.classList.add('loaded');
                 }, 500);
               }, 500);
@@ -15622,13 +15523,18 @@
           };
           img.onerror = () => {
             loadedImages++;
+            // Update progress bar even on error
+            if (progressBar) {
+              progressBar.style.width = `${(loadedImages / totalImages) * 100}%`;
+            }
+            
             if (loadedImages >= totalImages) {
-              // All images processed, hide loader
+              // All images processed, hide loading screen
               setTimeout(() => {
-                mobileLoader.style.opacity = '0';
-                mobileLoader.style.transition = 'opacity 0.5s ease';
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease';
                 setTimeout(() => {
-                  mobileLoader.style.display = 'none';
+                  loadingScreen.style.display = 'none';
                   document.body.classList.add('loaded');
                 }, 500);
               }, 500);
@@ -15637,15 +15543,15 @@
           img.src = src;
         });
         
-        // Fallback: Hide loader after timeout
+        // Fallback: Hide loading screen after timeout
         setTimeout(() => {
-          if (mobileLoader.style.opacity !== '0') {
-            mobileLoader.style.opacity = '0 !important';
-            mobileLoader.style.transition = 'opacity 0.5s ease';
+          if (loadingScreen.style.opacity !== '0') {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease';
             setTimeout(() => {
-              mobileLoader.style.display = 'none !important';
-              mobileLoader.style.visibility = 'hidden !important';
-              mobileLoader.style.zIndex = '-1 !important';
+              loadingScreen.style.display = 'none';
+              loadingScreen.style.visibility = 'hidden';
+              loadingScreen.style.zIndex = '-1';
               document.body.classList.add('loaded');
             }, 500);
           }
@@ -15678,7 +15584,7 @@
       
       // Comprehensive mobile loading fix
       if (window.innerWidth <= 768) {
-        // Force hide cinematic loader on mobile
+        // Hide old cinematic loader - replaced with unified loading screen
         const cinematicLoader = document.querySelector('.cinematic-loader');
         if (cinematicLoader) {
           cinematicLoader.style.display = 'none !important';
@@ -17334,13 +17240,13 @@
         mobileContent.style.zIndex = '1 !important';
       }
       
-      // Initialize mobile loader
-      const mobileLoader = document.querySelector('.mobile-loader');
-      if (mobileLoader) {
-        mobileLoader.style.display = 'flex !important';
-        mobileLoader.style.visibility = 'visible !important';
-        mobileLoader.style.opacity = '1 !important';
-        mobileLoader.style.zIndex = '99999 !important';
+      // Initialize unified loading screen
+      const loadingScreen = document.getElementById('loadingScreen');
+      if (loadingScreen) {
+        loadingScreen.style.display = 'flex';
+        loadingScreen.style.visibility = 'visible';
+        loadingScreen.style.opacity = '1';
+        loadingScreen.style.zIndex = '99999';
       }
       
       // Initialize mobile navigation
@@ -17374,10 +17280,10 @@
         mobileVersion.style.visibility = 'hidden !important';
       }
       
-      const mobileLoader = document.querySelector('.mobile-loader');
-      if (mobileLoader) {
-        mobileLoader.style.display = 'none !important';
-        mobileLoader.style.visibility = 'hidden !important';
+      const loadingScreen = document.getElementById('loadingScreen');
+      if (loadingScreen) {
+        loadingScreen.style.display = 'none';
+        loadingScreen.style.visibility = 'hidden';
       }
       
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -17421,13 +17327,13 @@
         console.log('📱 Mobile version forced visible - COMPREHENSIVE');
       }
       
-      // Ensure mobile loader is visible
-      const mobileLoader = document.querySelector('.mobile-loader');
-      if (mobileLoader) {
-        mobileLoader.style.display = 'flex !important';
-        mobileLoader.style.visibility = 'visible !important';
-        mobileLoader.style.opacity = '1 !important';
-        mobileLoader.style.zIndex = '99999 !important';
+      // Ensure unified loading screen is visible
+      const loadingScreen = document.getElementById('loadingScreen');
+      if (loadingScreen) {
+        loadingScreen.style.display = 'flex';
+        loadingScreen.style.visibility = 'visible';
+        loadingScreen.style.opacity = '1';
+        loadingScreen.style.zIndex = '99999';
       }
       
       // Ensure mobile nav toggle is visible
@@ -18801,7 +18707,7 @@
     const isMobile = window.innerWidth <= 768;
     const isUltraMobile = window.innerWidth <= 480;
     const mobileVersion = document.getElementById('mobileVersion');
-    const mobileLoader = document.querySelector('.mobile-loader');
+    const loadingScreen = document.getElementById('loadingScreen');
     
     // Ensure mobile experience is properly initialized
     initializeMobileExperience();
@@ -18816,13 +18722,14 @@
       document.body.classList.add('loaded');
       console.log('🎬 And... CUT! Welcome to Cochran Films.');
       
-      // Handle mobile loader
-      if (mobileLoader && isMobile) {
-        mobileLoader.classList.add('hidden');
+      // Handle unified loading screen
+      if (loadingScreen) {
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.transition = 'opacity 0.5s ease';
         setTimeout(() => {
-          mobileLoader.style.display = 'none';
-          mobileLoader.style.visibility = 'hidden';
-          mobileLoader.style.opacity = '0';
+          loadingScreen.style.display = 'none';
+          loadingScreen.style.visibility = 'hidden';
+          loadingScreen.style.zIndex = '-1';
         }, 500);
       }
       
