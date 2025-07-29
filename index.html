@@ -1314,10 +1314,11 @@
       }
       
       body.loaded .mobile-loader {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden;
-      }
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  display: none !important;
+}
       
           /* Mobile Hero Section */
     .mobile-hero {
@@ -1595,16 +1596,20 @@
         color: #FFB200;
       }
       
-      /* Mobile Gallery Section */
-      .mobile-gallery {
-        padding: 4rem 1rem;
-        background: #000;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
+          /* Mobile Gallery Section */
+    .mobile-gallery {
+      padding: 4rem 1rem;
+      background: #000;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 1 !important;
+      width: 100% !important;
+      height: auto !important;
+    }
       
       .mobile-gallery-container {
         max-width: 600px;
@@ -1621,27 +1626,39 @@
         gap: 1rem;
       }
       
-      .mobile-gallery-item {
-        border-radius: 15px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      }
+          .mobile-gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 1 !important;
+      width: 100% !important;
+      height: auto !important;
+    }
       
       .mobile-gallery-item:hover {
         transform: scale(1.05);
         box-shadow: 0 12px 35px rgba(255,178,0,0.3);
       }
       
-      .mobile-gallery-item img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-        background: #f0f0f0;
-        min-height: 200px;
-      }
+          .mobile-gallery-item img {
+      width: 100% !important;
+      height: 200px !important;
+      object-fit: cover !important;
+      display: block !important;
+      background: #f0f0f0 !important;
+      min-height: 200px !important;
+      border-radius: 12px !important;
+      position: relative !important;
+      z-index: 1 !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
       
       .mobile-gallery-item img[src*="placeholder"] {
         background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
@@ -2187,9 +2204,13 @@
     }
     
     .mobile-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 1rem !important;
+      width: 100% !important;
+      height: auto !important;
+      position: relative !important;
+      z-index: 1 !important;
     }
     
     .mobile-gallery-item {
@@ -11320,9 +11341,10 @@
     }
     
     body.loaded .cinematic-loader {
-      opacity: 0;
-      pointer-events: none;
-      visibility: hidden;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      display: none !important;
     }
     
     /* Hide ALL complex elements on mobile for ultra-clean look */
@@ -14634,7 +14656,7 @@
 
   
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
-  <div id="mobileVersion" style="display: none;">
+  <div id="mobileVersion" style="display: none; visibility: hidden; opacity: 0; position: absolute; z-index: -1;">
     
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
@@ -15587,10 +15609,12 @@
             if (loadedImages >= totalImages) {
               // All images loaded, hide loader
               setTimeout(() => {
-                mobileLoader.style.opacity = '0';
+                mobileLoader.style.opacity = '0 !important';
                 mobileLoader.style.transition = 'opacity 0.5s ease';
                 setTimeout(() => {
-                  mobileLoader.style.display = 'none';
+                  mobileLoader.style.display = 'none !important';
+                  mobileLoader.style.visibility = 'hidden !important';
+                  mobileLoader.style.zIndex = '-1 !important';
                   document.body.classList.add('loaded');
                 }, 500);
               }, 500);
@@ -15616,10 +15640,12 @@
         // Fallback: Hide loader after timeout
         setTimeout(() => {
           if (mobileLoader.style.opacity !== '0') {
-            mobileLoader.style.opacity = '0';
+            mobileLoader.style.opacity = '0 !important';
             mobileLoader.style.transition = 'opacity 0.5s ease';
             setTimeout(() => {
-              mobileLoader.style.display = 'none';
+              mobileLoader.style.display = 'none !important';
+              mobileLoader.style.visibility = 'hidden !important';
+              mobileLoader.style.zIndex = '-1 !important';
               document.body.classList.add('loaded');
             }, 500);
           }
@@ -15647,14 +15673,54 @@
           this.classList.remove('loading');
           this.classList.add('error');
           this.style.opacity = '0.3';
-          
-          // Show fallback content
-          const overlay = this.nextElementSibling;
-          if (overlay && overlay.classList.contains('masonry-overlay')) {
-            overlay.style.display = 'flex';
-          }
         });
       });
+      
+      // Comprehensive mobile loading fix
+      if (window.innerWidth <= 768) {
+        // Force hide cinematic loader on mobile
+        const cinematicLoader = document.querySelector('.cinematic-loader');
+        if (cinematicLoader) {
+          cinematicLoader.style.display = 'none !important';
+          cinematicLoader.style.visibility = 'hidden !important';
+          cinematicLoader.style.opacity = '0 !important';
+          cinematicLoader.style.zIndex = '-1 !important';
+        }
+        
+        // Ensure mobile version is visible
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'block !important';
+          mobileVersion.style.visibility = 'visible !important';
+          mobileVersion.style.opacity = '1 !important';
+          mobileVersion.style.position = 'relative !important';
+          mobileVersion.style.zIndex = '1 !important';
+        }
+        
+        // Add loaded class to body to trigger CSS
+        document.body.classList.add('loaded');
+        
+        // Mobile gallery image loading fix
+        const mobileGalleryImages = document.querySelectorAll('.mobile-gallery-item img');
+        mobileGalleryImages.forEach((img, index) => {
+          // Add loading state
+          img.style.opacity = '0.5';
+          img.style.transition = 'opacity 0.3s ease';
+          
+          // Handle successful load
+          img.addEventListener('load', function() {
+            this.style.opacity = '1';
+            console.log(`📸 Mobile gallery image ${index + 1} loaded successfully`);
+          });
+          
+          // Handle load error
+          img.addEventListener('error', function() {
+            this.style.opacity = '0.3';
+            this.style.background = '#f0f0f0';
+            console.log(`❌ Mobile gallery image ${index + 1} failed to load`);
+          });
+        });
+      }
     });
   </script>
 
@@ -17252,6 +17318,9 @@
         mobileVersion.style.opacity = '1 !important';
         mobileVersion.style.position = 'relative !important';
         mobileVersion.style.zIndex = '1 !important';
+        mobileVersion.style.width = '100% !important';
+        mobileVersion.style.height = 'auto !important';
+        mobileVersion.style.overflow = 'visible !important';
         console.log('📱 Mobile version forced visible');
       }
       
@@ -17396,8 +17465,53 @@
     // Additional check after a short delay
     setTimeout(forceInitializeMobile, 100);
     setTimeout(forceInitializeMobile, 500);
+    setTimeout(forceInitializeMobile, 1000);
     
     // Comprehensive mobile initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      // Force mobile version to be visible
+      const mobileVersion = document.getElementById('mobileVersion');
+      if (mobileVersion) {
+        mobileVersion.style.display = 'block !important';
+        mobileVersion.style.visibility = 'visible !important';
+        mobileVersion.style.opacity = '1 !important';
+        mobileVersion.style.position = 'relative !important';
+        mobileVersion.style.zIndex = '1 !important';
+        mobileVersion.style.width = '100% !important';
+        mobileVersion.style.height = 'auto !important';
+        mobileVersion.style.overflow = 'visible !important';
+      }
+      
+      // Ensure mobile gallery is visible
+      const mobileGallery = document.querySelector('.mobile-gallery');
+      if (mobileGallery) {
+        mobileGallery.style.display = 'block !important';
+        mobileGallery.style.visibility = 'visible !important';
+        mobileGallery.style.opacity = '1 !important';
+        mobileGallery.style.position = 'relative !important';
+        mobileGallery.style.zIndex = '1 !important';
+      }
+      
+      // Ensure mobile gallery items are visible
+      const mobileGalleryItems = document.querySelectorAll('.mobile-gallery-item');
+      mobileGalleryItems.forEach(item => {
+        item.style.display = 'block !important';
+        item.style.visibility = 'visible !important';
+        item.style.opacity = '1 !important';
+        item.style.position = 'relative !important';
+        item.style.zIndex = '1 !important';
+      });
+      
+      // Ensure mobile gallery images are visible
+      const mobileGalleryImages = document.querySelectorAll('.mobile-gallery-item img');
+      mobileGalleryImages.forEach(img => {
+        img.style.display = 'block !important';
+        img.style.visibility = 'visible !important';
+        img.style.opacity = '1 !important';
+        img.style.position = 'relative !important';
+        img.style.zIndex = '1 !important';
+      });
+    });
     setTimeout(() => {
       // Force mobile version visibility
       const mobileVersion = document.getElementById('mobileVersion');
