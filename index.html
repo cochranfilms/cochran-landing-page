@@ -75,30 +75,28 @@
       const isMobile = window.innerWidth <= 768;
       console.log('📱 Immediate mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
       
-      // Function to show mobile version (only after loading is complete)
+      // Function to show mobile version
       function showMobileVersion() {
-        // Only show mobile version if loading is complete
-        if (document.body.classList.contains('loaded')) {
-          const mobileVersion = document.getElementById('mobileVersion');
-          if (mobileVersion) {
-            mobileVersion.style.display = 'block !important';
-            mobileVersion.style.visibility = 'visible !important';
-            mobileVersion.style.opacity = '1 !important';
-            mobileVersion.style.position = 'relative !important';
-            mobileVersion.style.zIndex = '1 !important';
-          }
-          
-          // Hide desktop elements
-          const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-          desktopElements.forEach(el => {
-            el.style.display = 'none !important';
-            el.style.visibility = 'hidden !important';
-            el.style.opacity = '0 !important';
-            el.style.position = 'absolute !important';
-            el.style.zIndex = '-1 !important';
-          });
-          
-                  // Show mobile navigation
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'block !important';
+          mobileVersion.style.visibility = 'visible !important';
+          mobileVersion.style.opacity = '1 !important';
+          mobileVersion.style.position = 'relative !important';
+          mobileVersion.style.zIndex = '1 !important';
+        }
+        
+        // Hide desktop elements
+        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+        desktopElements.forEach(el => {
+          el.style.display = 'none !important';
+          el.style.visibility = 'hidden !important';
+          el.style.opacity = '0 !important';
+          el.style.position = 'absolute !important';
+          el.style.zIndex = '-1 !important';
+        });
+        
+        // Show mobile navigation
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
         if (mobileNavToggle) {
           mobileNavToggle.style.display = 'flex !important';
@@ -109,93 +107,61 @@
         
         document.body.classList.add('mobile-view');
         console.log('📱 Mobile version activated');
-        }
       }
       
-      // Function to show desktop version (only after loading is complete)
+      // Function to show desktop version
       function showDesktopVersion() {
-        // Only show desktop version if loading is complete
-        if (document.body.classList.contains('loaded')) {
-          const mobileVersion = document.getElementById('mobileVersion');
-          if (mobileVersion) {
-            mobileVersion.style.display = 'none !important';
-            mobileVersion.style.visibility = 'hidden !important';
-            mobileVersion.style.opacity = '0 !important';
-            mobileVersion.style.position = 'absolute !important';
-            mobileVersion.style.zIndex = '-1 !important';
-          }
-          
-          // Show desktop elements
-          const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-          desktopElements.forEach(el => {
-            el.style.display = 'block !important';
-            el.style.visibility = 'visible !important';
-            el.style.opacity = '1 !important';
-            el.style.position = 'relative !important';
-            el.style.zIndex = '1 !important';
-          });
-          
-          // Hide mobile navigation
-          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-          if (mobileNavToggle) {
-            mobileNavToggle.style.display = 'none !important';
-            mobileNavToggle.style.visibility = 'hidden !important';
-            mobileNavToggle.style.opacity = '0 !important';
-            mobileNavToggle.style.zIndex = '-1 !important';
-          }
-          
-          document.body.classList.add('desktop-view');
-          console.log('🖥️ Desktop version activated');
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'none !important';
+          mobileVersion.style.visibility = 'hidden !important';
+          mobileVersion.style.opacity = '0 !important';
+          mobileVersion.style.position = 'absolute !important';
+          mobileVersion.style.zIndex = '-1 !important';
         }
+        
+        // Show desktop elements
+        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+        desktopElements.forEach(el => {
+          el.style.display = 'block !important';
+          el.style.visibility = 'visible !important';
+          el.style.opacity = '1 !important';
+          el.style.position = 'relative !important';
+          el.style.zIndex = '1 !important';
+        });
+        
+        // Hide mobile navigation
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        if (mobileNavToggle) {
+          mobileNavToggle.style.display = 'none !important';
+          mobileNavToggle.style.visibility = 'hidden !important';
+          mobileNavToggle.style.opacity = '0 !important';
+          mobileNavToggle.style.zIndex = '-1 !important';
+        }
+        
+        document.body.classList.add('desktop-view');
+        console.log('🖥️ Desktop version activated');
       }
       
-      // Initialize based on screen size (wait for loading to complete)
+      // Initialize based on screen size
       if (isMobile) {
-        document.addEventListener('DOMContentLoaded', function() {
-          // Wait for loading to complete before showing mobile version
-          if (document.body.classList.contains('loaded')) {
-            showMobileVersion();
-          } else {
-            // Wait for loading to complete
-            const checkLoading = setInterval(() => {
-              if (document.body.classList.contains('loaded')) {
-                clearInterval(checkLoading);
-                showMobileVersion();
-              }
-            }, 100);
-          }
-        });
+        document.addEventListener('DOMContentLoaded', showMobileVersion);
       } else {
-        document.addEventListener('DOMContentLoaded', function() {
-          // Wait for loading to complete before showing desktop version
-          if (document.body.classList.contains('loaded')) {
-            showDesktopVersion();
-          } else {
-            // Wait for loading to complete
-            const checkLoading = setInterval(() => {
-              if (document.body.classList.contains('loaded')) {
-                clearInterval(checkLoading);
-                showDesktopVersion();
-              }
-            }, 100);
-          }
-        });
+        document.addEventListener('DOMContentLoaded', showDesktopVersion);
       }
       
-      // Force show mobile version for testing images (only after loading)
+      // Force show mobile version for testing images
       document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
-          if (document.body.classList.contains('loaded')) {
-            console.log('🔧 Forcing mobile version to show for image testing');
-            showMobileVersion();
-          }
-        }, 5000); // Wait for loading to complete
+          console.log('🔧 Forcing mobile version to show for image testing');
+          showMobileVersion();
+        }, 1000);
       });
       
-      // Handle window resize (only after loading is complete)
+      // Handle window resize
       window.addEventListener('resize', function() {
         const newIsMobile = window.innerWidth <= 768;
-        if (newIsMobile !== isMobile && document.body.classList.contains('loaded')) {
+        if (newIsMobile !== isMobile) {
           if (newIsMobile) {
             showMobileVersion();
           } else {
@@ -204,14 +170,14 @@
         }
       });
       
-      // Fallback: Force show appropriate version after loading is complete
+      // Fallback: Force show appropriate version after 2 seconds if not working
       setTimeout(function() {
         const mobileVersion = document.getElementById('mobileVersion');
         const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography');
         
         if (isMobile) {
-          // If mobile and mobile version is hidden, force show it (only after loading)
-          if (mobileVersion && mobileVersion.style.display === 'none' && document.body.classList.contains('loaded')) {
+          // If mobile and mobile version is hidden, force show it
+          if (mobileVersion && mobileVersion.style.display === 'none') {
             console.log('🔄 Fallback: Forcing mobile version to show');
             showMobileVersion();
           }
@@ -223,7 +189,7 @@
             showDesktopVersion();
           }
         }
-      }, 6000); // Wait for loading to complete (4s) + buffer
+      }, 2000);
     })();
   </script>
   <!-- 🔒 SECURE EXTERNAL SCRIPTS WITH INTEGRITY CHECKS -->
@@ -1330,29 +1296,7 @@
         color: #000;
       }
       
-      /* Mobile Loader */
-      .mobile-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-        visibility: visible;
-      }
-      
-      body.loaded .mobile-loader {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
-  display: none !important;
-}
+
       
           /* Mobile Hero Section */
     .mobile-hero {
@@ -3972,19 +3916,7 @@
         margin-right: auto;
       }
       
-      /* Ensure mobile loader works properly */
-      .mobile-loader {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 99999 !important;
-      }
-      
-      body.loaded .mobile-loader {
-        opacity: 0 !important;
-        pointer-events: none !important;
-        transition: opacity 0.5s ease !important;
-      }
+
       
       /* Ensure mobile nav toggle is visible */
       .mobile-nav-toggle {
@@ -7029,14 +6961,7 @@
       }
     }
     
-    /* Mobile Loading Screen */
-    @media (max-width: 768px) {
-      /* Hide old cinematic loader on mobile */
-      /* Hide old cinematic loader - replaced with unified loading screen */
-      .cinematic-loader {
-        display: none !important;
-      }
-    }
+
 
     /* Success Popup Styles */
     .success-overlay {
@@ -9993,20 +9918,6 @@
     body:not(.loaded) {
       overflow: hidden;
       -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Main Content - Hidden during loading */
-    .main-content {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      transition: opacity 0.5s ease;
-    }
-    
-    body.loaded .main-content {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
     }
     
     /* Unified Loading Screen */
@@ -14198,16 +14109,7 @@
         display: flex !important;
       }
       
-      /* Ensure mobile loader shows properly */
-      .mobile-loader {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 99999 !important;
-        display: flex !important;
-      }
+
       
       /* Optimize mobile touch targets */
       button, .btn, a, input, select, textarea, .mobile-service-card, .mobile-gallery-item, .nav-item a {
@@ -14595,21 +14497,101 @@
 </head>
 <body>
 
-  <!-- 🎬 UNIFIED LOADING SCREEN - DESKTOP & MOBILE OPTIMIZED -->
-  <div id="loadingScreen" class="loading-screen">
-    <div class="loading-content">
-      <img src="Logo.png" alt="Cochran Films Logo" class="loading-logo">
-      <h1 class="loading-title">Cochran Films</h1>
-      <p class="loading-subtitle">Loading your experience...</p>
-      <div class="loading-bar">
-        <div class="loading-progress"></div>
+  <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
+  <div class="cinematic-loader">
+    <!-- Film Strip Borders -->
+    <div class="film-strip"></div>
+    
+    <!-- Professional Camera Viewfinder Overlay -->
+    <div class="viewfinder-overlay">
+      <div class="viewfinder-grid"></div>
+      <div class="viewfinder-corners">
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
       </div>
+    </div>
+    
+    <!-- Production Studio Lights -->
+    <div class="studio-lights">
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+    </div>
+    
+    <!-- Film Countdown Timer -->
+    <div class="countdown-container">
+      <div class="countdown-circle">
+        <div class="countdown-number">5</div>
+      </div>
+    </div>
+    
+    <!-- Director's Clapperboard -->
+    <div class="clapperboard">
+      <div class="clapper-top"></div>
+      <div class="clapper-text">
+        COCHRAN<br>
+        FILMS<br>
+        LOADING
+      </div>
+    </div>
+    
+    <!-- Film Reels Animation -->
+    <div class="film-reels">
+      <div class="film-reel"></div>
+      <div class="film-reel"></div>
+    </div>
+    
+    <!-- Camera Equipment -->
+    <div class="camera-equipment">
+      <div class="camera-lens"></div>
+      <div class="camera-body"></div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles-system">
+      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
+      <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
+      <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
+      <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
+      <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
+      <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
+    </div>
+    
+    <!-- Lens Flares -->
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    
+    <!-- Main Aperture Container -->
+    <div class="aperture-container">
+      <div class="aperture"></div>
+      
+      <!-- Cinematic Typography -->
+      <div class="cinematic-text">
+        <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
+        <div class="tagline">STORYTELLING THAT CONVERTS</div>
+      </div>
+    </div>
+    
+    <!-- Sound Waves -->
+    <div class="sound-waves">
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
     </div>
   </div>
 
   
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
-  <div id="mobileVersion" style="display: none; visibility: hidden; opacity: 0; position: absolute; z-index: -1;" class="main-content">
+  <div id="mobileVersion" style="display: none; visibility: hidden; opacity: 0; position: absolute; z-index: -1;">
     
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
@@ -15513,115 +15495,34 @@
     </div>
   </header>
 
-  <!-- 📱 UNIFIED LOADING SCRIPT -->
+  <!-- 🎬 CINEMATIC LOADING SCRIPT -->
   <script>
-    // Unified loading screen management
+    // Cinematic loading screen management - 4 second duration
     document.addEventListener('DOMContentLoaded', function() {
-      const loadingScreen = document.getElementById('loadingScreen');
+      const cinematicLoader = document.querySelector('.cinematic-loader');
       const isMobile = window.innerWidth <= 768;
       
-      if (loadingScreen) {
-        // Show loading screen immediately
-        loadingScreen.style.display = 'flex';
-        loadingScreen.style.visibility = 'visible';
-        loadingScreen.style.opacity = '1';
-        loadingScreen.style.zIndex = '99999';
+      if (cinematicLoader) {
+        // Show cinematic loader immediately
+        cinematicLoader.style.display = 'flex';
+        cinematicLoader.style.visibility = 'visible';
+        cinematicLoader.style.opacity = '1';
+        cinematicLoader.style.zIndex = '99999';
         
-        // Preload critical images
-        const criticalImages = [
-          'fashion-photography.jpg',
-          'professional-photography.jpg',
-          'brand-photography.jpg',
-          'corporate-events.jpg',
-          'on-site-printing.jpg',
-          'professional-headshots.jpg',
-          'product-photography.jpg',
-          'wedding-photography.jpg',
-          'Logo.png'
-        ];
+        // Initialize countdown timer
+        initializeCountdownTimer();
         
-        let loadedImages = 0;
-        const totalImages = criticalImages.length;
-        
-        // Update progress bar
-        const progressBar = loadingScreen.querySelector('.loading-progress');
-        
-        criticalImages.forEach((src, index) => {
-          const img = new Image();
-          img.onload = () => {
-            loadedImages++;
-            // Update progress bar
-            if (progressBar) {
-              progressBar.style.width = `${(loadedImages / totalImages) * 100}%`;
-            }
-            
-            if (loadedImages >= totalImages) {
-              // All images loaded, hide loading screen after 4 seconds
-              setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                loadingScreen.style.transition = 'opacity 0.5s ease';
-                setTimeout(() => {
-                  loadingScreen.style.display = 'none';
-                  loadingScreen.style.visibility = 'hidden';
-                  loadingScreen.style.zIndex = '-1';
-                  document.body.classList.add('loaded');
-                  
-                  // Show main content
-                  const mainContent = document.getElementById('mainContent');
-                  const mobileVersion = document.getElementById('mobileVersion');
-                  if (mainContent) mainContent.style.display = 'block';
-                  if (mobileVersion) mobileVersion.style.display = 'block';
-                }, 500);
-              }, 4000); // 4 seconds to match animation
-            }
-          };
-          img.onerror = () => {
-            loadedImages++;
-            // Update progress bar even on error
-            if (progressBar) {
-              progressBar.style.width = `${(loadedImages / totalImages) * 100}%`;
-            }
-            
-            if (loadedImages >= totalImages) {
-              // All images processed, hide loading screen after 4 seconds
-              setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                loadingScreen.style.transition = 'opacity 0.5s ease';
-                setTimeout(() => {
-                  loadingScreen.style.display = 'none';
-                  document.body.classList.add('loaded');
-                  
-                  // Show main content
-                  const mainContent = document.getElementById('mainContent');
-                  const mobileVersion = document.getElementById('mobileVersion');
-                  if (mainContent) mainContent.style.display = 'block';
-                  if (mobileVersion) mobileVersion.style.display = 'block';
-                }, 500);
-              }, 4000); // 4 seconds to match animation
-            }
-          };
-          img.src = src;
-        });
-        
-        // Fallback: Hide loading screen after 4 seconds
+        // Hide cinematic loader after 4 seconds (matching animation duration)
         setTimeout(() => {
-          if (loadingScreen.style.opacity !== '0') {
-            loadingScreen.style.opacity = '0';
-            loadingScreen.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-              loadingScreen.style.display = 'none';
-              loadingScreen.style.visibility = 'hidden';
-              loadingScreen.style.zIndex = '-1';
-              document.body.classList.add('loaded');
-              
-              // Show main content
-              const mainContent = document.getElementById('mainContent');
-              const mobileVersion = document.getElementById('mobileVersion');
-              if (mainContent) mainContent.style.display = 'block';
-              if (mobileVersion) mobileVersion.style.display = 'block';
-            }, 500);
-          }
-        }, 4000); // 4 seconds to match animation
+          cinematicLoader.style.opacity = '0';
+          cinematicLoader.style.transition = 'opacity 0.5s ease';
+          setTimeout(() => {
+            cinematicLoader.style.display = 'none';
+            cinematicLoader.style.visibility = 'hidden';
+            cinematicLoader.style.zIndex = '-1';
+            document.body.classList.add('loaded');
+          }, 500);
+        }, 4000); // 4 seconds as requested
       }
     });
     
@@ -15648,58 +15549,11 @@
         });
       });
       
-      // Comprehensive mobile loading fix
-      if (window.innerWidth <= 768) {
-        // Hide old cinematic loader - replaced with unified loading screen
-        const cinematicLoader = document.querySelector('.cinematic-loader');
-        if (cinematicLoader) {
-          cinematicLoader.style.display = 'none !important';
-          cinematicLoader.style.visibility = 'hidden !important';
-          cinematicLoader.style.opacity = '0 !important';
-          cinematicLoader.style.zIndex = '-1 !important';
-        }
-        
-        // Ensure mobile version is visible
-        const mobileVersion = document.getElementById('mobileVersion');
-        if (mobileVersion) {
-          mobileVersion.style.display = 'block !important';
-          mobileVersion.style.visibility = 'visible !important';
-          mobileVersion.style.opacity = '1 !important';
-          mobileVersion.style.position = 'relative !important';
-          mobileVersion.style.zIndex = '1 !important';
-        }
-        
-        // Add loaded class to body to trigger CSS
-        document.body.classList.add('loaded');
-        
-        // Mobile gallery image loading fix
-        const mobileGalleryImages = document.querySelectorAll('.mobile-gallery-item img');
-        mobileGalleryImages.forEach((img, index) => {
-          // Add loading state
-          img.style.opacity = '0.5';
-          img.style.transition = 'opacity 0.3s ease';
-          
-          // Handle successful load
-          img.addEventListener('load', function() {
-            this.style.opacity = '1';
-            console.log(`📸 Mobile gallery image ${index + 1} loaded successfully`);
-          });
-          
-          // Handle load error
-          img.addEventListener('error', function() {
-            this.style.opacity = '0.3';
-            this.style.background = '#f0f0f0';
-            console.log(`❌ Mobile gallery image ${index + 1} failed to load`);
-          });
-        });
-      }
+
     });
   </script>
 
 
-  <!-- Main Content Container (Hidden during loading) -->
-  <div id="mainContent" class="main-content" style="display: none; visibility: hidden; opacity: 0;">
-    
   <!-- Redesigned Hero Section -->
   <section class="hero-section">
     <div class="hero-background">
@@ -17309,13 +17163,13 @@
         mobileContent.style.zIndex = '1 !important';
       }
       
-      // Initialize unified loading screen
-      const loadingScreen = document.getElementById('loadingScreen');
-      if (loadingScreen) {
-        loadingScreen.style.display = 'flex';
-        loadingScreen.style.visibility = 'visible';
-        loadingScreen.style.opacity = '1';
-        loadingScreen.style.zIndex = '99999';
+      // Initialize cinematic loading screen
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      if (cinematicLoader) {
+        cinematicLoader.style.display = 'flex';
+        cinematicLoader.style.visibility = 'visible';
+        cinematicLoader.style.opacity = '1';
+        cinematicLoader.style.zIndex = '99999';
       }
       
       // Initialize mobile navigation
@@ -17349,10 +17203,10 @@
         mobileVersion.style.visibility = 'hidden !important';
       }
       
-      const loadingScreen = document.getElementById('loadingScreen');
-      if (loadingScreen) {
-        loadingScreen.style.display = 'none';
-        loadingScreen.style.visibility = 'hidden';
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      if (cinematicLoader) {
+        cinematicLoader.style.display = 'none';
+        cinematicLoader.style.visibility = 'hidden';
       }
       
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -17396,13 +17250,13 @@
         console.log('📱 Mobile version forced visible - COMPREHENSIVE');
       }
       
-      // Ensure unified loading screen is visible
-      const loadingScreen = document.getElementById('loadingScreen');
-      if (loadingScreen) {
-        loadingScreen.style.display = 'flex';
-        loadingScreen.style.visibility = 'visible';
-        loadingScreen.style.opacity = '1';
-        loadingScreen.style.zIndex = '99999';
+      // Ensure cinematic loading screen is visible
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      if (cinematicLoader) {
+        cinematicLoader.style.display = 'flex';
+        cinematicLoader.style.visibility = 'visible';
+        cinematicLoader.style.opacity = '1';
+        cinematicLoader.style.zIndex = '99999';
       }
       
       // Ensure mobile nav toggle is visible
@@ -18776,7 +18630,7 @@
     const isMobile = window.innerWidth <= 768;
     const isUltraMobile = window.innerWidth <= 480;
     const mobileVersion = document.getElementById('mobileVersion');
-    const loadingScreen = document.getElementById('loadingScreen');
+    const cinematicLoader = document.querySelector('.cinematic-loader');
     
     // Ensure mobile experience is properly initialized
     initializeMobileExperience();
@@ -18791,14 +18645,14 @@
       document.body.classList.add('loaded');
       console.log('🎬 And... CUT! Welcome to Cochran Films.');
       
-      // Handle unified loading screen
-      if (loadingScreen) {
-        loadingScreen.style.opacity = '0';
-        loadingScreen.style.transition = 'opacity 0.5s ease';
+      // Handle cinematic loading screen
+      if (cinematicLoader) {
+        cinematicLoader.style.opacity = '0';
+        cinematicLoader.style.transition = 'opacity 0.5s ease';
         setTimeout(() => {
-          loadingScreen.style.display = 'none';
-          loadingScreen.style.visibility = 'hidden';
-          loadingScreen.style.zIndex = '-1';
+          cinematicLoader.style.display = 'none';
+          cinematicLoader.style.visibility = 'hidden';
+          cinematicLoader.style.zIndex = '-1';
         }, 500);
       }
       
@@ -22509,8 +22363,6 @@
       });
     });
   </script>
-
-  </div> <!-- End of mainContent -->
 
 </body>
 </html>
