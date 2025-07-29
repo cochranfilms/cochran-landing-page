@@ -1304,17 +1304,19 @@
         width: 100%;
         height: 100%;
         background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
-        display: flex !important;
+        display: flex;
         align-items: center;
         justify-content: center;
         z-index: 99999;
         opacity: 1;
         transition: opacity 0.5s ease;
+        visibility: visible;
       }
       
       body.loaded .mobile-loader {
         opacity: 0;
         pointer-events: none;
+        visibility: hidden;
       }
       
           /* Mobile Hero Section */
@@ -15537,7 +15539,7 @@
   </header>
 
   <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
-  <div class="mobile-loader" style="display: none;">
+  <div class="mobile-loader">
     <div class="mobile-loader-content">
       <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
       <h1 class="mobile-loader-title">Cochran Films</h1>
@@ -15551,25 +15553,109 @@
   <!-- 📱 MOBILE LOADING SCRIPT -->
   <script>
     // Ensure mobile loader works properly
-    if (window.innerWidth <= 768) {
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileLoader = document.querySelector('.mobile-loader');
-        if (mobileLoader) {
-          mobileLoader.style.display = 'flex !important';
-          mobileLoader.style.visibility = 'visible !important';
-          mobileLoader.style.opacity = '1 !important';
-          mobileLoader.style.zIndex = '99999 !important';
-          
-          // Hide loader after content loads
-          setTimeout(() => {
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileLoader = document.querySelector('.mobile-loader');
+      const isMobile = window.innerWidth <= 768;
+      
+      if (mobileLoader) {
+        // Show loader immediately
+        mobileLoader.style.display = 'flex';
+        mobileLoader.style.visibility = 'visible';
+        mobileLoader.style.opacity = '1';
+        mobileLoader.style.zIndex = '99999';
+        
+        // Preload critical images
+        const criticalImages = [
+          'fashion-photography.jpg',
+          'professional-photography.jpg',
+          'brand-photography.jpg',
+          'corporate-events.jpg',
+          'on-site-printing.jpg',
+          'professional-headshots.jpg',
+          'product-photography.jpg',
+          'wedding-photography.jpg',
+          'Logo.png'
+        ];
+        
+        let loadedImages = 0;
+        const totalImages = criticalImages.length;
+        
+        criticalImages.forEach(src => {
+          const img = new Image();
+          img.onload = () => {
+            loadedImages++;
+            if (loadedImages >= totalImages) {
+              // All images loaded, hide loader
+              setTimeout(() => {
+                mobileLoader.style.opacity = '0';
+                mobileLoader.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                  mobileLoader.style.display = 'none';
+                  document.body.classList.add('loaded');
+                }, 500);
+              }, 500);
+            }
+          };
+          img.onerror = () => {
+            loadedImages++;
+            if (loadedImages >= totalImages) {
+              // All images processed, hide loader
+              setTimeout(() => {
+                mobileLoader.style.opacity = '0';
+                mobileLoader.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                  mobileLoader.style.display = 'none';
+                  document.body.classList.add('loaded');
+                }, 500);
+              }, 500);
+            }
+          };
+          img.src = src;
+        });
+        
+        // Fallback: Hide loader after timeout
+        setTimeout(() => {
+          if (mobileLoader.style.opacity !== '0') {
             mobileLoader.style.opacity = '0';
+            mobileLoader.style.transition = 'opacity 0.5s ease';
             setTimeout(() => {
               mobileLoader.style.display = 'none';
+              document.body.classList.add('loaded');
             }, 500);
-          }, 2000);
-        }
+          }
+        }, isMobile ? 3000 : 5000);
+      }
+    });
+    
+    // Ensure masonry images load properly
+    document.addEventListener('DOMContentLoaded', function() {
+      const masonryImages = document.querySelectorAll('.masonry-content img');
+      
+      masonryImages.forEach(img => {
+        // Add loading class
+        img.classList.add('loading');
+        
+        // Handle successful load
+        img.addEventListener('load', function() {
+          this.classList.remove('loading');
+          this.classList.add('loaded');
+          this.style.opacity = '1';
+        });
+        
+        // Handle load error
+        img.addEventListener('error', function() {
+          this.classList.remove('loading');
+          this.classList.add('error');
+          this.style.opacity = '0.3';
+          
+          // Show fallback content
+          const overlay = this.nextElementSibling;
+          if (overlay && overlay.classList.contains('masonry-overlay')) {
+            overlay.style.display = 'flex';
+          }
+        });
       });
-    }
+    });
   </script>
 
 
@@ -15631,7 +15717,7 @@
       <div class="masonry-grid">
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="fashion-photography.jpg" alt="Professional Event Photography">
+            <img src="fashion-photography.jpg" alt="Professional Event Photography" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15647,7 +15733,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="professional-photography.jpg" alt="Portrait Photography">
+            <img src="professional-photography.jpg" alt="Portrait Photography" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15663,7 +15749,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="brand-photography.jpg" alt="Brand Photography">
+            <img src="brand-photography.jpg" alt="Brand Photography" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15679,7 +15765,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="corporate-events.jpg" alt="Corporate Events">
+            <img src="corporate-events.jpg" alt="Corporate Events" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15695,7 +15781,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="on-site-printing.jpg" alt="On-Site Printing">
+            <img src="on-site-printing.jpg" alt="On-Site Printing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15711,7 +15797,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="professional-headshots.jpg" alt="Professional Headshots">
+            <img src="professional-headshots.jpg" alt="Professional Headshots" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15727,7 +15813,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="product-photography.jpg" alt="Product Photography">
+            <img src="product-photography.jpg" alt="Product Photography" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15743,7 +15829,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="wedding-photography.jpg" alt="Wedding Photography">
+            <img src="wedding-photography.jpg" alt="Wedding Photography" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onload="this.style.opacity='1';">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
