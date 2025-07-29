@@ -75,7 +75,7 @@
           }
           
           // Force hide desktop elements
-          const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+          const desktopElements = document.querySelectorAll('.hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
           desktopElements.forEach(el => {
             el.style.display = 'none !important';
             el.style.visibility = 'hidden !important';
@@ -97,6 +97,42 @@
           document.body.classList.add('mobile-view');
           
           console.log('📱 Immediate mobile initialization completed');
+        });
+      } else {
+        // Ensure desktop elements are visible on desktop
+        document.addEventListener('DOMContentLoaded', function() {
+          const mobileVersion = document.getElementById('mobileVersion');
+          if (mobileVersion) {
+            mobileVersion.style.display = 'none !important';
+            mobileVersion.style.visibility = 'hidden !important';
+            mobileVersion.style.opacity = '0 !important';
+            mobileVersion.style.position = 'absolute !important';
+            mobileVersion.style.zIndex = '-1 !important';
+          }
+          
+          // Ensure desktop elements are visible
+          const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+          desktopElements.forEach(el => {
+            el.style.display = 'block !important';
+            el.style.visibility = 'visible !important';
+            el.style.opacity = '1 !important';
+            el.style.position = 'relative !important';
+            el.style.zIndex = '1 !important';
+          });
+          
+          // Hide mobile navigation on desktop
+          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+          if (mobileNavToggle) {
+            mobileNavToggle.style.display = 'none !important';
+            mobileNavToggle.style.visibility = 'hidden !important';
+            mobileNavToggle.style.opacity = '0 !important';
+            mobileNavToggle.style.zIndex = '-1 !important';
+          }
+          
+          // Add desktop class to body
+          document.body.classList.add('desktop-view');
+          
+          console.log('🖥️ Desktop initialization completed');
         });
       }
     })();
@@ -816,6 +852,26 @@
     /* MOBILE-ONLY EXPERIENCE (768px and below) */
     /* ======================================== */
     
+    /* Default: Hide mobile version on desktop */
+    #mobileVersion {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      z-index: -1 !important;
+    }
+    
+          /* Default: Show desktop elements */
+      .cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+    
     @media (max-width: 768px) {
       /* Force mobile version to be visible */
       #mobileVersion {
@@ -830,9 +886,9 @@
       }
       
       /* Completely hide ALL desktop elements on mobile */
-      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .hero-section, .million-dollar-photography, .service-builder-section, 
       .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
-      .deliver-section, .timeline-section, .premium-footer, .cinematic-loader {
+      .deliver-section, .timeline-section, .premium-footer {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -4617,11 +4673,11 @@
     /* Redesigned Hero Section */
     .hero-section {
       position: relative;
-      min-height: auto;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: transparent;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
       transition: background 0.5s ease;
       will-change: auto;
       padding: 2rem 0;
@@ -9852,32 +9908,22 @@
       -webkit-overflow-scrolling: touch;
     }
     
-    /* Main Loading Container */
-    .cinematic-loader {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* Main Cinematic Header Container */
+    .cinematic-header {
+      position: relative;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       background: 
         radial-gradient(circle at center, #1a1a1a 0%, #000000 70%),
         linear-gradient(45deg, #000000 0%, #0d0d0d 100%);
-      z-index: 999999;
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 1;
-      transition: opacity var(--loading-duration) ease-out;
       overflow: hidden;
-      will-change: opacity;
+      will-change: transform;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-    }
-    
-    body.loaded .cinematic-loader {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateZ(0);
     }
     
     /* Professional Camera Viewfinder Overlay */
@@ -10347,6 +10393,28 @@
       text-shadow: 0 0 20px rgba(255, 178, 0, 0.3);
     }
     
+    .header-subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease 0.5s both;
+    }
+    
+    .header-description {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+    
     @keyframes textShimmer {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -10401,7 +10469,7 @@
         transform: none !important;
       }
       
-      /* Fix loading screen text on mobile */
+      /* Fix cinematic header text on mobile */
       .cinematic-text {
         width: 90% !important;
         max-width: 300px !important;
@@ -10414,6 +10482,18 @@
       .cinematic-text .tagline {
         font-size: 0.8rem !important;
         letter-spacing: 0.2em !important;
+      }
+      
+      .header-subtitle {
+        font-size: 1.4rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+      
+      .header-description {
+        font-size: 1rem !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
       }
       
       /* Ensure no elements exceed viewport width */
@@ -14671,8 +14751,8 @@
     </div> <!-- End mobile-content -->
   </div>
 
-  <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
-  <div class="cinematic-loader">
+  <!-- 🎬 CINEMATIC HEADER BANNER -->
+  <header class="cinematic-header">
     <!-- Film Strip Borders -->
     <div class="film-strip"></div>
     
@@ -14692,20 +14772,13 @@
       <div class="spotlight"></div>
     </div>
     
-    <!-- Film Countdown Timer -->
-    <div class="countdown-container">
-      <div class="countdown-circle">
-        <div class="countdown-number">5</div>
-      </div>
-    </div>
-    
     <!-- Director's Clapperboard -->
     <div class="clapperboard">
       <div class="clapper-top"></div>
       <div class="clapper-text">
         COCHRAN<br>
         FILMS<br>
-        LOADING
+        STUDIO
       </div>
     </div>
     
@@ -14747,6 +14820,8 @@
       <div class="cinematic-text">
         <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
         <div class="tagline">STORYTELLING THAT CONVERTS</div>
+        <div class="header-subtitle">Work with a Full-Stack Digital Strategist</div>
+        <div class="header-description">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</div>
       </div>
     </div>
     
@@ -14761,12 +14836,7 @@
       <div class="wave-bar"></div>
       <div class="wave-bar"></div>
     </div>
-    
-    <!-- Progress Bar -->
-    <div class="cinematic-progress">
-      <div class="progress-fill"></div>
-    </div>
-  </div>
+  </header>
 
   <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
   <div class="mobile-loader" style="display: none;">
@@ -14803,20 +14873,7 @@
       });
     }
   </script>
-  <header>
-    <!-- Cinematic background shapes -->
-    <div class="header-shape"></div>
-    <div class="header-shape"></div>
-    <div class="header-shape"></div>
-    
-    <!-- Header content -->
-    <div class="header-content">
-      <img src="https://static.wixstatic.com/media/aeef42_7240b3023a8246e9977ddd74c43b8025~mv2.png" alt="Cochran Films Logo">
-      <div class="header-divider"></div>
-      <h1>Work with a Full-Stack Digital Strategist</h1>
-      <p>You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</p>
-    </div>
-  </header>
+
 
   <!-- Redesigned Hero Section -->
   <section class="hero-section">
