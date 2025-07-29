@@ -812,11 +812,102 @@
     
     /* 📱 COMPREHENSIVE MOBILE OPTIMIZATION */
     
-
+    /* Mobile Version Detection and Display */
+    @media (max-width: 768px) {
+      #mobileVersion {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
       
-  
+      /* Hide desktop elements on mobile */
+      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+          /* Mobile Header Banner */
+    .mobile-header-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
+      padding: 1rem;
+      z-index: 9999;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+    }
     
-
+    .mobile-header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .mobile-header-logo {
+      height: 40px;
+      width: auto;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      display: block;
+      margin: 0 auto;
+    }
+    
+    .mobile-header-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #000;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      margin: 0;
+    }
+    
+    /* Mobile Navigation Toggle */
+    .mobile-nav-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #FFB200, #FF9000);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10000;
+      box-shadow: 0 4px 15px rgba(255,178,0,0.4);
+      transition: all 0.3s ease;
+    }
+      
+      .mobile-nav-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(255,178,0,0.6);
+      }
+      
+      .hamburger-lines {
+        width: 24px;
+        height: 18px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      
+      .hamburger-lines .line {
+        width: 100%;
+        height: 2px;
+        background: #FFB200;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
       
       /* Mobile Navigation Overlay */
       .mobile-nav-overlay {
@@ -1548,431 +1639,132 @@
         align-items: center;
         justify-content: center;
       }
-    
-    
-    /* ======================================== */
-    /* RESPONSIVE CSS FOR DESKTOP VERSION */
-    /* ======================================== */
-    
-    /* Mobile and Tablet Responsive Design */
-    @media (max-width: 1024px) {
-      /* Tablet adjustments */
-      .hero-section {
-        padding: 4rem 2rem;
-      }
-      
-      .hero-content {
-        max-width: 800px;
-      }
-      
-      .hero-title {
-        font-size: 3rem;
-      }
-      
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-      
-      .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      /* Navigation adjustments for tablet */
-      .nav-menu {
-        gap: 1.5rem;
-      }
-      
-      .nav-menu a {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
-      }
     }
     
-    @media (max-width: 768px) {
-      /* Mobile adjustments */
-      
-      /* Header and Navigation */
-      header {
-        padding: 1rem;
-        position: relative;
-      }
-      
-      .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-        position: relative;
-      }
-      
-      /* Mobile Navigation Toggle */
-      .mobile-nav-toggle {
-        display: flex !important;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #FFB200, #FF9000);
-        border: 2px solid rgba(255,255,255,0.3);
-        border-radius: 50%;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 10000;
-        box-shadow: 0 4px 15px rgba(255,178,0,0.4);
-        transition: all 0.3s ease;
-      }
-      
-      .mobile-nav-toggle:hover {
-        transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(255,178,0,0.6);
-      }
-      
-      .hamburger-lines {
-        width: 24px;
-        height: 18px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      
-      .hamburger-lines .line {
-        width: 100%;
-        height: 2px;
-        background: #FFB200;
-        border-radius: 2px;
-        transition: all 0.3s ease;
-      }
-      
-      /* Hide desktop navigation on mobile */
-      .nav-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: linear-gradient(135deg, #FFB200 0%, #FF9000 100%);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        z-index: 9999;
+    /* Mobile Hero Header */
+    .mobile-hero-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .mobile-hero-logo {
+      max-height: 80px;
+      max-width: 250px;
+      width: auto;
+      height: auto;
+      margin: 0 auto 1rem;
+      display: block;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.4));
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+    
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    .mobile-hero-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.8) 50%, transparent 100%);
+      margin: 1.5rem auto;
+      border-radius: 3px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    
+    /* Enhanced Mobile Hero Section */
+    .mobile-hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FFB200 0%, #FF9000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+      transform: translateZ(0);
+      will-change: transform;
+      contain: content;
+    }
+    
+    /* Optimize hero performance */
+    .mobile-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+      transform: translateZ(0);
+      will-change: transform;
+      z-index: 1;
+    }
+    
+    .mobile-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    /* Optimize hero animations */
+    @keyframes mobileHeroFadeIn {
+      from {
         opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
+        transform: translateY(20px);
       }
-      
-      .nav-menu.active {
+      to {
         opacity: 1;
-        visibility: visible;
-      }
-      
-      .nav-menu a {
-        padding: 1rem 2rem;
-        text-align: center;
-        border-radius: 8px;
-        background: rgba(255,255,255,0.1);
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #000;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        width: 80%;
-        max-width: 300px;
-      }
-      
-      .nav-menu a:hover {
-        background: rgba(255,255,255,0.2);
-        transform: scale(1.05);
-      }
-      
-      /* Mobile Navigation Close Button */
-      .mobile-nav-close {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: #000;
-        font-size: 2rem;
-        cursor: pointer;
-        padding: 0.5rem;
-        display: none;
-      }
-      
-      .nav-menu.active .mobile-nav-close {
-        display: block;
-      }
-      
-      /* Hero Section */
-      .hero-section {
-        padding: 2rem 1rem;
-        min-height: 80vh;
-      }
-      
-      .hero-content {
-        text-align: center;
-        max-width: 100%;
-        flex-direction: column;
-        gap: 2rem;
-      }
-      
-      .hero-visual {
-        order: -1;
-        margin-bottom: 2rem;
-      }
-      
-      .hero-video-container {
-        width: 100%;
-        max-width: 100%;
-        aspect-ratio: 16/9;
-      }
-      
-      .hero-video-container iframe {
-        width: 100%;
-        height: 100%;
-        border-radius: 12px;
-      }
-      
-      .hero-title {
-        font-size: 2.5rem;
-        line-height: 1.2;
-        margin-bottom: 1rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-      }
-      
-      .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 2rem;
-      }
-      
-      .hero-stat {
-        text-align: center;
-      }
-      
-      .hero-buttons {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-      }
-      
-      .cta-primary, .cta-secondary {
-        width: 100%;
-        max-width: 300px;
-        padding: 1rem 2rem;
-        font-size: 1rem;
-      }
-      
-      /* Services Section */
-      .services-section {
-        padding: 3rem 1rem;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .service-card {
-        padding: 1.5rem;
-      }
-      
-      /* Testimonials */
-      .testimonials-section {
-        padding: 3rem 1rem;
-      }
-      
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      /* Comparison Section */
-      .comparison-section {
-        padding: 3rem 1rem;
-      }
-      
-      .comparison-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      /* Footer */
-      .premium-footer {
-        padding: 2rem 1rem;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 2rem;
-        text-align: center;
-      }
-      
-      .footer-section {
-        width: 100%;
+        transform: translateY(0);
       }
     }
     
-    @media (max-width: 480px) {
-      /* Small mobile adjustments */
-      
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .service-card h3 {
-        font-size: 1.3rem;
-      }
-      
-      .testimonial-card {
-        padding: 1rem;
-      }
-      
-      .cta-primary, .cta-secondary {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.9rem;
-      }
-      
-      /* Enhanced mobile navigation */
-      .mobile-nav-toggle {
-        top: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-      }
-      
-      .nav-menu a {
-        font-size: 1.1rem;
-        padding: 0.875rem 1.5rem;
-      }
-      
-      /* Better touch targets */
-      .cta-primary, .cta-secondary, .mobile-cta-btn {
-        min-height: 44px;
-        padding: 1rem 1.5rem;
-      }
-      
-      /* Improved spacing for small screens */
-      .hero-section {
-        padding: 1.5rem 1rem;
-      }
-      
-      .services-section, .testimonials-section {
-        padding: 2rem 1rem;
-      }
+    .mobile-hero-title,
+    .mobile-hero-subtitle,
+    .mobile-hero-stats,
+    .mobile-hero-buttons {
+      animation: mobileHeroFadeIn 0.8s ease-out forwards;
+      opacity: 0;
     }
     
-    /* Touch-friendly interactions for mobile */
-    @media (hover: none) and (pointer: coarse) {
-      .service-card:hover {
-        transform: none;
-      }
-      
-      .cta-primary:hover, .cta-secondary:hover {
-        transform: none;
-      }
-      
-      .nav-menu a:hover {
-        background: rgba(255,255,255,0.2);
-      }
+    .mobile-hero-subtitle {
+      animation-delay: 0.2s;
     }
     
-    /* Landscape orientation adjustments */
-    @media (max-width: 768px) and (orientation: landscape) {
-      .hero-section {
-        min-height: 60vh;
-        padding: 1.5rem 1rem;
-      }
-      
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .hero-stats {
-        flex-direction: row;
-        justify-content: center;
-        gap: 2rem;
-      }
+    .mobile-hero-stats {
+      animation-delay: 0.4s;
     }
     
-    /* High DPI displays */
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      .hero-logo {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-      }
+    .mobile-hero-buttons {
+      animation-delay: 0.6s;
     }
     
-    /* Reduced motion for accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+    .mobile-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.1) 0%, transparent 70%);
+      pointer-events: none;
     }
     
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      /* Add dark mode styles if needed */
+    .mobile-hero-content {
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      max-width: 100%;
     }
-    
-    /* Print styles */
-    @media print {
-      .hero-section, .services-section, .testimonials-section {
-        break-inside: avoid;
-      }
-      
-      .cta-primary, .cta-secondary {
-        border: 2px solid #000;
-        color: #000;
-        background: none;
-      }
-    }
-    
-    /* Mobile Navigation Styles */
-    .mobile-nav-toggle {
-      display: none;
-    }
-    
-    .mobile-cta-btn {
-      background: linear-gradient(135deg, #FFB200, #FF9000);
-      color: #000;
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: 25px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    
-    .mobile-cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255,178,0,0.4);
-    }
-    
-
-    
-
     
     .mobile-hero-title {
       font-size: 3rem;
@@ -13984,6 +13776,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==">
 </head>
 <body>
+  <!-- Mobile-Optimized Version (Hidden on Desktop) -->
+  <div id="mobileVersion" style="display: none;">
     
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
@@ -14785,7 +14579,12 @@
     </div>
 
     <!-- Mobile Lightbox -->
-
+    <div id="mobileLightbox" class="mobile-lightbox">
+      <button class="mobile-lightbox-close" onclick="closeMobileLightbox()">&times;</button>
+      <img id="mobileLightboxImg" src="" alt="Gallery Image">
+    </div>
+    </div> <!-- End mobile-content -->
+  </div>
 
   <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
   <div class="cinematic-loader">
@@ -14920,27 +14719,6 @@
     }
   </script>
   <header>
-    <!-- Mobile Navigation Toggle (Hidden on Desktop) -->
-    <div class="mobile-nav-toggle" onclick="toggleMobileNav()">
-      <div class="hamburger-lines">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </div>
-    </div>
-    
-    <!-- Mobile Navigation Menu (Hidden on Desktop) -->
-    <nav class="nav-menu">
-      <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
-      <a href="#hero" onclick="scrollToSection('hero')">Home</a>
-      <a href="#services" onclick="scrollToSection('services')">Services</a>
-      <a href="#photography" onclick="scrollToSection('photography')">Photography</a>
-      <a href="#portfolio" onclick="scrollToSection('portfolio')">Portfolio</a>
-      <a href="#testimonials" onclick="scrollToSection('testimonials')">Testimonials</a>
-      <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
-      <button class="mobile-cta-btn" onclick="openBookingModal()">Book Now</button>
-    </nav>
-    
     <!-- Cinematic background shapes -->
     <div class="header-shape"></div>
     <div class="header-shape"></div>
@@ -21263,81 +21041,6 @@
       
       // Make function globally available
       window.closeAllModalsAndReset = closeAllModalsAndReset;
-      
-      // ========================================
-      // MOBILE NAVIGATION FUNCTIONS
-      // ========================================
-      
-      // Toggle mobile navigation menu
-      function toggleMobileNav() {
-        const navMenu = document.querySelector('.nav-menu');
-        const mobileToggle = document.querySelector('.mobile-nav-toggle');
-        
-        if (navMenu.classList.contains('active')) {
-          // Close navigation
-          navMenu.classList.remove('active');
-          mobileToggle.classList.remove('active');
-          document.body.style.overflow = '';
-        } else {
-          // Open navigation
-          navMenu.classList.add('active');
-          mobileToggle.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        }
-      }
-      
-      // Scroll to section and close mobile nav
-      function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          // Close mobile navigation first
-          const navMenu = document.querySelector('.nav-menu');
-          const mobileToggle = document.querySelector('.mobile-nav-toggle');
-          navMenu.classList.remove('active');
-          mobileToggle.classList.remove('active');
-          document.body.style.overflow = '';
-          
-          // Scroll to section with smooth animation
-          setTimeout(() => {
-            section.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }, 300);
-        }
-      }
-      
-      // Close mobile navigation when clicking outside
-      document.addEventListener('click', function(event) {
-        const navMenu = document.querySelector('.nav-menu');
-        const mobileToggle = document.querySelector('.mobile-nav-toggle');
-        
-        if (navMenu.classList.contains('active') && 
-            !navMenu.contains(event.target) && 
-            !mobileToggle.contains(event.target)) {
-          navMenu.classList.remove('active');
-          mobileToggle.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-      
-      // Close mobile navigation on escape key
-      document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-          const navMenu = document.querySelector('.nav-menu');
-          const mobileToggle = document.querySelector('.mobile-nav-toggle');
-          
-          if (navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            mobileToggle.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        }
-      });
-      
-      // Make functions globally available
-      window.toggleMobileNav = toggleMobileNav;
-      window.scrollToSection = scrollToSection;
       
       // Show hourly service configuration modal
       function showHourlyServiceModal(serviceId) {
