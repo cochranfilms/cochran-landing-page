@@ -4728,15 +4728,13 @@
     /* Redesigned Hero Section */
     .hero-section {
       position: relative;
-      min-height: 60vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       background: var(--section-bg);
-      transition: background 0.5s ease;
-      will-change: transform;
-      padding: 0.25rem 0;
+      padding: 2rem 0;
     }
     
     .hero-text {
@@ -4745,6 +4743,7 @@
       justify-content: center;
       align-items: flex-start;
       height: 100%;
+      min-height: 60vh;
     }
     .hero-background {
       position: absolute;
@@ -4776,6 +4775,7 @@
       position: relative;
       z-index: 2;
       border: none;
+      min-height: 80vh;
     }
     
     .hero-text,
@@ -4928,14 +4928,14 @@
         0 25px 50px rgba(0,0,0,0.4),
         0 12px 25px rgba(255,178,0,0.15);
       overflow: visible;
-      padding: 2px;
+      padding: 1px;
       margin: 1px;
     }
     .hero-video-container:hover {
       border-color: rgba(255,178,0,0.4);
       box-shadow: 
-        0 30px 60px rgba(0,0,0,0.4),
-        0 12px 30px rgba(255,178,0,0.2);
+        0 25px 50px rgba(0,0,0,0.4),
+        0 12px 25px rgba(255,178,0,0.15);
     }
     .hero-video-container iframe {
       width: 100%;
@@ -5153,6 +5153,57 @@
         width: 100% !important;
         height: 200px !important;
         border: none !important;
+      }
+      
+      /* 📱 MASONRY GALLERY MOBILE OPTIMIZATION */
+      .cinematic-masonry-gallery {
+        padding: 1rem !important;
+        margin: 2rem auto 0 auto !important;
+      }
+      
+      .masonry-grid {
+        columns: 2 !important;
+        column-gap: 1rem !important;
+        margin-bottom: 2rem !important;
+      }
+      
+      .masonry-item {
+        margin-bottom: 1rem !important;
+        animation: none !important;
+      }
+      
+      .masonry-content img {
+        min-height: 150px !important;
+        filter: brightness(1) contrast(1) !important;
+      }
+      
+      .masonry-overlay {
+        opacity: 0.4 !important;
+        padding: 1rem !important;
+      }
+      
+      .masonry-item:hover .masonry-overlay {
+        opacity: 0.8 !important;
+      }
+      
+      .overlay-content h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.3rem !important;
+      }
+      
+      .overlay-content p {
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      .overlay-actions {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+      
+      .view-btn, .book-btn {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.8rem !important;
       }
       
       .testimonials-grid {
@@ -11675,6 +11726,7 @@
       columns: 4;
       column-gap: 1.5rem;
       margin-bottom: 3rem;
+      display: block;
     }
     
     .masonry-item {
@@ -11743,23 +11795,31 @@
       height: auto;
       display: block;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      filter: brightness(0.8) contrast(1.1);
+      filter: brightness(1) contrast(1);
       object-fit: cover;
       min-height: 200px;
       background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+      opacity: 1;
+      visibility: visible;
     }
     
     /* Image Fallback and Error Handling */
     .masonry-content img:not([src]), 
     .masonry-content img[src=""],
-    .masonry-content img[src*="undefined"] {
+    .masonry-content img[src*="undefined"],
+    .masonry-content img[src*="error"] {
       background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
       position: relative;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .masonry-content img:not([src])::after,
     .masonry-content img[src=""]::after,
-    .masonry-content img[src*="undefined"]::after {
+    .masonry-content img[src*="undefined"]::after,
+    .masonry-content img[src*="error"]::after {
       content: "📸";
       position: absolute;
       top: 50%;
@@ -11831,14 +11891,14 @@
       display: flex;
       align-items: flex-end;
       padding: 2rem;
-      opacity: 0;
+      opacity: 0.3;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
     
     .masonry-item:hover .masonry-overlay {
-      opacity: 1;
+      opacity: 0.9;
     }
     
     .overlay-content {
@@ -14436,6 +14496,98 @@
 </head>
 <body>
 
+  <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
+  <div class="cinematic-loader">
+    <!-- Film Strip Borders -->
+    <div class="film-strip"></div>
+    
+    <!-- Professional Camera Viewfinder Overlay -->
+    <div class="viewfinder-overlay">
+      <div class="viewfinder-grid"></div>
+      <div class="viewfinder-corners">
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+      </div>
+    </div>
+    
+    <!-- Production Studio Lights -->
+    <div class="studio-lights">
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+    </div>
+    
+    <!-- Film Countdown Timer -->
+    <div class="countdown-container">
+      <div class="countdown-circle">
+        <div class="countdown-number">5</div>
+      </div>
+    </div>
+    
+    <!-- Director's Clapperboard -->
+    <div class="clapperboard">
+      <div class="clapper-top"></div>
+      <div class="clapper-text">
+        COCHRAN<br>
+        FILMS<br>
+        LOADING
+      </div>
+    </div>
+    
+    <!-- Film Reels Animation -->
+    <div class="film-reels">
+      <div class="film-reel"></div>
+      <div class="film-reel"></div>
+    </div>
+    
+    <!-- Camera Equipment -->
+    <div class="camera-equipment">
+      <div class="camera-lens"></div>
+      <div class="camera-body"></div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles-system">
+      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
+      <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
+      <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
+      <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
+      <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
+      <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
+    </div>
+    
+    <!-- Lens Flares -->
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    
+    <!-- Main Aperture Container -->
+    <div class="aperture-container">
+      <div class="aperture"></div>
+      
+      <!-- Cinematic Typography -->
+      <div class="cinematic-text">
+        <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
+        <div class="tagline">STORYTELLING THAT CONVERTS</div>
+      </div>
+    </div>
+    
+    <!-- Sound Waves -->
+    <div class="sound-waves">
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+    </div>
+  </div>
+
   
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
   <div id="mobileVersion" style="display: none;">
@@ -15437,7 +15589,7 @@
       <div class="masonry-grid">
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="fashion-photography.jpg" alt="Professional Event Photography" loading="lazy">
+            <img src="fashion-photography.jpg" alt="Professional Event Photography">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15453,7 +15605,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="professional-photography.jpg" alt="Portrait Photography" loading="lazy">
+            <img src="professional-photography.jpg" alt="Portrait Photography">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15469,7 +15621,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="brand-photography.jpg" alt="Brand Photography" loading="lazy">
+            <img src="brand-photography.jpg" alt="Brand Photography">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15485,7 +15637,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="corporate-events.jpg" alt="Corporate Events" loading="lazy">
+            <img src="corporate-events.jpg" alt="Corporate Events">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15501,7 +15653,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="on-site-printing.jpg" alt="On-Site Printing" loading="lazy">
+            <img src="on-site-printing.jpg" alt="On-Site Printing">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15517,7 +15669,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="professional-headshots.jpg" alt="Professional Headshots" loading="lazy">
+            <img src="professional-headshots.jpg" alt="Professional Headshots">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15533,7 +15685,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="product-photography.jpg" alt="Product Photography" loading="lazy">
+            <img src="product-photography.jpg" alt="Product Photography">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15549,7 +15701,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="wedding-photography.jpg" alt="Wedding Photography" loading="lazy">
+            <img src="wedding-photography.jpg" alt="Wedding Photography">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15565,7 +15717,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="instant-prints.jpg" alt="Instant Prints" loading="lazy">
+            <img src="instant-prints.jpg" alt="Instant Prints">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15581,7 +15733,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="professional-headshots.jpg" alt="Professional Portraits" loading="lazy">
+            <img src="professional-headshots.jpg" alt="Professional Portraits">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15597,7 +15749,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="brand-photography.jpg" alt="Brand Storytelling" loading="lazy">
+            <img src="brand-photography.jpg" alt="Brand Storytelling">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -22094,6 +22246,50 @@
       window.addServiceFromModal = addServiceFromModal;
       window.showServiceDetailsModal = showServiceDetailsModal;
     }
+    
+    // Image Loading and Error Handling for Photography Gallery
+    document.addEventListener('DOMContentLoaded', function() {
+      const masonryImages = document.querySelectorAll('.masonry-content img');
+      
+      masonryImages.forEach(img => {
+        // Add loading class
+        img.classList.add('loading');
+        
+        // Handle successful load
+        img.addEventListener('load', function() {
+          this.classList.remove('loading');
+          this.classList.add('loaded');
+          this.style.opacity = '1';
+          this.style.visibility = 'visible';
+        });
+        
+        // Handle load error
+        img.addEventListener('error', function() {
+          this.classList.remove('loading');
+          this.classList.add('error');
+          this.style.opacity = '0.3';
+          this.style.filter = 'grayscale(100%)';
+          
+          // Create fallback content
+          const fallback = document.createElement('div');
+          fallback.className = 'image-fallback';
+          fallback.innerHTML = `
+            <div class="fallback-icon">📸</div>
+            <div class="fallback-text">Image not available</div>
+          `;
+          
+          // Replace the image with fallback
+          this.parentNode.insertBefore(fallback, this);
+          this.style.display = 'none';
+        });
+        
+        // Force load if not already loaded
+        if (img.complete) {
+          img.classList.remove('loading');
+          img.classList.add('loaded');
+        }
+      });
+    });
   </script>
 
 </body>
