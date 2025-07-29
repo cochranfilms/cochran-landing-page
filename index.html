@@ -8801,6 +8801,16 @@
         pointer-events: auto !important;
         display: block !important;
         visibility: visible !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+      }
+      
+      /* Add click handler for floating button */
+      body::after:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 8px 25px rgba(255, 178, 0, 0.7) !important;
       }
       
       @keyframes pulseGlow {
@@ -13819,6 +13829,229 @@
         background: rgba(255, 255, 255, 0.2) !important;
         transform: scale(1.02) !important;
       }
+      
+      /* 📱 COMPREHENSIVE MOBILE UI/UX FIXES */
+      
+      /* 1. FIX MOBILE TEXT VISIBILITY - DARK THEME ONLY */
+      .mobile-section-title,
+      .mobile-section-subtitle,
+      .mobile-hero-title,
+      .mobile-hero-subtitle,
+      .mobile-service-card h3,
+      .mobile-service-card p,
+      .mobile-service-price,
+      .mobile-category-price,
+      .mobile-selected-service-name,
+      .mobile-selected-service-price,
+      .mobile-testimonial-text,
+      .mobile-testimonial-author,
+      .mobile-testimonial-title,
+      .mobile-timeline-step h3,
+      .mobile-timeline-step p,
+      .mobile-gallery-caption,
+      .mobile-contact-info,
+      .mobile-contact-label,
+      .mobile-service-card *,
+      .mobile-testimonial-card *,
+      .mobile-timeline-card *,
+      .mobile-contact-card *,
+      .mobile-nav-container *,
+      .mobile-service-modal-content *,
+      .mobile-lightbox-content * {
+        color: #fff !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
+      }
+      
+      /* OVERRIDE ANY LIGHT TEXT ON DARK BACKGROUNDS */
+      [style*="color: #000"],
+      [style*="color: black"],
+      [style*="color: #333"],
+      [style*="color: #666"] {
+        color: #fff !important;
+      }
+      
+      /* 2. FIX WHITE CARDS ON DARK THEME */
+      .mobile-service-card,
+      .mobile-testimonial-card,
+      .mobile-timeline-card,
+      .mobile-contact-card,
+      .mobile-service-modal-content,
+      .mobile-lightbox-content,
+      .mobile-nav-container {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        border: 1px solid rgba(255, 178, 0, 0.3) !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+      }
+      
+      /* FIX SPECIFIC WHITE CARDS */
+      .mobile-service-card[style*="background: white"],
+      .mobile-service-card[style*="background-color: white"],
+      .mobile-testimonial-card[style*="background: white"],
+      .mobile-testimonial-card[style*="background-color: white"] {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+      }
+      
+      /* 3. FIX MOBILE NAVIGATION SPACING */
+      .mobile-nav-menu {
+        gap: 0.5rem !important;
+        padding: 1rem 0 !important;
+        max-height: 60vh !important;
+        overflow-y: auto !important;
+      }
+      
+      .mobile-nav-menu .nav-item {
+        margin-bottom: 0.25rem !important;
+      }
+      
+      .mobile-nav-menu a {
+        padding: 0.75rem 1rem !important;
+        margin: 0 !important;
+        font-size: 0.95rem !important;
+      }
+      
+      /* 4. FIX FLOATING BOOK NOW BUTTON */
+      body::after {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 10005 !important;
+      }
+      
+      /* 5. FIX MOBILE HEADER */
+      .mobile-header-banner {
+        height: 60px !important;
+        padding: 0.5rem 1rem !important;
+      }
+      
+      /* 6. FIX MOBILE HERO PADDING */
+      .mobile-hero {
+        padding-top: 70px !important;
+      }
+      
+      /* 7. FIX MOBILE SERVICE CARDS */
+      .mobile-service-card {
+        margin-bottom: 1rem !important;
+        padding: 1.5rem !important;
+      }
+      
+      /* 8. FIX MOBILE TESTIMONIALS */
+      .mobile-testimonial-card {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+        padding: 1.5rem !important;
+      }
+      
+      /* 9. FIX MOBILE TIMELINE */
+      .mobile-timeline-step {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+        padding: 1rem !important;
+      }
+      
+      /* 10. FIX MOBILE GALLERY */
+      .mobile-gallery-item {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        border: 1px solid rgba(255, 178, 0, 0.3) !important;
+      }
+      
+      /* 11. FIX MOBILE CONTACT */
+      .mobile-contact-section {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+        padding: 1.5rem !important;
+      }
+      
+      /* 12. FIX MOBILE BUTTONS */
+      .mobile-cta-primary,
+      .mobile-cta-secondary,
+      .mobile-contact-btn {
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        color: #000 !important;
+        border: none !important;
+        padding: 1rem 2rem !important;
+        border-radius: 25px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3) !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .mobile-cta-primary:hover,
+      .mobile-cta-secondary:hover,
+      .mobile-contact-btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5) !important;
+      }
+      
+      /* 13. FIX MOBILE MODALS */
+      .mobile-service-modal,
+      .mobile-lightbox {
+        background: rgba(0, 0, 0, 0.95) !important;
+      }
+      
+      .mobile-service-modal-content,
+      .mobile-lightbox-content {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+        border: 1px solid rgba(255, 178, 0, 0.3) !important;
+      }
+      
+      /* 14. FIX MOBILE LOADER */
+      .mobile-loader {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+      }
+      
+      /* 15. FIX MOBILE STATS */
+      .mobile-stats-card {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+        border: 1px solid rgba(255, 178, 0, 0.3) !important;
+      }
+      
+      /* 16. FIX MOBILE PRICING */
+      .mobile-pricing-card {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+        color: #fff !important;
+        border: 1px solid rgba(255, 178, 0, 0.3) !important;
+      }
+      
+      /* 17. FIX MOBILE FORMS */
+      .mobile-form-input,
+      .mobile-form-textarea {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #fff !important;
+        border: 1px solid rgba(255, 178, 0, 0.3) !important;
+      }
+      
+      .mobile-form-input::placeholder,
+      .mobile-form-textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+      
+      /* 18. FIX MOBILE SCROLLING */
+      .mobile-nav-container {
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+      
+      /* 19. FIX MOBILE TOUCH TARGETS */
+      .mobile-nav-menu a,
+      .mobile-cta-primary,
+      .mobile-cta-secondary,
+      .mobile-contact-btn,
+      .mobile-service-card {
+        min-height: 44px !important;
+        touch-action: manipulation !important;
+      }
+      
+      /* 20. FIX MOBILE PERFORMANCE */
+      .mobile-section {
+        will-change: auto !important;
+        transform: translateZ(0) !important;
+      }
     }
     
     /* Contact Form Section Styles */
@@ -17714,7 +17947,7 @@
         }
       });
       
-      // Floating book button click handler
+      // Floating book button click handler - ENHANCED
       document.addEventListener('click', function(e) {
         if (e.target === document.body || e.target === document.documentElement) {
           // Check if click is on the floating book button (body::after)
@@ -17731,6 +17964,95 @@
           }
         }
       });
+      
+      // Enhanced floating button functionality
+      function initializeFloatingButton() {
+        if (window.innerWidth <= 768) {
+          // Add touch event listener for floating button
+          document.addEventListener('touchstart', function(e) {
+            const rect = document.body.getBoundingClientRect();
+            const touchX = e.touches[0].clientX;
+            const touchY = e.touches[0].clientY;
+            
+            // Approximate position of floating button
+            const buttonX = rect.width - 120;
+            const buttonY = rect.height - 80;
+            
+            if (touchX >= buttonX && touchY >= buttonY) {
+              e.preventDefault();
+              openBookingModal();
+            }
+          });
+          
+          // Add visual feedback for floating button
+          const style = document.createElement('style');
+          style.textContent = `
+            body::after {
+              transition: all 0.3s ease !important;
+            }
+            body::after:active {
+              transform: scale(0.95) !important;
+              box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3) !important;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      }
+      
+      // Initialize floating button on mobile
+      if (window.innerWidth <= 768) {
+        initializeFloatingButton();
+      }
+      
+      // 📱 COMPREHENSIVE MOBILE INITIALIZATION
+      function initializeMobileUI() {
+        if (window.innerWidth <= 768) {
+          console.log('📱 Initializing mobile UI...');
+          
+          // Force dark theme for mobile
+          document.body.setAttribute('data-theme', 'dark');
+          
+          // Ensure mobile version is visible
+          const mobileVersion = document.getElementById('mobileVersion');
+          if (mobileVersion) {
+            mobileVersion.style.display = 'block !important';
+          }
+          
+          // Hide desktop elements
+          const desktopElements = document.querySelectorAll('.desktop-only, .hero-section, .services-section, .portfolio-section');
+          desktopElements.forEach(el => {
+            el.style.display = 'none !important';
+          });
+          
+          // Fix mobile navigation
+          const mobileNav = document.querySelector('.mobile-nav-overlay');
+          if (mobileNav) {
+            mobileNav.style.zIndex = '10000';
+          }
+          
+          // Fix mobile header
+          const mobileHeader = document.querySelector('.mobile-header-banner');
+          if (mobileHeader) {
+            mobileHeader.style.zIndex = '10001';
+          }
+          
+          // Fix floating button
+          const floatingButton = document.querySelector('body::after');
+          if (floatingButton) {
+            floatingButton.style.zIndex = '10005';
+          }
+          
+          // Initialize all mobile functionality
+          initializeMobileFunctionality();
+          initializeFloatingButton();
+          
+          console.log('📱 Mobile UI initialized successfully');
+        }
+      }
+      
+      // Call mobile initialization
+      document.addEventListener('DOMContentLoaded', initializeMobileUI);
+      window.addEventListener('resize', initializeMobileUI);
       
       // Close lightbox when clicking outside image
       document.addEventListener('click', function(e) {
