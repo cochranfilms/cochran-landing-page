@@ -4731,11 +4731,12 @@
       min-height: 80vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       overflow: hidden;
       background: var(--section-bg);
       transition: background 0.5s ease;
       will-change: transform;
-      padding: 1rem 0;
+      padding: 2rem 0 1rem 0;
     }
     .hero-background {
       position: absolute;
@@ -4763,6 +4764,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: center;
+      justify-items: center;
       position: relative;
       z-index: 2;
     }
@@ -4912,7 +4914,6 @@
       padding: 12px;
     }
     .hero-video-container:hover {
-      transform: scale(1.05);
       border-color: rgba(255,178,0,0.4);
       box-shadow: 
         0 30px 60px rgba(0,0,0,0.4),
@@ -4984,7 +4985,7 @@
     @media (max-width: 768px) {
       .hero-section {
         min-height: 100vh !important;
-        padding: 6rem 0 2rem 0 !important;
+        padding: 4rem 0 1rem 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -4997,6 +4998,7 @@
         text-align: center !important;
         width: 100% !important;
         max-width: 100% !important;
+        justify-items: center !important;
       }
       
       .hero-text {
@@ -10170,7 +10172,7 @@
     .company-logo {
       position: absolute;
       left: 5%;
-      top: 45%;
+      top: 50%;
       transform: translateY(-50%);
       z-index: 10;
       animation: logoBounce 3s ease-in-out infinite;
@@ -10204,7 +10206,8 @@
     .floating-social-icons {
       position: absolute;
       right: 25%;
-      top: 60%;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       flex-direction: row;
       gap: 1.5rem;
@@ -10243,17 +10246,20 @@
         width: 100px;
         height: 70px;
         right: 20%;
-        top: 40%;
+        top: 50%;
+        transform: translateY(-50%);
       }
       
       .company-logo {
         left: 5%;
-        top: 40%;
+        top: 50%;
+        transform: translateY(-50%);
       }
       
       .floating-social-icons {
         right: 20%;
-        top: 65%;
+        top: 50%;
+        transform: translateY(-50%);
       }
       
       .logo-image {
@@ -10371,7 +10377,8 @@
     .clapperboard {
       position: absolute;
       right: 25%;
-      top: 45%;
+      top: 50%;
+      transform: translateY(-50%);
       width: 120px;
       height: 80px;
       background: 
