@@ -4677,7 +4677,7 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+      background: var(--section-bg);
       transition: background 0.5s ease;
       will-change: transform;
       padding: 2rem 0;
@@ -9912,7 +9912,7 @@
     .cinematic-header {
       position: relative !important;
       width: 100% !important;
-      height: 200px !important;
+      height: 120px !important;
       background: 
         radial-gradient(circle at center, #1a1a1a 0%, #000000 70%),
         linear-gradient(45deg, #000000 0%, #0d0d0d 100%) !important;
@@ -9929,8 +9929,8 @@
       margin: 0;
       border: none;
       outline: none;
-      min-height: 200px !important;
-      max-height: 200px !important;
+      min-height: 120px !important;
+      max-height: 120px !important;
       visibility: visible !important;
       opacity: 1 !important;
     }
@@ -10108,16 +10108,16 @@
     /* Director's Clapperboard */
     .clapperboard {
       position: relative;
-      width: 120px;
-      height: 80px;
+      width: 80px;
+      height: 60px;
       background: 
         linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-      border-radius: 8px;
+      border-radius: 6px;
       border: 2px solid #FFB200;
       z-index: 10;
       animation: clapperboardAction 6s ease-in-out infinite;
       transform-origin: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       display: block;
       visibility: visible;
       opacity: 1;
@@ -10440,23 +10440,23 @@
     }
     
     .header-subtitle {
-      font-size: 1.8rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: #ffffff;
       text-align: center;
-      margin-top: 1.5rem;
-      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
       animation: fadeInUp 1s ease 0.5s both;
     }
     
     .header-description {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       color: rgba(255,255,255,0.9);
       text-align: center;
-      max-width: 600px;
+      max-width: 400px;
       margin: 0 auto;
-      line-height: 1.6;
+      line-height: 1.4;
       text-shadow: 0 1px 2px rgba(0,0,0,0.5);
       animation: fadeInUp 1s ease 0.8s both;
     }
@@ -14926,17 +14926,11 @@
         </div>
       </div>
       
-      <!-- Main Aperture Container -->
-      <div class="aperture-container">
-        <div class="aperture"></div>
-        
-        <!-- Cinematic Typography -->
-        <div class="cinematic-text">
-          <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 120px; width: 100%; height: auto; display: block; margin: 0 auto 0.5rem auto;" />
-          <div class="tagline">STORYTELLING THAT CONVERTS</div>
-          <div class="header-subtitle">Work with a Full-Stack Digital Strategist</div>
-          <div class="header-description">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</div>
-        </div>
+      <!-- Cinematic Typography -->
+      <div class="cinematic-text">
+        <div class="tagline">STORYTELLING THAT CONVERTS</div>
+        <div class="header-subtitle">Work with a Full-Stack Digital Strategist</div>
+        <div class="header-description">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</div>
       </div>
     </div>
     
