@@ -4679,7 +4679,7 @@
       overflow: hidden;
       background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
       transition: background 0.5s ease;
-      will-change: auto;
+      will-change: transform;
       padding: 2rem 0;
     }
     .hero-background {
@@ -9925,6 +9925,7 @@
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
       padding: 0 2rem;
+      box-sizing: border-box;
     }
     
     /* Header Layout Sections */
@@ -9935,6 +9936,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      padding-left: 1rem;
     }
     
     .header-center-content {
@@ -9945,6 +9947,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      text-align: center;
     }
     
     .header-right-graphics {
@@ -9954,6 +9957,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      padding-right: 1rem;
     }
     
     /* Professional Camera Viewfinder Overlay */
@@ -10087,18 +10091,17 @@
     
     /* Director's Clapperboard */
     .clapperboard {
-      position: absolute;
-      top: 15%;
-      left: 8%;
-      width: 150px;
-      height: 100px;
+      position: relative;
+      width: 120px;
+      height: 80px;
       background: 
         linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
       border-radius: 8px;
       border: 2px solid #FFB200;
       z-index: 10;
       animation: clapperboardAction 6s ease-in-out infinite;
-      transform-origin: bottom left;
+      transform-origin: center;
+      margin-bottom: 1rem;
     }
     
     .clapper-top {
@@ -10147,33 +10150,27 @@
     
     /* Film Reels Animation */
     .film-reels {
-      position: absolute;
-      bottom: 15%;
-      right: 8%;
-      width: 120px;
-      height: 120px;
+      position: relative;
+      width: 80px;
+      height: 80px;
       z-index: 8;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
     
     .film-reel {
-      position: absolute;
-      width: 80px;
-      height: 80px;
+      position: relative;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: 
         radial-gradient(circle at center, #2a2a2a 20%, #FFB200 25%, #2a2a2a 30%, #FFB200 35%, #2a2a2a 40%);
-      border: 3px solid #FFB200;
+      border: 2px solid #FFB200;
       animation: reelSpin 3s linear infinite;
     }
     
-    .film-reel:first-child {
-      top: 0;
-      left: 0;
-    }
-    
     .film-reel:last-child {
-      bottom: 0;
-      right: 0;
       animation-direction: reverse;
       animation-duration: 2.5s;
     }
@@ -14777,7 +14774,7 @@
           
           <!-- Additional Gallery Items for Better Mobile Experience -->
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f~mv2.jpg" alt="Fashion Photography" loading="lazy">
+            <img src="https://static.wixstatic.com/media/aeef42_e273fde6086f492fafe4a59fb195360b~mv2.jpg" alt="Fashion Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Fashion Photography</h3>
               <p>Style and editorial</p>
@@ -14785,7 +14782,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f~mv2.jpg" alt="Lifestyle Photography" loading="lazy">
+            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Lifestyle Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Lifestyle Photography</h3>
               <p>Authentic moments</p>
@@ -14793,7 +14790,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f~mv2.jpg" alt="Documentary Photography" loading="lazy">
+            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Documentary Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Documentary Photography</h3>
               <p>Storytelling through images</p>
@@ -14801,7 +14798,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e~mv2.jpg" alt="Street Photography" loading="lazy">
+            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Street Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Street Photography</h3>
               <p>Urban life and culture</p>
@@ -14809,7 +14806,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e~mv2.jpg" alt="Nature Photography" loading="lazy">
+            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="Nature Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Nature Photography</h3>
               <p>Landscape and wildlife</p>
@@ -14817,7 +14814,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e~mv2.jpg" alt="Architecture Photography" loading="lazy">
+            <img src="https://static.wixstatic.com/media/aeef42_6690ec6531d04cf7bb15b02eb64a891a~mv2.jpg" alt="Architecture Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Architecture Photography</h3>
               <p>Buildings and structures</p>
