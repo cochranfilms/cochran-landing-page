@@ -50,6 +50,19 @@
   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
   
+  <!-- Preload critical images -->
+  <link rel="preload" href="professional-photography.jpg" as="image">
+  <link rel="preload" href="brand-photography.jpg" as="image">
+  <link rel="preload" href="corporate-events.jpg" as="image">
+  <link rel="preload" href="on-site-printing.jpg" as="image">
+  <link rel="preload" href="professional-headshots.jpg" as="image">
+  <link rel="preload" href="product-photography.jpg" as="image">
+  <link rel="preload" href="wedding-photography.jpg" as="image">
+  <link rel="preload" href="instant-prints.jpg" as="image">
+  <link rel="preload" href="fashion-photography.jpg" as="image">
+  <link rel="preload" href="Logo.png" as="image">
+  <link rel="preload" href="logo-white.png" as="image">
+  
   <!-- 🔒 FORCE HTTPS REDIRECT -->
   <script>
     // Force HTTPS redirect
@@ -9995,7 +10008,7 @@
     
     .header-center-content {
       position: relative !important;
-      width: 50% !important;
+      width: 60% !important;
       height: 100% !important;
       display: flex !important;
       flex-direction: column !important;
@@ -10011,7 +10024,7 @@
     
     .header-right-graphics {
       position: relative !important;
-      width: 25% !important;
+      width: 40% !important;
       height: 100% !important;
       display: flex !important;
       align-items: center !important;
@@ -10169,16 +10182,49 @@
       50% { opacity: 1; transform: scale(1.05); }
     }
     
-    /* Professional Icons */
-    .professional-icons {
+    /* Floating Social Media Icons */
+    .floating-social-icons {
       position: absolute;
-      right: 10%;
+      right: 5%;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      z-index: 9;
+      gap: 1.5rem;
+      z-index: 15;
+    }
+    
+    .floating-social-icons a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .floating-social-icons a:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(255, 178, 0, 0.8);
+    }
+    
+    /* Mobile responsive adjustments for floating icons */
+    @media (max-width: 768px) {
+      .floating-social-icons {
+        right: 2%;
+        gap: 1rem;
+      }
+      
+      .floating-social-icons .icon-circle {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+      
+      .header-right-content {
+        right: 10%;
+      }
+      
+      .clapperboard {
+        width: 100px;
+        height: 70px;
+      }
     }
     
     .icon-circle {
@@ -10201,6 +10247,18 @@
     
     .moon-icon {
       animation-delay: 0.5s;
+    }
+    
+    .facebook-icon {
+      animation-delay: 1s;
+    }
+    
+    .instagram-icon {
+      animation-delay: 1.5s;
+    }
+    
+    .linkedin-icon {
+      animation-delay: 2s;
     }
     
     .target-icon {
@@ -10264,6 +10322,15 @@
     @keyframes targetPulse {
       0%, 100% { transform: scale(1); opacity: 0.8; }
       50% { transform: scale(1.2); opacity: 1; }
+    }
+    
+    /* Header Right Content */
+    .header-right-content {
+      position: absolute;
+      right: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
     }
     
     /* Director's Clapperboard */
@@ -10764,7 +10831,7 @@
       
       .header-left-graphics,
       .header-right-graphics {
-        width: 20% !important;
+        width: 40% !important;
       }
       
       .header-center-content {
@@ -11615,6 +11682,68 @@
       display: block;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       filter: brightness(0.8) contrast(1.1);
+      object-fit: cover;
+      min-height: 200px;
+      background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+    }
+    
+    /* Image Fallback and Error Handling */
+    .masonry-content img:not([src]), 
+    .masonry-content img[src=""],
+    .masonry-content img[src*="undefined"] {
+      background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+      position: relative;
+    }
+    
+    .masonry-content img:not([src])::after,
+    .masonry-content img[src=""]::after,
+    .masonry-content img[src*="undefined"]::after {
+      content: "📸";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: #FFB200;
+      opacity: 0.5;
+    }
+    
+    /* Image Loading States */
+    .masonry-content img {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .masonry-content img.loaded {
+      opacity: 1;
+    }
+    
+    .image-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+      color: #FFB200;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .fallback-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .fallback-text {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
     }
     
     .masonry-item:hover .masonry-content img {
@@ -15087,6 +15216,16 @@
     
     <!-- Center Content -->
     <div class="header-center-content">
+      <!-- Cinematic Typography -->
+      <div class="cinematic-text">
+        <div class="tagline">STORYTELLING THAT CONVERTS</div>
+        <div class="header-subtitle">WORK WITH A FULL-STACK DIGITAL STRATEGIST</div>
+        <div class="header-description">YOU'RE PARTNERING WITH A MEDIA POWERHOUSE—EXPERTS IN FULL-SERVICE PRODUCTION, STRATEGIC WEB SYSTEMS, AND INFRASTRUCTURE THAT SCALES</div>
+      </div>
+    </div>
+    
+    <!-- Right Side Content -->
+    <div class="header-right-content">
       <!-- Director's Clapperboard -->
       <div class="clapperboard">
         <div class="clapper-top"></div>
@@ -15096,33 +15235,27 @@
           STUDIO
         </div>
       </div>
-      
-      <!-- Cinematic Typography -->
-      <div class="cinematic-text">
-        <div class="tagline">STORYTELLING THAT CONVERTS</div>
-        <div class="header-subtitle">WORK WITH A FULL-STACK DIGITAL STRATEGIST</div>
-        <div class="header-description">YOU'RE PARTNERING WITH A MEDIA POWERHOUSE—EXPERTS IN FULL-SERVICE PRODUCTION, STRATEGIC WEB SYSTEMS, AND INFRASTRUCTURE THAT SCALES</div>
-      </div>
     </div>
     
     <!-- Right Side Graphics -->
     <div class="header-right-graphics">
-      <!-- Professional Icons Stack -->
-      <div class="professional-icons">
-        <div class="icon-circle phone-icon">
+      <!-- Floating Social Media Icons -->
+      <div class="floating-social-icons">
+        <a href="tel:+1234567890" class="icon-circle phone-icon" title="Call Us">
           <i class="fas fa-phone"></i>
-        </div>
-        <div class="icon-circle moon-icon">
+        </a>
+        <a href="mailto:info@cochranfilms.com" class="icon-circle moon-icon" title="Email Us">
           <i class="fas fa-moon"></i>
-        </div>
-        <div class="icon-circle target-icon">
-          <div class="target-inner"></div>
-        </div>
-        <div class="icon-sequence">
-          <div class="sequence-circle"></div>
-          <div class="sequence-arrow"></div>
-          <div class="sequence-square"></div>
-        </div>
+        </a>
+        <a href="https://facebook.com/cochranfilms" target="_blank" class="icon-circle facebook-icon" title="Follow us on Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/cochranfilms" target="_blank" class="icon-circle instagram-icon" title="Follow us on Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com/company/cochranfilms" target="_blank" class="icon-circle linkedin-icon" title="Connect on LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
       </div>
       
       <!-- Film Reels Animation -->
@@ -15378,7 +15511,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="professional-portraits.jpg" alt="Professional Portraits" loading="lazy">
+            <img src="professional-headshots.jpg" alt="Professional Portraits" loading="lazy">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -15394,7 +15527,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="brand-storytelling.jpg" alt="Brand Storytelling" loading="lazy">
+            <img src="brand-photography.jpg" alt="Brand Storytelling" loading="lazy">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -19571,6 +19704,60 @@
     // Restore body scroll when lightbox is closed
     document.body.style.overflow = '';
   }
+  
+  // Image Error Handling
+  function handleImageError(img) {
+    console.warn('Image failed to load:', img.src);
+    img.style.display = 'none';
+    const fallback = document.createElement('div');
+    fallback.className = 'image-fallback';
+    fallback.innerHTML = '<div class="fallback-icon">📸</div><div class="fallback-text">Image Loading...</div>';
+    fallback.style.cssText = `
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+      color: #FFB200;
+      font-size: 1.2rem;
+      border-radius: 10px;
+    `;
+    img.parentNode.appendChild(fallback);
+  }
+  
+  // Initialize image error handling
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.masonry-content img');
+    images.forEach(img => {
+      img.addEventListener('error', () => handleImageError(img));
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
+      
+      // Add loading state
+      if (!img.complete) {
+        img.style.opacity = '0';
+      } else {
+        img.classList.add('loaded');
+      }
+    });
+    
+    // Also handle all other images on the page
+    const allImages = document.querySelectorAll('img');
+    allImages.forEach(img => {
+      img.addEventListener('error', function() {
+        console.warn('Image failed to load:', this.src);
+        this.style.opacity = '0.3';
+        this.style.filter = 'grayscale(100%)';
+      });
+      
+      img.addEventListener('load', function() {
+        this.style.opacity = '1';
+        this.style.filter = 'none';
+      });
+    });
+  });
   
   // Video Quiz Functions
   function handleImageUpload() {
