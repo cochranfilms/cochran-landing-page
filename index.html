@@ -9975,6 +9975,9 @@
       max-height: 400px !important;
       visibility: visible !important;
       opacity: 1 !important;
+      box-shadow: 
+        0 0 50px rgba(255, 178, 0, 0.1),
+        inset 0 0 100px rgba(255, 178, 0, 0.05);
     }
     
     /* Header Layout Sections */
@@ -9985,7 +9988,7 @@
       display: flex !important;
       align-items: center !important;
       justify-content: flex-start !important;
-      padding-left: 1rem;
+      padding-left: 2rem;
       visibility: visible !important;
       opacity: 1 !important;
     }
@@ -10001,6 +10004,9 @@
       text-align: center;
       visibility: visible !important;
       opacity: 1 !important;
+      padding: 0 2rem;
+      box-sizing: border-box;
+      gap: 1rem;
     }
     
     .header-right-graphics {
@@ -10010,7 +10016,7 @@
       display: flex !important;
       align-items: center !important;
       justify-content: flex-end !important;
-      padding-right: 1rem;
+      padding-right: 2rem;
       visibility: visible !important;
       opacity: 1 !important;
     }
@@ -10031,13 +10037,12 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80%;
-      height: 80%;
-      border: 2px solid rgba(255, 178, 0, 0.4);
-      background: 
-        linear-gradient(90deg, transparent 33%, rgba(255, 178, 0, 0.1) 33%, rgba(255, 178, 0, 0.1) 34%, transparent 34%, transparent 66%, rgba(255, 178, 0, 0.1) 66%, rgba(255, 178, 0, 0.1) 67%, transparent 67%),
-        linear-gradient(0deg, transparent 33%, rgba(255, 178, 0, 0.1) 33%, rgba(255, 178, 0, 0.1) 34%, transparent 34%, transparent 66%, rgba(255, 178, 0, 0.1) 66%, rgba(255, 178, 0, 0.1) 67%, transparent 67%);
+      width: 85%;
+      height: 75%;
+      border: 2px solid rgba(255, 178, 0, 0.6);
+      background: transparent;
       animation: viewfinderPulse 3s ease-in-out infinite;
+      z-index: 4;
     }
     
     .viewfinder-corners {
@@ -10046,16 +10051,17 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 85%;
-      height: 85%;
+      height: 75%;
     }
     
     .viewfinder-corners::before,
     .viewfinder-corners::after {
       content: '';
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       border: 3px solid #FFB200;
+      z-index: 5;
     }
     
     .viewfinder-corners::before {
@@ -10074,9 +10080,10 @@
     
     .corner-tr, .corner-bl {
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       border: 3px solid #FFB200;
+      z-index: 5;
     }
     
     .corner-tr {
@@ -10144,11 +10151,126 @@
       100% { content: "0"; }
     }
     
+    /* Large C Icon */
+    .large-c-icon {
+      position: absolute;
+      bottom: 20%;
+      left: 15%;
+      font-size: 4rem;
+      font-weight: 900;
+      color: #FFB200;
+      text-shadow: 0 0 30px rgba(255, 178, 0, 0.8);
+      animation: cIconGlow 3s ease-in-out infinite;
+      z-index: 8;
+    }
+    
+    @keyframes cIconGlow {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    
+    /* Professional Icons */
+    .professional-icons {
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 9;
+    }
+    
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #FFB200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(42, 42, 42, 0.8);
+      color: #ffffff;
+      font-size: 1rem;
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+    
+    .phone-icon {
+      animation-delay: 0s;
+    }
+    
+    .moon-icon {
+      animation-delay: 0.5s;
+    }
+    
+    .target-icon {
+      position: relative;
+      background: transparent;
+      border: 2px solid #FFB200;
+    }
+    
+    .target-inner {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FFB200;
+      animation: targetPulse 2s ease-in-out infinite;
+    }
+    
+    .icon-sequence {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+    }
+    
+    .sequence-circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #FFB200;
+    }
+    
+    .sequence-arrow {
+      width: 20px;
+      height: 2px;
+      background: #FFB200;
+      position: relative;
+    }
+    
+    .sequence-arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid #FFB200;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+    
+    .sequence-square {
+      width: 12px;
+      height: 12px;
+      background: #FFB200;
+    }
+    
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    
+    @keyframes targetPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    
     /* Director's Clapperboard */
     .clapperboard {
       position: relative;
-      width: 100px;
-      height: 70px;
+      width: 120px;
+      height: 80px;
       background: 
         linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
       border-radius: 6px;
@@ -10156,10 +10278,11 @@
       z-index: 10;
       animation: clapperboardAction 6s ease-in-out infinite;
       transform-origin: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       display: block;
       visibility: visible;
       opacity: 1;
+      box-shadow: 0 0 20px rgba(255, 178, 0, 0.3);
     }
     
     .clapper-top {
@@ -10354,6 +10477,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
+      z-index: 6;
     }
     
     .film-strip::before,
@@ -10361,27 +10485,28 @@
       content: '';
       position: absolute;
       width: 100%;
-      height: 40px;
+      height: 30px;
       background: 
         repeating-linear-gradient(
           90deg,
           #000 0%,
-          #000 10px,
-          #FFB200 10px,
-          #FFB200 15px,
-          #000 15px,
-          #000 25px
+          #000 8px,
+          #FFB200 8px,
+          #FFB200 12px,
+          #000 12px,
+          #000 20px
         );
-      animation: filmRoll 3s linear infinite;
+      animation: filmRoll 4s linear infinite;
     }
     
     .film-strip::before {
-      top: 20px;
+      top: 10px;
     }
     
     .film-strip::after {
-      bottom: 20px;
+      bottom: 10px;
       animation-direction: reverse;
+      animation-duration: 3s;
     }
     
     @keyframes filmRoll {
@@ -10448,9 +10573,7 @@
       letter-spacing: 0.2em;
       z-index: 10;
       width: 100%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      max-width: 600px;
       padding: 0 1rem;
       box-sizing: border-box;
     }
@@ -10470,32 +10593,34 @@
     }
     
     .tagline {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 400;
-      letter-spacing: 0.3em;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      letter-spacing: 0.2em;
       animation: fadeInUp 1s ease 2s both;
       text-shadow: 0 0 20px rgba(255, 178, 0, 0.3);
+      margin-bottom: 0.8rem;
     }
     
     .header-subtitle {
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-size: 1.6rem;
+      font-weight: 700;
       color: #ffffff;
       text-align: center;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: 0.8rem;
+      margin-bottom: 1rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
       animation: fadeInUp 1s ease 0.5s both;
+      line-height: 1.2;
     }
     
     .header-description {
       font-size: 1rem;
       color: rgba(255,255,255,0.9);
       text-align: center;
-      max-width: 400px;
+      max-width: 500px;
       margin: 0 auto;
-      line-height: 1.4;
+      line-height: 1.5;
       text-shadow: 0 1px 2px rgba(0,0,0,0.5);
       animation: fadeInUp 1s ease 0.8s both;
     }
@@ -14945,6 +15070,9 @@
     
     <!-- Left Side Graphics -->
     <div class="header-left-graphics">
+      <!-- Large C Icon -->
+      <div class="large-c-icon">C</div>
+      
       <!-- Floating Particles -->
       <div class="particles-system">
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
@@ -14972,13 +15100,31 @@
       <!-- Cinematic Typography -->
       <div class="cinematic-text">
         <div class="tagline">STORYTELLING THAT CONVERTS</div>
-        <div class="header-subtitle">Work with a Full-Stack Digital Strategist</div>
-        <div class="header-description">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</div>
+        <div class="header-subtitle">WORK WITH A FULL-STACK DIGITAL STRATEGIST</div>
+        <div class="header-description">YOU'RE PARTNERING WITH A MEDIA POWERHOUSE—EXPERTS IN FULL-SERVICE PRODUCTION, STRATEGIC WEB SYSTEMS, AND INFRASTRUCTURE THAT SCALES</div>
       </div>
     </div>
     
     <!-- Right Side Graphics -->
     <div class="header-right-graphics">
+      <!-- Professional Icons Stack -->
+      <div class="professional-icons">
+        <div class="icon-circle phone-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="icon-circle moon-icon">
+          <i class="fas fa-moon"></i>
+        </div>
+        <div class="icon-circle target-icon">
+          <div class="target-inner"></div>
+        </div>
+        <div class="icon-sequence">
+          <div class="sequence-circle"></div>
+          <div class="sequence-arrow"></div>
+          <div class="sequence-square"></div>
+        </div>
+      </div>
+      
       <!-- Film Reels Animation -->
       <div class="film-reels">
         <div class="film-reel"></div>
@@ -14989,25 +15135,6 @@
       <div class="camera-equipment">
         <div class="camera-lens"></div>
         <div class="camera-body"></div>
-      </div>
-      
-      <!-- Sound Waves -->
-      <div class="sound-waves">
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-        <div class="wave-bar"></div>
-      </div>
-      
-      <!-- Additional Graphics -->
-      <div class="additional-graphics">
-        <div class="graphic-circle"></div>
-        <div class="graphic-triangle"></div>
-        <div class="graphic-square"></div>
       </div>
     </div>
   </header>
