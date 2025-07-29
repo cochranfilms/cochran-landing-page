@@ -4736,7 +4736,7 @@
       background: var(--section-bg);
       transition: background 0.5s ease;
       will-change: transform;
-      padding: 2rem 0 1rem 0;
+      padding: 1rem 0 0.5rem 0;
     }
     .hero-background {
       position: absolute;
@@ -4761,8 +4761,8 @@
       margin: 0 auto;
       padding: 0 2rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
       align-items: center;
       justify-items: center;
       position: relative;
@@ -4895,7 +4895,7 @@
     }
     .hero-video-container {
       width: 100%;
-      max-width: 700px;
+      max-width: 900px;
       aspect-ratio: 16/9;
       background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
       border-radius: 24px;
@@ -4911,7 +4911,7 @@
         0 25px 50px rgba(0,0,0,0.4),
         0 12px 25px rgba(255,178,0,0.15);
       overflow: hidden;
-      padding: 12px;
+      padding: 8px;
     }
     .hero-video-container:hover {
       border-color: rgba(255,178,0,0.4);
@@ -4977,7 +4977,7 @@
         justify-content: center;
       }
       .hero-video-container {
-        max-width: 600px;
+        max-width: 800px;
       }
     }
 
@@ -10171,7 +10171,7 @@
     /* Company Logo */
     .company-logo {
       position: absolute;
-      left: 5%;
+      left: 2%;
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
@@ -10251,7 +10251,7 @@
       }
       
       .company-logo {
-        left: 5%;
+        left: 2%;
         top: 50%;
         transform: translateY(-50%);
       }
@@ -11753,12 +11753,21 @@
     
     /* Image Loading States */
     .masonry-content img {
-      opacity: 0;
+      opacity: 1;
       transition: opacity 0.3s ease;
+    }
+    
+    .masonry-content img.loading {
+      opacity: 0.7;
     }
     
     .masonry-content img.loaded {
       opacity: 1;
+    }
+    
+    .masonry-content img.error {
+      opacity: 0.3;
+      filter: grayscale(100%);
     }
     
     .image-fallback {
@@ -19768,20 +19777,58 @@
     img.parentNode.appendChild(fallback);
   }
   
+  // Handle image errors
+  function handleImageError(img) {
+    console.warn('Image failed to load:', img.src);
+    img.classList.remove('loading');
+    img.classList.add('error');
+    img.style.opacity = '0.3';
+    img.style.filter = 'grayscale(100%)';
+    
+    // Create fallback content
+    const fallback = document.createElement('div');
+    fallback.className = 'image-fallback';
+    fallback.innerHTML = `
+      <div class="fallback-icon">📸</div>
+      <div class="fallback-text">Image unavailable</div>
+    `;
+    
+    // Replace the image with fallback
+    img.style.display = 'none';
+    img.parentNode.appendChild(fallback);
+  }
+  
   // Initialize image error handling
   document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('.masonry-content img');
     images.forEach(img => {
-      img.addEventListener('error', () => handleImageError(img));
-      img.addEventListener('load', () => {
-        img.classList.add('loaded');
+      // Add loading class initially
+      img.classList.add('loading');
+      
+      img.addEventListener('error', () => {
+        console.warn('Masonry image failed to load:', img.src);
+        handleImageError(img);
       });
       
-      // Add loading state
-      if (!img.complete) {
-        img.style.opacity = '0';
-      } else {
+      img.addEventListener('load', () => {
+        img.classList.remove('loading');
         img.classList.add('loaded');
+        console.log('Masonry image loaded successfully:', img.src);
+      });
+      
+      // Check if image is already loaded
+      if (img.complete && img.naturalHeight !== 0) {
+        img.classList.remove('loading');
+        img.classList.add('loaded');
+      } else {
+        // Add timeout to force load state after 3 seconds
+        setTimeout(() => {
+          if (!img.classList.contains('loaded') && !img.classList.contains('error')) {
+            img.classList.remove('loading');
+            img.classList.add('loaded');
+            console.log('Forced image load state:', img.src);
+          }
+        }, 3000);
       }
     });
     
