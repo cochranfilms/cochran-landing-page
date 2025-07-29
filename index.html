@@ -13203,6 +13203,85 @@
         text-shadow: 0 0 10px rgba(255, 107, 53, 0.3) !important;
       }
       
+      /* 📱 CRITICAL MOBILE TEXT COLOR FIXES */
+      body[data-theme="light"] .mobile-section-title,
+      body[data-theme="light"] .mobile-section-subtitle,
+      body[data-theme="light"] .mobile-hero-title,
+      body[data-theme="light"] .mobile-hero-subtitle,
+      body[data-theme="light"] .mobile-service-card h3,
+      body[data-theme="light"] .mobile-service-card p,
+      body[data-theme="light"] .mobile-service-price,
+      body[data-theme="light"] .mobile-category-price,
+      body[data-theme="light"] .mobile-selected-service-name,
+      body[data-theme="light"] .mobile-selected-service-price {
+        color: #000 !important;
+      }
+      
+      body[data-theme="dark"] .mobile-section-title,
+      body[data-theme="dark"] .mobile-section-subtitle,
+      body[data-theme="dark"] .mobile-hero-title,
+      body[data-theme="dark"] .mobile-hero-subtitle,
+      body[data-theme="dark"] .mobile-service-card h3,
+      body[data-theme="dark"] .mobile-service-card p,
+      body[data-theme="dark"] .mobile-service-price,
+      body[data-theme="dark"] .mobile-category-price,
+      body[data-theme="dark"] .mobile-selected-service-name,
+      body[data-theme="dark"] .mobile-selected-service-price {
+        color: #fff !important;
+      }
+      
+      /* 📱 MOBILE HEADER BANNER FIXES */
+      .mobile-header-banner {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 10001 !important;
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        padding: 0.5rem 1rem !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      .mobile-header-content {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        max-width: 300px !important;
+      }
+      
+      .mobile-header-logo {
+        width: 40px !important;
+        height: auto !important;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)) !important;
+      }
+      
+      .mobile-header-title {
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+        color: #000 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        text-shadow: 0 1px 2px rgba(255,255,255,0.3) !important;
+      }
+      
+      /* 📱 MOBILE HERO SECTION PADDING FIX */
+      .mobile-hero {
+        padding-top: 80px !important;
+        margin-top: 0 !important;
+      }
+      
+      /* 📱 THEME TOGGLE POSITION FIX */
+      .theme-toggle-portal {
+        right: 1rem !important;
+        top: 1rem !important;
+        z-index: 10003 !important;
+      }
+      
       /* Fix any remaining button spacing issues */
       .cta-primary,
       .cta-secondary,
@@ -13315,6 +13394,15 @@
         -webkit-backdrop-filter: blur(20px) !important;
         background: rgba(0, 0, 0, 0.9) !important;
         animation: modalFadeIn 0.3s ease !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 999999 !important;
       }
       
       #bookingModal .modal-content {
@@ -13322,6 +13410,15 @@
         animation: modalSlideIn 0.4s ease !important;
         border: 2px solid #FFB200 !important;
         box-shadow: 0 20px 60px rgba(255, 178, 0, 0.3) !important;
+        background: #fff !important;
+        color: #000 !important;
+        max-width: 95vw !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+        position: relative !important;
+        margin: auto !important;
+        border-radius: 15px !important;
+        padding: 2rem !important;
       }
       
       #closeModal {
@@ -13331,6 +13428,17 @@
         border: none !important;
         box-shadow: 0 4px 15px rgba(255, 178, 0, 0.4) !important;
         transition: all 0.3s ease !important;
+        position: absolute !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        z-index: 10000 !important;
       }
       
       #closeModal:hover,
@@ -13366,6 +13474,132 @@
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+      }
+      
+      /* 📱 MOBILE MODAL FORM STYLES */
+      #bookingModal form {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        margin-top: 2rem !important;
+      }
+      
+      #bookingModal input,
+      #bookingModal textarea,
+      #bookingModal select {
+        width: 100% !important;
+        padding: 1rem !important;
+        border: 2px solid #ddd !important;
+        border-radius: 8px !important;
+        font-size: 1rem !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+      
+      #bookingModal button[type="submit"] {
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        color: #000 !important;
+        font-weight: bold !important;
+        padding: 1rem 2rem !important;
+        border: none !important;
+        border-radius: 25px !important;
+        font-size: 1rem !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        margin-top: 1rem !important;
+      }
+      
+      #bookingModal button[type="submit"]:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.4) !important;
+      }
+      
+      /* 📱 MOBILE GALLERY OVERLAY STYLES */
+      .mobile-gallery-overlay {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8)) !important;
+        color: #fff !important;
+        padding: 1rem !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+        text-align: center !important;
+      }
+      
+      .mobile-gallery-item:hover .mobile-gallery-overlay,
+      .mobile-gallery-item:active .mobile-gallery-overlay {
+        opacity: 1 !important;
+      }
+      
+      .mobile-gallery-overlay h3 {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 0.25rem !important;
+        color: #fff !important;
+      }
+      
+      .mobile-gallery-overlay p {
+        font-size: 0.8rem !important;
+        opacity: 0.9 !important;
+        color: #fff !important;
+        margin: 0 !important;
+      }
+      
+      /* 📱 MOBILE NAVIGATION OVERLAY FIXES */
+      .mobile-nav-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.95) !important;
+        z-index: 10000 !important;
+        display: none !important;
+        align-items: center !important;
+        justify-content: center !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+      }
+      
+      .mobile-nav-overlay.active {
+        display: flex !important;
+        opacity: 1 !important;
+      }
+      
+      .mobile-nav-container {
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        border-radius: 15px !important;
+        padding: 2rem !important;
+        max-width: 90vw !important;
+        max-height: 80vh !important;
+        overflow-y: auto !important;
+        position: relative !important;
+      }
+      
+      .mobile-nav-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+      
+      .mobile-nav-menu a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 1rem !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 10px !important;
+        color: #000 !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .mobile-nav-menu a:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transform: scale(1.02) !important;
       }
     }
     
@@ -14143,27 +14377,108 @@
         <div class="mobile-gallery-grid">
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Event Photography</h3>
+              <p>Corporate event coverage</p>
+            </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Brand Photography</h3>
+              <p>Professional headshots</p>
+            </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Corporate Events</h3>
+              <p>Professional coverage</p>
+            </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>On-Site Printing</h3>
+              <p>Instant photo services</p>
+            </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_6690ec6531d04cf7bb15b02eb64a891a~mv2.jpg" alt="Professional Headshots" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Professional Headshots</h3>
+              <p>Corporate portraits</p>
+            </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_3cf0ca7635fb46018f3986afeda8a5d1~mv2.jpg" alt="Product Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Product Photography</h3>
+              <p>E-commerce and marketing</p>
+            </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_4a1f243b3da2423197fcc264fbc5953d~mv2.jpg" alt="Wedding Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Wedding Photography</h3>
+              <p>Special moments captured</p>
+            </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
             <img src="https://static.wixstatic.com/media/aeef42_618d354d9004436b8c1118273786eeaf~mv2.jpg" alt="Instant Prints" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Instant Prints</h3>
+              <p>Same-day delivery</p>
+            </div>
+          </div>
+          
+          <!-- Additional Gallery Items for Better Mobile Experience -->
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f~mv2.jpg" alt="Fashion Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Fashion Photography</h3>
+              <p>Style and editorial</p>
+            </div>
+          </div>
+          
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f~mv2.jpg" alt="Lifestyle Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Lifestyle Photography</h3>
+              <p>Authentic moments</p>
+            </div>
+          </div>
+          
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f~mv2.jpg" alt="Documentary Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Documentary Photography</h3>
+              <p>Storytelling through images</p>
+            </div>
+          </div>
+          
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e~mv2.jpg" alt="Street Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Street Photography</h3>
+              <p>Urban life and culture</p>
+            </div>
+          </div>
+          
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e~mv2.jpg" alt="Nature Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Nature Photography</h3>
+              <p>Landscape and wildlife</p>
+            </div>
+          </div>
+          
+          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+            <img src="https://static.wixstatic.com/media/aeef42_7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e~mv2.jpg" alt="Architecture Photography" loading="lazy">
+            <div class="mobile-gallery-overlay">
+              <h3>Architecture Photography</h3>
+              <p>Buildings and structures</p>
+            </div>
           </div>
         </div>
       </div>
@@ -16309,12 +16624,27 @@
     }
     
     // 📱 MOBILE NAVIGATION TOGGLE FUNCTION
-    function toggleMobileNav() {
-      const overlay = document.getElementById('mobileNavOverlay');
-      if (overlay) {
-        overlay.classList.toggle('active');
+      function toggleMobileNav() {
+    const overlay = document.getElementById('mobileNavOverlay');
+    if (overlay) {
+      const isActive = overlay.classList.contains('active');
+      if (isActive) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      } else {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
     }
+  }
+  
+  function closeMobileNav() {
+    const overlay = document.getElementById('mobileNavOverlay');
+    if (overlay) {
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  }
     
     // 📱 COMPREHENSIVE MOBILE INITIALIZATION
     initializeMobileExperience();
@@ -18300,11 +18630,22 @@
           option.style.display = 'block';
         });
         
-                 // Show modal with proper styling and manual flag
+        // Show modal with proper styling and manual flag
         modal.style.display = 'flex';
         modal.style.visibility = 'visible';
         modal.style.opacity = '1';
+        modal.style.zIndex = '999999';
         modal.setAttribute('data-manual-open', 'true');
+        
+        // Ensure modal content is visible
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+          modalContent.style.display = 'block';
+          modalContent.style.opacity = '1';
+          modalContent.style.visibility = 'visible';
+          modalContent.style.background = '#fff';
+          modalContent.style.color = '#000';
+        }
         
         // Add focus to first input for better UX
         setTimeout(() => {
