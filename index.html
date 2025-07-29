@@ -56,6 +56,50 @@
     if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       location.replace('https:' + window.location.href.substring(window.location.protocol.length));
     }
+    
+    // 📱 IMMEDIATE MOBILE DETECTION AND INITIALIZATION
+    (function() {
+      const isMobile = window.innerWidth <= 768;
+      console.log('📱 Immediate mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
+      
+      if (isMobile) {
+        // Force mobile version to be visible immediately
+        document.addEventListener('DOMContentLoaded', function() {
+          const mobileVersion = document.getElementById('mobileVersion');
+          if (mobileVersion) {
+            mobileVersion.style.display = 'block !important';
+            mobileVersion.style.visibility = 'visible !important';
+            mobileVersion.style.opacity = '1 !important';
+            mobileVersion.style.position = 'relative !important';
+            mobileVersion.style.zIndex = '1 !important';
+          }
+          
+          // Force hide desktop elements
+          const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+          desktopElements.forEach(el => {
+            el.style.display = 'none !important';
+            el.style.visibility = 'hidden !important';
+            el.style.opacity = '0 !important';
+            el.style.position = 'absolute !important';
+            el.style.zIndex = '-1 !important';
+          });
+          
+          // Ensure mobile navigation is visible
+          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+          if (mobileNavToggle) {
+            mobileNavToggle.style.display = 'flex !important';
+            mobileNavToggle.style.visibility = 'visible !important';
+            mobileNavToggle.style.opacity = '1 !important';
+            mobileNavToggle.style.zIndex = '10000 !important';
+          }
+          
+          // Add mobile class to body
+          document.body.classList.add('mobile-view');
+          
+          console.log('📱 Immediate mobile initialization completed');
+        });
+      }
+    })();
   </script>
   <!-- 🔒 SECURE EXTERNAL SCRIPTS WITH INTEGRITY CHECKS -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -802,12 +846,16 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
+      text-align: center;
+      width: 100%;
     }
     
     .mobile-header-logo {
       height: 40px;
       width: auto;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      display: block;
+      margin: 0 auto;
     }
     
     .mobile-header-title {
@@ -816,6 +864,8 @@
       color: #000;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      text-align: center;
+      margin: 0;
     }
     
     /* Mobile Navigation Toggle */
@@ -1439,6 +1489,12 @@
         height: 200px;
         object-fit: cover;
         display: block;
+        background: #f0f0f0;
+        min-height: 200px;
+      }
+      
+      .mobile-gallery-item img[src*="placeholder"] {
+        background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
       }
       
       /* Mobile Contact Section */
@@ -2901,6 +2957,10 @@
         width: auto;
         height: 60px;
         margin-bottom: 2rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
       
       .mobile-hero-title {
@@ -2908,6 +2968,9 @@
         font-weight: 900;
         margin-bottom: 1rem;
         line-height: 1.2;
+        color: #000;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
       
       .mobile-hero-subtitle {
@@ -2915,6 +2978,9 @@
         line-height: 1.6;
         margin-bottom: 3rem;
         opacity: 0.9;
+        color: rgba(0,0,0,0.8);
+        text-align: center;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
       }
       
       .mobile-hero-stats {
@@ -13971,7 +14037,7 @@
         <h2 class="mobile-section-title">Our Services</h2>
         
         <div class="mobile-service-cards">
-          <div class="mobile-service-card" onclick="openMobileServiceModal('photography')">
+          <div class="mobile-service-card" data-service="photography">
             <div class="mobile-service-icon">
               <i class="fas fa-camera"></i>
             </div>
@@ -13980,7 +14046,7 @@
             <div class="mobile-service-price">From $350</div>
           </div>
 
-          <div class="mobile-service-card" onclick="openMobileServiceModal('video')">
+          <div class="mobile-service-card" data-service="video">
             <div class="mobile-service-icon">
               <i class="fas fa-video"></i>
             </div>
@@ -13989,7 +14055,7 @@
             <div class="mobile-service-price">From $250/hr</div>
           </div>
 
-          <div class="mobile-service-card" onclick="openMobileServiceModal('web')">
+          <div class="mobile-service-card" data-service="web">
             <div class="mobile-service-icon">
               <i class="fas fa-laptop-code"></i>
             </div>
@@ -13998,7 +14064,7 @@
             <div class="mobile-service-price">From $750</div>
           </div>
 
-          <div class="mobile-service-card" onclick="openMobileServiceModal('branding')">
+          <div class="mobile-service-card" data-service="branding">
             <div class="mobile-service-icon">
               <i class="fas fa-palette"></i>
             </div>
@@ -14628,6 +14694,30 @@
       </div>
     </div>
   </div>
+  
+  <!-- 📱 MOBILE LOADING SCRIPT -->
+  <script>
+    // Ensure mobile loader works properly
+    if (window.innerWidth <= 768) {
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileLoader = document.querySelector('.mobile-loader');
+        if (mobileLoader) {
+          mobileLoader.style.display = 'flex !important';
+          mobileLoader.style.visibility = 'visible !important';
+          mobileLoader.style.opacity = '1 !important';
+          mobileLoader.style.zIndex = '99999 !important';
+          
+          // Hide loader after content loads
+          setTimeout(() => {
+            mobileLoader.style.opacity = '0';
+            setTimeout(() => {
+              mobileLoader.style.display = 'none';
+            }, 500);
+          }, 2000);
+        }
+      });
+    }
+  </script>
   <header>
     <!-- Cinematic background shapes -->
     <div class="header-shape"></div>
@@ -16139,11 +16229,11 @@
         <div class="footer-copyright">
           <p>© 2025 Cochran Films LLC. All rights reserved.</p>
           <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
+            <a href="https://www.cochranfilms.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
             <span>•</span>
-            <a href="#">Terms of Service</a>
+            <a href="https://www.cochranfilms.com/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>
             <span>•</span>
-            <a href="#">Accessibility</a>
+            <a href="https://www.cochranfilms.com/accessibilitystatement" target="_blank" rel="noopener noreferrer">Accessibility</a>
           </div>
         </div>
       </div>
@@ -16213,50 +16303,59 @@
     window.mobileState.isMobile = isMobile;
     window.mobileState.isUltraMobile = isUltraMobile;
     
+    console.log('📱 Mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
+    
     if (isMobile) {
-      console.log('📱 Mobile experience initialized');
+      console.log('📱 Mobile experience initializing...');
       
-      // Ensure mobile version is visible
+      // Force hide desktop elements first
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      desktopElements.forEach(el => {
+        el.style.display = 'none !important';
+        el.style.visibility = 'hidden !important';
+        el.style.opacity = '0 !important';
+        el.style.position = 'absolute !important';
+        el.style.zIndex = '-1 !important';
+      });
+      
+      // Force show mobile version
       const mobileVersion = document.getElementById('mobileVersion');
       if (mobileVersion) {
-        mobileVersion.style.display = 'block';
-        mobileVersion.style.visibility = 'visible';
-        mobileVersion.style.opacity = '1';
+        mobileVersion.style.display = 'block !important';
+        mobileVersion.style.visibility = 'visible !important';
+        mobileVersion.style.opacity = '1 !important';
+        mobileVersion.style.position = 'relative !important';
+        mobileVersion.style.zIndex = '1 !important';
+        console.log('📱 Mobile version forced visible');
       }
       
       // Ensure mobile content is visible
       const mobileContent = document.querySelector('.mobile-content');
       if (mobileContent) {
-        mobileContent.style.display = 'block';
-        mobileContent.style.visibility = 'visible';
-        mobileContent.style.opacity = '1';
-        mobileContent.style.position = 'relative';
-        mobileContent.style.zIndex = '1';
+        mobileContent.style.display = 'block !important';
+        mobileContent.style.visibility = 'visible !important';
+        mobileContent.style.opacity = '1 !important';
+        mobileContent.style.position = 'relative !important';
+        mobileContent.style.zIndex = '1 !important';
       }
       
       // Initialize mobile loader
       const mobileLoader = document.querySelector('.mobile-loader');
       if (mobileLoader) {
-        mobileLoader.style.display = 'flex';
-        mobileLoader.style.visibility = 'visible';
-        mobileLoader.style.opacity = '1';
+        mobileLoader.style.display = 'flex !important';
+        mobileLoader.style.visibility = 'visible !important';
+        mobileLoader.style.opacity = '1 !important';
+        mobileLoader.style.zIndex = '99999 !important';
       }
       
       // Initialize mobile navigation
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
       if (mobileNavToggle) {
-        mobileNavToggle.style.display = 'flex';
-        mobileNavToggle.style.visibility = 'visible';
-        mobileNavToggle.style.opacity = '1';
+        mobileNavToggle.style.display = 'flex !important';
+        mobileNavToggle.style.visibility = 'visible !important';
+        mobileNavToggle.style.opacity = '1 !important';
+        mobileNavToggle.style.zIndex = '10000 !important';
       }
-      
-      // Hide desktop elements
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-      desktopElements.forEach(el => {
-        el.style.display = 'none';
-        el.style.visibility = 'hidden';
-        el.style.opacity = '0';
-      });
       
       // Optimize for mobile performance
       document.body.style.webkitOverflowScrolling = 'touch';
@@ -16267,25 +16366,33 @@
       if (metaViewport) {
         metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
       }
+      
+      // Add mobile class to body
+      document.body.classList.add('mobile-view');
+      
+      console.log('📱 Mobile experience fully initialized');
     } else {
       // Desktop experience - ensure mobile elements are hidden
       const mobileVersion = document.getElementById('mobileVersion');
       if (mobileVersion) {
-        mobileVersion.style.display = 'none';
-        mobileVersion.style.visibility = 'hidden';
+        mobileVersion.style.display = 'none !important';
+        mobileVersion.style.visibility = 'hidden !important';
       }
       
       const mobileLoader = document.querySelector('.mobile-loader');
       if (mobileLoader) {
-        mobileLoader.style.display = 'none';
-        mobileLoader.style.visibility = 'hidden';
+        mobileLoader.style.display = 'none !important';
+        mobileLoader.style.visibility = 'hidden !important';
       }
       
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
       if (mobileNavToggle) {
-        mobileNavToggle.style.display = 'none';
-        mobileNavToggle.style.visibility = 'hidden';
+        mobileNavToggle.style.display = 'none !important';
+        mobileNavToggle.style.visibility = 'hidden !important';
       }
+      
+      // Remove mobile class from body
+      document.body.classList.remove('mobile-view');
     }
   }
   
@@ -16305,15 +16412,51 @@
     console.log('📱 Force init - Screen width:', window.innerWidth, 'isMobile:', isMobile);
     
     if (isMobile) {
+      // Force immediate mobile initialization
       initializeMobileExperience();
+      
       // Double-check mobile version is visible
       const mobileVersion = document.getElementById('mobileVersion');
       if (mobileVersion) {
-        mobileVersion.style.display = 'block';
-        mobileVersion.style.visibility = 'visible';
-        mobileVersion.style.opacity = '1';
-        console.log('📱 Mobile version forced visible');
+        mobileVersion.style.display = 'block !important';
+        mobileVersion.style.visibility = 'visible !important';
+        mobileVersion.style.opacity = '1 !important';
+        mobileVersion.style.position = 'relative !important';
+        mobileVersion.style.zIndex = '1 !important';
+        console.log('📱 Mobile version forced visible - COMPREHENSIVE');
       }
+      
+      // Ensure mobile loader is visible
+      const mobileLoader = document.querySelector('.mobile-loader');
+      if (mobileLoader) {
+        mobileLoader.style.display = 'flex !important';
+        mobileLoader.style.visibility = 'visible !important';
+        mobileLoader.style.opacity = '1 !important';
+        mobileLoader.style.zIndex = '99999 !important';
+      }
+      
+      // Ensure mobile nav toggle is visible
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      if (mobileNavToggle) {
+        mobileNavToggle.style.display = 'flex !important';
+        mobileNavToggle.style.visibility = 'visible !important';
+        mobileNavToggle.style.opacity = '1 !important';
+        mobileNavToggle.style.zIndex = '10000 !important';
+      }
+      
+      // Force hide all desktop elements
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      desktopElements.forEach(el => {
+        el.style.display = 'none !important';
+        el.style.visibility = 'hidden !important';
+        el.style.opacity = '0 !important';
+        el.style.position = 'absolute !important';
+        el.style.zIndex = '-1 !important';
+      });
+      
+      // Add mobile class to body
+      document.body.classList.add('mobile-view');
+      
     } else {
       initializeMobileExperience();
     }
@@ -16321,11 +16464,82 @@
   
   // Initialize immediately and on DOM ready
   if (window.innerWidth <= 768) {
-    setTimeout(forceInitializeMobile, 50);
+    // Immediate initialization
+    forceInitializeMobile();
+    
+    // Additional check after a short delay
+    setTimeout(forceInitializeMobile, 100);
+    setTimeout(forceInitializeMobile, 500);
+    
+    // Comprehensive mobile initialization
+    setTimeout(() => {
+      // Force mobile version visibility
+      const mobileVersion = document.getElementById('mobileVersion');
+      if (mobileVersion) {
+        mobileVersion.style.display = 'block !important';
+        mobileVersion.style.visibility = 'visible !important';
+        mobileVersion.style.opacity = '1 !important';
+        mobileVersion.style.position = 'relative !important';
+        mobileVersion.style.zIndex = '1 !important';
+      }
+      
+      // Force hide desktop elements
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      desktopElements.forEach(el => {
+        el.style.display = 'none !important';
+        el.style.visibility = 'hidden !important';
+        el.style.opacity = '0 !important';
+        el.style.position = 'absolute !important';
+        el.style.zIndex = '-1 !important';
+      });
+      
+      // Ensure mobile navigation is visible
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      if (mobileNavToggle) {
+        mobileNavToggle.style.display = 'flex !important';
+        mobileNavToggle.style.visibility = 'visible !important';
+        mobileNavToggle.style.opacity = '1 !important';
+        mobileNavToggle.style.zIndex = '10000 !important';
+      }
+      
+      // Add mobile class to body
+      document.body.classList.add('mobile-view');
+      
+      console.log('📱 Comprehensive mobile initialization completed');
+    }, 1000);
   }
   
   // Also initialize on DOM ready
-  document.addEventListener('DOMContentLoaded', forceInitializeMobile);
+  document.addEventListener('DOMContentLoaded', () => {
+    forceInitializeMobile();
+    
+    // Initialize mobile functionality
+    initializeMobileFunctionality();
+    
+    // Additional mobile-specific initialization
+    if (window.innerWidth <= 768) {
+      // Ensure all mobile elements are properly initialized
+      setTimeout(() => {
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'block !important';
+          mobileVersion.style.visibility = 'visible !important';
+          mobileVersion.style.opacity = '1 !important';
+        }
+        
+        // Hide desktop elements
+        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+        desktopElements.forEach(el => {
+          el.style.display = 'none !important';
+          el.style.visibility = 'hidden !important';
+          el.style.opacity = '0 !important';
+        });
+        
+        // Initialize mobile functionality again to ensure everything works
+        initializeMobileFunctionality();
+      }, 100);
+    }
+  });
   
   // 📱 Enhanced Mobile Navigation Functions
   function toggleMobileNav() {
@@ -16344,6 +16558,57 @@
         window.mobileState.navOpen = true;
         console.log('📱 Mobile nav opened');
       }
+    }
+  }
+  
+  // 📱 COMPREHENSIVE MOBILE FUNCTIONALITY INITIALIZATION
+  function initializeMobileFunctionality() {
+    if (window.innerWidth <= 768) {
+      console.log('📱 Initializing mobile functionality...');
+      
+      // Initialize mobile navigation
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', toggleMobileNav);
+      }
+      
+      // Initialize mobile service modals
+      const mobileServiceCards = document.querySelectorAll('.mobile-service-card');
+      mobileServiceCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const serviceType = this.getAttribute('data-service') || 'photography';
+          openMobileServiceModal(serviceType);
+        });
+      });
+      
+      // Initialize mobile lightbox
+      const mobileGalleryItems = document.querySelectorAll('.mobile-gallery-item');
+      mobileGalleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+          openMobileLightbox(this);
+        });
+      });
+      
+      // Initialize mobile booking modal
+      const mobileBookingButtons = document.querySelectorAll('.mobile-cta-primary, .mobile-contact-btn.primary');
+      mobileBookingButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          openBookingModal();
+        });
+      });
+      
+      // Initialize mobile scroll functionality
+      const mobileNavLinks = document.querySelectorAll('.nav-item a');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const sectionId = this.getAttribute('href').substring(1);
+          scrollToMobileSection(sectionId);
+        });
+      });
+      
+      console.log('📱 Mobile functionality initialized');
     }
   }
   
@@ -16391,6 +16656,48 @@
   // Enhanced cinematic loading animation with production elements
   document.addEventListener('DOMContentLoaded', () => {
     console.log('🎬 Cochran Films Production Studio Loading...');
+    
+    // 📱 COMPREHENSIVE MOBILE INITIALIZATION
+    if (window.innerWidth <= 768) {
+      console.log('📱 Mobile device detected - initializing mobile experience...');
+      
+      // Force mobile version visibility
+      const mobileVersion = document.getElementById('mobileVersion');
+      if (mobileVersion) {
+        mobileVersion.style.display = 'block !important';
+        mobileVersion.style.visibility = 'visible !important';
+        mobileVersion.style.opacity = '1 !important';
+        mobileVersion.style.position = 'relative !important';
+        mobileVersion.style.zIndex = '1 !important';
+      }
+      
+      // Force hide desktop elements
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      desktopElements.forEach(el => {
+        el.style.display = 'none !important';
+        el.style.visibility = 'hidden !important';
+        el.style.opacity = '0 !important';
+        el.style.position = 'absolute !important';
+        el.style.zIndex = '-1 !important';
+      });
+      
+      // Ensure mobile navigation is visible
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      if (mobileNavToggle) {
+        mobileNavToggle.style.display = 'flex !important';
+        mobileNavToggle.style.visibility = 'visible !important';
+        mobileNavToggle.style.opacity = '1 !important';
+        mobileNavToggle.style.zIndex = '10000 !important';
+      }
+      
+      // Add mobile class to body
+      document.body.classList.add('mobile-view');
+      
+      // Initialize mobile functionality
+      initializeMobileFunctionality();
+      
+      console.log('📱 Mobile experience fully initialized');
+    }
     
     // 📱 MOBILE NAVIGATION FUNCTIONS
     function toggleMobileNav() {
