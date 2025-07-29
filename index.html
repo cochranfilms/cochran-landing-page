@@ -137,6 +137,14 @@
         document.addEventListener('DOMContentLoaded', showDesktopVersion);
       }
       
+      // Force show mobile version for testing images
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          console.log('🔧 Forcing mobile version to show for image testing');
+          showMobileVersion();
+        }, 1000);
+      });
+      
       // Handle window resize
       window.addEventListener('resize', function() {
         const newIsMobile = window.innerWidth <= 768;
