@@ -10041,6 +10041,16 @@
         inset 0 0 100px rgba(255, 178, 0, 0.05);
     }
     
+    /* Ensure cinematic header is always visible after loading */
+    body.loaded .cinematic-header {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 10 !important;
+      pointer-events: auto !important;
+    }
+    
     /* Header Layout Sections */
     .header-left-graphics {
       position: relative !important;
@@ -10672,12 +10682,16 @@
     
     /* Camera Aperture Effect */
     .aperture-container {
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 120px;
       height: 120px;
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 15;
     }
     
     .aperture {
@@ -10720,7 +10734,10 @@
     
     /* Cinematic Typography */
     .cinematic-text {
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
       color: #FFB200;
       font-family: 'Arial', sans-serif;
@@ -11201,6 +11218,10 @@
       
       /* Central aperture - optimized for mobile */
       .aperture-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 180px;
         height: 180px;
         z-index: 15;
@@ -11298,6 +11319,13 @@
       pointer-events: none !important;
       visibility: hidden !important;
       display: none !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      z-index: -9999 !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
     }
     
     /* Hide ALL complex elements on mobile for ultra-clean look */
@@ -11353,12 +11381,15 @@
 .aperture-container {
   width: 320px !important;
   height: 320px !important;
-  position: relative !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
   z-index: 15 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin-bottom: 3rem !important;
+  margin-bottom: 0 !important;
 }
 
 .aperture {
@@ -11427,10 +11458,13 @@
     
     /* Premium mobile typography */
     .cinematic-text {
-      position: relative !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
       text-align: center !important;
       z-index: 10 !important;
-      margin-bottom: 3rem !important;
+      margin-bottom: 0 !important;
       padding: 0 1rem !important;
     }
     
@@ -11633,6 +11667,9 @@
       display: block !important;
       visibility: visible !important;
       opacity: 1 !important;
+      position: relative !important;
+      z-index: auto !important;
+      pointer-events: auto !important;
     }
     
         /* Performance optimizations */
@@ -14600,7 +14637,7 @@
       
       <!-- Cinematic Typography -->
       <div class="cinematic-text">
-        <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
+        <img src="/cochran-landing-page/Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" onerror="this.onerror=null; this.src='./Logo.png';" />
         <div class="tagline">STORYTELLING THAT CONVERTS</div>
       </div>
     </div>
@@ -15539,10 +15576,15 @@
         cinematicLoader.style.zIndex = '99999';
         
         // Initialize countdown timer
-        initializeCountdownTimer();
+        try {
+          initializeCountdownTimer();
+        } catch (error) {
+          console.log('Countdown timer initialization failed:', error);
+        }
         
         // Hide cinematic loader after 4 seconds (matching animation duration)
         setTimeout(() => {
+          console.log('Hiding cinematic loader...');
           cinematicLoader.style.opacity = '0';
           cinematicLoader.style.transition = 'opacity 0.5s ease';
           setTimeout(() => {
@@ -15550,8 +15592,33 @@
             cinematicLoader.style.visibility = 'hidden';
             cinematicLoader.style.zIndex = '-1';
             document.body.classList.add('loaded');
+            
+            // Ensure cinematic header is visible
+            const cinematicHeader = document.querySelector('.cinematic-header');
+            if (cinematicHeader) {
+              cinematicHeader.style.display = 'flex';
+              cinematicHeader.style.visibility = 'visible';
+              cinematicHeader.style.opacity = '1';
+              cinematicHeader.style.zIndex = '10';
+            }
+            
+            console.log('Cinematic loader hidden successfully');
           }, 500);
         }, 4000); // 4 seconds as requested
+        
+        // Backup timeout to ensure loader disappears even if there are errors
+        setTimeout(() => {
+          if (cinematicLoader.style.display !== 'none') {
+            console.log('Backup: Forcing cinematic loader to hide');
+            cinematicLoader.style.display = 'none';
+            cinematicLoader.style.visibility = 'hidden';
+            cinematicLoader.style.opacity = '0';
+            cinematicLoader.style.zIndex = '-1';
+            document.body.classList.add('loaded');
+          }
+        }, 5000); // 5 seconds backup
+      } else {
+        console.log('Cinematic loader element not found');
       }
     });
     
@@ -18734,7 +18801,7 @@
         }, 100);
       } else {
         countdownElement.textContent = '●';
-        countdownElement.style.color = '#00ff00';
+        countdownElement.style.color = '#FFB200';
         clearInterval(countdownInterval);
       }
     }, 800);
@@ -22348,8 +22415,30 @@
       window.showServiceDetailsModal = showServiceDetailsModal;
     }
     
-    // Image Loading and Error Handling for Photography Gallery
+    // GitHub Pages Image Path Handling
     document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img[src]');
+      const repoName = 'cochran-landing-page';
+      
+      images.forEach(img => {
+        const originalSrc = img.getAttribute('src');
+        // Skip external URLs
+        if (originalSrc.startsWith('http')) return;
+        
+        // Try GitHub Pages path first, then fallback to relative path
+        const githubPath = `/${repoName}/${originalSrc}`;
+        const relativePath = `./${originalSrc}`;
+        
+        img.setAttribute('src', githubPath);
+        img.setAttribute('onerror', `this.onerror=null; this.src='${relativePath}';`);
+        
+        // Add loading="lazy" if not present
+        if (!img.hasAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+      });
+
+      // Image Loading and Error Handling for Photography Gallery
       const masonryImages = document.querySelectorAll('.masonry-content img');
       
       masonryImages.forEach(img => {
