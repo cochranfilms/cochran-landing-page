@@ -9926,6 +9926,9 @@
       -webkit-backface-visibility: hidden;
       padding: 0 2rem;
       box-sizing: border-box;
+      margin: 0;
+      border: none;
+      outline: none;
     }
     
     /* Header Layout Sections */
@@ -9937,6 +9940,7 @@
       align-items: center;
       justify-content: flex-start;
       padding-left: 1rem;
+      border: 1px solid rgba(255,178,0,0.3);
     }
     
     .header-center-content {
@@ -9948,6 +9952,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      border: 1px solid rgba(255,178,0,0.3);
     }
     
     .header-right-graphics {
@@ -9958,6 +9963,7 @@
       align-items: center;
       justify-content: flex-end;
       padding-right: 1rem;
+      border: 1px solid rgba(255,178,0,0.3);
     }
     
     /* Professional Camera Viewfinder Overlay */
@@ -10102,6 +10108,9 @@
       animation: clapperboardAction 6s ease-in-out infinite;
       transform-origin: center;
       margin-bottom: 1rem;
+      display: block;
+      visibility: visible;
+      opacity: 1;
     }
     
     .clapper-top {
@@ -18628,15 +18637,15 @@
     const headerLogo = header.querySelector('img');
     const headerShapes = header.querySelectorAll('.header-shape');
     
-    // Header parallax effect on scroll
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.3;
-      
-      if (header) {
-        header.style.transform = `translateY(${rate}px)`;
-      }
-    });
+    // Header parallax effect on scroll - DISABLED
+    // window.addEventListener('scroll', () => {
+    //   const scrolled = window.pageYOffset;
+    //   const rate = scrolled * -0.3;
+    //   
+    //   if (header) {
+    //     header.style.transform = `translateY(${rate}px)`;
+    //   }
+    // });
     
     // Logo hover effects
     if (headerLogo) {
