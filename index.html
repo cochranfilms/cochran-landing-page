@@ -10164,22 +10164,32 @@
       100% { content: "0"; }
     }
     
-    /* Large C Icon */
-    .large-c-icon {
+
+    
+    /* Company Logo */
+    .company-logo {
       position: absolute;
-      bottom: 20%;
-      left: 15%;
-      font-size: 4rem;
-      font-weight: 900;
-      color: #FFB200;
-      text-shadow: 0 0 30px rgba(255, 178, 0, 0.8);
-      animation: cIconGlow 3s ease-in-out infinite;
-      z-index: 8;
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      animation: logoBounce 3s ease-in-out infinite;
     }
     
-    @keyframes cIconGlow {
-      0%, 100% { opacity: 0.8; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.05); }
+    .logo-image {
+      width: 120px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      transition: all 0.3s ease;
+    }
+    
+    .logo-image:hover {
+      filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 178, 0, 0.8));
+    }
+    
+    @keyframes logoBounce {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-50%) scale(1.05); }
     }
     
     /* Floating Social Media Icons */
@@ -10189,7 +10199,7 @@
       top: 50%;
       transform: translateY(-50%);
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 1.5rem;
       z-index: 15;
     }
@@ -10208,13 +10218,14 @@
     @media (max-width: 768px) {
       .floating-social-icons {
         right: 2%;
-        gap: 1rem;
+        gap: 0.8rem;
+        flex-direction: row;
       }
       
       .floating-social-icons .icon-circle {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
       }
       
       .header-right-content {
@@ -10224,6 +10235,14 @@
       .clapperboard {
         width: 100px;
         height: 70px;
+      }
+      
+      .company-logo {
+        left: 5%;
+      }
+      
+      .logo-image {
+        width: 80px;
       }
     }
     
@@ -15198,11 +15217,13 @@
     </div>
     
     <!-- Left Side Graphics -->
-    <div class="header-left-graphics">
-      <!-- Large C Icon -->
-      <div class="large-c-icon">C</div>
-      
-      <!-- Floating Particles -->
+          <div class="header-left-graphics">
+        <!-- Company Logo -->
+        <div class="company-logo">
+          <img src="Logo.png" alt="Cochran Films" class="logo-image">
+        </div>
+        
+        <!-- Floating Particles -->
       <div class="particles-system">
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
         <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
@@ -15247,13 +15268,10 @@
         <a href="mailto:info@cochranfilms.com" class="icon-circle moon-icon" title="Email Us">
           <i class="fas fa-moon"></i>
         </a>
-        <a href="https://facebook.com/cochranfilms" target="_blank" class="icon-circle facebook-icon" title="Follow us on Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://instagram.com/cochranfilms" target="_blank" class="icon-circle instagram-icon" title="Follow us on Instagram">
+        <a href="https://www.instagram.com/cochran.films/" target="_blank" class="icon-circle instagram-icon" title="Follow us on Instagram">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://linkedin.com/company/cochranfilms" target="_blank" class="icon-circle linkedin-icon" title="Connect on LinkedIn">
+        <a href="https://www.linkedin.com/company/cochranfilms/" target="_blank" class="icon-circle linkedin-icon" title="Connect on LinkedIn">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </div>
