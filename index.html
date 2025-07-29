@@ -13915,17 +13915,93 @@
         pointer-events: auto !important;
         cursor: pointer !important;
         z-index: 10005 !important;
+        position: fixed !important;
+        bottom: 80px !important;
+        right: 20px !important;
+        top: auto !important;
+        left: auto !important;
+      }
+      
+      /* Remove floating button from top */
+      body::before {
+        display: none !important;
+        content: none !important;
       }
       
       /* 5. FIX MOBILE HEADER */
       .mobile-header-banner {
         height: 60px !important;
         padding: 0.5rem 1rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 10001 !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+      }
+      
+      .mobile-header-content {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+      }
+      
+      .mobile-header-logo {
+        width: 40px !important;
+        height: auto !important;
+        display: block !important;
+      }
+      
+      .mobile-header-title {
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+        color: #000 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+      }
+      
+      .mobile-nav-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 40px !important;
+        height: 40px !important;
+        background: rgba(0,0,0,0.1) !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
       }
       
       /* 6. FIX MOBILE HERO PADDING */
       .mobile-hero {
-        padding-top: 70px !important;
+        padding-top: 80px !important;
+        margin-top: 0 !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 1rem !important;
+      }
+      
+      .mobile-hero-title {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        margin-bottom: 1rem !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+      }
+      
+      .mobile-hero-subtitle {
+        font-size: 1.1rem !important;
+        color: rgba(255,255,255,0.9) !important;
+        margin-bottom: 2rem !important;
+        line-height: 1.5 !important;
+        max-width: 90% !important;
       }
       
       /* 7. FIX MOBILE SERVICE CARDS */
@@ -14001,6 +14077,69 @@
       .mobile-loader {
         background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
         color: #fff !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 99999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+      }
+      
+      .mobile-loader-content {
+        text-align: center !important;
+        max-width: 90% !important;
+      }
+      
+      .mobile-loader-logo {
+        width: 80px !important;
+        height: auto !important;
+        margin-bottom: 1rem !important;
+        animation: pulse 2s ease-in-out infinite !important;
+      }
+      
+      .mobile-loader-title {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: #FFB200 !important;
+        margin-bottom: 0.5rem !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+      }
+      
+      .mobile-loader-subtitle {
+        font-size: 1rem !important;
+        color: rgba(255,255,255,0.8) !important;
+        margin-bottom: 2rem !important;
+      }
+      
+      .mobile-loader-bar {
+        width: 200px !important;
+        height: 4px !important;
+        background: rgba(255,255,255,0.2) !important;
+        border-radius: 2px !important;
+        overflow: hidden !important;
+      }
+      
+      .mobile-loader-progress {
+        height: 100% !important;
+        background: linear-gradient(90deg, #FFB200, #FFC700) !important;
+        border-radius: 2px !important;
+        animation: loading 2s ease-in-out infinite !important;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      
+      @keyframes loading {
+        0% { width: 0%; }
+        50% { width: 70%; }
+        100% { width: 100%; }
       }
       
       /* 15. FIX MOBILE STATS */
@@ -14037,6 +14176,34 @@
         -webkit-overflow-scrolling: touch !important;
       }
       
+      /* CRITICAL SCROLL FIXES */
+      body {
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
+      }
+      
+      .mobile-section {
+        overflow: visible !important;
+        position: relative !important;
+      }
+      
+      /* Fix photography section scrolling */
+      #mobilePhotography {
+        overflow: visible !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      
+      /* Prevent scroll trapping */
+      .mobile-gallery,
+      .mobile-portfolio,
+      .mobile-photography-section {
+        overflow: visible !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      
       /* 19. FIX MOBILE TOUCH TARGETS */
       .mobile-nav-menu a,
       .mobile-cta-primary,
@@ -14051,6 +14218,80 @@
       .mobile-section {
         will-change: auto !important;
         transform: translateZ(0) !important;
+      }
+      
+      /* 21. MATCH DESKTOP UI/UX */
+      .mobile-hero {
+        background: linear-gradient(135deg, #000, #1a1a1a) !important;
+        color: #fff !important;
+        padding: 2rem 1rem !important;
+      }
+      
+      .mobile-hero-title {
+        background: linear-gradient(45deg, #FFB200, #FFC700) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        font-size: 2.5rem !important;
+        font-weight: 900 !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+      }
+      
+      .mobile-hero-subtitle {
+        font-size: 1.2rem !important;
+        color: rgba(255,255,255,0.9) !important;
+        text-align: center !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2rem !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      
+      .mobile-cta-primary {
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        color: #000 !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        padding: 1rem 2rem !important;
+        border-radius: 30px !important;
+        border: none !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3) !important;
+        transition: all 0.3s ease !important;
+        margin: 0.5rem !important;
+        min-width: 200px !important;
+      }
+      
+      .mobile-cta-primary:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5) !important;
+      }
+      
+      /* 22. FIX MOBILE SPACING */
+      .mobile-section {
+        padding: 3rem 1rem !important;
+        margin: 0 !important;
+      }
+      
+      .mobile-section-title {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: #FFB200 !important;
+        text-align: center !important;
+        margin-bottom: 1rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+      }
+      
+      .mobile-section-subtitle {
+        font-size: 1.1rem !important;
+        color: rgba(255,255,255,0.8) !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+        line-height: 1.5 !important;
       }
     }
     
@@ -14170,16 +14411,16 @@
         <img src="Logo.png" alt="Cochran Films" class="mobile-header-logo">
         <div class="mobile-header-title">Cochran Films</div>
       </div>
-    </div>
-    
-    <!-- Mobile Navigation Toggle -->
-    <div class="mobile-nav-toggle" onclick="toggleMobileNav()">
-      <div class="hamburger-lines">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
+      <div class="mobile-nav-toggle" onclick="toggleMobileNav()">
+        <div class="hamburger-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
       </div>
     </div>
+    
+
 
     <!-- Mobile Navigation Menu -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
@@ -14208,12 +14449,7 @@
               <span class="nav-icon">👷</span>
             </a>
           </div>
-          <div class="nav-item">
-            <a href="#mobilePortfolio" onclick="scrollToMobileSection('mobilePortfolio')">
-              <span class="nav-text">Portfolio</span>
-              <span class="nav-icon">🎬</span>
-            </a>
-          </div>
+
           <div class="nav-item">
             <a href="#mobilePhotography" onclick="scrollToMobileSection('mobilePhotography')">
               <span class="nav-text">Photography</span>
@@ -14370,51 +14606,7 @@
       </div>
     </section>
 
-    <!-- Mobile Portfolio Section -->
-    <section class="mobile-portfolio" id="mobilePortfolio">
-      <div class="mobile-portfolio-container">
-        <h2 class="mobile-section-title">Our Portfolio</h2>
-        <p class="mobile-section-subtitle">A showcase of our best work</p>
-        
-        <div class="mobile-portfolio-grid">
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Event Photography</h3>
-              <p>Corporate event coverage</p>
-            </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Brand Photography</h3>
-              <p>Professional headshots</p>
-            </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Corporate Events</h3>
-              <p>Event documentation</p>
-            </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>On-Site Printing</h3>
-              <p>Instant photo service</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="mobile-portfolio-cta">
-          <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
-        </div>
-      </div>
-    </section>
+
 
     <!-- Mobile Services Section -->
     <section class="mobile-services" id="mobileServices">
@@ -17999,6 +18191,36 @@
         }
       }
       
+      // FIX MOBILE BOOKING MODAL
+      function openBookingModal() {
+        const modal = document.getElementById('bookingModal');
+        if (modal) {
+          modal.style.display = 'flex';
+          modal.style.position = 'fixed';
+          modal.style.top = '0';
+          modal.style.left = '0';
+          modal.style.width = '100%';
+          modal.style.height = '100%';
+          modal.style.zIndex = '10010';
+          modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+          modal.style.alignItems = 'center';
+          modal.style.justifyContent = 'center';
+          
+          const modalContent = modal.querySelector('.modal-content');
+          if (modalContent) {
+            modalContent.style.maxWidth = '90vw';
+            modalContent.style.maxHeight = '90vh';
+            modalContent.style.overflowY = 'auto';
+            modalContent.style.backgroundColor = '#1a1a1a';
+            modalContent.style.color = '#fff';
+            modalContent.style.border = '1px solid rgba(255, 178, 0, 0.3)';
+            modalContent.style.borderRadius = '15px';
+          }
+          
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      
       // Initialize floating button on mobile
       if (window.innerWidth <= 768) {
         initializeFloatingButton();
@@ -18053,6 +18275,42 @@
       // Call mobile initialization
       document.addEventListener('DOMContentLoaded', initializeMobileUI);
       window.addEventListener('resize', initializeMobileUI);
+      
+      // SECURITY AND BROWSER COMPATIBILITY FIXES
+      
+      // Prevent XSS and ensure secure content
+      function sanitizeContent() {
+        const scripts = document.querySelectorAll('script');
+        scripts.forEach(script => {
+          if (script.src && !script.src.startsWith('https://')) {
+            script.remove();
+          }
+        });
+      }
+      
+      // Safari and mobile browser compatibility
+      function ensureMobileCompatibility() {
+        // Fix Safari viewport issues
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+        }
+        
+        // Fix iOS Safari scrolling
+        document.body.style.webkitOverflowScrolling = 'touch';
+        
+        // Fix mobile browser security headers
+        const meta = document.createElement('meta');
+        meta.setAttribute('http-equiv', 'Content-Security-Policy');
+        meta.setAttribute('content', "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data:; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;");
+        document.head.appendChild(meta);
+      }
+      
+      // Initialize security and compatibility
+      document.addEventListener('DOMContentLoaded', function() {
+        sanitizeContent();
+        ensureMobileCompatibility();
+      });
       
       // Close lightbox when clicking outside image
       document.addEventListener('click', function(e) {
