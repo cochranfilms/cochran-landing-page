@@ -9912,18 +9912,48 @@
     .cinematic-header {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 200px;
       background: 
         radial-gradient(circle at center, #1a1a1a 0%, #000000 70%),
         linear-gradient(45deg, #000000 0%, #0d0d0d 100%);
       z-index: 10;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       overflow: hidden;
       will-change: transform;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
+      padding: 0 2rem;
+    }
+    
+    /* Header Layout Sections */
+    .header-left-graphics {
+      position: relative;
+      width: 25%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    
+    .header-center-content {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .header-right-graphics {
+      position: relative;
+      width: 25%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
     
     /* Professional Camera Viewfinder Overlay */
@@ -10415,6 +10445,56 @@
       animation: fadeInUp 1s ease 0.8s both;
     }
     
+    /* Additional Graphics */
+    .additional-graphics {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+    
+    .graphic-circle {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #FFB200;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,178,0,0.3) 0%, transparent 70%);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .graphic-triangle {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 15px solid #FFB200;
+      animation: rotate 3s linear infinite;
+    }
+    
+    .graphic-square {
+      width: 15px;
+      height: 15px;
+      border: 2px solid #FFB200;
+      background: rgba(255,178,0,0.2);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(255,178,0,0.5); }
+      50% { box-shadow: 0 0 15px rgba(255,178,0,0.8); }
+    }
+    
     @keyframes textShimmer {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -10494,6 +10574,38 @@
         font-size: 1rem !important;
         max-width: 280px !important;
         margin: 0 auto !important;
+      }
+      
+      /* Mobile header layout adjustments */
+      .cinematic-header {
+        height: 150px !important;
+        padding: 0 1rem !important;
+      }
+      
+      .header-left-graphics,
+      .header-right-graphics {
+        width: 20% !important;
+      }
+      
+      .header-center-content {
+        width: 60% !important;
+      }
+      
+      .cinematic-text img {
+        max-width: 80px !important;
+      }
+      
+      .tagline {
+        font-size: 0.7rem !important;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem !important;
+      }
+      
+      .header-description {
+        font-size: 0.8rem !important;
+        max-width: 200px !important;
       }
       
       /* Ensure no elements exceed viewport width */
@@ -14751,7 +14863,7 @@
     </div> <!-- End mobile-content -->
   </div>
 
-  <!-- 🎬 CINEMATIC HEADER BANNER -->
+      <!-- 🎬 CINEMATIC HEADER BANNER -->
   <header class="cinematic-header">
     <!-- Film Strip Borders -->
     <div class="film-strip"></div>
@@ -14772,69 +14884,78 @@
       <div class="spotlight"></div>
     </div>
     
-    <!-- Director's Clapperboard -->
-    <div class="clapperboard">
-      <div class="clapper-top"></div>
-      <div class="clapper-text">
-        COCHRAN<br>
-        FILMS<br>
-        STUDIO
+    <!-- Left Side Graphics -->
+    <div class="header-left-graphics">
+      <!-- Floating Particles -->
+      <div class="particles-system">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
       </div>
-    </div>
-    
-    <!-- Film Reels Animation -->
-    <div class="film-reels">
-      <div class="film-reel"></div>
-      <div class="film-reel"></div>
-    </div>
-    
-    <!-- Camera Equipment -->
-    <div class="camera-equipment">
-      <div class="camera-lens"></div>
-      <div class="camera-body"></div>
-    </div>
-    
-    <!-- Floating Particles -->
-    <div class="particles-system">
-      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-      <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
-      <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
-      <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
-      <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
-      <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
-      <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
-      <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
-      <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
-    </div>
-    
-    <!-- Lens Flares -->
-    <div class="lens-flare"></div>
-    <div class="lens-flare"></div>
-    <div class="lens-flare"></div>
-    
-    <!-- Main Aperture Container -->
-    <div class="aperture-container">
-      <div class="aperture"></div>
       
-      <!-- Cinematic Typography -->
-      <div class="cinematic-text">
-        <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
-        <div class="tagline">STORYTELLING THAT CONVERTS</div>
-        <div class="header-subtitle">Work with a Full-Stack Digital Strategist</div>
-        <div class="header-description">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</div>
+      <!-- Lens Flares -->
+      <div class="lens-flare"></div>
+      <div class="lens-flare"></div>
+    </div>
+    
+    <!-- Center Content -->
+    <div class="header-center-content">
+      <!-- Director's Clapperboard -->
+      <div class="clapperboard">
+        <div class="clapper-top"></div>
+        <div class="clapper-text">
+          COCHRAN<br>
+          FILMS<br>
+          STUDIO
+        </div>
+      </div>
+      
+      <!-- Main Aperture Container -->
+      <div class="aperture-container">
+        <div class="aperture"></div>
+        
+        <!-- Cinematic Typography -->
+        <div class="cinematic-text">
+          <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 120px; width: 100%; height: auto; display: block; margin: 0 auto 0.5rem auto;" />
+          <div class="tagline">STORYTELLING THAT CONVERTS</div>
+          <div class="header-subtitle">Work with a Full-Stack Digital Strategist</div>
+          <div class="header-description">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</div>
+        </div>
       </div>
     </div>
     
-    <!-- Sound Waves -->
-    <div class="sound-waves">
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
+    <!-- Right Side Graphics -->
+    <div class="header-right-graphics">
+      <!-- Film Reels Animation -->
+      <div class="film-reels">
+        <div class="film-reel"></div>
+        <div class="film-reel"></div>
+      </div>
+      
+      <!-- Camera Equipment -->
+      <div class="camera-equipment">
+        <div class="camera-lens"></div>
+        <div class="camera-body"></div>
+      </div>
+      
+      <!-- Sound Waves -->
+      <div class="sound-waves">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+      
+      <!-- Additional Graphics -->
+      <div class="additional-graphics">
+        <div class="graphic-circle"></div>
+        <div class="graphic-triangle"></div>
+        <div class="graphic-square"></div>
+      </div>
     </div>
   </header>
 
