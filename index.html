@@ -836,9 +836,12 @@
       right: 0;
       background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
       padding: 1rem;
-      z-index: 9999;
+      z-index: 10000;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       border-bottom: 2px solid rgba(255,255,255,0.2);
+      height: 70px;
+      display: flex;
+      align-items: center;
     }
     
     .mobile-header-content {
@@ -1443,6 +1446,154 @@
         font-size: 1.2rem;
         font-weight: 700;
         color: #FFB200;
+      }
+      
+      /* Mobile Service Modal */
+      .mobile-service-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+        padding: 1rem;
+      }
+      
+      .mobile-service-modal-content {
+        background: #fff;
+        border-radius: 16px;
+        max-width: 90%;
+        max-height: 90%;
+        overflow-y: auto;
+        position: relative;
+        width: 100%;
+      }
+      
+      .mobile-service-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        background: #fff;
+        border-radius: 16px 16px 0 0;
+      }
+      
+      .mobile-service-modal-header h3 {
+        margin: 0;
+        color: #333;
+        font-size: 1.3rem;
+      }
+      
+      .mobile-service-modal-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #666;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-service-modal-close:hover {
+        background: #f0f0f0;
+        color: #333;
+      }
+      
+      .mobile-service-modal-body {
+        padding: 1.5rem;
+      }
+      
+      .mobile-service-options {
+        margin: 1.5rem 0;
+      }
+      
+      .mobile-service-option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-service-option:hover {
+        border-color: #FFB200;
+        background: rgba(255,178,0,0.05);
+      }
+      
+      .mobile-service-option-info h4 {
+        margin: 0 0 0.25rem 0;
+        color: #333;
+        font-size: 1rem;
+      }
+      
+      .mobile-service-option-info p {
+        margin: 0;
+        color: #FFB200;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+      
+      .mobile-add-service-btn {
+        background: #FFB200;
+        color: #000;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-add-service-btn:hover {
+        background: #FFD700;
+        transform: translateY(-1px);
+      }
+      
+      .mobile-service-features {
+        margin: 1.5rem 0;
+      }
+      
+      .mobile-service-features h3 {
+        margin-bottom: 1rem;
+        color: #333;
+      }
+      
+      .mobile-service-features ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .mobile-service-features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+        color: #666;
+      }
+      
+      .mobile-service-features li:before {
+        content: '✓';
+        color: #FFB200;
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+      
+      .mobile-selected-service {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+        color: #333;
       }
       
       /* Mobile Gallery Section */
@@ -2937,6 +3088,7 @@
       .mobile-hero {
         min-height: 100vh;
         padding: 2rem 1rem;
+        padding-top: 5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -14160,6 +14312,19 @@
           <div class="mobile-total-price" id="mobileTotalPrice">Total: $0</div>
           <button class="mobile-cta-primary" onclick="openBookingModal()">Create Project Request</button>
         </div>
+        
+        <!-- Mobile Service Modal -->
+        <div id="mobileServiceModal" class="mobile-service-modal" style="display: none;">
+          <div class="mobile-service-modal-content">
+            <div class="mobile-service-modal-header">
+              <h3>Service Details</h3>
+              <button class="mobile-service-modal-close" onclick="closeMobileServiceModal()">✕</button>
+            </div>
+            <div id="mobileServiceContent" class="mobile-service-modal-body">
+              <!-- Content will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -16890,13 +17055,18 @@
     }
     
     function addMobileService(serviceName, price) {
+      // Initialize mobileSelectedServices if it doesn't exist
+      if (!window.mobileSelectedServices) {
+        window.mobileSelectedServices = [];
+      }
+      
       // Check if service already exists
-      const existingService = mobileSelectedServices.find(s => s.name === serviceName);
+      const existingService = window.mobileSelectedServices.find(s => s.name === serviceName);
       if (existingService) {
         existingService.quantity++;
         existingService.totalPrice = existingService.price * existingService.quantity;
       } else {
-        mobileSelectedServices.push({
+        window.mobileSelectedServices.push({
           name: serviceName,
           price: price,
           quantity: 1,
@@ -16906,6 +17076,37 @@
       
       updateMobileBuilderSummary();
       closeMobileServiceModal();
+    }
+    
+    function closeMobileServiceModal() {
+      const modal = document.getElementById('mobileServiceModal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+    
+    function updateMobileBuilderSummary() {
+      const summary = document.getElementById('mobileBuilderSummary');
+      const selectedServices = document.getElementById('mobileSelectedServices');
+      const totalPrice = document.getElementById('mobileTotalPrice');
+      
+      if (summary && selectedServices && totalPrice && window.mobileSelectedServices) {
+        if (window.mobileSelectedServices.length > 0) {
+          selectedServices.innerHTML = window.mobileSelectedServices.map(service => `
+            <div class="mobile-selected-service">
+              <span>${service.name} x${service.quantity}</span>
+              <span>$${service.totalPrice.toLocaleString()}</span>
+            </div>
+          `).join('');
+          
+          const total = window.mobileSelectedServices.reduce((sum, service) => sum + service.totalPrice, 0);
+          totalPrice.textContent = `Total: $${total.toLocaleString()}`;
+          
+          summary.style.display = 'block';
+        } else {
+          summary.style.display = 'none';
+        }
+      }
     }
     
     function updateMobileBuilderSummary() {
@@ -18909,21 +19110,21 @@
       // Function to open booking modal
     // 📱 MILLION DOLLAR BOOKING MODAL OPENING
     function openBookingModal() {
-      // Prevent auto-opening if triggered automatically
-      if (window.mobileState && window.mobileState.preventAutoModal && !event) {
-        console.log('🚫 Auto-modal opening prevented');
-        return;
-      }
+      console.log('📱 Mobile booking modal opening...');
       
       const modal = document.getElementById('bookingModal');
       const serviceSelect = document.getElementById('service');
       
       if (modal && serviceSelect) {
         // Close mobile nav if open
-        closeMobileNav();
+        if (typeof closeMobileNav === 'function') {
+          closeMobileNav();
+        }
         
         // Set modal state
-        window.mobileState.modalOpen = true;
+        if (window.mobileState) {
+          window.mobileState.modalOpen = true;
+        }
         
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
@@ -18937,12 +19138,16 @@
           option.style.display = 'block';
         });
         
-        // Show modal with proper styling and manual flag
+        // Show modal with proper styling
         modal.style.display = 'flex';
         modal.style.visibility = 'visible';
         modal.style.opacity = '1';
         modal.style.zIndex = '999999';
-        modal.setAttribute('data-manual-open', 'true');
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
         
         // Ensure modal content is visible
         const modalContent = modal.querySelector('.modal-content');
@@ -18952,6 +19157,8 @@
           modalContent.style.visibility = 'visible';
           modalContent.style.background = '#fff';
           modalContent.style.color = '#000';
+          modalContent.style.maxHeight = '90vh';
+          modalContent.style.overflowY = 'auto';
         }
         
         // Add focus to first input for better UX
@@ -18962,7 +19169,9 @@
           }
         }, 300);
         
-        console.log('✅ Booking modal opened manually - body scroll disabled');
+        console.log('✅ Mobile booking modal opened successfully');
+      } else {
+        console.error('❌ Booking modal or service select not found');
       }
     }
     
