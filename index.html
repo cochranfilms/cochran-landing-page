@@ -11299,22 +11299,28 @@
         animation-duration: 2s; /* Optimized for mobile */
       }
       
-          /* 🎬 MOBILE LOADING SCREEN - PREMIUM OPTIMIZED VERSION */
+              /* 🎬 CINEMATIC LOADING SCREEN - PREMIUM VERSION */
     .cinematic-loader {
-      background: 
-        radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-      will-change: opacity;
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      overflow: hidden !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: 
+        radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+      z-index: 999999 !important;
       display: flex !important;
-      flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      z-index: 999999 !important;
+      will-change: opacity;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    
+    body.loaded .cinematic-loader {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
     }
     
     /* Hide ALL complex elements on mobile for ultra-clean look */
@@ -11594,6 +11600,42 @@
       width: 100% !important;
       height: 100% !important;
       -webkit-overflow-scrolling: auto !important;
+    }
+    
+    /* Hide main content until loaded */
+    body:not(.loaded) #mobileVersion,
+    body:not(.loaded) .cinematic-header,
+    body:not(.loaded) .hero-section,
+    body:not(.loaded) .million-dollar-photography,
+    body:not(.loaded) .service-builder-section,
+    body:not(.loaded) .testimonials-section,
+    body:not(.loaded) .services-section,
+    body:not(.loaded) .comparison-section,
+    body:not(.loaded) .agency-comparison-section,
+    body:not(.loaded) .deliver-section,
+    body:not(.loaded) .timeline-section,
+    body:not(.loaded) .premium-footer {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    
+    /* Show main content after loading */
+    body.loaded #mobileVersion,
+    body.loaded .cinematic-header,
+    body.loaded .hero-section,
+    body.loaded .million-dollar-photography,
+    body.loaded .service-builder-section,
+    body.loaded .testimonials-section,
+    body.loaded .services-section,
+    body.loaded .comparison-section,
+    body.loaded .agency-comparison-section,
+    body.loaded .deliver-section,
+    body.loaded .timeline-section,
+    body.loaded .premium-footer {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
         /* Performance optimizations */
