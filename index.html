@@ -1176,9 +1176,32 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6rem 1rem 2rem 1rem;
+      padding: 2rem 1rem;
       text-align: center;
       margin-top: 60px; /* Account for fixed header */
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mobile-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .mobile-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
     }
       
       .mobile-hero-content {
@@ -2024,10 +2047,27 @@
     /* Mobile Gallery Section */
     .mobile-gallery {
       padding: 4rem 1rem;
-      background: #000;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mobile-gallery::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255,178,0,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,178,0,0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
     
     .mobile-gallery-container {
+      position: relative;
+      z-index: 1;
       max-width: 600px;
       margin: 0 auto;
     }
@@ -2036,10 +2076,15 @@
       color: #FFB200;
     }
     
+    .mobile-gallery .mobile-section-subtitle {
+      color: rgba(255,255,255,0.8);
+    }
+    
     .mobile-gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
+      margin-top: 2rem;
     }
     
     .mobile-gallery-item {
@@ -2197,6 +2242,36 @@
       background: #000;
       color: #FFB200;
       transform: translateY(-2px);
+    }
+    
+    /* Mobile Contact Info */
+    .mobile-contact-info {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .mobile-contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(255,178,0,0.2);
+    }
+    
+    .mobile-contact-item i {
+      color: #FFB200;
+      font-size: 1.2rem;
+    }
+    
+    .mobile-contact-item span {
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
     
     /* Mobile Modal Styles */
@@ -13812,69 +13887,9 @@
             </a>
           </div>
           <div class="nav-item">
-            <a href="#mobileAbout" onclick="scrollToMobileSection('mobileAbout')">
-              <span class="nav-text">About</span>
-              <span class="nav-icon">👤</span>
-            </a>
-          </div>
-          <div class="nav-item">
             <a href="#mobileServices" onclick="scrollToMobileSection('mobileServices')">
               <span class="nav-text">Services</span>
               <span class="nav-icon">👷</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobilePortfolio" onclick="scrollToMobileSection('mobilePortfolio')">
-              <span class="nav-text">Portfolio</span>
-              <span class="nav-icon">🎬</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobilePhotography" onclick="scrollToMobileSection('mobilePhotography')">
-              <span class="nav-text">Photography</span>
-              <span class="nav-icon">📸</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileServiceBuilder" onclick="scrollToMobileSection('mobileServiceBuilder')">
-              <span class="nav-text">Service Builder</span>
-              <span class="nav-icon">🔧</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileAgencyComparison" onclick="scrollToMobileSection('mobileAgencyComparison')">
-              <span class="nav-text">Why Us</span>
-              <span class="nav-icon">⭐</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileDeliver" onclick="scrollToMobileSection('mobileDeliver')">
-              <span class="nav-text">What We Deliver</span>
-              <span class="nav-icon">✅</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileTestimonials" onclick="scrollToMobileSection('mobileTestimonials')">
-              <span class="nav-text">Testimonials</span>
-              <span class="nav-icon">💬</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobilePricingComparison" onclick="scrollToMobileSection('mobilePricingComparison')">
-              <span class="nav-text">Pricing</span>
-              <span class="nav-icon">💰</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileServicesDetail" onclick="scrollToMobileSection('mobileServicesDetail')">
-              <span class="nav-text">Services Detail</span>
-              <span class="nav-icon">🎯</span>
-            </a>
-          </div>
-          <div class="nav-item">
-            <a href="#mobileTimeline" onclick="scrollToMobileSection('mobileTimeline')">
-              <span class="nav-text">Our Process</span>
-              <span class="nav-icon">⏱️</span>
             </a>
           </div>
           <div class="nav-item">
@@ -13889,700 +13904,217 @@
               <span class="nav-icon">✉️</span>
             </a>
           </div>
-          <div class="nav-item">
-            <a href="#mobileBlog" onclick="scrollToMobileSection('mobileBlog')">
-              <span class="nav-text">Blog</span>
-              <span class="nav-icon">✍️</span>
-            </a>
-          </div>
         </nav>
         
-                  <div class="mobile-nav-footer">
-            <div class="nav-cta-buttons">
-              <a href="#mobilePricingComparison" class="nav-cta-button" onclick="scrollToMobileSection('mobilePricingComparison')">
-                <span class="nav-icon">💰</span>
-                <span class="nav-text">Pricing</span>
-              </a>
-              <a href="#mobileContact" class="nav-cta-button" onclick="scrollToMobileSection('mobileContact')">
-                <span class="nav-icon">💻</span>
-                <span class="nav-text">Book</span>
-              </a>
-            </div>
+        <div class="mobile-nav-footer">
+          <div class="nav-cta-buttons">
+            <a href="#mobileContact" class="nav-cta-button" onclick="scrollToMobileSection('mobileContact')">
+              <span class="nav-icon">💻</span>
+              <span class="nav-text">Book Now</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Mobile Content Container -->
     <div class="mobile-content">
-    <!-- Mobile Hero Section -->
-    <section class="mobile-hero" id="mobileHero">
-      <div class="mobile-hero-content">
-        <div class="mobile-hero-header">
-          <img src="Logo.png" alt="Cochran Films Logo" class="mobile-hero-logo">
-          <div class="mobile-hero-divider"></div>
-        </div>
-        
-        <div class="mobile-hero-text">
-          <h1 class="mobile-hero-title">STORY TELLING THAT CONVERTS</h1>
-          <p class="mobile-hero-subtitle">Professional video production that transforms your vision into compelling content that drives results.</p>
-          
-          <div class="mobile-hero-stats">
-            <div class="mobile-hero-stat">
-              <div class="mobile-stat-value">500+</div>
-              <div class="mobile-stat-label">Projects</div>
-            </div>
-            <div class="mobile-hero-stat">
-              <div class="mobile-stat-value">98%</div>
-              <div class="mobile-stat-label">Satisfaction</div>
-            </div>
-            <div class="mobile-hero-stat">
-              <div class="mobile-stat-value">24h</div>
-              <div class="mobile-stat-label">Turnaround</div>
-            </div>
+      
+      <!-- Mobile Hero Section -->
+      <section class="mobile-hero" id="mobileHero">
+        <div class="mobile-hero-content">
+          <div class="mobile-hero-header">
+            <img src="Logo.png" alt="Cochran Films Logo" class="mobile-hero-logo">
+            <div class="mobile-hero-divider"></div>
           </div>
           
-          <div class="mobile-hero-buttons">
-            <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
-            <button class="mobile-cta-secondary" onclick="scrollToMobileSection('mobileServices')">View Services</button>
-          </div>
-          
-          <!-- Mobile Hero Video -->
-          <div class="mobile-hero-video">
-            <div class="mobile-video-container">
-              <iframe width="100%" height="200" src="https://www.youtube.com/embed/lp1Qcy-9PrU" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile About Section -->
-    <section class="mobile-about" id="mobileAbout">
-      <div class="mobile-about-container">
-        <h2 class="mobile-section-title">About Cochran Films</h2>
-        <p class="mobile-section-subtitle">Your full-stack media powerhouse</p>
-        
-        <div class="mobile-about-content">
-          <div class="mobile-about-text">
-            <p>We're a full-service media production company specializing in video, photography, web design, and brand development. Our mission is to transform your vision into compelling content that drives results.</p>
+          <div class="mobile-hero-text">
+            <h1 class="mobile-hero-title">STORY TELLING THAT CONVERTS</h1>
+            <p class="mobile-hero-subtitle">Professional video production that transforms your vision into compelling content that drives results.</p>
             
-            <div class="mobile-about-stats">
-              <div class="mobile-about-stat">
-                <div class="mobile-about-stat-number">500+</div>
-                <div class="mobile-about-stat-label">Projects Delivered</div>
+            <div class="mobile-hero-stats">
+              <div class="mobile-hero-stat">
+                <div class="mobile-stat-value">500+</div>
+                <div class="mobile-stat-label">Projects</div>
               </div>
-              <div class="mobile-about-stat">
-                <div class="mobile-about-stat-number">98%</div>
-                <div class="mobile-about-stat-label">Client Satisfaction</div>
+              <div class="mobile-hero-stat">
+                <div class="mobile-stat-value">98%</div>
+                <div class="mobile-stat-label">Satisfaction</div>
               </div>
-              <div class="mobile-about-stat">
-                <div class="mobile-about-stat-number">24h</div>
-                <div class="mobile-about-stat-label">Average Turnaround</div>
+              <div class="mobile-hero-stat">
+                <div class="mobile-stat-value">24h</div>
+                <div class="mobile-stat-label">Turnaround</div>
+              </div>
+            </div>
+            
+            <div class="mobile-hero-buttons">
+              <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
+              <button class="mobile-cta-secondary" onclick="scrollToMobileSection('mobileServices')">View Services</button>
+            </div>
+            
+            <!-- Mobile Hero Video -->
+            <div class="mobile-hero-video">
+              <div class="mobile-video-container">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/lp1Qcy-9PrU" frameborder="0" allowfullscreen></iframe>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Mobile Portfolio Section -->
-    <section class="mobile-portfolio" id="mobilePortfolio">
-      <div class="mobile-portfolio-container">
-        <h2 class="mobile-section-title">Our Portfolio</h2>
-        <p class="mobile-section-subtitle">A showcase of our best work</p>
-        
-        <div class="mobile-portfolio-grid">
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
-            <div class="mobile-portfolio-overlay">
+      <!-- Mobile Services Section -->
+      <section class="mobile-services" id="mobileServices">
+        <div class="mobile-services-container">
+          <h2 class="mobile-section-title">Our Services</h2>
+          <p class="mobile-section-subtitle">Professional media production for your business</p>
+          
+          <div class="mobile-service-cards">
+            <div class="mobile-service-card" onclick="openMobileServiceModal('photography')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-camera"></i>
+              </div>
               <h3>Event Photography</h3>
-              <p>Corporate event coverage</p>
+              <p>Professional event coverage with instant prints</p>
+              <div class="mobile-service-price">From $350</div>
             </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Brand Photography</h3>
-              <p>Professional headshots</p>
+
+            <div class="mobile-service-card" onclick="openMobileServiceModal('video')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <h3>Video Production</h3>
+              <p>Full-service video from concept to final cut</p>
+              <div class="mobile-service-price">From $250/hr</div>
             </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>Corporate Events</h3>
-              <p>Event documentation</p>
+
+            <div class="mobile-service-card" onclick="openMobileServiceModal('web')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3>Web Design</h3>
+              <p>Responsive websites that convert visitors</p>
+              <div class="mobile-service-price">From $750</div>
             </div>
-          </div>
-          
-          <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
-            <div class="mobile-portfolio-overlay">
-              <h3>On-Site Printing</h3>
-              <p>Instant photo service</p>
+
+            <div class="mobile-service-card" onclick="openMobileServiceModal('branding')">
+              <div class="mobile-service-icon">
+                <i class="fas fa-palette"></i>
+              </div>
+              <h3>Brand Development</h3>
+              <p>Complete brand identity and visual guidelines</p>
+              <div class="mobile-service-price">From $900</div>
             </div>
           </div>
         </div>
-        
-        <div class="mobile-portfolio-cta">
-          <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Mobile Services Section -->
-    <section class="mobile-services" id="mobileServices">
-      <div class="mobile-services-container">
-        <h2 class="mobile-section-title">Our Services</h2>
-        
-        <div class="mobile-service-cards">
-          <div class="mobile-service-card" data-service="photography">
-            <div class="mobile-service-icon">
-              <i class="fas fa-camera"></i>
-            </div>
-            <h3>Event Photography</h3>
-            <p>Professional event coverage with instant prints</p>
-            <div class="mobile-service-price">From $350</div>
-          </div>
-
-          <div class="mobile-service-card" data-service="video">
-            <div class="mobile-service-icon">
-              <i class="fas fa-video"></i>
-            </div>
-            <h3>Video Production</h3>
-            <p>Full-service video from concept to final cut</p>
-            <div class="mobile-service-price">From $250/hr</div>
-          </div>
-
-          <div class="mobile-service-card" data-service="web">
-            <div class="mobile-service-icon">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3>Web Design</h3>
-            <p>Responsive websites that convert visitors</p>
-            <div class="mobile-service-price">From $750</div>
-          </div>
-
-          <div class="mobile-service-card" data-service="branding">
-            <div class="mobile-service-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3>Brand Development</h3>
-            <p>Complete brand identity and visual guidelines</p>
-            <div class="mobile-service-price">From $900</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Photography Section -->
-    <section class="mobile-photography" id="mobilePhotography">
-      <div class="mobile-photography-container">
-        <h2 class="mobile-section-title">Million Dollar Photography</h2>
-        <p class="mobile-section-subtitle">Professional photography that captures your brand's essence</p>
-        
-        <div class="mobile-photography-grid">
-          <div class="mobile-photo-card">
-            <div class="mobile-photo-icon">
-              <i class="fas fa-camera-retro"></i>
-            </div>
-            <h3>Event Coverage</h3>
-            <p>Comprehensive event documentation with instant delivery</p>
-          </div>
+      <!-- Mobile Gallery Section -->
+      <section class="mobile-gallery" id="mobileGallery">
+        <div class="mobile-gallery-container">
+          <h2 class="mobile-section-title">Our Work</h2>
+          <p class="mobile-section-subtitle">A showcase of our best photography and video work</p>
           
-          <div class="mobile-photo-card">
-            <div class="mobile-photo-icon">
-              <i class="fas fa-portrait"></i>
+          <div class="mobile-gallery-grid">
+            <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+              <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
+              <div class="mobile-gallery-overlay">
+                <h3>Event Photography</h3>
+                <p>Corporate event coverage</p>
+              </div>
             </div>
-            <h3>Portrait Sessions</h3>
-            <p>Professional headshots and personal branding photography</p>
-          </div>
-          
-          <div class="mobile-photo-card">
-            <div class="mobile-photo-icon">
-              <i class="fas fa-building"></i>
+            
+            <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+              <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
+              <div class="mobile-gallery-overlay">
+                <h3>Brand Photography</h3>
+                <p>Professional headshots</p>
+              </div>
             </div>
-            <h3>Commercial</h3>
-            <p>Product photography and commercial brand imagery</p>
+            
+            <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+              <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
+              <div class="mobile-gallery-overlay">
+                <h3>Corporate Events</h3>
+                <p>Professional coverage</p>
+              </div>
+            </div>
+            
+            <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+              <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
+              <div class="mobile-gallery-overlay">
+                <h3>On-Site Printing</h3>
+                <p>Instant photo services</p>
+              </div>
+            </div>
+            
+            <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+              <img src="https://static.wixstatic.com/media/aeef42_6690ec6531d04cf7bb15b02eb64a891a~mv2.jpg" alt="Professional Headshots" loading="lazy">
+              <div class="mobile-gallery-overlay">
+                <h3>Professional Headshots</h3>
+                <p>Corporate portraits</p>
+              </div>
+            </div>
+            
+            <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
+              <img src="https://static.wixstatic.com/media/aeef42_3cf0ca7635fb46018f3986afeda8a5d1~mv2.jpg" alt="Product Photography" loading="lazy">
+              <div class="mobile-gallery-overlay">
+                <h3>Product Photography</h3>
+                <p>E-commerce and marketing</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Mobile Service Builder Section -->
-    <section class="mobile-service-builder" id="mobileServiceBuilder">
-      <div class="mobile-service-builder-container">
-        <h2 class="mobile-section-title">Service Builder</h2>
-        <p class="mobile-section-subtitle">Build your perfect service package with our intuitive builder</p>
-        
-        <div class="mobile-builder-categories">
-          <div class="mobile-category-card" onclick="openMobileServiceDetails('website')">
-            <div class="mobile-category-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <h3>Websites</h3>
-            <p>From starter sites to full e-commerce solutions</p>
-            <div class="mobile-category-price">From $750</div>
+      <!-- Mobile Contact Section -->
+      <section class="mobile-contact" id="mobileContact">
+        <div class="mobile-contact-container">
+          <h2 class="mobile-section-title">Get Started</h2>
+          <p class="mobile-contact-text">Ready to bring your vision to life? Let's create something amazing together.</p>
+          
+          <div class="mobile-contact-buttons">
+            <button class="mobile-contact-btn primary" onclick="openBookingModal()">
+              <i class="fas fa-phone"></i>
+              Book Consultation
+            </button>
+            <button class="mobile-contact-btn secondary" onclick="openMobileContactForm()">
+              <i class="fas fa-envelope"></i>
+              Send Message
+            </button>
           </div>
           
-          <div class="mobile-category-card" onclick="openMobileServiceDetails('photography')">
-            <div class="mobile-category-icon">
-              <i class="fas fa-camera"></i>
+          <div class="mobile-contact-info">
+            <div class="mobile-contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Atlanta, GA</span>
             </div>
-            <h3>Photography</h3>
-            <p>Event, portrait, and commercial photography</p>
-            <div class="mobile-category-price">From $350</div>
-          </div>
-          
-          <div class="mobile-category-card" onclick="openMobileServiceDetails('video')">
-            <div class="mobile-category-icon">
-              <i class="fas fa-video"></i>
-            </div>
-            <h3>Video</h3>
-            <p>Full video production from concept to delivery</p>
-            <div class="mobile-category-price">From $250/hr</div>
-          </div>
-          
-          <div class="mobile-category-card" onclick="openMobileServiceDetails('branding')">
-            <div class="mobile-category-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3>Branding</h3>
-            <p>Complete brand identity and visual guidelines</p>
-            <div class="mobile-category-price">From $900</div>
-          </div>
-        </div>
-        
-        <div class="mobile-builder-summary" id="mobileBuilderSummary" style="display: none;">
-          <h3>Your Package</h3>
-          <div class="mobile-selected-services" id="mobileSelectedServices"></div>
-          <div class="mobile-total-price" id="mobileTotalPrice">Total: $0</div>
-          <button class="mobile-cta-primary" onclick="openBookingModal()">Create Project Request</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Agency Comparison Section -->
-    <section class="mobile-agency-comparison" id="mobileAgencyComparison">
-      <div class="mobile-comparison-container">
-        <h2 class="mobile-section-title">Why Choose Us</h2>
-        <p class="mobile-section-subtitle">See how we compare to traditional agencies</p>
-        
-        <div class="mobile-comparison-grid">
-          <div class="mobile-comparison-card">
-            <div class="mobile-comparison-icon">
+            <div class="mobile-contact-item">
               <i class="fas fa-clock"></i>
+              <span>24/7 Availability</span>
             </div>
-            <h3>Fast Turnaround</h3>
-            <p>24-48 hour delivery vs weeks with agencies</p>
+            <div class="mobile-contact-item">
+              <i class="fas fa-star"></i>
+              <span>98% Satisfaction</span>
+            </div>
           </div>
-          
-          <div class="mobile-comparison-card">
-            <div class="mobile-comparison-icon">
-              <i class="fas fa-dollar-sign"></i>
-            </div>
-            <h3>Transparent Pricing</h3>
-            <p>No hidden fees or surprise costs</p>
-          </div>
-          
-          <div class="mobile-comparison-card">
-            <div class="mobile-comparison-icon">
-              <i class="fas fa-user"></i>
-            </div>
-            <h3>Direct Communication</h3>
-            <p>Work directly with the creator, not account managers</p>
+        </div>
+      </section>
+
+      <!-- Mobile Service Modal -->
+      <div id="mobileServiceModal" class="mobile-modal">
+        <div class="mobile-modal-content">
+          <button class="mobile-modal-close" onclick="closeMobileServiceModal()">&times;</button>
+          <div id="mobileServiceContent">
+            <!-- Content will be populated by JavaScript -->
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Mobile Deliver Section -->
-    <section class="mobile-deliver" id="mobileDeliver">
-      <div class="mobile-deliver-container">
-        <h2 class="mobile-section-title">What We Deliver</h2>
-        <p class="mobile-section-subtitle">Comprehensive solutions that drive results</p>
-        
-        <div class="mobile-deliver-grid">
-          <div class="mobile-deliver-card">
-            <div class="mobile-deliver-icon">
-              <i class="fas fa-search"></i>
-            </div>
-            <h3>SEO Mastery</h3>
-            <p>Schema, metadata, indexation, rich results</p>
-          </div>
-          
-          <div class="mobile-deliver-card">
-            <div class="mobile-deliver-icon">
-              <i class="fas fa-cogs"></i>
-            </div>
-            <h3>CRM + Workflow Setup</h3>
-            <p>Lead forms, automations, integrations</p>
-          </div>
-          
-          <div class="mobile-deliver-card">
-            <div class="mobile-deliver-icon">
-              <i class="fas fa-mouse-pointer"></i>
-            </div>
-            <h3>Conversion-Driven UI/UX</h3>
-            <p>From homepage to booking</p>
-          </div>
-          
-          <div class="mobile-deliver-card">
-            <div class="mobile-deliver-icon">
-              <i class="fas fa-camera"></i>
-            </div>
-            <h3>Visual Media</h3>
-            <p>Photography, branded content, promotional reels</p>
-          </div>
-        </div>
+      <!-- Mobile Lightbox -->
+      <div id="mobileLightbox" class="mobile-lightbox">
+        <button class="mobile-lightbox-close" onclick="closeMobileLightbox()">&times;</button>
+        <img id="mobileLightboxImg" src="" alt="Gallery Image">
       </div>
-    </section>
-
-    <!-- Mobile Testimonials Section -->
-    <section class="mobile-testimonials" id="mobileTestimonials">
-      <div class="mobile-testimonials-container">
-        <h2 class="mobile-section-title">What Our Clients Say</h2>
-        <p class="mobile-section-subtitle">Real stories from real clients who trusted us with their vision</p>
-        
-        <div class="mobile-testimonials-grid">
-          <div class="mobile-testimonial-card">
-            <div class="mobile-testimonial-quote">❝</div>
-            <p>"Cochran Films transformed our event into a cinematic masterpiece. The quality exceeded our expectations and the turnaround time was incredible. Worth every penny!"</p>
-            <div class="mobile-testimonial-author">
-              <div class="mobile-author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="mobile-author-info">
-                <h4>Sarah Johnson</h4>
-                <span>Event Director, TechCorp</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="mobile-testimonial-card featured">
-            <div class="mobile-testimonial-quote">❝</div>
-            <p>"Working with Cody was a game-changer for our brand. His attention to detail and creative vision brought our story to life in ways we never imagined possible."</p>
-            <div class="mobile-testimonial-author">
-              <div class="mobile-author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="mobile-author-info">
-                <h4>Michael Chen</h4>
-                <span>CEO, StartupXYZ</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="mobile-testimonial-card">
-            <div class="mobile-testimonial-quote">❝</div>
-            <p>"The consultation alone was worth the investment. Cody's expertise helped us understand exactly what we needed and delivered beyond our expectations."</p>
-            <div class="mobile-testimonial-author">
-              <div class="mobile-author-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="mobile-author-info">
-                <h4>Emily Rodriguez</h4>
-                <span>Marketing Manager, GrowthCo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Mobile Testimonials Stats -->
-        <div class="mobile-testimonials-stats">
-          <div class="mobile-stat-item">
-            <div class="mobile-stat-number" data-target="150">0</div>
-            <div class="mobile-stat-label">Happy Clients</div>
-          </div>
-          <div class="mobile-stat-item">
-            <div class="mobile-stat-number" data-target="500">0</div>
-            <div class="mobile-stat-label">Projects Completed</div>
-          </div>
-          <div class="mobile-stat-item">
-            <div class="mobile-stat-number" data-target="98">0</div>
-            <div class="mobile-stat-label">Satisfaction Rate</div>
-          </div>
-          <div class="mobile-stat-item">
-            <div class="mobile-stat-number" data-target="24">0</div>
-            <div class="mobile-stat-label">Hour Turnaround</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Pricing Comparison Section -->
-    <section class="mobile-pricing-comparison" id="mobilePricingComparison">
-      <div class="mobile-pricing-container">
-        <h2 class="mobile-section-title">Pricing Comparison</h2>
-        <p class="mobile-section-subtitle">See how much you save with Cochran Films</p>
-        
-        <div class="mobile-pricing-grid">
-          <div class="mobile-pricing-card">
-            <h3>Traditional Agency</h3>
-            <div class="mobile-price">$15,000+</div>
-            <ul>
-              <li>4-6 week timeline</li>
-              <li>Multiple revisions fees</li>
-              <li>Account manager overhead</li>
-              <li>Hidden costs</li>
-            </ul>
-          </div>
-          
-          <div class="mobile-pricing-card featured">
-            <h3>Cochran Films</h3>
-            <div class="mobile-price">$2,500+</div>
-            <ul>
-              <li>24-48 hour delivery</li>
-              <li>Unlimited revisions</li>
-              <li>Direct creator access</li>
-              <li>Transparent pricing</li>
-            </ul>
-            <button class="mobile-cta-primary" onclick="openBookingModal()">Get Started</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Services Detail Section -->
-    <section class="mobile-services-detail" id="mobileServicesDetail">
-      <div class="mobile-services-detail-container">
-        <h2 class="mobile-section-title">Our Services</h2>
-        <p class="mobile-section-subtitle">Comprehensive creative solutions for your business</p>
-        
-        <div class="mobile-services-detail-grid">
-          <div class="mobile-service-detail-card">
-            <div class="mobile-service-detail-icon">
-              <i class="fas fa-camera"></i>
-            </div>
-            <h3>Photography + Video</h3>
-            <p>Professional visual content that tells your story and engages your audience with stunning clarity.</p>
-            <div class="mobile-service-features">
-              <span>Event Coverage</span>
-              <span>Brand Photography</span>
-              <span>Video Production</span>
-            </div>
-          </div>
-          
-          <div class="mobile-service-detail-card">
-            <div class="mobile-service-detail-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3>Web Design + SEO</h3>
-            <p>Modern, responsive websites that convert visitors into customers with SEO optimization.</p>
-            <div class="mobile-service-features">
-              <span>Responsive Design</span>
-              <span>SEO Optimization</span>
-              <span>Performance Focused</span>
-            </div>
-          </div>
-          
-          <div class="mobile-service-detail-card">
-            <div class="mobile-service-detail-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3>Brand Development</h3>
-            <p>Complete brand identity development including logos, color schemes, and visual guidelines.</p>
-            <div class="mobile-service-features">
-              <span>Logo Design</span>
-              <span>Brand Guidelines</span>
-              <span>Visual Identity</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Timeline Section -->
-    <section class="mobile-timeline" id="mobileTimeline">
-      <div class="mobile-timeline-container">
-        <h2 class="mobile-section-title">Our Process</h2>
-        <p class="mobile-section-subtitle">From concept to delivery in record time</p>
-        
-        <div class="mobile-timeline-steps">
-          <div class="mobile-timeline-step">
-            <div class="mobile-step-number">1</div>
-            <div class="mobile-step-content">
-              <h3>Discovery</h3>
-              <p>We understand your vision and requirements</p>
-            </div>
-          </div>
-          
-          <div class="mobile-timeline-step">
-            <div class="mobile-step-number">2</div>
-            <div class="mobile-step-content">
-              <h3>Planning</h3>
-              <p>Strategic planning and resource allocation</p>
-            </div>
-          </div>
-          
-          <div class="mobile-timeline-step">
-            <div class="mobile-step-number">3</div>
-            <div class="mobile-step-content">
-              <h3>Creation</h3>
-              <p>Bringing your vision to life with precision</p>
-            </div>
-          </div>
-          
-          <div class="mobile-timeline-step">
-            <div class="mobile-step-number">4</div>
-            <div class="mobile-step-content">
-              <h3>Delivery</h3>
-              <p>Final delivery and ongoing support</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Gallery Section -->
-    <section class="mobile-gallery" id="mobileGallery">
-      <div class="mobile-gallery-container">
-        <h2 class="mobile-section-title">Our Work</h2>
-        <p class="mobile-section-subtitle">A showcase of our best photography and video work</p>
-        <div class="mobile-gallery-grid">
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Event Photography</h3>
-              <p>Corporate event coverage</p>
-            </div>
-          </div>
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Brand Photography</h3>
-              <p>Professional headshots</p>
-            </div>
-          </div>
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Corporate Events</h3>
-              <p>Professional coverage</p>
-            </div>
-          </div>
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>On-Site Printing</h3>
-              <p>Instant photo services</p>
-            </div>
-          </div>
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_6690ec6531d04cf7bb15b02eb64a891a~mv2.jpg" alt="Professional Headshots" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Professional Headshots</h3>
-              <p>Corporate portraits</p>
-            </div>
-          </div>
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_3cf0ca7635fb46018f3986afeda8a5d1~mv2.jpg" alt="Product Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Product Photography</h3>
-              <p>E-commerce and marketing</p>
-            </div>
-          </div>
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_4a1f243b3da2423197fcc264fbc5953d~mv2.jpg" alt="Wedding Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Wedding Photography</h3>
-              <p>Special moments captured</p>
-            </div>
-          </div>
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_618d354d9004436b8c1118273786eeaf~mv2.jpg" alt="Instant Prints" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Instant Prints</h3>
-              <p>Same-day delivery</p>
-            </div>
-          </div>
-          
-          <!-- Additional Gallery Items for Better Mobile Experience -->
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f~mv2.jpg" alt="Fashion Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Fashion Photography</h3>
-              <p>Style and editorial</p>
-            </div>
-          </div>
-          
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f~mv2.jpg" alt="Lifestyle Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Lifestyle Photography</h3>
-              <p>Authentic moments</p>
-            </div>
-          </div>
-          
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f~mv2.jpg" alt="Documentary Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Documentary Photography</h3>
-              <p>Storytelling through images</p>
-            </div>
-          </div>
-          
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e~mv2.jpg" alt="Street Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Street Photography</h3>
-              <p>Urban life and culture</p>
-            </div>
-          </div>
-          
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e~mv2.jpg" alt="Nature Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Nature Photography</h3>
-              <p>Landscape and wildlife</p>
-            </div>
-          </div>
-          
-          <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e~mv2.jpg" alt="Architecture Photography" loading="lazy">
-            <div class="mobile-gallery-overlay">
-              <h3>Architecture Photography</h3>
-              <p>Buildings and structures</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Contact Section -->
-    <section class="mobile-contact" id="mobileContact">
-      <div class="mobile-contact-container">
-        <h2 class="mobile-section-title">Get Started</h2>
-        <p class="mobile-contact-text">Ready to bring your vision to life? Let's create something amazing together.</p>
-        <div class="mobile-contact-buttons">
-          <button class="mobile-contact-btn primary" onclick="openBookingModal()">
-            <i class="fas fa-phone"></i>
-            Book Consultation
-          </button>
-          <button class="mobile-contact-btn secondary" onclick="openMobileContactForm()">
-            <i class="fas fa-envelope"></i>
-            Send Message
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Service Modal -->
-    <div id="mobileServiceModal" class="mobile-modal">
-      <div class="mobile-modal-content">
-        <button class="mobile-modal-close" onclick="closeMobileServiceModal()">&times;</button>
-        <div id="mobileServiceContent">
-          <!-- Content will be populated by JavaScript -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Lightbox -->
-    <div id="mobileLightbox" class="mobile-lightbox">
-      <button class="mobile-lightbox-close" onclick="closeMobileLightbox()">&times;</button>
-      <img id="mobileLightboxImg" src="" alt="Gallery Image">
-    </div>
     </div> <!-- End mobile-content -->
   </div>
 
