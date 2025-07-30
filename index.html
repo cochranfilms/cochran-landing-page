@@ -17005,47 +17005,46 @@
   <link rel="preload" href="logo-white.png" as="image">
   
   <script>
-    // Optimized Blockbuster-style loading screen audio and transition logic
+    // Simplified Audio System for Loading Screen
     (function() {
-      // Disable audio completely on mobile devices
-      const isMobile = window.innerWidth <= 768;
+      // Initialize audio context for VHS sounds
+      initAudio();
       
+      // Only handle main audio on desktop
+      const isMobile = window.innerWidth <= 768;
       const audioElement = document.getElementById('videoStoreAudio');
+      
       if (audioElement && !isMobile) {
-        audioElement.volume = 0.2;
+        // Configure main audio
+        audioElement.volume = 0.3;
         audioElement.loop = false;
         audioElement.muted = false;
         audioElement.preload = 'auto';
         
         let hasEntered = false;
-        let autoEnterTimer = null;
         let audioFadeOutInterval = null;
         
-        // Constants
-        const AUTO_ENTER_DELAY = 17000; // 17 seconds
-        const AUDIO_FADE_DURATION = 2000; // 2 seconds
-        
-        // Enhanced fade out function with proper cleanup
+        // Simple fade out function
         const fadeOutAudio = () => {
-          if (audioFadeOutInterval) return; // Prevent multiple fade outs
+          if (audioFadeOutInterval) return;
           
           console.log('🔇 Starting audio fade out...');
           
           audioFadeOutInterval = setInterval(() => {
-            if (audioElement.volume > 0.1) {
-              audioElement.volume -= 0.1;
+            if (audioElement.volume > 0.05) {
+              audioElement.volume -= 0.05;
             } else {
               audioElement.pause();
               audioElement.currentTime = 0;
-              audioElement.volume = 0.2; // Reset volume for next time
+              audioElement.volume = 0.3; // Reset volume
               clearInterval(audioFadeOutInterval);
               audioFadeOutInterval = null;
               console.log('🔇 Audio fade out complete');
             }
-          }, 100);
+          }, 50);
         };
         
-        // Cinematic transition function
+        // Simplified cinematic transition
         const performCinematicTransition = () => {
           const cinematicLoader = document.querySelector('.cinematic-loader');
           const mainEntrance = document.querySelector('.main-entrance');
@@ -17062,7 +17061,7 @@
           // Add VHS glitch effect
           cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
           
-          // Enhanced door opening sequence
+          // Door opening sequence
           setTimeout(() => {
             // Entrance glow effect
             mainEntrance.style.boxShadow = `
@@ -17096,19 +17095,12 @@
                 cinematicLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                 cinematicLoader.style.opacity = '0';
                 cinematicLoader.style.filter = 'blur(3px) brightness(0.3)';
-                cinematicLoader.style.transform = 'scale(0.95)';
-                
-                // Only set overflow hidden on desktop
-                if (window.innerWidth > 768) {
-                  document.body.style.overflow = 'hidden';
-                }
                 
                 // Final fade to black
                 setTimeout(() => {
                   cinematicLoader.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
                   cinematicLoader.style.opacity = '0';
                   cinematicLoader.style.filter = 'blur(6px) brightness(0)';
-                  cinematicLoader.style.transform = 'scale(0.9)';
                   
                   // Complete removal
                   setTimeout(() => {
@@ -17118,21 +17110,12 @@
                     cinematicLoader.style.opacity = '0';
                     cinematicLoader.style.pointerEvents = 'none';
                     cinematicLoader.style.zIndex = '-1';
-                    cinematicLoader.style.transform = 'scale(0.8)';
                     cinematicLoader.style.filter = 'blur(10px) brightness(0)';
                     cinematicLoader.style.background = 'transparent';
                     
                     // Show main content
                     document.body.classList.add('loaded');
-                    // Restore overflow properly for mobile
-                    if (window.innerWidth <= 768) {
-                      document.body.style.overflow = 'auto';
-                      document.body.style.overflowY = 'auto';
-                      document.documentElement.style.overflow = 'auto';
-                      document.documentElement.style.overflowY = 'auto';
-                    } else {
-                      document.body.style.overflow = '';
-                    }
+                    document.body.style.overflow = '';
                     
                     const mainContent = document.querySelector('header, main, footer, .hero-section, .services-section, .about-section, .contact-section, .gallery-section');
                     if (mainContent) {
@@ -17174,23 +17157,12 @@
           document.addEventListener('touchstart', playOnInteraction);
         });
         
-        // Auto-enter timer
-        const autoEnter = setTimeout(() => {
-          if (!hasEntered) {
-            console.log('⏰ Auto-entering store after 17 seconds...');
-            hasEntered = true;
-            fadeOutAudio();
-            performCinematicTransition();
-          }
-        }, AUTO_ENTER_DELAY);
-        
-        // Override enterStore function
+        // Override enterStore function to handle audio fade out
         const originalEnterStore = window.enterStore;
         window.enterStore = function() {
           if (!hasEntered) {
             hasEntered = true;
-            clearTimeout(autoEnter);
-            console.log('⏰ Auto-enter timer cancelled by user');
+            console.log('🎵 User clicked ENTER - fading out audio');
             fadeOutAudio();
             originalEnterStore.call(this);
           }
@@ -17290,19 +17262,19 @@
     <!-- Film Strip Effect -->
     <div class="film-strip"></div>
     
-    <!-- VHS Static Overlay -->
-    <div class="vhs-static"></div>
+    <!-- VHS Static Overlay - DISABLED -->
+    <!-- <div class="vhs-static"></div> -->
     
-    <!-- VHS Tracking Lines -->
-    <div class="vhs-tracking">
+    <!-- VHS Tracking Lines - DISABLED -->
+    <!-- <div class="vhs-tracking">
       <div class="tracking-line"></div>
       <div class="tracking-line"></div>
       <div class="tracking-line"></div>
       <div class="tracking-line"></div>
-    </div>
+    </div> -->
     
-    <!-- Scan Lines -->
-    <div class="scan-lines"></div>
+    <!-- Scan Lines - DISABLED -->
+    <!-- <div class="scan-lines"></div> -->
     
     <!-- Ambient Fog -->
     <div class="ambient-fog"></div>
@@ -19257,9 +19229,8 @@
     }
   }
   
-  // Enhanced Audio Functions with Web Audio API
+  // Simplified Audio System
   let audioContext;
-  let ambientGain;
   let rewindGain;
   let clickGain;
   
@@ -19272,31 +19243,16 @@
     
     try {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      ambientGain = audioContext.createGain();
       rewindGain = audioContext.createGain();
       clickGain = audioContext.createGain();
       
-      ambientGain.gain.value = 0.2;
-      rewindGain.gain.value = 0.4;
-      clickGain.gain.value = 0.5;
+      rewindGain.gain.value = 0.3;
+      clickGain.gain.value = 0.4;
       
       console.log('🎵 Audio system initialized');
-      
-      // DISABLED - Audio is now controlled by the new autoplay system
-      // Auto-start ambient audio without user interaction
-      // setTimeout(() => {
-      //   createAmbientHum();
-      // }, 1000);
     } catch (e) {
       console.log('Audio context not supported:', e);
     }
-  }
-  
-  function createAmbientHum() {
-    // DISABLED - Audio is now controlled by the new autoplay system
-    // This function is kept for compatibility but does nothing
-    console.log('🎵 createAmbientHum() disabled - audio controlled by new system');
-    return;
   }
   
   // Enhanced audio fade out function
