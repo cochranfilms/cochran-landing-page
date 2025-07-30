@@ -851,7 +851,7 @@
     }
     
     .mobile-header-logo {
-      height: 40px;
+      height: 60px;
       width: auto;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
       display: block;
@@ -1579,7 +1579,7 @@
       }
       
       #mobileVersion {
-        min-height: 100vh !important;
+        height: auto !important;
         margin: 0 !important;
         padding: 0 !important;
         padding-bottom: 0 !important;
@@ -2536,6 +2536,31 @@
         padding: 1.5rem 0.5rem;
         overflow: hidden;
         -webkit-overflow-scrolling: touch;
+      }
+      
+      /* Disable hover effects on mobile and enhance touch interaction */
+      .mobile-gallery-item:hover {
+        transform: none !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+        border-color: rgba(255,178,0,0.2) !important;
+      }
+      
+      .mobile-gallery-item:hover img {
+        transform: none !important;
+      }
+      
+      /* Add active state for better mobile feedback */
+      .mobile-gallery-item:active {
+        transform: scale(0.95) !important;
+        transition: transform 0.1s ease !important;
+      }
+      
+      /* Ensure click events work properly */
+      .mobile-gallery-item {
+        cursor: pointer !important;
+        -webkit-tap-highlight-color: rgba(255,178,0,0.3) !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
       }
       
       .mobile-gallery-grid {
@@ -7299,6 +7324,23 @@
       align-items: center;
       justify-content: center;
       animation: fadeIn 0.3s;
+    }
+    
+    /* Ensure success popup shows on mobile */
+    @media (max-width: 768px) {
+      .success-overlay {
+        z-index: 99999999 !important;
+        background: rgba(0,0,0,0.8) !important;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+      
+      .success-content {
+        z-index: 99999999 !important;
+        transform: none !important;
+        width: 90vw !important;
+        max-width: 350px !important;
+      }
     }
     .success-content {
       background: var(--card-bg);
@@ -15023,7 +15065,7 @@
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
       <div class="mobile-header-content">
-        <img src="Logo.png" alt="Cochran Films Logo" class="mobile-header-logo">
+        <img src="logo-white.png" alt="Cochran Films Logo" class="mobile-header-logo">
         <div class="mobile-header-divider"></div>
         <h1 class="mobile-header-title">WORK WITH A FULL-STACK DIGITAL STRATEGIST</h1>
         <p class="mobile-header-subtitle">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</p>
@@ -17650,21 +17692,60 @@
     }
     
     function openMobileLightbox(element) {
+      console.log('📱 Opening mobile lightbox');
+      
       const lightbox = document.getElementById('mobileLightbox');
       const img = document.getElementById('mobileLightboxImg');
       const imageSrc = element.querySelector('img').src;
       const imageAlt = element.querySelector('img').alt;
       
+      if (!lightbox || !img) {
+        console.error('❌ Mobile lightbox elements not found');
+        return;
+      }
+      
       img.src = imageSrc;
       img.alt = imageAlt;
+      
+      // Enhanced mobile lightbox display
       lightbox.style.display = 'flex';
+      lightbox.style.opacity = '0';
+      lightbox.style.zIndex = '99999999';
+      
+      // Prevent body scrolling
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      
+      // Fade in animation
+      setTimeout(() => {
+        lightbox.style.opacity = '1';
+        lightbox.classList.add('active');
+      }, 10);
+      
+      console.log('✅ Mobile lightbox opened successfully');
     }
     
     function closeMobileLightbox() {
+      console.log('📱 Closing mobile lightbox');
+      
       const lightbox = document.getElementById('mobileLightbox');
-      lightbox.style.display = 'none';
+      if (!lightbox) return;
+      
+      // Fade out animation
+      lightbox.style.opacity = '0';
+      lightbox.classList.remove('active');
+      
+      setTimeout(() => {
+        lightbox.style.display = 'none';
+      }, 300);
+      
+      // Restore body state
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      
+      console.log('✅ Mobile lightbox closed');
     }
     
     // Mobile Service Builder Functions
