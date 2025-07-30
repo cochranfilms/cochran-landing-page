@@ -10433,7 +10433,7 @@
     .membership-card {
       position: absolute;
       top: 50%;
-      left: 75%;
+      left: 65%;
       transform: translate(-50%, -50%);
       z-index: 20;
       animation: cardFloat 3s ease-in-out infinite;
@@ -10737,7 +10737,7 @@
     .arrow-hint {
       position: absolute;
       top: 50%;
-      left: 70%;
+      left: 55%;
       transform: translate(-50%, -50%);
       z-index: 25;
       opacity: 0.8;
@@ -10823,19 +10823,19 @@
     /* Responsive positioning for different screen sizes */
     @media (max-width: 1200px) {
       .membership-card {
-        left: 70%;
+        left: 60%;
       }
       .arrow-hint {
-        left: 65%;
+        left: 50%;
       }
     }
     
     @media (max-width: 1024px) {
       .membership-card {
-        left: 65%;
+        left: 55%;
       }
       .arrow-hint {
-        left: 60%;
+        left: 45%;
       }
       .card-sleeve {
         width: 260px;
@@ -10852,10 +10852,10 @@
     
     @media (max-width: 768px) {
       .membership-card {
-        left: 60%;
+        left: 50%;
       }
       .arrow-hint {
-        left: 55%;
+        left: 40%;
       }
       .card-sleeve {
         width: 240px;
@@ -10878,10 +10878,10 @@
     
     @media (max-width: 480px) {
       .membership-card {
-        left: 55%;
+        left: 45%;
       }
       .arrow-hint {
-        left: 50%;
+        left: 35%;
       }
       .card-sleeve {
         width: 220px;
@@ -10905,10 +10905,10 @@
     /* Extra small screens - ensure maximum separation */
     @media (max-width: 375px) {
       .membership-card {
-        left: 50%;
+        left: 40%;
       }
       .arrow-hint {
-        left: 45%;
+        left: 30%;
       }
       .card-sleeve {
         width: 200px;
@@ -16902,7 +16902,7 @@
     <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
   </audio>
   
-  <audio id="videoStoreAudio" preload="auto">
+  <audio id="videoStoreAudio" preload="auto" loop>
     <source src="./Video_Store.mp3" type="audio/mpeg">
   </audio>
   
@@ -18923,8 +18923,26 @@
     if (audioElement) {
       audioElement.volume = 0.3;
       audioElement.loop = true;
-      audioElement.play().catch(e => console.log('Audio autoplay blocked:', e));
-      console.log('🎵 Playing Video_Store.mp3 ambient audio');
+      
+      // Try to play immediately
+      const playPromise = audioElement.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log('🎵 Playing Video_Store.mp3 ambient audio in loop');
+          })
+          .catch(e => {
+            console.log('Audio autoplay blocked, will play on user interaction:', e);
+            // Set up to play on first user interaction
+            const playOnInteraction = () => {
+              audioElement.play().catch(err => console.log('Still blocked:', err));
+              document.removeEventListener('click', playOnInteraction);
+              document.removeEventListener('keydown', playOnInteraction);
+            };
+            document.addEventListener('click', playOnInteraction);
+            document.addEventListener('keydown', playOnInteraction);
+          });
+      }
     } else {
       console.log('⚠️ Video_Store.mp3 not found, falling back to generated audio');
       // Fallback to generated audio if file not found
@@ -19228,10 +19246,8 @@
     // Clear saved name on page refresh
     clearSavedName();
     
-    // Start ambient hum after a short delay
-    setTimeout(() => {
-      playAmbientHum();
-    }, 2000);
+    // Start ambient audio immediately
+    playAmbientHum();
   });
   
   // Also call on window load as backup
