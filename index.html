@@ -1469,10 +1469,12 @@
         margin: 0;
       }
       
-      /* Remove any bottom spacing */
+      /* Remove any bottom spacing and add top spacing for fixed header */
       .mobile-content {
         padding-bottom: 0 !important;
         margin-bottom: 0 !important;
+        margin-top: 120px !important; /* Space for fixed header banner */
+        padding-top: 1rem !important;
       }
       
       body {
@@ -1503,6 +1505,41 @@
         body {
           height: auto !important;
           overflow-x: hidden !important;
+        }
+        
+        /* Ensure mobile content doesn't get covered by fixed header */
+        .mobile-content {
+          margin-top: 120px !important;
+          padding-top: 1rem !important;
+        }
+        
+        /* Adjust spacing for smaller screens */
+        @media (max-width: 480px) {
+          .mobile-content {
+            margin-top: 140px !important; /* Extra space for smaller screens where text might wrap */
+          }
+          
+          .mobile-header-banner {
+            padding: 0.8rem !important;
+          }
+          
+          .mobile-header-title {
+            font-size: 1.1rem !important;
+            line-height: 1.1 !important;
+          }
+          
+          .mobile-header-subtitle {
+            font-size: 0.8rem !important;
+            line-height: 1.3 !important;
+          }
+        }
+        
+        /* Hide desktop footer on mobile to prevent white space */
+        .premium-footer {
+          display: none !important;
+          visibility: hidden !important;
+          position: absolute !important;
+          z-index: -1 !important;
         }
       }
 
@@ -2519,7 +2556,7 @@
         overflow: hidden;
         border-radius: 12px;
         background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-        touch-action: none;
+        touch-action: pan-y;
         -webkit-tap-highlight-color: transparent;
         transform: translateZ(0);
         will-change: transform;
@@ -2540,7 +2577,7 @@
         border-radius: 12px;
         transform: translateZ(0);
         will-change: transform;
-        pointer-events: none;
+        pointer-events: auto;
         transition: transform 0.3s ease;
       }
       
@@ -7319,24 +7356,54 @@
       color: var(--primary);
       font-weight: 600;
     }
+    .success-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     .success-btn {
-      background: var(--primary);
-      color: var(--card-bg);
       border: none;
       border-radius: 8px;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 120px;
     }
-    .success-btn:hover {
+    .success-btn.primary {
+      background: var(--primary);
+      color: var(--card-bg);
+      box-shadow: 0 4px 15px rgba(255, 178, 0, 0.3);
+    }
+    .success-btn.primary:hover {
       background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 178, 0, 0.4);
+    }
+    .success-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--text);
+    }
+    .success-btn.secondary:hover {
+      background: var(--text);
+      color: var(--card-bg);
     }
     @media (max-width: 500px) {
       .success-content {
         padding: 2rem 1.5rem;
         width: 90vw;
+      }
+      .success-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .success-btn {
+        flex: none;
+        width: 100%;
       }
     }
 
@@ -16889,10 +16956,13 @@
 <div id="successPopup" class="success-overlay" style="display:none;">
   <div class="success-content">
     <div class="success-icon">✓</div>
-    <h3>Thank you for submitting a story request.</h3>
-    <p>Your project has been received. You will now be redirected to book online or learn more.</p>
-    <div class="countdown">Redirecting in <span id="countdown">8</span> seconds...</div>
-    <button id="okayBtn" class="success-btn">Okay</button>
+    <h3>Request Submitted Successfully!</h3>
+    <p>Your project details have been received. You'll be redirected to complete your booking in just a moment.</p>
+    <div class="countdown">Auto-redirecting in <span id="countdown">5</span> seconds...</div>
+    <div class="success-buttons">
+      <button id="bookNowBtn" class="success-btn primary">Book Now</button>
+      <button id="okayBtn" class="success-btn secondary">Wait for Auto-Redirect</button>
+    </div>
   </div>
 </div>
 
@@ -19551,7 +19621,7 @@ if (window.innerWidth <= 768) {
     
     console.log('📱 Success popup displayed for mobile');
     
-    let countdown = 8;
+    let countdown = 5;
     countdownEl.textContent = countdown;
     
     const countdownTimer = setInterval(() => {
@@ -19564,23 +19634,61 @@ if (window.innerWidth <= 768) {
       }
     }, 1000);
     
+    // Add immediate "Book Now" button handler
+    const bookNowBtn = document.getElementById('bookNowBtn');
+    if (bookNowBtn) {
+      bookNowBtn.onclick = function() {
+        clearInterval(countdownTimer);
+        redirectToService(url);
+      };
+      
+      // Mobile-compatible touch handler
+      bookNowBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        clearInterval(countdownTimer);
+        redirectToService(url);
+      }, { passive: false });
+    }
+    
     if (okayBtn) {
-      // Mobile-compatible button handler
+      // Mobile-compatible button handler for wait option (just dismisses the buttons, lets countdown continue)
       okayBtn.onclick = function(e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log('📱 Okay button clicked');
-        clearInterval(countdownTimer);
-        redirectToService(url);
+        console.log('📱 Wait button clicked - hiding buttons, continuing countdown');
+        
+        // Hide the buttons to show user acknowledged, but let countdown continue
+        const buttonsContainer = document.querySelector('.success-buttons');
+        if (buttonsContainer) {
+          buttonsContainer.style.display = 'none';
+        }
+        
+        // Update the countdown text to be more prominent
+        const countdownDiv = document.querySelector('.countdown');
+        if (countdownDiv) {
+          countdownDiv.style.fontSize = '1.2rem';
+          countdownDiv.style.fontWeight = 'bold';
+        }
       };
       
       // Add touch handler for mobile
       okayBtn.addEventListener('touchend', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log('📱 Okay button touched');
-        clearInterval(countdownTimer);
-        redirectToService(url);
+        console.log('📱 Wait button touched - hiding buttons, continuing countdown');
+        
+        // Hide the buttons to show user acknowledged, but let countdown continue
+        const buttonsContainer = document.querySelector('.success-buttons');
+        if (buttonsContainer) {
+          buttonsContainer.style.display = 'none';
+        }
+        
+        // Update the countdown text to be more prominent
+        const countdownDiv = document.querySelector('.countdown');
+        if (countdownDiv) {
+          countdownDiv.style.fontSize = '1.2rem';
+          countdownDiv.style.fontWeight = 'bold';
+        }
       }, { passive: false });
     }
   }
@@ -19612,15 +19720,9 @@ if (window.innerWidth <= 768) {
       console.log('📱 Mobile state restored before redirect');
     }
     
-    // Open the service page
-    try {
-      window.open(url, '_blank');
-      console.log('✅ Redirect successful');
-    } catch (error) {
-      console.error('❌ Redirect failed:', error);
-      // Fallback to location.href if window.open fails
-      window.location.href = url;
-    }
+    // Use location.href instead of window.open to avoid popup blockers
+    console.log('✅ Redirecting via location.href to avoid popup blockers');
+    window.location.href = url;
   }
 
   // Timeline hover detection for video movement
