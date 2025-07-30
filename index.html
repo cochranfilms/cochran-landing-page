@@ -52,43 +52,54 @@
   
   <!-- 🔒 FORCE HTTPS REDIRECT -->
   <script>
-    // CRITICAL FIX: Ensure content displays properly
-    function ensureContentVisibility() {
-      const isMobile = window.innerWidth <= 768;
-      console.log('🔧 Ensuring content visibility - Mobile:', isMobile);
-      
-      if (isMobile) {
-        // Show mobile version
-        const mobileVersion = document.getElementById('mobileVersion');
-        if (mobileVersion) {
-          mobileVersion.style.display = 'block';
-          mobileVersion.style.visibility = 'visible';
-          mobileVersion.style.opacity = '1';
-        }
-        
-        // Hide desktop elements
-        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-        desktopElements.forEach(el => {
-          el.style.display = 'none';
-          el.style.visibility = 'hidden';
-        });
-      } else {
-        // Show desktop elements
-        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
-        desktopElements.forEach(el => {
-          el.style.display = 'block';
-          el.style.visibility = 'visible';
-          el.style.opacity = '1';
-        });
-        
-        // Hide mobile version
-        const mobileVersion = document.getElementById('mobileVersion');
-        if (mobileVersion) {
-          mobileVersion.style.display = 'none';
-          mobileVersion.style.visibility = 'hidden';
-        }
+      // CRITICAL FIX: Ensure content displays properly
+  function ensureContentVisibility() {
+    const isMobile = window.innerWidth <= 768;
+    console.log('🔧 Ensuring content visibility - Mobile:', isMobile);
+    
+    if (isMobile) {
+      // Show mobile version
+      const mobileVersion = document.getElementById('mobileVersion');
+      if (mobileVersion) {
+        mobileVersion.style.display = 'block';
+        mobileVersion.style.visibility = 'visible';
+        mobileVersion.style.opacity = '1';
       }
+      
+      // Hide desktop elements
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+      desktopElements.forEach(el => {
+        el.style.display = 'none';
+        el.style.visibility = 'hidden';
+      });
+    } else {
+      // Show desktop elements with enhanced visibility
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+      desktopElements.forEach(el => {
+        el.style.display = 'block';
+        el.style.visibility = 'visible';
+        el.style.opacity = '1';
+        el.style.position = 'relative';
+        el.style.zIndex = '1';
+        el.style.overflow = 'visible';
+      });
+      
+      // Hide mobile version
+      const mobileVersion = document.getElementById('mobileVersion');
+      if (mobileVersion) {
+        mobileVersion.style.display = 'none';
+        mobileVersion.style.visibility = 'hidden';
+      }
+      
+      // Force text rendering improvements
+      const textElements = document.querySelectorAll('h1, h2, h3, p, span, div');
+      textElements.forEach(el => {
+        el.style.textRendering = 'optimizeLegibility';
+        el.style.webkitFontSmoothing = 'antialiased';
+        el.style.mozOsxFontSmoothing = 'grayscale';
+      });
     }
+  }
     
     // Run immediately and on window load
     ensureContentVisibility();
@@ -214,6 +225,32 @@
         position: absolute !important;
         z-index: -1 !important;
       }
+    }
+    
+    /* CRITICAL FIX: Ensure all text renders properly */
+    body {
+      text-rendering: optimizeLegibility !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      font-family: 'Inter', 'Segoe UI', sans-serif !important;
+    }
+    
+    /* Ensure sections are properly visible */
+    .deliver-section, .timeline-section, .testimonials-section {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 1 !important;
+      overflow: visible !important;
+    }
+    
+    /* Fix text overflow issues */
+    .testimonial-content p, .deliver-card p, .milestone-description {
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      hyphens: auto !important;
+      max-width: 100% !important;
     }
     
     /* Premium Interactive Enhancements */
@@ -5153,6 +5190,13 @@
       margin-bottom: 2rem;
       font-weight: 400;
       transition: color 0.3s ease;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     .testimonial-author {
   display: flex;
@@ -7812,6 +7856,10 @@
       overflow: visible;
       transition: background 0.5s ease;
       will-change: auto;
+      z-index: 1;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     .timeline-section::before {
       content: '';
@@ -7824,11 +7872,12 @@
         repeating-linear-gradient(
           0deg,
           transparent,
-          transparent 2px,
-          rgba(255, 178, 0, 0.02) 2px,
-          rgba(255, 178, 0, 0.02) 4px
+          transparent 4px,
+          rgba(255, 178, 0, 0.01) 4px,
+          rgba(255, 178, 0, 0.01) 8px
         );
       pointer-events: none;
+      z-index: 0;
     }
     .timeline-container {
       width: 100%;
@@ -7887,9 +7936,13 @@
       background: var(--section-bg);
       padding: 4rem 2rem;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       transition: background 0.5s ease;
       will-change: auto;
+      z-index: 1;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     .deliver-section::before {
       content: '';
@@ -7902,11 +7955,12 @@
         repeating-linear-gradient(
           0deg,
           transparent,
-          transparent 2px,
-          rgba(255, 178, 0, 0.02) 2px,
-          rgba(255, 178, 0, 0.02) 4px
+          transparent 4px,
+          rgba(255, 178, 0, 0.01) 4px,
+          rgba(255, 178, 0, 0.01) 8px
         );
       pointer-events: none;
+      z-index: 0;
     }
     .deliver-container {
       max-width: 1200px;
@@ -7972,15 +8026,23 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: color 0.3s ease;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
     }
     .deliver-card p {
       color: var(--text);
-      opacity: 0.8;
+      opacity: 0.9;
       font-size: 1rem;
       line-height: 1.6;
       margin: 0;
       font-weight: 400;
       transition: color 0.3s ease;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
     }
 
     /* Premium Cinematic Footer */
