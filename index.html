@@ -14,14 +14,14 @@
   <meta property="og:url" content="https://vision.cochranfilms.com">
   <meta property="og:title" content="Cochran Films | Atlanta's Full-Stack Media Powerhouse">
   <meta property="og:description" content="Bold visuals. Real strategy. Explore the creative launchpad of Cochran Films and see how we elevate brands through video, web, and content production.">
-  <meta property="og:image" content="https://static.wixstatic.com/media/aeef42_1464482357144945be578af2b9a0d850~mv2.jpg">
+  <meta property="og:image" content="og-image.jpg">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://vision.cochranfilms.com">
   <meta name="twitter:title" content="Cochran Films | Atlanta's Full-Stack Media Powerhouse">
   <meta name="twitter:description" content="Bold visuals. Real strategy. Explore the creative launchpad of Cochran Films and see how we elevate brands through video, web, and content production.">
-  <meta name="twitter:image" content="https://static.wixstatic.com/media/aeef42_1464482357144945be578af2b9a0d850~mv2.jpg">
+  <meta name="twitter:image" content="og-image.jpg">
   
   <!-- 🔒 SECURITY ENHANCEMENTS -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https: data:; media-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' https: wss:; object-src 'none'; base-uri 'self';">
@@ -50,6 +50,19 @@
   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
   
+  <!-- Preload critical images -->
+  <link rel="preload" href="professional-photography.jpg" as="image">
+  <link rel="preload" href="brand-photography.jpg" as="image">
+  <link rel="preload" href="corporate-events.jpg" as="image">
+  <link rel="preload" href="on-site-printing.jpg" as="image">
+  <link rel="preload" href="professional-headshots.jpg" as="image">
+  <link rel="preload" href="product-photography.jpg" as="image">
+  <link rel="preload" href="wedding-photography.jpg" as="image">
+  <link rel="preload" href="instant-prints.jpg" as="image">
+  <link rel="preload" href="fashion-photography.jpg" as="image">
+  <link rel="preload" href="Logo.png" as="image">
+  <link rel="preload" href="logo-white.png" as="image">
+  
   <!-- 🔒 FORCE HTTPS REDIRECT -->
   <script>
     // Force HTTPS redirect
@@ -62,43 +75,130 @@
       const isMobile = window.innerWidth <= 768;
       console.log('📱 Immediate mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
       
-      if (isMobile) {
-        // Force mobile version to be visible immediately
-        document.addEventListener('DOMContentLoaded', function() {
-          const mobileVersion = document.getElementById('mobileVersion');
-          if (mobileVersion) {
-            mobileVersion.style.display = 'block !important';
-            mobileVersion.style.visibility = 'visible !important';
-            mobileVersion.style.opacity = '1 !important';
-            mobileVersion.style.position = 'relative !important';
-            mobileVersion.style.zIndex = '1 !important';
-          }
-          
-          // Force hide desktop elements
-          const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
-          desktopElements.forEach(el => {
-            el.style.display = 'none !important';
-            el.style.visibility = 'hidden !important';
-            el.style.opacity = '0 !important';
-            el.style.position = 'absolute !important';
-            el.style.zIndex = '-1 !important';
-          });
-          
-          // Ensure mobile navigation is visible
-          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-          if (mobileNavToggle) {
-            mobileNavToggle.style.display = 'flex !important';
-            mobileNavToggle.style.visibility = 'visible !important';
-            mobileNavToggle.style.opacity = '1 !important';
-            mobileNavToggle.style.zIndex = '10000 !important';
-          }
-          
-          // Add mobile class to body
-          document.body.classList.add('mobile-view');
-          
-          console.log('📱 Immediate mobile initialization completed');
+      // Function to show mobile version
+      function showMobileVersion() {
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'block !important';
+          mobileVersion.style.visibility = 'visible !important';
+          mobileVersion.style.opacity = '1 !important';
+          mobileVersion.style.position = 'relative !important';
+          mobileVersion.style.zIndex = '1 !important';
+        }
+        
+        // Hide desktop elements  
+        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+        desktopElements.forEach(el => {
+          el.style.display = 'none !important';
+          el.style.visibility = 'hidden !important';
+          el.style.opacity = '0 !important';
+          el.style.position = 'absolute !important';
+          el.style.zIndex = '-1 !important';
         });
+        
+        // Show mobile navigation
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        if (mobileNavToggle) {
+          mobileNavToggle.style.display = 'flex !important';
+          mobileNavToggle.style.visibility = 'visible !important';
+          mobileNavToggle.style.opacity = '1 !important';
+          mobileNavToggle.style.zIndex = '10000 !important';
+        }
+        
+        document.body.classList.add('mobile-view');
+        console.log('📱 Mobile version activated');
       }
+      
+      // Function to show desktop version
+      function showDesktopVersion() {
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'none !important';
+          mobileVersion.style.visibility = 'hidden !important';
+          mobileVersion.style.opacity = '0 !important';
+          mobileVersion.style.position = 'absolute !important';
+          mobileVersion.style.zIndex = '-1 !important';
+        }
+        
+        // Show desktop elements
+        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+        desktopElements.forEach(el => {
+          if (el.classList.contains('cinematic-loader')) {
+            el.style.display = 'flex !important';
+          } else {
+            el.style.display = 'block !important';
+          }
+          el.style.visibility = 'visible !important';
+          el.style.opacity = '1 !important';
+          if (el.classList.contains('cinematic-loader')) {
+            el.style.position = 'fixed !important';
+            el.style.zIndex = '999999 !important';
+          } else {
+            el.style.position = 'relative !important';
+            el.style.zIndex = '1 !important';
+          }
+        });
+        
+        // Hide mobile navigation
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        if (mobileNavToggle) {
+          mobileNavToggle.style.display = 'none !important';
+          mobileNavToggle.style.visibility = 'hidden !important';
+          mobileNavToggle.style.opacity = '0 !important';
+          mobileNavToggle.style.zIndex = '-1 !important';
+        }
+        
+        document.body.classList.add('desktop-view');
+        console.log('🖥️ Desktop version activated');
+      }
+      
+      // Initialize based on screen size
+      if (isMobile) {
+        document.addEventListener('DOMContentLoaded', showMobileVersion);
+      } else {
+        document.addEventListener('DOMContentLoaded', showDesktopVersion);
+      }
+      
+      // Force show mobile version for testing images
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          console.log('🔧 Forcing mobile version to show for image testing');
+          showMobileVersion();
+        }, 1000);
+      });
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        const newIsMobile = window.innerWidth <= 768;
+        if (newIsMobile !== isMobile) {
+          if (newIsMobile) {
+            showMobileVersion();
+          } else {
+            showDesktopVersion();
+          }
+        }
+      });
+      
+      // Fallback: Force show appropriate version after 2 seconds if not working
+      setTimeout(function() {
+        const mobileVersion = document.getElementById('mobileVersion');
+        const desktopElements = document.querySelectorAll('.cinematic-header, .hero-section, .million-dollar-photography');
+        
+        if (isMobile) {
+          // If mobile and mobile version is hidden, force show it
+          if (mobileVersion && mobileVersion.style.display === 'none') {
+            console.log('🔄 Fallback: Forcing mobile version to show');
+            showMobileVersion();
+          }
+        } else {
+          // If desktop and desktop elements are hidden, force show them
+          const anyHidden = Array.from(desktopElements).some(el => el.style.display === 'none');
+          if (anyHidden) {
+            console.log('🔄 Fallback: Forcing desktop version to show');
+            showDesktopVersion();
+          }
+        }
+      }, 2000);
     })();
   </script>
   <!-- 🔒 SECURE EXTERNAL SCRIPTS WITH INTEGRITY CHECKS -->
@@ -812,20 +912,77 @@
     
     /* 📱 COMPREHENSIVE MOBILE OPTIMIZATION */
     
-    /* Mobile Version Detection and Display */
+    /* ======================================== */
+    /* MOBILE-ONLY EXPERIENCE (768px and below) */
+    /* ======================================== */
+    
+    /* Default: Hide mobile version on desktop */
+    #mobileVersion {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      z-index: -1 !important;
+    }
+    
+          /* Default: Show desktop elements */
+      .cinematic-header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+    
     @media (max-width: 768px) {
+      /* Force mobile version to be visible */
       #mobileVersion {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
       }
       
-      /* Hide desktop elements on mobile */
-      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      /* Completely hide ALL desktop elements on mobile */
+      .hero-section, .million-dollar-photography, .service-builder-section, 
       .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
       .deliver-section, .timeline-section, .premium-footer {
         display: none !important;
         visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      
+      /* Hide any other desktop elements that might interfere */
+      .desktop-only, [class*="desktop"], [class*="hero"], [class*="section"]:not([class*="mobile"]) {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      /* Ensure body doesn't have desktop-specific styles on mobile */
+      body {
+        overflow-x: hidden !important;
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      /* Ensure mobile navigation is visible */
+      .mobile-nav-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
       }
       
           /* Mobile Header Banner */
@@ -1148,26 +1305,7 @@
         color: #000;
       }
       
-      /* Mobile Loader */
-      .mobile-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-      }
-      
-      body.loaded .mobile-loader {
-        opacity: 0;
-        pointer-events: none;
-      }
+
       
           /* Mobile Hero Section */
     .mobile-hero {
@@ -1445,16 +1583,20 @@
         color: #FFB200;
       }
       
-      /* Mobile Gallery Section */
-      .mobile-gallery {
-        padding: 4rem 1rem;
-        background: #000;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
+          /* Mobile Gallery Section */
+    .mobile-gallery {
+      padding: 4rem 1rem;
+      background: #000;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 1 !important;
+      width: 100% !important;
+      height: auto !important;
+    }
       
       .mobile-gallery-container {
         max-width: 600px;
@@ -1471,27 +1613,39 @@
         gap: 1rem;
       }
       
-      .mobile-gallery-item {
-        border-radius: 15px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      }
+          .mobile-gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 1 !important;
+      width: 100% !important;
+      height: auto !important;
+    }
       
       .mobile-gallery-item:hover {
         transform: scale(1.05);
         box-shadow: 0 12px 35px rgba(255,178,0,0.3);
       }
       
-      .mobile-gallery-item img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-        background: #f0f0f0;
-        min-height: 200px;
-      }
+          .mobile-gallery-item img {
+      width: 100% !important;
+      height: 200px !important;
+      object-fit: cover !important;
+      display: block !important;
+      background: #f0f0f0 !important;
+      min-height: 200px !important;
+      border-radius: 12px !important;
+      position: relative !important;
+      z-index: 1 !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
       
       .mobile-gallery-item img[src*="placeholder"] {
         background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
@@ -2037,9 +2191,13 @@
     }
     
     .mobile-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 1rem !important;
+      width: 100% !important;
+      height: auto !important;
+      position: relative !important;
+      z-index: 1 !important;
     }
     
     .mobile-gallery-item {
@@ -2478,6 +2636,54 @@
     /* Scroll-based nav styling */
     .mobile-nav-toggle.scrolled {
       background: rgba(255,178,0,0.95);
+      
+    /* ======================================== */
+    /* DESKTOP-ONLY EXPERIENCE (769px and above) */
+    /* ======================================== */
+    
+    @media (min-width: 769px) {
+      /* Completely hide mobile version on desktop */
+      #mobileVersion {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      
+      /* Hide all mobile-specific elements on desktop */
+      [class*="mobile-"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+      }
+      
+      /* Ensure desktop elements are visible */
+      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: auto !important;
+        pointer-events: auto !important;
+      }
+      
+      /* Ensure desktop navigation is visible */
+      .nav-menu, .nav-container {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
       transform: scale(0.9);
     }
     
@@ -3719,19 +3925,7 @@
         margin-right: auto;
       }
       
-      /* Ensure mobile loader works properly */
-      .mobile-loader {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 99999 !important;
-      }
-      
-      body.loaded .mobile-loader {
-        opacity: 0 !important;
-        pointer-events: none !important;
-        transition: opacity 0.5s ease !important;
-      }
+
       
       /* Ensure mobile nav toggle is visible */
       .mobile-nav-toggle {
@@ -4532,14 +4726,22 @@
     /* Redesigned Hero Section */
     .hero-section {
       position: relative;
-      min-height: auto;
+      min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       overflow: hidden;
-      background: transparent;
-      transition: background 0.5s ease;
-      will-change: auto;
+      background: var(--section-bg);
       padding: 2rem 0;
+    }
+    
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
+      min-height: 60vh;
     }
     .hero-background {
       position: absolute;
@@ -4562,20 +4764,29 @@
     .hero-content {
       max-width: 1600px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 0.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 0.5rem;
       align-items: center;
+      justify-items: center;
       position: relative;
       z-index: 2;
+      border: none;
+      min-height: 80vh;
+    }
+    
+    .hero-text,
+    .hero-visual {
+      border: none;
+      outline: none;
     }
     .hero-title {
-      font-size: 5.5rem;
+      font-size: 4rem;
       font-weight: 900;
       color: var(--text);
       line-height: 1.1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: color 0.3s ease;
@@ -4599,9 +4810,9 @@
     .hero-subtitle {
       color: var(--text);
       opacity: 0.9;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       line-height: 1.6;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       font-weight: 400;
       opacity: 0;
       transform: translateY(20px);
@@ -4610,8 +4821,8 @@
     }
     .hero-stats {
       display: flex;
-      gap: 3rem;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.8s ease 0.8s forwards;
@@ -4636,7 +4847,7 @@
     }
     .hero-cta {
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.8s ease 1s forwards;
@@ -4694,10 +4905,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
     .hero-video-container {
       width: 100%;
-      max-width: 700px;
+      max-width: 800px;
+      height: auto;
       aspect-ratio: 16/9;
       background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
       border-radius: 24px;
@@ -4712,15 +4925,15 @@
       box-shadow: 
         0 25px 50px rgba(0,0,0,0.4),
         0 12px 25px rgba(255,178,0,0.15);
-      overflow: hidden;
-      padding: 12px;
+      overflow: visible;
+      padding: 1px;
+      margin: 1px;
     }
     .hero-video-container:hover {
-      transform: scale(1.05);
       border-color: rgba(255,178,0,0.4);
       box-shadow: 
-        0 30px 60px rgba(0,0,0,0.4),
-        0 12px 30px rgba(255,178,0,0.2);
+        0 25px 50px rgba(0,0,0,0.4),
+        0 12px 25px rgba(255,178,0,0.15);
     }
     .hero-video-container iframe {
       width: 100%;
@@ -4781,6 +4994,7 @@
       }
       .hero-video-container {
         max-width: 600px;
+        width: 100%;
       }
     }
 
@@ -4788,7 +5002,7 @@
     @media (max-width: 768px) {
       .hero-section {
         min-height: 100vh !important;
-        padding: 6rem 0 2rem 0 !important;
+        padding: 4rem 0 1rem 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -4796,11 +5010,12 @@
       
       .hero-content {
         grid-template-columns: 1fr !important;
-        gap: 2rem !important;
+        gap: 1rem !important;
         padding: 0 1rem !important;
         text-align: center !important;
         width: 100% !important;
         max-width: 100% !important;
+        justify-items: center !important;
       }
       
       .hero-text {
@@ -4936,6 +5151,57 @@
         width: 100% !important;
         height: 200px !important;
         border: none !important;
+      }
+      
+      /* 📱 MASONRY GALLERY MOBILE OPTIMIZATION */
+      .cinematic-masonry-gallery {
+        padding: 1rem !important;
+        margin: 2rem auto 0 auto !important;
+      }
+      
+      .masonry-grid {
+        columns: 2 !important;
+        column-gap: 1rem !important;
+        margin-bottom: 2rem !important;
+      }
+      
+      .masonry-item {
+        margin-bottom: 1rem !important;
+        animation: none !important;
+      }
+      
+      .masonry-content img {
+        min-height: 150px !important;
+        filter: brightness(1) contrast(1) !important;
+      }
+      
+      .masonry-overlay {
+        opacity: 0.4 !important;
+        padding: 1rem !important;
+      }
+      
+      .masonry-item:hover .masonry-overlay {
+        opacity: 0.8 !important;
+      }
+      
+      .overlay-content h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.3rem !important;
+      }
+      
+      .overlay-content p {
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      .overlay-actions {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+      
+      .view-btn, .book-btn {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.8rem !important;
       }
       
       .testimonials-grid {
@@ -6704,111 +6970,7 @@
       }
     }
     
-    /* Mobile Loading Screen */
-    @media (max-width: 768px) {
-      .cinematic-loader {
-        display: none !important;
-      }
-      
-      .mobile-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-        visibility: visible !important;
-      }
-      
-      /* Ensure mobile loader is visible by default on mobile */
-      body:not(.loaded) .mobile-loader {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-      
-      body.loaded .mobile-loader {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden !important;
-      }
-      
-      .mobile-loader.hidden {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden !important;
-      }
-      
-      .mobile-loader-content {
-        text-align: center;
-        color: #000;
-        max-width: 300px;
-        width: 90%;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .mobile-loader-logo {
-        width: 120px;
-        height: auto;
-        margin-bottom: 1.5rem;
-        animation: mobilePulse 2s ease-in-out infinite;
-        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-      }
-      
-      @keyframes mobilePulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.8; }
-      }
-      
-      .mobile-loader-title {
-        font-size: 2rem;
-        font-weight: 900;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      
-      .mobile-loader-subtitle {
-        font-size: 1rem;
-        opacity: 0.8;
-        margin-bottom: 2rem;
-        line-height: 1.4;
-      }
-      
-      .mobile-loader-bar {
-        width: 100%;
-        max-width: 200px;
-        height: 4px;
-        background: rgba(0,0,0,0.2);
-        border-radius: 2px;
-        margin: 0 auto;
-        overflow: hidden;
-      }
-      
-      .mobile-loader-progress {
-        height: 100%;
-        background: linear-gradient(90deg, #000 0%, #333 100%);
-        border-radius: 2px;
-        width: 0%;
-        animation: mobileProgress 3s ease-in-out forwards;
-      }
-      
-      @keyframes mobileProgress {
-        0% { width: 0%; }
-        100% { width: 100%; }
-      }
-    }
+
 
     /* Success Popup Styles */
     .success-overlay {
@@ -7276,7 +7438,7 @@
     
     /* Light mode footer logo - switch to black version */
     body[data-theme="light"] .footer-logo-img {
-      content: url("https://static.wixstatic.com/media/aeef42_7240b3023a8246e9977ddd74c43b8025~mv2.png");
+      content: url("Logo.png");
     }
 
     .footer-logo-img:hover {
@@ -9742,7 +9904,7 @@
       }
     }
     
-    /* 🎬 AWARD-WINNING CINEMATIC LOADING EXPERIENCE */
+    /* 🎬 UNIFIED LOADING SCREEN - DESKTOP & MOBILE OPTIMIZED */
     :root {
       --loading-duration: 1s;
       --animation-speed: 1;
@@ -9767,32 +9929,157 @@
       -webkit-overflow-scrolling: touch;
     }
     
-    /* Main Loading Container */
-    .cinematic-loader {
+    /* Unified Loading Screen */
+    .loading-screen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at center, #1a1a1a 0%, #000000 70%),
-        linear-gradient(45deg, #000000 0%, #0d0d0d 100%);
-      z-index: 999999;
+      background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%);
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 99999;
       opacity: 1;
-      transition: opacity var(--loading-duration) ease-out;
-      overflow: hidden;
-      will-change: opacity;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
+      transition: opacity 0.5s ease;
+      visibility: visible;
     }
     
-    body.loaded .cinematic-loader {
+    body.loaded .loading-screen {
       opacity: 0;
       pointer-events: none;
-      transform: translateZ(0);
+      visibility: hidden;
+    }
+    
+    .loading-content {
+      text-align: center;
+      color: #000;
+      max-width: 300px;
+      width: 90%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loading-logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      animation: loadingPulse 2s ease-in-out infinite;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    
+    @keyframes loadingPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .loading-title {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .loading-subtitle {
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+    
+    .loading-bar {
+      width: 100%;
+      max-width: 200px;
+      height: 4px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 2px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    
+    .loading-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #000 0%, #333 100%);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Main Cinematic Header Container */
+    .cinematic-header {
+      position: relative !important;
+      width: 100% !important;
+      height: 400px !important;
+      background: 
+        radial-gradient(circle at center, #1a1a1a 0%, #000000 70%),
+        linear-gradient(45deg, #000000 0%, #0d0d0d 100%) !important;
+      z-index: 10 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      overflow: hidden;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      padding: 0 2rem;
+      box-sizing: border-box;
+      margin: 0;
+      border: none;
+      outline: none;
+      min-height: 400px !important;
+      max-height: 400px !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      box-shadow: 
+        0 0 50px rgba(255, 178, 0, 0.1),
+        inset 0 0 100px rgba(255, 178, 0, 0.05);
+    }
+    
+    /* Header Layout Sections */
+    .header-left-graphics {
+      position: relative !important;
+      width: 25% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      padding-left: 2rem;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    .header-center-content {
+      position: relative !important;
+      width: 60% !important;
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center;
+      visibility: visible !important;
+      opacity: 1 !important;
+      padding: 0 2rem;
+      box-sizing: border-box;
+      gap: 1rem;
+    }
+    
+    .header-right-graphics {
+      position: relative !important;
+      width: 40% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      padding-right: 2rem;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     /* Professional Camera Viewfinder Overlay */
@@ -9811,13 +10098,12 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80%;
-      height: 80%;
-      border: 2px solid rgba(255, 178, 0, 0.4);
-      background: 
-        linear-gradient(90deg, transparent 33%, rgba(255, 178, 0, 0.1) 33%, rgba(255, 178, 0, 0.1) 34%, transparent 34%, transparent 66%, rgba(255, 178, 0, 0.1) 66%, rgba(255, 178, 0, 0.1) 67%, transparent 67%),
-        linear-gradient(0deg, transparent 33%, rgba(255, 178, 0, 0.1) 33%, rgba(255, 178, 0, 0.1) 34%, transparent 34%, transparent 66%, rgba(255, 178, 0, 0.1) 66%, rgba(255, 178, 0, 0.1) 67%, transparent 67%);
+      width: 85%;
+      height: 75%;
+      border: 2px solid rgba(255, 178, 0, 0.6);
+      background: transparent;
       animation: viewfinderPulse 3s ease-in-out infinite;
+      z-index: 4;
     }
     
     .viewfinder-corners {
@@ -9826,16 +10112,17 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 85%;
-      height: 85%;
+      height: 75%;
     }
     
     .viewfinder-corners::before,
     .viewfinder-corners::after {
       content: '';
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       border: 3px solid #FFB200;
+      z-index: 5;
     }
     
     .viewfinder-corners::before {
@@ -9854,9 +10141,10 @@
     
     .corner-tr, .corner-bl {
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       border: 3px solid #FFB200;
+      z-index: 5;
     }
     
     .corner-tr {
@@ -9924,20 +10212,233 @@
       100% { content: "0"; }
     }
     
+
+    
+    /* Company Logo */
+    .company-logo {
+      position: absolute;
+      left: 2%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      animation: logoBounce 3s ease-in-out infinite;
+    }
+    
+    .logo-image {
+      width: 150px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      transition: all 0.3s ease;
+      content: url("Logo.png") !important;
+    }
+    
+    .logo-image:hover {
+      filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 178, 0, 0.8));
+    }
+    
+    /* Ensure header logo always uses Logo.png regardless of theme */
+    .company-logo .logo-image,
+    body[data-theme="light"] .company-logo .logo-image,
+    body[data-theme="dark"] .company-logo .logo-image {
+      content: url("Logo.png") !important;
+    }
+    
+    @keyframes logoBounce {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-50%) scale(1.05); }
+    }
+    
+    /* Floating Social Media Icons */
+    .floating-social-icons {
+      position: absolute;
+      right: 25%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      z-index: 15;
+    }
+    
+    .floating-social-icons a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .floating-social-icons a:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(255, 178, 0, 0.8);
+    }
+    
+    /* Mobile responsive adjustments for floating icons */
+    @media (max-width: 768px) {
+      .floating-social-icons {
+        right: 2%;
+        gap: 0.8rem;
+        flex-direction: row;
+      }
+      
+      .floating-social-icons .icon-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+      }
+      
+      .header-right-content {
+        right: 10%;
+      }
+      
+      .clapperboard {
+        width: 100px;
+        height: 70px;
+        right: 20%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      .company-logo {
+        left: 2%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      .floating-social-icons {
+        right: 20%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      .logo-image {
+        width: 100px;
+      }
+    }
+    
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #FFB200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(42, 42, 42, 0.8);
+      color: #ffffff;
+      font-size: 1rem;
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+    
+    .phone-icon {
+      animation-delay: 0s;
+    }
+    
+    .moon-icon {
+      animation-delay: 0.5s;
+    }
+    
+    .facebook-icon {
+      animation-delay: 1s;
+    }
+    
+    .instagram-icon {
+      animation-delay: 1.5s;
+    }
+    
+    .linkedin-icon {
+      animation-delay: 2s;
+    }
+    
+    .target-icon {
+      position: relative;
+      background: transparent;
+      border: 2px solid #FFB200;
+    }
+    
+    .target-inner {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FFB200;
+      animation: targetPulse 2s ease-in-out infinite;
+    }
+    
+    .icon-sequence {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+    }
+    
+    .sequence-circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #FFB200;
+    }
+    
+    .sequence-arrow {
+      width: 20px;
+      height: 2px;
+      background: #FFB200;
+      position: relative;
+    }
+    
+    .sequence-arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid #FFB200;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+    
+    .sequence-square {
+      width: 12px;
+      height: 12px;
+      background: #FFB200;
+    }
+    
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    
+    @keyframes targetPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    
+    /* Header Right Content */
+    .header-right-content {
+      position: absolute;
+      right: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    
     /* Director's Clapperboard */
     .clapperboard {
       position: absolute;
-      top: 15%;
-      left: 8%;
-      width: 150px;
-      height: 100px;
+      right: 25%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 120px;
+      height: 80px;
       background: 
         linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-      border-radius: 8px;
+      border-radius: 6px;
       border: 2px solid #FFB200;
       z-index: 10;
       animation: clapperboardAction 6s ease-in-out infinite;
-      transform-origin: bottom left;
+      transform-origin: center;
+      margin-bottom: 1rem;
+      display: block;
+      visibility: visible;
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(255, 178, 0, 0.3);
     }
     
     .clapper-top {
@@ -9986,33 +10487,27 @@
     
     /* Film Reels Animation */
     .film-reels {
-      position: absolute;
-      bottom: 15%;
-      right: 8%;
-      width: 120px;
-      height: 120px;
+      position: relative;
+      width: 80px;
+      height: 80px;
       z-index: 8;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
     
     .film-reel {
-      position: absolute;
-      width: 80px;
-      height: 80px;
+      position: relative;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: 
         radial-gradient(circle at center, #2a2a2a 20%, #FFB200 25%, #2a2a2a 30%, #FFB200 35%, #2a2a2a 40%);
-      border: 3px solid #FFB200;
+      border: 2px solid #FFB200;
       animation: reelSpin 3s linear infinite;
     }
     
-    .film-reel:first-child {
-      top: 0;
-      left: 0;
-    }
-    
     .film-reel:last-child {
-      bottom: 0;
-      right: 0;
       animation-direction: reverse;
       animation-duration: 2.5s;
     }
@@ -10138,6 +10633,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
+      z-index: 6;
     }
     
     .film-strip::before,
@@ -10145,27 +10641,28 @@
       content: '';
       position: absolute;
       width: 100%;
-      height: 40px;
+      height: 30px;
       background: 
         repeating-linear-gradient(
           90deg,
           #000 0%,
-          #000 10px,
-          #FFB200 10px,
-          #FFB200 15px,
-          #000 15px,
-          #000 25px
+          #000 8px,
+          #FFB200 8px,
+          #FFB200 12px,
+          #000 12px,
+          #000 20px
         );
-      animation: filmRoll 3s linear infinite;
+      animation: filmRoll 4s linear infinite;
     }
     
     .film-strip::before {
-      top: 20px;
+      top: 10px;
     }
     
     .film-strip::after {
-      bottom: 20px;
+      bottom: 10px;
       animation-direction: reverse;
+      animation-duration: 3s;
     }
     
     @keyframes filmRoll {
@@ -10176,8 +10673,8 @@
     /* Camera Aperture Effect */
     .aperture-container {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 120px;
+      height: 120px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -10185,10 +10682,10 @@
     
     .aperture {
       position: absolute;
-      width: 250px;
-      height: 250px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      border: 3px solid #FFB200;
+      border: 2px solid #FFB200;
       background: 
         conic-gradient(from 0deg, 
           transparent 0deg, 
@@ -10204,8 +10701,8 @@
       animation: apertureRotate 4s ease-in-out infinite,
                  apertureScale 2s ease-in-out infinite alternate;
       box-shadow: 
-        0 0 50px rgba(255, 178, 0, 0.3),
-        inset 0 0 30px rgba(255, 178, 0, 0.1);
+        0 0 30px rgba(255, 178, 0, 0.3),
+        inset 0 0 20px rgba(255, 178, 0, 0.1);
     }
     
     @keyframes apertureRotate {
@@ -10223,7 +10720,7 @@
     
     /* Cinematic Typography */
     .cinematic-text {
-      position: absolute;
+      position: relative;
       text-align: center;
       color: #FFB200;
       font-family: 'Arial', sans-serif;
@@ -10232,9 +10729,7 @@
       letter-spacing: 0.2em;
       z-index: 10;
       width: 100%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      max-width: 600px;
       padding: 0 1rem;
       box-sizing: border-box;
     }
@@ -10254,12 +10749,86 @@
     }
     
     .tagline {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 400;
-      letter-spacing: 0.3em;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      letter-spacing: 0.2em;
       animation: fadeInUp 1s ease 2s both;
       text-shadow: 0 0 20px rgba(255, 178, 0, 0.3);
+      margin-bottom: 0.8rem;
+    }
+    
+    .header-subtitle {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 0.8rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease 0.5s both;
+      line-height: 1.2;
+    }
+    
+    .header-description {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.5;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+    
+    /* Additional Graphics */
+    .additional-graphics {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+    
+    .graphic-circle {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #FFB200;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,178,0,0.3) 0%, transparent 70%);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .graphic-triangle {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 15px solid #FFB200;
+      animation: rotate 3s linear infinite;
+    }
+    
+    .graphic-square {
+      width: 15px;
+      height: 15px;
+      border: 2px solid #FFB200;
+      background: rgba(255,178,0,0.2);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(255,178,0,0.5); }
+      50% { box-shadow: 0 0 15px rgba(255,178,0,0.8); }
     }
     
     @keyframes textShimmer {
@@ -10316,7 +10885,7 @@
         transform: none !important;
       }
       
-      /* Fix loading screen text on mobile */
+      /* Fix cinematic header text on mobile */
       .cinematic-text {
         width: 90% !important;
         max-width: 300px !important;
@@ -10329,6 +10898,50 @@
       .cinematic-text .tagline {
         font-size: 0.8rem !important;
         letter-spacing: 0.2em !important;
+      }
+      
+      .header-subtitle {
+        font-size: 1.4rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+      
+      .header-description {
+        font-size: 1rem !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+      }
+      
+      /* Mobile header layout adjustments */
+      .cinematic-header {
+        height: 150px !important;
+        padding: 0 1rem !important;
+      }
+      
+      .header-left-graphics,
+      .header-right-graphics {
+        width: 40% !important;
+      }
+      
+      .header-center-content {
+        width: 60% !important;
+      }
+      
+      .cinematic-text img {
+        max-width: 80px !important;
+      }
+      
+      .tagline {
+        font-size: 0.7rem !important;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem !important;
+      }
+      
+      .header-description {
+        font-size: 0.8rem !important;
+        max-width: 200px !important;
       }
       
       /* Ensure no elements exceed viewport width */
@@ -10662,22 +11275,29 @@
         animation-duration: 2s; /* Optimized for mobile */
       }
       
-          /* 🎬 MOBILE LOADING SCREEN - PREMIUM OPTIMIZED VERSION */
+              /* 🎬 CINEMATIC LOADING SCREEN - PREMIUM VERSION */
     .cinematic-loader {
-      background: 
-        radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-      will-change: opacity;
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      overflow: hidden !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: 
+        radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+      z-index: 999999 !important;
       display: flex !important;
-      flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      z-index: 999999 !important;
+      will-change: opacity;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    
+    body.loaded .cinematic-loader {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      display: none !important;
     }
     
     /* Hide ALL complex elements on mobile for ultra-clean look */
@@ -10691,6 +11311,26 @@
     .particles-system {
       display: none !important;
     }
+    }
+    
+    /* Show complex loader elements on desktop */
+    @media (min-width: 769px) {
+      .cinematic-loader {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .viewfinder-overlay,
+      .studio-lights,
+      .film-reels,
+      .camera-equipment,
+      .lens-flare,
+      .countdown-container,
+      .clapperboard,
+      .particles-system {
+        display: block !important;
+      }
     
     /* Elegant film strip borders */
     .film-strip::before,
@@ -10959,6 +11599,42 @@
       -webkit-overflow-scrolling: auto !important;
     }
     
+    /* Hide main content until loaded */
+    body:not(.loaded) #mobileVersion,
+    body:not(.loaded) .cinematic-header,
+    body:not(.loaded) .hero-section,
+    body:not(.loaded) .million-dollar-photography,
+    body:not(.loaded) .service-builder-section,
+    body:not(.loaded) .testimonials-section,
+    body:not(.loaded) .services-section,
+    body:not(.loaded) .comparison-section,
+    body:not(.loaded) .agency-comparison-section,
+    body:not(.loaded) .deliver-section,
+    body:not(.loaded) .timeline-section,
+    body:not(.loaded) .premium-footer {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    
+    /* Show main content after loading */
+    body.loaded #mobileVersion,
+    body.loaded .cinematic-header,
+    body.loaded .hero-section,
+    body.loaded .million-dollar-photography,
+    body.loaded .service-builder-section,
+    body.loaded .testimonials-section,
+    body.loaded .services-section,
+    body.loaded .comparison-section,
+    body.loaded .agency-comparison-section,
+    body.loaded .deliver-section,
+    body.loaded .timeline-section,
+    body.loaded .premium-footer {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
         /* Performance optimizations */
     .cinematic-loader * {
       -webkit-backface-visibility: hidden !important;
@@ -11083,12 +11759,18 @@
       padding: 2rem;
       position: relative;
       z-index: 2;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .masonry-grid {
       columns: 4;
       column-gap: 1.5rem;
       margin-bottom: 3rem;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .masonry-item {
@@ -11103,7 +11785,9 @@
       cursor: pointer;
       break-inside: avoid;
       margin-bottom: 1.5rem;
-      display: block;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
       animation: float-gentle 6s ease-in-out infinite;
     }
     
@@ -11157,7 +11841,88 @@
       height: auto;
       display: block;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      filter: brightness(0.8) contrast(1.1);
+      filter: brightness(1) contrast(1);
+      object-fit: cover;
+      min-height: 200px;
+      background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+      opacity: 1;
+      visibility: visible;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Image Fallback and Error Handling */
+    .masonry-content img:not([src]), 
+    .masonry-content img[src=""],
+    .masonry-content img[src*="undefined"],
+    .masonry-content img[src*="error"] {
+      background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+      position: relative;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .masonry-content img:not([src])::after,
+    .masonry-content img[src=""]::after,
+    .masonry-content img[src*="undefined"]::after,
+    .masonry-content img[src*="error"]::after {
+      content: "📸";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: #FFB200;
+      opacity: 0.5;
+    }
+    
+    /* Image Loading States */
+    .masonry-content img {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .masonry-content img.loading {
+      opacity: 0.7;
+    }
+    
+    .masonry-content img.loaded {
+      opacity: 1;
+    }
+    
+    .masonry-content img.error {
+      opacity: 0.3;
+      filter: grayscale(100%);
+    }
+    
+    .image-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+      color: #FFB200;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .fallback-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .fallback-text {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
     }
     
     .masonry-item:hover .masonry-content img {
@@ -11174,14 +11939,14 @@
       display: flex;
       align-items: flex-end;
       padding: 2rem;
-      opacity: 0;
+      opacity: 0.3;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
     
     .masonry-item:hover .masonry-overlay {
-      opacity: 1;
+      opacity: 0.9;
     }
     
     .overlay-content {
@@ -13382,16 +14147,7 @@
         display: flex !important;
       }
       
-      /* Ensure mobile loader shows properly */
-      .mobile-loader {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 99999 !important;
-        display: flex !important;
-      }
+
       
       /* Optimize mobile touch targets */
       button, .btn, a, input, select, textarea, .mobile-service-card, .mobile-gallery-item, .nav-item a {
@@ -13774,10 +14530,106 @@
   </style>
   <!-- 🔒 SECURE FONT AWESOME CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==">
+  
+
 </head>
 <body>
+
+  <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
+  <div class="cinematic-loader">
+    <!-- Film Strip Borders -->
+    <div class="film-strip"></div>
+    
+    <!-- Professional Camera Viewfinder Overlay -->
+    <div class="viewfinder-overlay">
+      <div class="viewfinder-grid"></div>
+      <div class="viewfinder-corners">
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+      </div>
+    </div>
+    
+    <!-- Production Studio Lights -->
+    <div class="studio-lights">
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+      <div class="spotlight"></div>
+    </div>
+    
+    <!-- Film Countdown Timer -->
+    <div class="countdown-container">
+      <div class="countdown-circle">
+        <div class="countdown-number">5</div>
+      </div>
+    </div>
+    
+    <!-- Director's Clapperboard -->
+    <div class="clapperboard">
+      <div class="clapper-top"></div>
+      <div class="clapper-text">
+        COCHRAN<br>
+        FILMS<br>
+        LOADING
+      </div>
+    </div>
+    
+    <!-- Film Reels Animation -->
+    <div class="film-reels">
+      <div class="film-reel"></div>
+      <div class="film-reel"></div>
+    </div>
+    
+    <!-- Camera Equipment -->
+    <div class="camera-equipment">
+      <div class="camera-lens"></div>
+      <div class="camera-body"></div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles-system">
+      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
+      <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
+      <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
+      <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
+      <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
+      <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
+    </div>
+    
+    <!-- Lens Flares -->
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    <div class="lens-flare"></div>
+    
+    <!-- Main Aperture Container -->
+    <div class="aperture-container">
+      <div class="aperture"></div>
+      
+      <!-- Cinematic Typography -->
+      <div class="cinematic-text">
+        <img src="/cochran-landing-page/Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" onerror="this.onerror=null; this.src='./Logo.png';" />
+        <div class="tagline">STORYTELLING THAT CONVERTS</div>
+      </div>
+    </div>
+    
+    <!-- Sound Waves -->
+    <div class="sound-waves">
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+    </div>
+  </div>
+
+  
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
-  <div id="mobileVersion" style="display: none;">
+  <div id="mobileVersion" style="display: none; visibility: hidden; opacity: 0; position: absolute; z-index: -1;">
     
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
@@ -13993,7 +14845,7 @@
         
         <div class="mobile-portfolio-grid">
           <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
+            <img src="professional-photography.jpg" alt="Professional Photography" loading="lazy">
             <div class="mobile-portfolio-overlay">
               <h3>Event Photography</h3>
               <p>Corporate event coverage</p>
@@ -14001,7 +14853,7 @@
           </div>
           
           <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
+            <img src="brand-photography.jpg" alt="Brand Photography" loading="lazy">
             <div class="mobile-portfolio-overlay">
               <h3>Brand Photography</h3>
               <p>Professional headshots</p>
@@ -14009,7 +14861,7 @@
           </div>
           
           <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
+            <img src="corporate-events.jpg" alt="Corporate Events" loading="lazy">
             <div class="mobile-portfolio-overlay">
               <h3>Corporate Events</h3>
               <p>Event documentation</p>
@@ -14017,7 +14869,7 @@
           </div>
           
           <div class="mobile-portfolio-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
+            <img src="on-site-printing.jpg" alt="On-Site Printing" loading="lazy">
             <div class="mobile-portfolio-overlay">
               <h3>On-Site Printing</h3>
               <p>Instant photo service</p>
@@ -14442,56 +15294,56 @@
         <p class="mobile-section-subtitle">A showcase of our best photography and video work</p>
         <div class="mobile-gallery-grid">
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Professional Photography" loading="lazy">
+            <img src="professional-photography.jpg" alt="Professional Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Event Photography</h3>
               <p>Corporate event coverage</p>
             </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
+            <img src="brand-photography.jpg" alt="Brand Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Brand Photography</h3>
               <p>Professional headshots</p>
             </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
+            <img src="corporate-events.jpg" alt="Corporate Events" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Corporate Events</h3>
               <p>Professional coverage</p>
             </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
+            <img src="on-site-printing.jpg" alt="On-Site Printing" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>On-Site Printing</h3>
               <p>Instant photo services</p>
             </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_6690ec6531d04cf7bb15b02eb64a891a~mv2.jpg" alt="Professional Headshots" loading="lazy">
+            <img src="professional-headshots.jpg" alt="Professional Headshots" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Professional Headshots</h3>
               <p>Corporate portraits</p>
             </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_3cf0ca7635fb46018f3986afeda8a5d1~mv2.jpg" alt="Product Photography" loading="lazy">
+            <img src="product-photography.jpg" alt="Product Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Product Photography</h3>
               <p>E-commerce and marketing</p>
             </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_4a1f243b3da2423197fcc264fbc5953d~mv2.jpg" alt="Wedding Photography" loading="lazy">
+            <img src="wedding-photography.jpg" alt="Wedding Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Wedding Photography</h3>
               <p>Special moments captured</p>
             </div>
           </div>
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_618d354d9004436b8c1118273786eeaf~mv2.jpg" alt="Instant Prints" loading="lazy">
+            <img src="instant-prints.jpg" alt="Instant Prints" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Instant Prints</h3>
               <p>Same-day delivery</p>
@@ -14500,7 +15352,7 @@
           
           <!-- Additional Gallery Items for Better Mobile Experience -->
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f~mv2.jpg" alt="Fashion Photography" loading="lazy">
+            <img src="fashion-photography.jpg" alt="Fashion Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Fashion Photography</h3>
               <p>Style and editorial</p>
@@ -14508,7 +15360,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f~mv2.jpg" alt="Lifestyle Photography" loading="lazy">
+            <img src="professional-photography.jpg" alt="Lifestyle Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Lifestyle Photography</h3>
               <p>Authentic moments</p>
@@ -14516,7 +15368,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f~mv2.jpg" alt="Documentary Photography" loading="lazy">
+            <img src="brand-photography.jpg" alt="Documentary Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Documentary Photography</h3>
               <p>Storytelling through images</p>
@@ -14524,7 +15376,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e~mv2.jpg" alt="Street Photography" loading="lazy">
+            <img src="corporate-events.jpg" alt="Street Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Street Photography</h3>
               <p>Urban life and culture</p>
@@ -14532,7 +15384,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e~mv2.jpg" alt="Nature Photography" loading="lazy">
+            <img src="on-site-printing.jpg" alt="Nature Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Nature Photography</h3>
               <p>Landscape and wildlife</p>
@@ -14540,7 +15392,7 @@
           </div>
           
           <div class="mobile-gallery-item" onclick="openMobileLightbox(this)">
-            <img src="https://static.wixstatic.com/media/aeef42_7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e~mv2.jpg" alt="Architecture Photography" loading="lazy">
+            <img src="professional-headshots.jpg" alt="Architecture Photography" loading="lazy">
             <div class="mobile-gallery-overlay">
               <h3>Architecture Photography</h3>
               <p>Buildings and structures</p>
@@ -14586,8 +15438,8 @@
     </div> <!-- End mobile-content -->
   </div>
 
-  <!-- 🎬 AWARD-WINNING CINEMATIC LOADING SCREEN -->
-  <div class="cinematic-loader">
+      <!-- 🎬 CINEMATIC HEADER BANNER -->
+  <header class="cinematic-header">
     <!-- Film Strip Borders -->
     <div class="film-strip"></div>
     
@@ -14607,131 +15459,138 @@
       <div class="spotlight"></div>
     </div>
     
-    <!-- Film Countdown Timer -->
-    <div class="countdown-container">
-      <div class="countdown-circle">
-        <div class="countdown-number">5</div>
+    <!-- Left Side Graphics -->
+          <div class="header-left-graphics">
+        <!-- Floating Particles -->
+      <div class="particles-system">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
       </div>
+      
+      <!-- Lens Flares -->
+      <div class="lens-flare"></div>
+      <div class="lens-flare"></div>
     </div>
     
-    <!-- Director's Clapperboard -->
-    <div class="clapperboard">
-      <div class="clapper-top"></div>
-      <div class="clapper-text">
-        COCHRAN<br>
-        FILMS<br>
-        LOADING
+    <!-- Center Content -->
+    <div class="header-center-content">
+      <!-- Company Logo -->
+      <div class="company-logo">
+        <img src="Logo.png" alt="Cochran Films" class="logo-image">
       </div>
-    </div>
-    
-    <!-- Film Reels Animation -->
-    <div class="film-reels">
-      <div class="film-reel"></div>
-      <div class="film-reel"></div>
-    </div>
-    
-    <!-- Camera Equipment -->
-    <div class="camera-equipment">
-      <div class="camera-lens"></div>
-      <div class="camera-body"></div>
-    </div>
-    
-    <!-- Floating Particles -->
-    <div class="particles-system">
-      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-      <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
-      <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
-      <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
-      <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
-      <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
-      <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
-      <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
-      <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
-    </div>
-    
-    <!-- Lens Flares -->
-    <div class="lens-flare"></div>
-    <div class="lens-flare"></div>
-    <div class="lens-flare"></div>
-    
-    <!-- Main Aperture Container -->
-    <div class="aperture-container">
-      <div class="aperture"></div>
       
       <!-- Cinematic Typography -->
       <div class="cinematic-text">
-        <img src="Logo.png" alt="Cochran Films Logo" style="max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 1rem auto;" />
         <div class="tagline">STORYTELLING THAT CONVERTS</div>
+        <div class="header-subtitle">WORK WITH A FULL-STACK DIGITAL STRATEGIST</div>
+        <div class="header-description">YOU'RE PARTNERING WITH A MEDIA POWERHOUSE—EXPERTS IN FULL-SERVICE PRODUCTION, STRATEGIC WEB SYSTEMS, AND INFRASTRUCTURE THAT SCALES</div>
       </div>
     </div>
     
-    <!-- Sound Waves -->
-    <div class="sound-waves">
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-      <div class="wave-bar"></div>
-    </div>
-    
-    <!-- Progress Bar -->
-    <div class="cinematic-progress">
-      <div class="progress-fill"></div>
-    </div>
-  </div>
-
-  <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
-  <div class="mobile-loader" style="display: none;">
-    <div class="mobile-loader-content">
-      <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
-      <h1 class="mobile-loader-title">Cochran Films</h1>
-      <p class="mobile-loader-subtitle">Loading your experience...</p>
-      <div class="mobile-loader-bar">
-        <div class="mobile-loader-progress"></div>
+    <!-- Right Side Content -->
+    <div class="header-right-content">
+      <!-- Director's Clapperboard -->
+      <div class="clapperboard">
+        <div class="clapper-top"></div>
+        <div class="clapper-text">
+          COCHRAN<br>
+          FILMS<br>
+          STUDIO
+        </div>
       </div>
     </div>
-  </div>
-  
-  <!-- 📱 MOBILE LOADING SCRIPT -->
-  <script>
-    // Ensure mobile loader works properly
-    if (window.innerWidth <= 768) {
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileLoader = document.querySelector('.mobile-loader');
-        if (mobileLoader) {
-          mobileLoader.style.display = 'flex !important';
-          mobileLoader.style.visibility = 'visible !important';
-          mobileLoader.style.opacity = '1 !important';
-          mobileLoader.style.zIndex = '99999 !important';
-          
-          // Hide loader after content loads
-          setTimeout(() => {
-            mobileLoader.style.opacity = '0';
-            setTimeout(() => {
-              mobileLoader.style.display = 'none';
-            }, 500);
-          }, 2000);
-        }
-      });
-    }
-  </script>
-  <header>
-    <!-- Cinematic background shapes -->
-    <div class="header-shape"></div>
-    <div class="header-shape"></div>
-    <div class="header-shape"></div>
     
-    <!-- Header content -->
-    <div class="header-content">
-      <img src="https://static.wixstatic.com/media/aeef42_7240b3023a8246e9977ddd74c43b8025~mv2.png" alt="Cochran Films Logo">
-      <div class="header-divider"></div>
-      <h1>Work with a Full-Stack Digital Strategist</h1>
-      <p>You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</p>
+    <!-- Right Side Graphics -->
+    <div class="header-right-graphics">
+      <!-- Floating Social Media Icons -->
+      <div class="floating-social-icons">
+        <a href="tel:+1234567890" class="icon-circle phone-icon" title="Call Us">
+          <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://www.facebook.com/cochranfilms" target="_blank" class="icon-circle facebook-icon" title="Follow us on Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/cochran.films/" target="_blank" class="icon-circle instagram-icon" title="Follow us on Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/cochranfilms/" target="_blank" class="icon-circle linkedin-icon" title="Connect on LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      
+      <!-- Film Reels Animation -->
+      <div class="film-reels">
+        <div class="film-reel"></div>
+        <div class="film-reel"></div>
+      </div>
+      
+      <!-- Camera Equipment -->
+      <div class="camera-equipment">
+        <div class="camera-lens"></div>
+        <div class="camera-body"></div>
+      </div>
     </div>
   </header>
+
+  <!-- 🎬 CINEMATIC LOADING SCRIPT -->
+  <script>
+    // Cinematic loading screen management - 4 second duration
+    document.addEventListener('DOMContentLoaded', function() {
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      const isMobile = window.innerWidth <= 768;
+      
+      if (cinematicLoader) {
+        // Show cinematic loader immediately
+        cinematicLoader.style.display = 'flex';
+        cinematicLoader.style.visibility = 'visible';
+        cinematicLoader.style.opacity = '1';
+        cinematicLoader.style.zIndex = '99999';
+        
+        // Initialize countdown timer
+        initializeCountdownTimer();
+        
+        // Hide cinematic loader after 4 seconds (matching animation duration)
+        setTimeout(() => {
+          cinematicLoader.style.opacity = '0';
+          cinematicLoader.style.transition = 'opacity 0.5s ease';
+          setTimeout(() => {
+            cinematicLoader.style.display = 'none';
+            cinematicLoader.style.visibility = 'hidden';
+            cinematicLoader.style.zIndex = '-1';
+            document.body.classList.add('loaded');
+          }, 500);
+        }, 4000); // 4 seconds as requested
+      }
+    });
+    
+    // Ensure masonry images load properly
+    document.addEventListener('DOMContentLoaded', function() {
+      const masonryImages = document.querySelectorAll('.masonry-content img');
+      
+      masonryImages.forEach(img => {
+        // Add loading class
+        img.classList.add('loading');
+        
+        // Handle successful load
+        img.addEventListener('load', function() {
+          this.classList.remove('loading');
+          this.classList.add('loaded');
+          this.style.opacity = '1';
+        });
+        
+        // Handle load error
+        img.addEventListener('error', function() {
+          this.classList.remove('loading');
+          this.classList.add('error');
+          this.style.opacity = '0.3';
+        });
+      });
+      
+
+    });
+  </script>
+
 
   <!-- Redesigned Hero Section -->
   <section class="hero-section">
@@ -14791,7 +15650,7 @@
       <div class="masonry-grid">
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_e273fde6086f492fafe4a59fb195360b~mv2.jpg" alt="Professional Event Photography" loading="lazy">
+            <img src="fashion-photography.jpg" alt="Professional Event Photography" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14807,7 +15666,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_9cf6a306bf5c498487f655c7450ea05e~mv2.jpg" alt="Portrait Photography" loading="lazy">
+            <img src="professional-photography.jpg" alt="Portrait Photography" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14823,7 +15682,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_7510a5fdc2dc4eca99951350e1a61f92~mv2.jpg" alt="Brand Photography" loading="lazy">
+            <img src="brand-photography.jpg" alt="Brand Photography" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14839,7 +15698,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_52d7ca62022e4199a7583339b9a1fc64~mv2.jpg" alt="Corporate Events" loading="lazy">
+            <img src="corporate-events.jpg" alt="Corporate Events" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14855,7 +15714,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_d27b36039502411bbf1bb22c55f57ed9~mv2.jpg" alt="On-Site Printing" loading="lazy">
+            <img src="on-site-printing.jpg" alt="On-Site Printing" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14871,7 +15730,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_6690ec6531d04cf7bb15b02eb64a891a~mv2.jpg" alt="Professional Headshots" loading="lazy">
+            <img src="professional-headshots.jpg" alt="Professional Headshots" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14887,7 +15746,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_3cf0ca7635fb46018f3986afeda8a5d1~mv2.jpg" alt="Product Photography" loading="lazy">
+            <img src="product-photography.jpg" alt="Product Photography" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14903,7 +15762,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_4a1f243b3da2423197fcc264fbc5953d~mv2.jpg" alt="Wedding Photography" loading="lazy">
+            <img src="wedding-photography.jpg" alt="Wedding Photography" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14919,7 +15778,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_618d354d9004436b8c1118273786eeaf~mv2.jpg" alt="Instant Prints" loading="lazy">
+            <img src="instant-prints.jpg" alt="Instant Prints" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14935,7 +15794,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_8f87bbf61b1245a2beb5557424c0c400~mv2.jpg" alt="Professional Portraits" loading="lazy">
+            <img src="professional-headshots.jpg" alt="Professional Portraits" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -14951,7 +15810,7 @@
         
         <div class="masonry-item">
           <div class="masonry-content">
-            <img src="https://static.wixstatic.com/media/aeef42_4eb687c023da400791830ca241ed78d6~mv2.jpg" alt="Brand Storytelling" loading="lazy">
+            <img src="brand-photography.jpg" alt="Brand Storytelling" loading="lazy" onerror="handleImageError(this)" onload="handleImageLoad(this)">
             <div class="masonry-overlay">
               <div class="overlay-content">
                 <h3>Professional Photography</h3>
@@ -16182,7 +17041,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="https://static.wixstatic.com/media/aeef42_f9e486f89553443790b16451f8e424ce~mv2.png" alt="Cochran Films Logo" class="footer-logo-img">
+            <img src="Logo.png" alt="Cochran Films Logo" class="footer-logo-img">
           </div>
           <p class="footer-tagline">Empowering Stories Through Film, Education & Innovation</p>
         </div>
@@ -16326,6 +17185,9 @@
         mobileVersion.style.opacity = '1 !important';
         mobileVersion.style.position = 'relative !important';
         mobileVersion.style.zIndex = '1 !important';
+        mobileVersion.style.width = '100% !important';
+        mobileVersion.style.height = 'auto !important';
+        mobileVersion.style.overflow = 'visible !important';
         console.log('📱 Mobile version forced visible');
       }
       
@@ -16339,13 +17201,13 @@
         mobileContent.style.zIndex = '1 !important';
       }
       
-      // Initialize mobile loader
-      const mobileLoader = document.querySelector('.mobile-loader');
-      if (mobileLoader) {
-        mobileLoader.style.display = 'flex !important';
-        mobileLoader.style.visibility = 'visible !important';
-        mobileLoader.style.opacity = '1 !important';
-        mobileLoader.style.zIndex = '99999 !important';
+      // Initialize cinematic loading screen
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      if (cinematicLoader) {
+        cinematicLoader.style.display = 'flex';
+        cinematicLoader.style.visibility = 'visible';
+        cinematicLoader.style.opacity = '1';
+        cinematicLoader.style.zIndex = '99999';
       }
       
       // Initialize mobile navigation
@@ -16379,10 +17241,10 @@
         mobileVersion.style.visibility = 'hidden !important';
       }
       
-      const mobileLoader = document.querySelector('.mobile-loader');
-      if (mobileLoader) {
-        mobileLoader.style.display = 'none !important';
-        mobileLoader.style.visibility = 'hidden !important';
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      if (cinematicLoader) {
+        cinematicLoader.style.display = 'none';
+        cinematicLoader.style.visibility = 'hidden';
       }
       
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -16426,13 +17288,13 @@
         console.log('📱 Mobile version forced visible - COMPREHENSIVE');
       }
       
-      // Ensure mobile loader is visible
-      const mobileLoader = document.querySelector('.mobile-loader');
-      if (mobileLoader) {
-        mobileLoader.style.display = 'flex !important';
-        mobileLoader.style.visibility = 'visible !important';
-        mobileLoader.style.opacity = '1 !important';
-        mobileLoader.style.zIndex = '99999 !important';
+      // Ensure cinematic loading screen is visible
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      if (cinematicLoader) {
+        cinematicLoader.style.display = 'flex';
+        cinematicLoader.style.visibility = 'visible';
+        cinematicLoader.style.opacity = '1';
+        cinematicLoader.style.zIndex = '99999';
       }
       
       // Ensure mobile nav toggle is visible
@@ -16470,8 +17332,53 @@
     // Additional check after a short delay
     setTimeout(forceInitializeMobile, 100);
     setTimeout(forceInitializeMobile, 500);
+    setTimeout(forceInitializeMobile, 1000);
     
     // Comprehensive mobile initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      // Force mobile version to be visible
+      const mobileVersion = document.getElementById('mobileVersion');
+      if (mobileVersion) {
+        mobileVersion.style.display = 'block !important';
+        mobileVersion.style.visibility = 'visible !important';
+        mobileVersion.style.opacity = '1 !important';
+        mobileVersion.style.position = 'relative !important';
+        mobileVersion.style.zIndex = '1 !important';
+        mobileVersion.style.width = '100% !important';
+        mobileVersion.style.height = 'auto !important';
+        mobileVersion.style.overflow = 'visible !important';
+      }
+      
+      // Ensure mobile gallery is visible
+      const mobileGallery = document.querySelector('.mobile-gallery');
+      if (mobileGallery) {
+        mobileGallery.style.display = 'block !important';
+        mobileGallery.style.visibility = 'visible !important';
+        mobileGallery.style.opacity = '1 !important';
+        mobileGallery.style.position = 'relative !important';
+        mobileGallery.style.zIndex = '1 !important';
+      }
+      
+      // Ensure mobile gallery items are visible
+      const mobileGalleryItems = document.querySelectorAll('.mobile-gallery-item');
+      mobileGalleryItems.forEach(item => {
+        item.style.display = 'block !important';
+        item.style.visibility = 'visible !important';
+        item.style.opacity = '1 !important';
+        item.style.position = 'relative !important';
+        item.style.zIndex = '1 !important';
+      });
+      
+      // Ensure mobile gallery images are visible
+      const mobileGalleryImages = document.querySelectorAll('.mobile-gallery-item img');
+      mobileGalleryImages.forEach(img => {
+        img.style.display = 'block !important';
+        img.style.visibility = 'visible !important';
+        img.style.opacity = '1 !important';
+        img.style.position = 'relative !important';
+        img.style.zIndex = '1 !important';
+      });
+    });
     setTimeout(() => {
       // Force mobile version visibility
       const mobileVersion = document.getElementById('mobileVersion');
@@ -17761,7 +18668,7 @@
     const isMobile = window.innerWidth <= 768;
     const isUltraMobile = window.innerWidth <= 480;
     const mobileVersion = document.getElementById('mobileVersion');
-    const mobileLoader = document.querySelector('.mobile-loader');
+    const cinematicLoader = document.querySelector('.cinematic-loader');
     
     // Ensure mobile experience is properly initialized
     initializeMobileExperience();
@@ -17776,13 +18683,14 @@
       document.body.classList.add('loaded');
       console.log('🎬 And... CUT! Welcome to Cochran Films.');
       
-      // Handle mobile loader
-      if (mobileLoader && isMobile) {
-        mobileLoader.classList.add('hidden');
+      // Handle cinematic loading screen
+      if (cinematicLoader) {
+        cinematicLoader.style.opacity = '0';
+        cinematicLoader.style.transition = 'opacity 0.5s ease';
         setTimeout(() => {
-          mobileLoader.style.display = 'none';
-          mobileLoader.style.visibility = 'hidden';
-          mobileLoader.style.opacity = '0';
+          cinematicLoader.style.display = 'none';
+          cinematicLoader.style.visibility = 'hidden';
+          cinematicLoader.style.zIndex = '-1';
         }, 500);
       }
       
@@ -18368,15 +19276,15 @@
     const headerLogo = header.querySelector('img');
     const headerShapes = header.querySelectorAll('.header-shape');
     
-    // Header parallax effect on scroll
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.3;
-      
-      if (header) {
-        header.style.transform = `translateY(${rate}px)`;
-      }
-    });
+    // Header parallax effect on scroll - DISABLED
+    // window.addEventListener('scroll', () => {
+    //   const scrolled = window.pageYOffset;
+    //   const rate = scrolled * -0.3;
+    //   
+    //   if (header) {
+    //     header.style.transform = `translateY(${rate}px)`;
+    //   }
+    // });
     
     // Logo hover effects
     if (headerLogo) {
@@ -18909,14 +19817,13 @@
       // Function to open booking modal
     // 📱 MILLION DOLLAR BOOKING MODAL OPENING
     function openBookingModal() {
-      // Prevent auto-opening if triggered automatically
-      if (window.mobileState && window.mobileState.preventAutoModal && !event) {
-        console.log('🚫 Auto-modal opening prevented');
-        return;
-      }
+      console.log('🔍 openBookingModal() called');
       
       const modal = document.getElementById('bookingModal');
       const serviceSelect = document.getElementById('service');
+      
+      console.log('🔍 Modal element found:', !!modal);
+      console.log('🔍 Service select found:', !!serviceSelect);
       
       if (modal && serviceSelect) {
         // Close mobile nav if open
@@ -18963,7 +19870,60 @@
         }, 300);
         
         console.log('✅ Booking modal opened manually - body scroll disabled');
+      } else {
+        console.error('❌ Modal or service select not found');
+        console.log('Modal:', modal);
+        console.log('Service Select:', serviceSelect);
+        
+        // Fallback: try to create modal if it doesn't exist
+        if (!modal) {
+          console.log('🔄 Attempting to create modal...');
+          createBookingModal();
+        }
       }
+    }
+    
+    // Function to create booking modal if it doesn't exist
+    function createBookingModal() {
+      console.log('🔄 Creating booking modal...');
+      
+      const modalHTML = `
+        <div id="bookingModal" class="modal-overlay" style="display:none;">
+          <div class="modal-content">
+            <button class="modal-close" id="closeModal" title="Close">&times;</button>
+            <h2>🔒 Secure Booking Form</h2>
+            <form id="bookingForm" method="post" action="https://formspree.io/f/your-form-id" autocomplete="off" novalidate>
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="video">Full-Service Videography</option>
+                <option value="photo">Event Photography</option>
+                <option value="prints">Instant Prints (On-Site Event Photo Printing)</option>
+                <option value="web">Web Design + SEO</option>
+                <option value="brand">Brand Development</option>
+                <option value="consult">Consultation</option>
+              </select>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your Name" autocomplete="name">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@email.com" autocomplete="email">
+              <label for="phone">Phone <span style="font-weight:400; color:#888;">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel">
+              <label for="notes">Notes <span style="font-weight:400; color:#888;">(optional)</span></label>
+              <textarea id="notes" name="notes" rows="2" placeholder="Tell us more about your project..."></textarea>
+              <button type="submit" class="modal-book-btn">Book Now</button>
+            </form>
+          </div>
+        </div>
+      `;
+      
+      document.body.insertAdjacentHTML('beforeend', modalHTML);
+      console.log('✅ Booking modal created');
+      
+      // Re-try opening the modal
+      setTimeout(() => {
+        openBookingModal();
+      }, 100);
     }
     
     // Function to open photo-specific booking modal
@@ -19128,6 +20088,85 @@
     // Restore body scroll when lightbox is closed
     document.body.style.overflow = '';
   }
+  
+  // Image Loading and Error Handling
+  function handleImageLoad(img) {
+    console.log('Image loaded successfully:', img.src);
+    img.classList.remove('loading');
+    img.classList.add('loaded');
+    img.style.opacity = '1';
+    img.style.filter = 'none';
+  }
+  
+  function handleImageError(img) {
+    console.warn('Image failed to load:', img.src);
+    img.classList.remove('loading');
+    img.classList.add('error');
+    img.style.opacity = '0.3';
+    img.style.filter = 'grayscale(100%)';
+    
+    // Create fallback content
+    const fallback = document.createElement('div');
+    fallback.className = 'image-fallback';
+    fallback.innerHTML = `
+      <div class="fallback-icon">📸</div>
+      <div class="fallback-text">Image unavailable</div>
+    `;
+    
+    // Replace the image with fallback
+    img.style.display = 'none';
+    img.parentNode.appendChild(fallback);
+  }
+  
+  // Initialize image error handling
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.masonry-content img');
+    images.forEach(img => {
+      // Add loading class initially
+      img.classList.add('loading');
+      
+      img.addEventListener('error', () => {
+        console.warn('Masonry image failed to load:', img.src);
+        handleImageError(img);
+      });
+      
+      img.addEventListener('load', () => {
+        img.classList.remove('loading');
+        img.classList.add('loaded');
+        console.log('Masonry image loaded successfully:', img.src);
+      });
+      
+      // Check if image is already loaded
+      if (img.complete && img.naturalHeight !== 0) {
+        img.classList.remove('loading');
+        img.classList.add('loaded');
+      } else {
+        // Add timeout to force load state after 3 seconds
+        setTimeout(() => {
+          if (!img.classList.contains('loaded') && !img.classList.contains('error')) {
+            img.classList.remove('loading');
+            img.classList.add('loaded');
+            console.log('Forced image load state:', img.src);
+          }
+        }, 3000);
+      }
+    });
+    
+    // Also handle all other images on the page
+    const allImages = document.querySelectorAll('img');
+    allImages.forEach(img => {
+      img.addEventListener('error', function() {
+        console.warn('Image failed to load:', this.src);
+        this.style.opacity = '0.3';
+        this.style.filter = 'grayscale(100%)';
+      });
+      
+      img.addEventListener('load', function() {
+        this.style.opacity = '1';
+        this.style.filter = 'none';
+      });
+    });
+  });
   
   // Video Quiz Functions
   function handleImageUpload() {
@@ -21304,6 +22343,72 @@
       window.addServiceFromModal = addServiceFromModal;
       window.showServiceDetailsModal = showServiceDetailsModal;
     }
+    
+    // GitHub Pages Image Path Handling
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img[src]');
+      const repoName = 'cochran-landing-page';
+      
+      images.forEach(img => {
+        const originalSrc = img.getAttribute('src');
+        // Skip external URLs
+        if (originalSrc.startsWith('http')) return;
+        
+        // Try GitHub Pages path first, then fallback to relative path
+        const githubPath = `/${repoName}/${originalSrc}`;
+        const relativePath = `./${originalSrc}`;
+        
+        img.setAttribute('src', githubPath);
+        img.setAttribute('onerror', `this.onerror=null; this.src='${relativePath}';`);
+        
+        // Add loading="lazy" if not present
+        if (!img.hasAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+      });
+
+      // Image Loading and Error Handling for Photography Gallery
+      const masonryImages = document.querySelectorAll('.masonry-content img');
+      
+      masonryImages.forEach(img => {
+        // Add loading class
+        img.classList.add('loading');
+        
+        // Handle successful load
+        img.addEventListener('load', function() {
+          this.classList.remove('loading');
+          this.classList.add('loaded');
+          this.style.opacity = '1';
+          this.style.visibility = 'visible';
+        });
+        
+        // Handle load error
+        img.addEventListener('error', function() {
+          this.classList.remove('loading');
+          this.classList.add('error');
+          this.style.opacity = '0.3';
+          this.style.filter = 'grayscale(100%)';
+          
+          // Create fallback content
+          const fallback = document.createElement('div');
+          fallback.className = 'image-fallback';
+          fallback.innerHTML = `
+            <div class="fallback-icon">📸</div>
+            <div class="fallback-text">Image not available</div>
+          `;
+          
+          // Replace the image with fallback
+          this.parentNode.insertBefore(fallback, this);
+          this.style.display = 'none';
+        });
+        
+        // Force load if not already loaded
+        if (img.complete) {
+          img.classList.remove('loading');
+          img.classList.add('loaded');
+        }
+      });
+    });
   </script>
 
 </body>
