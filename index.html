@@ -63,61 +63,41 @@
       console.log('📱 Immediate mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
       
       if (isMobile) {
-        // Show mobile loading screen first, then mobile version
+        // Force mobile version to be visible immediately
         document.addEventListener('DOMContentLoaded', function() {
-          // Show mobile loading screen immediately
-          const mobileLoader = document.querySelector('.mobile-loader');
-          if (mobileLoader) {
-            mobileLoader.style.display = 'flex !important';
-            mobileLoader.style.visibility = 'visible !important';
-            mobileLoader.style.opacity = '1 !important';
-            mobileLoader.style.zIndex = '99999 !important';
+          const mobileVersion = document.getElementById('mobileVersion');
+          if (mobileVersion) {
+            mobileVersion.style.display = 'block !important';
+            mobileVersion.style.visibility = 'visible !important';
+            mobileVersion.style.opacity = '1 !important';
+            mobileVersion.style.position = 'relative !important';
+            mobileVersion.style.zIndex = '1 !important';
           }
           
-          // Show mobile version after loading delay
-          setTimeout(() => {
-            const mobileVersion = document.getElementById('mobileVersion');
-            if (mobileVersion) {
-              mobileVersion.style.display = 'block !important';
-              mobileVersion.style.visibility = 'visible !important';
-              mobileVersion.style.opacity = '1 !important';
-              mobileVersion.style.position = 'relative !important';
-              mobileVersion.style.zIndex = '1 !important';
-            }
-            
-            // Hide mobile loader
-            if (mobileLoader) {
-              mobileLoader.style.opacity = '0';
-              setTimeout(() => {
-                mobileLoader.style.display = 'none';
-              }, 500);
-            }
-          }, 2500);
+          // Force hide desktop elements
+          const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+          desktopElements.forEach(el => {
+            el.style.display = 'none !important';
+            el.style.visibility = 'hidden !important';
+            el.style.opacity = '0 !important';
+            el.style.position = 'absolute !important';
+            el.style.zIndex = '-1 !important';
+          });
+          
+          // Ensure mobile navigation is visible
+          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+          if (mobileNavToggle) {
+            mobileNavToggle.style.display = 'flex !important';
+            mobileNavToggle.style.visibility = 'visible !important';
+            mobileNavToggle.style.opacity = '1 !important';
+            mobileNavToggle.style.zIndex = '10000 !important';
+          }
+          
+          // Add mobile class to body
+          document.body.classList.add('mobile-view');
+          
+          console.log('📱 Immediate mobile initialization completed');
         });
-        
-        // Force hide desktop elements
-        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
-        desktopElements.forEach(el => {
-          el.style.display = 'none !important';
-          el.style.visibility = 'hidden !important';
-          el.style.opacity = '0 !important';
-          el.style.position = 'absolute !important';
-          el.style.zIndex = '-1 !important';
-        });
-        
-        // Ensure mobile navigation is visible
-        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-        if (mobileNavToggle) {
-          mobileNavToggle.style.display = 'flex !important';
-          mobileNavToggle.style.visibility = 'visible !important';
-          mobileNavToggle.style.opacity = '1 !important';
-          mobileNavToggle.style.zIndex = '10000 !important';
-        }
-        
-        // Add mobile class to body
-        document.body.classList.add('mobile-view');
-        
-        console.log('📱 Immediate mobile initialization completed');
       }
     })();
   </script>
@@ -871,7 +851,7 @@
     }
     
     .mobile-header-logo {
-      height: 200px;
+      height: 120px;
       width: auto;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
       display: block;
@@ -1529,7 +1509,7 @@
         
         /* Ensure mobile content doesn't get covered by fixed header */
         .mobile-content {
-          margin-top: 240px !important;
+          margin-top: 160px !important;
           padding-top: 1rem !important;
           margin-bottom: 0 !important;
           padding-bottom: 0 !important;
@@ -1546,11 +1526,11 @@
           position: relative !important;
         }
         
-                                                                       /* Adjust spacing for smaller screens */
-           @media (max-width: 480px) {
-             .mobile-content {
-               margin-top: 260px !important; /* Extra space for smaller screens where text might wrap */
-             }
+                 /* Adjust spacing for smaller screens */
+         @media (max-width: 480px) {
+           .mobile-content {
+             margin-top: 180px !important; /* Extra space for smaller screens where text might wrap */
+           }
           
           .mobile-header-banner {
             padding: 0.8rem !important;
@@ -1611,8 +1591,8 @@
           height: 0 !important;
         }
         
-        /* Ensure only mobileVersion and mobile-loader are visible */
-        body > *:not(#mobileVersion):not(.mobile-loader):not(script):not(style) {
+        /* Ensure only mobileVersion is visible */
+        body > *:not(#mobileVersion):not(script):not(style) {
           display: none !important;
           visibility: hidden !important;
           position: absolute !important;
@@ -1880,13 +1860,13 @@
       
       .mobile-contact-btn.secondary {
         background: transparent;
-        color: #fff;
-        border: 2px solid #fff;
+        color: #000;
+        border: 2px solid #000;
       }
       
       .mobile-contact-btn.secondary:hover {
-        background: #fff;
-        color: #000;
+        background: #000;
+        color: #FFB200;
         transform: translateY(-2px);
       }
       
@@ -2756,13 +2736,13 @@
     
     .mobile-contact-btn.secondary {
       background: transparent;
-      color: #fff;
-      border: 2px solid #fff;
+      color: #000;
+      border: 2px solid #000;
     }
     
     .mobile-contact-btn.secondary:hover {
-      background: #fff;
-      color: #000;
+      background: #000;
+      color: #FFB200;
       transform: translateY(-2px);
     }
     
@@ -15294,7 +15274,7 @@
               <i class="fas fa-camera"></i>
               BOOK NOW
             </button>
-            <button class="mobile-contact-btn secondary" onclick="window.location.href='https://www.cochranfilms.com/contact'">
+            <button class="mobile-contact-btn secondary" onclick="openMobileContactForm()">
               <i class="fas fa-envelope"></i>
               Send Message
             </button>
@@ -15480,7 +15460,7 @@
   </div>
 
   <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
-  <div class="mobile-loader" style="display: flex;">
+  <div class="mobile-loader" style="display: none;">
     <div class="mobile-loader-content">
       <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
       <h1 class="mobile-loader-title">Cochran Films</h1>
@@ -15491,7 +15471,40 @@
     </div>
   </div>
   
-  <!-- 📱 MOBILE LOADING SCRIPT - HANDLED IN HEAD SECTION -->
+  <!-- 📱 MOBILE LOADING SCRIPT -->
+  <script>
+    // Show mobile loader immediately for mobile devices
+    if (window.innerWidth <= 768) {
+      // Show loader immediately, don't wait for DOMContentLoaded
+      const showMobileLoader = () => {
+        const mobileLoader = document.querySelector('.mobile-loader');
+        if (mobileLoader) {
+          mobileLoader.style.display = 'flex';
+          mobileLoader.style.visibility = 'visible';
+          mobileLoader.style.opacity = '1';
+          mobileLoader.style.zIndex = '99999';
+          
+          console.log('📱 Mobile loader displayed');
+          
+          // Hide loader after content loads
+          setTimeout(() => {
+            mobileLoader.style.opacity = '0';
+            setTimeout(() => {
+              mobileLoader.style.display = 'none';
+              console.log('📱 Mobile loader hidden');
+            }, 500);
+          }, 2500);
+        }
+      };
+      
+      // Try to show loader immediately
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showMobileLoader);
+      } else {
+        showMobileLoader();
+      }
+    }
+  </script>
   <header>
     <!-- Cinematic background shapes -->
     <div class="header-shape"></div>
