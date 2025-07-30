@@ -2107,14 +2107,14 @@
     .mobile-stat-value {
       font-size: 1.8rem;
       font-weight: 900;
-      color: #000;
+      color: #fff !important;
       margin-bottom: 0.3rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .mobile-stat-label {
       font-size: 0.8rem;
-      color: rgba(0,0,0,0.7);
+      color: rgba(255,255,255,0.9) !important;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -2306,19 +2306,25 @@
       
       /* FINAL MOBILE OVERRIDES - HIGHEST SPECIFICITY */
       @media (max-width: 768px) {
-        /* Force all mobile text to be white */
+        /* Force mobile text colors - white for dark backgrounds, black for light backgrounds */
         .mobile-section-title,
         .mobile-section-subtitle,
         .mobile-hero-title,
         .mobile-hero-subtitle,
-        .mobile-service-card h3,
-        .mobile-service-card p,
         .mobile-contact-text,
         #mobileVersion h1,
         #mobileVersion h2,
         #mobileVersion h3,
         #mobileVersion p {
           color: #fff !important;
+        }
+        
+        /* Service cards should have black text on white background */
+        .mobile-service-card,
+        .mobile-service-card h3,
+        .mobile-service-card p,
+        .mobile-service-price {
+          color: #000 !important;
         }
         
         /* Force mobile buttons to be visible */
@@ -2333,9 +2339,44 @@
         /* Force mobile gallery grid to display properly */
         .mobile-gallery-grid {
           display: grid !important;
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 1rem !important;
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem !important;
           width: 100% !important;
+          padding: 0 1rem !important;
+        }
+        
+        /* Large, clickable mobile gallery items */
+        .mobile-gallery-item {
+          width: 100% !important;
+          height: 300px !important;
+          border-radius: 15px !important;
+          overflow: hidden !important;
+          cursor: pointer !important;
+          background: #333 !important;
+          display: block !important;
+        }
+        
+        .mobile-gallery-item img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          transition: transform 0.3s ease !important;
+        }
+        
+        .mobile-gallery-item:hover img {
+          transform: scale(1.05) !important;
+        }
+        
+        /* On smaller screens, use 2 columns */
+        @media (min-width: 480px) and (max-width: 768px) {
+          .mobile-gallery-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1rem !important;
+          }
+          
+          .mobile-gallery-item {
+            height: 200px !important;
+          }
         }
         
         /* Remove all bottom spacing */
@@ -3320,7 +3361,7 @@
         font-weight: 900;
         margin-bottom: 1rem;
         line-height: 1.2;
-        color: #000;
+        color: #fff !important;
         text-align: center;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
@@ -3330,7 +3371,7 @@
         line-height: 1.6;
         margin-bottom: 3rem;
         opacity: 0.9;
-        color: rgba(0,0,0,0.8);
+        color: rgba(255,255,255,0.9) !important;
         text-align: center;
         text-shadow: 0 1px 2px rgba(0,0,0,0.1);
       }
@@ -16871,11 +16912,19 @@
     if (window.innerWidth <= 768) {
       console.log('🚨 Applying emergency mobile fixes...');
       
-      // Force white text on all mobile elements
-      const textElements = document.querySelectorAll('#mobileVersion .mobile-section-title, #mobileVersion .mobile-section-subtitle, #mobileVersion h1, #mobileVersion h2, #mobileVersion h3, #mobileVersion p');
+      // Force white text on all mobile elements (except service cards)
+      const textElements = document.querySelectorAll('#mobileVersion .mobile-section-title, #mobileVersion .mobile-section-subtitle, #mobileVersion h1, #mobileVersion h2, #mobileVersion h3, #mobileVersion p, #mobileVersion .mobile-stat-value, #mobileVersion .mobile-stat-label, #mobileVersion .mobile-hero-title, #mobileVersion .mobile-hero-subtitle');
       textElements.forEach(el => {
-        el.style.setProperty('color', '#fff', 'important');
-        el.classList.add('mobile-emergency-white-text');
+        if (!el.closest('.mobile-service-card')) {
+          el.style.setProperty('color', '#fff', 'important');
+          el.classList.add('mobile-emergency-white-text');
+        }
+      });
+      
+      // Force black text on service cards (white background)
+      const serviceCardElements = document.querySelectorAll('#mobileVersion .mobile-service-card, #mobileVersion .mobile-service-card h3, #mobileVersion .mobile-service-card p, #mobileVersion .mobile-service-price');
+      serviceCardElements.forEach(el => {
+        el.style.setProperty('color', '#000', 'important');
       });
       
       // Force golden buttons
@@ -16886,13 +16935,32 @@
         btn.classList.add('mobile-emergency-golden-button');
       });
       
-      // Force gallery grid
+      // Force gallery grid with proper layout
       const galleryGrid = document.querySelector('#mobileVersion .mobile-gallery-grid');
       if (galleryGrid) {
         galleryGrid.style.setProperty('display', 'grid', 'important');
-        galleryGrid.style.setProperty('grid-template-columns', 'repeat(2, 1fr)', 'important');
-        galleryGrid.style.setProperty('gap', '1rem', 'important');
+        galleryGrid.style.setProperty('grid-template-columns', '1fr', 'important');
+        galleryGrid.style.setProperty('gap', '1.5rem', 'important');
+        galleryGrid.style.setProperty('padding', '0 1rem', 'important');
       }
+      
+      // Force gallery items to be large and clickable
+      const galleryItems = document.querySelectorAll('#mobileVersion .mobile-gallery-item');
+      galleryItems.forEach(item => {
+        item.style.setProperty('width', '100%', 'important');
+        item.style.setProperty('height', '300px', 'important');
+        item.style.setProperty('border-radius', '15px', 'important');
+        item.style.setProperty('overflow', 'hidden', 'important');
+        item.style.setProperty('cursor', 'pointer', 'important');
+        item.style.setProperty('display', 'block', 'important');
+        
+        const img = item.querySelector('img');
+        if (img) {
+          img.style.setProperty('width', '100%', 'important');
+          img.style.setProperty('height', '100%', 'important');
+          img.style.setProperty('object-fit', 'cover', 'important');
+        }
+      });
       
       // Force remove bottom spacing
       const footerElements = document.querySelectorAll('#mobileVersion .mobile-footer, #mobileVersion .mobile-footer-container, #mobileVersion .mobile-footer-bottom');
@@ -16900,6 +16968,17 @@
         el.style.setProperty('margin-bottom', '0', 'important');
         el.style.setProperty('padding-bottom', '0', 'important');
       });
+      
+      // Ensure form submission button is working
+      const submitButton = document.querySelector('#mobileVersion #bookingModal button[type="submit"]');
+      if (submitButton) {
+        submitButton.style.setProperty('background', '#FFB200', 'important');
+        submitButton.style.setProperty('color', '#000', 'important');
+        submitButton.style.setProperty('border', 'none', 'important');
+        submitButton.style.setProperty('padding', '1rem 2rem', 'important');
+        submitButton.style.setProperty('font-weight', '700', 'important');
+        console.log('✅ Form submit button styled');
+      }
       
       console.log('✅ Emergency mobile fixes applied');
     }
@@ -19140,18 +19219,26 @@
   }
   
   if (bookingForm) {
+    console.log('✅ Booking form found and handler attached');
     bookingForm.onsubmit = function(e) {
       e.preventDefault();
+      console.log('📝 Form submission triggered');
+      
       const service = bookingForm.service.value;
       const name = bookingForm.name.value.trim();
       const email = bookingForm.email.value.trim();
       const phone = bookingForm.phone.value.trim();
       const notes = bookingForm.notes.value.trim();
 
+      console.log('📋 Form data:', { service, name, email, phone, notes });
+
       if (!service || !name || !email) {
+        console.warn('⚠️ Required fields missing');
         alert('Please fill out all required fields.');
         return;
       }
+      
+      console.log('✅ Form validation passed');
 
       let url = serviceLinks[service] || 'https://www.cochranfilms.com/bookings';
 
