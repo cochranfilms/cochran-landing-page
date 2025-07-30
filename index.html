@@ -2597,6 +2597,7 @@
     
     .mobile-contact-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
@@ -2604,15 +2605,17 @@
       background: rgba(255,255,255,0.1);
       border-radius: 10px;
       border: 1px solid rgba(255,178,0,0.2);
+      text-align: center;
     }
     
     .mobile-contact-item i {
       color: #FFB200;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
     }
     
     .mobile-contact-item span {
-      color: #000;
+      color: #fff;
       font-weight: 600;
       font-size: 0.9rem;
     }
@@ -14301,48 +14304,112 @@
         color: #fff !important;
       }
       
-      /* 📱 MOBILE HEADER BANNER FIXES */
+      /* 📱 MOBILE HEADER BANNER - DESKTOP STYLE */
       .mobile-header-banner {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
         z-index: 10001 !important;
-        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
-        padding: 0.5rem 1rem !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+        background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%) !important;
+        padding: 2rem 1rem !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        min-height: 200px !important;
       }
       
       .mobile-header-content {
         display: flex !important;
+        flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 0.5rem !important;
+        text-align: center !important;
         width: 100% !important;
-        max-width: 300px !important;
+        max-width: 600px !important;
+        gap: 1rem !important;
       }
       
       .mobile-header-logo {
-        width: 40px !important;
+        width: 60px !important;
         height: auto !important;
         filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)) !important;
+        margin-bottom: 0.5rem !important;
+      }
+      
+      .mobile-header-divider {
+        width: 60px !important;
+        height: 3px !important;
+        background: #000 !important;
+        border-radius: 2px !important;
+        margin: 0.5rem 0 !important;
       }
       
       .mobile-header-title {
-        font-size: 1.2rem !important;
-        font-weight: 700 !important;
+        font-size: 1.4rem !important;
+        font-weight: 900 !important;
         color: #000 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.05em !important;
         text-shadow: 0 1px 2px rgba(255,255,255,0.3) !important;
+        margin: 0.5rem 0 !important;
+        line-height: 1.2 !important;
+      }
+      
+      .mobile-header-subtitle {
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        color: rgba(0,0,0,0.8) !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        max-width: 500px !important;
+      }
+      
+      /* 📱 RESPONSIVE MOBILE BANNER ADJUSTMENTS */
+      @media (max-width: 480px) {
+        .mobile-header-banner {
+          padding: 1.5rem 0.5rem !important;
+          min-height: 180px !important;
+        }
+        
+        .mobile-header-title {
+          font-size: 1.2rem !important;
+          line-height: 1.1 !important;
+        }
+        
+        .mobile-header-subtitle {
+          font-size: 0.8rem !important;
+          padding: 0 0.5rem !important;
+        }
+        
+        .mobile-hero {
+          padding-top: 200px !important;
+        }
+      }
+      
+      @media (max-width: 360px) {
+        .mobile-header-banner {
+          padding: 1rem 0.5rem !important;
+          min-height: 160px !important;
+        }
+        
+        .mobile-header-title {
+          font-size: 1rem !important;
+        }
+        
+        .mobile-header-subtitle {
+          font-size: 0.75rem !important;
+        }
+        
+        .mobile-hero {
+          padding-top: 180px !important;
+        }
       }
       
       /* 📱 MOBILE HERO SECTION PADDING FIX */
       .mobile-hero {
-        padding-top: 80px !important;
+        padding-top: 220px !important;
         margin-top: 0 !important;
       }
       
@@ -14843,8 +14910,10 @@
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
       <div class="mobile-header-content">
-        <img src="Logo.png" alt="Cochran Films" class="mobile-header-logo">
-        <div class="mobile-header-title">Cochran Films</div>
+        <img src="Logo.png" alt="Cochran Films Logo" class="mobile-header-logo">
+        <div class="mobile-header-divider"></div>
+        <h1 class="mobile-header-title">WORK WITH A FULL-STACK DIGITAL STRATEGIST</h1>
+        <p class="mobile-header-subtitle">You're partnering with a media powerhouse—experts in full-service production, strategic web systems, and infrastructure that scales.</p>
       </div>
     </div>
     
@@ -14883,7 +14952,7 @@
             </div>
             
             <div class="mobile-hero-buttons">
-              <button class="mobile-cta-primary" onclick="openBookingModal()">📸 Book Now</button>
+              <button class="mobile-cta-primary" onclick="openBookingModal()"><i class="fas fa-camera"></i> BOOK NOW</button>
               <button class="mobile-cta-secondary" onclick="scrollToMobileSection('mobileServices')">View Services</button>
             </div>
             
@@ -14986,7 +15055,7 @@
           <div class="mobile-contact-buttons">
             <button class="mobile-contact-btn primary" onclick="openBookingModal()">
               <i class="fas fa-camera"></i>
-              📸 Book Now
+              BOOK NOW
             </button>
             <button class="mobile-contact-btn secondary" onclick="openMobileContactForm()">
               <i class="fas fa-envelope"></i>
@@ -16970,14 +17039,33 @@
       });
       
       // Ensure form submission button is working
-      const submitButton = document.querySelector('#mobileVersion #bookingModal button[type="submit"]');
+      const submitButton = document.querySelector('#bookingModal button[type="submit"]');
       if (submitButton) {
         submitButton.style.setProperty('background', '#FFB200', 'important');
         submitButton.style.setProperty('color', '#000', 'important');
         submitButton.style.setProperty('border', 'none', 'important');
         submitButton.style.setProperty('padding', '1rem 2rem', 'important');
         submitButton.style.setProperty('font-weight', '700', 'important');
-        console.log('✅ Form submit button styled');
+        submitButton.style.setProperty('border-radius', '8px', 'important');
+        submitButton.style.setProperty('font-size', '1rem', 'important');
+        submitButton.style.setProperty('min-height', '48px', 'important');
+        submitButton.style.setProperty('width', '100%', 'important');
+        console.log('✅ Form submit button styled for mobile');
+        
+        // Ensure the button is clickable on mobile
+        submitButton.addEventListener('touchstart', function(e) {
+          console.log('📱 Submit button touch detected');
+        }, { passive: true });
+      }
+      
+      // Ensure the booking modal form is properly initialized
+      const mobileBookingForm = document.querySelector('#bookingModal form');
+      if (mobileBookingForm) {
+        console.log('✅ Mobile booking form found and initialized');
+        
+        // Add mobile-specific form styling
+        mobileBookingForm.style.setProperty('width', '100%', 'important');
+        mobileBookingForm.style.setProperty('max-width', '100%', 'important');
       }
       
       console.log('✅ Emergency mobile fixes applied');
@@ -16995,8 +17083,81 @@
   window.addEventListener('load', function() {
     setTimeout(() => {
       forceMobileFixes();
+      
+      // Initialize mobile form handling
+      if (window.innerWidth <= 768) {
+        initializeMobileFormHandling();
+      }
     }, 500);
   });
+  
+  // Mobile form handling initialization
+  function initializeMobileFormHandling() {
+    console.log('📱 Initializing mobile form handling...');
+    
+    const form = document.getElementById('bookingForm');
+    const submitBtn = document.querySelector('#bookingModal button[type="submit"]');
+    
+    if (form && submitBtn) {
+      // Create a backup submission method for mobile
+      window.mobileSubmitForm = function() {
+        console.log('📱 Backup mobile form submission triggered');
+        const service = form.service.value;
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const phone = form.phone.value.trim();
+        const notes = form.notes.value.trim();
+        
+        if (!service || !name || !email) {
+          alert('Please fill out all required fields.');
+          return false;
+        }
+        
+        const serviceLinks = {
+          'video': 'https://calendly.com/cochranfilms/videography',
+          'photo': 'https://calendly.com/cochranfilms/photography', 
+          'prints': 'https://calendly.com/cochranfilms/instant-prints',
+          'web': 'https://calendly.com/cochranfilms/web-design',
+          'brand': 'https://calendly.com/cochranfilms/brand-development',
+          'consult': 'https://calendly.com/cochranfilms/consultation'
+        };
+        
+        const url = serviceLinks[service] || 'https://www.cochranfilms.com/bookings';
+        
+        try {
+          if (typeof emailjs !== 'undefined') {
+            const sanitizedData = {
+              service: service.replace(/[<>]/g, ''),
+              name: name.replace(/[<>]/g, '').trim(),
+              email: email.replace(/[<>]/g, '').trim(),
+              phone: phone.replace(/[<>]/g, '').trim(),
+              notes: notes.replace(/[<>]/g, '').trim()
+            };
+            
+            emailjs.send('service_t11yvru', 'template_aluwel1', sanitizedData).then(function(response) {
+              console.log('✅ Mobile backup submission successful');
+              showSuccessPopup(url);
+            }, function(error) {
+              console.error('❌ Mobile backup submission error:', error);
+              showSuccessPopup(url);
+            });
+          } else {
+            showSuccessPopup(url);
+          }
+        } catch (error) {
+          console.error('❌ Mobile backup submission failed:', error);
+          showSuccessPopup(url);
+        }
+        
+        return true;
+      };
+      
+      // Add the backup method to the submit button
+      submitBtn.setAttribute('onclick', 'window.mobileSubmitForm(); return false;');
+      
+      console.log('✅ Mobile form backup method installed');
+    }
+  }
   
   // 📱 INITIALIZE MOBILE EXPERIENCE IMMEDIATELY
   // This ensures mobile experience is set up before DOM is fully loaded
@@ -19220,8 +19381,11 @@
   
   if (bookingForm) {
     console.log('✅ Booking form found and handler attached');
-    bookingForm.onsubmit = function(e) {
+    
+    // Enhanced mobile-compatible form submission
+    const handleFormSubmission = function(e) {
       e.preventDefault();
+      e.stopPropagation();
       console.log('📝 Form submission triggered');
       
       const service = bookingForm.service.value;
@@ -19239,6 +19403,11 @@
       }
       
       console.log('✅ Form validation passed');
+      
+      // Mobile-specific submission handling
+      if (window.innerWidth <= 768) {
+        console.log('📱 Processing mobile form submission');
+      }
 
       let url = serviceLinks[service] || 'https://www.cochranfilms.com/bookings';
 
@@ -19263,33 +19432,86 @@
           
           console.log('🔒 Sending secure form submission...');
           emailjs.send('service_t11yvru', 'template_aluwel1', sanitizedData).then(function(response) {
-            console.log('✅ Form submitted successfully:', response.status, response.text);
-            showSuccessPopup(url);
-          }, function(error) {
-            console.error('❌ EmailJS error:', error);
-            // Still show success for better UX, but log the error
-            showSuccessPopup(url);
-          });
-        } else {
-          console.warn('⚠️ EmailJS not available - redirecting directly');
-          showSuccessPopup(url);
-        }
-      } catch (error) {
-        console.error('❌ Form submission error:', error);
+                    console.log('✅ Form submitted successfully:', response.status, response.text);
         showSuccessPopup(url);
-      }
-    };
+      }, function(error) {
+        console.error('❌ EmailJS error:', error);
+        // Still show success for better UX, but log the error
+        showSuccessPopup(url);
+      });
+    } else {
+      console.warn('⚠️ EmailJS not available - redirecting directly');
+      showSuccessPopup(url);
+    }
+  } catch (error) {
+    console.error('❌ Form submission error:', error);
+    showSuccessPopup(url);
   }
+};
+
+// Attach form submission handler
+bookingForm.onsubmit = handleFormSubmission;
+
+// Also attach to submit button for mobile compatibility
+const submitButton = bookingForm.querySelector('button[type="submit"]');
+if (submitButton) {
+  console.log('✅ Submit button found, attaching mobile handler');
+  submitButton.onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('📱 Submit button clicked');
+    handleFormSubmission(e);
+  };
+}
+
+// Add additional mobile event listeners
+if (window.innerWidth <= 768) {
+  console.log('📱 Adding mobile-specific form listeners');
+  
+  // Touch events for mobile
+  if (submitButton) {
+    submitButton.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('📱 Touch submit triggered');
+      handleFormSubmission(e);
+    }, { passive: false });
+  }
+  
+  // Form events
+  bookingForm.addEventListener('submit', handleFormSubmission, { passive: false });
+}
+}
 
   // Success popup with countdown
   function showSuccessPopup(url) {
-    bookingModal.style.display = 'none';
+    console.log('✅ Showing success popup for:', url);
+    
+    // Close booking modal and restore mobile state
+    closeBookingModal();
     
     const successPopup = document.getElementById('successPopup');
     const countdownEl = document.getElementById('countdown');
     const okayBtn = document.getElementById('okayBtn');
     
+    if (!successPopup) {
+      console.warn('⚠️ Success popup not found, redirecting directly');
+      redirectToService(url);
+      return;
+    }
+    
+    // Make success popup mobile-friendly
     successPopup.style.display = 'flex';
+    successPopup.style.position = 'fixed';
+    successPopup.style.top = '0';
+    successPopup.style.left = '0';
+    successPopup.style.width = '100%';
+    successPopup.style.height = '100%';
+    successPopup.style.zIndex = '9999999';
+    successPopup.style.alignItems = 'center';
+    successPopup.style.justifyContent = 'center';
+    
+    console.log('📱 Success popup displayed for mobile');
     
     let countdown = 8;
     countdownEl.textContent = countdown;
@@ -19304,19 +19526,63 @@
       }
     }, 1000);
     
-    okayBtn.onclick = function() {
-      clearInterval(countdownTimer);
-      redirectToService(url);
-    };
+    if (okayBtn) {
+      // Mobile-compatible button handler
+      okayBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('📱 Okay button clicked');
+        clearInterval(countdownTimer);
+        redirectToService(url);
+      };
+      
+      // Add touch handler for mobile
+      okayBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('📱 Okay button touched');
+        clearInterval(countdownTimer);
+        redirectToService(url);
+      }, { passive: false });
+    }
   }
 
   function redirectToService(url) {
-    document.getElementById('successPopup').style.display = 'none';
+    console.log('🔄 Redirecting to service:', url);
+    
+    const successPopup = document.getElementById('successPopup');
+    if (successPopup) {
+      successPopup.style.display = 'none';
+    }
+    
     // Reset the form only after redirect
     if (bookingForm) {
       bookingForm.reset();
     }
-    window.open(url, '_blank');
+    
+    // Restore mobile state
+    if (window.innerWidth <= 768) {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+      
+      if (window.mobileState) {
+        window.mobileState.modalOpen = false;
+      }
+      
+      console.log('📱 Mobile state restored before redirect');
+    }
+    
+    // Open the service page
+    try {
+      window.open(url, '_blank');
+      console.log('✅ Redirect successful');
+    } catch (error) {
+      console.error('❌ Redirect failed:', error);
+      // Fallback to location.href if window.open fails
+      window.location.href = url;
+    }
   }
 
   // Timeline hover detection for video movement
@@ -19565,8 +19831,17 @@
       document.body.style.width = '100%';
       document.body.style.height = '100%';
       
-      // Prevent scroll events on body from interfering with modal
+      // Prevent scroll events on body from interfering with modal, but allow form events
       const preventBackgroundScroll = (e) => {
+        // Don't prevent form submission events
+        if (e.type === 'submit' || 
+            e.target.type === 'submit' || 
+            e.target.closest('form') || 
+            e.target.closest('button[type="submit"]')) {
+          console.log('🔄 Allowing form event:', e.type);
+          return true;
+        }
+        
         if (!e.target.closest('.modal-content')) {
           e.preventDefault();
           e.stopPropagation();
