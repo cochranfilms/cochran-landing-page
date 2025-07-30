@@ -1598,7 +1598,6 @@
         
         /* Hide ALL desktop content on mobile to prevent white space */
         .premium-footer,
-        .cinematic-loader,
         header,
         .hero-section,
         .million-dollar-photography,
@@ -10999,7 +10998,7 @@
     }
     
     /* Ensure booking modal is hidden on enter screen */
-    .cinematic-loader #bookingModal {
+    .blockbuster-loader #bookingModal {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -11144,7 +11143,7 @@
       50% { transform: translateX(20px) scale(1.1); opacity: 0.6; }
     }
     
-    body.loaded .cinematic-loader {
+    body.loaded .blockbuster-loader {
       opacity: 0;
       pointer-events: none;
       transform: translateZ(0);
@@ -13013,7 +13012,7 @@
     }
     
     /* Premium mobile background enhancement */
-    .cinematic-loader::before {
+    .blockbuster-loader::before {
       content: '' !important;
       position: absolute !important;
       top: 0 !important;
@@ -13049,7 +13048,7 @@
     }
     
         /* Performance optimizations */
-    .cinematic-loader * {
+    .blockbuster-loader * {
       -webkit-backface-visibility: hidden !important;
       backface-visibility: hidden !important;
       will-change: auto !important;
@@ -19025,7 +19024,7 @@
       console.log('📱 Mobile experience initializing...');
       
       // Force hide desktop elements first
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
       desktopElements.forEach(el => {
         el.style.display = 'none !important';
         el.style.visibility = 'hidden !important';
@@ -19330,9 +19329,9 @@
           // Start fade out sequence
           setTimeout(() => {
             // Complete fade out to black - ensure it goes to 0% opacity
-            cinematicLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            cinematicLoader.style.opacity = '0';
-            cinematicLoader.style.filter = 'blur(3px) brightness(0.3)';
+            blockbusterLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            blockbusterLoader.style.opacity = '0';
+            blockbusterLoader.style.filter = 'blur(3px) brightness(0.3)';
             
             // Add slide transition effect
             document.body.style.overflow = 'hidden';
@@ -19340,22 +19339,22 @@
             // Ensure complete fade to black
             setTimeout(() => {
               // Force complete opacity to 0 and black filter
-              cinematicLoader.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-              cinematicLoader.style.opacity = '0';
-              cinematicLoader.style.filter = 'blur(6px) brightness(0)';
+              blockbusterLoader.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+              blockbusterLoader.style.opacity = '0';
+              blockbusterLoader.style.filter = 'blur(6px) brightness(0)';
               
               // Final removal - ensure it's completely gone
               setTimeout(() => {
                 // Force complete removal and hide
-                cinematicLoader.style.transition = 'none';
-                cinematicLoader.style.display = 'none';
-                cinematicLoader.style.visibility = 'hidden';
-                cinematicLoader.style.opacity = '0';
-                cinematicLoader.style.pointerEvents = 'none';
-                cinematicLoader.style.zIndex = '-1';
-                cinematicLoader.style.transform = 'scale(1)';
-                cinematicLoader.style.filter = 'blur(10px) brightness(0)';
-                cinematicLoader.style.background = 'transparent';
+                blockbusterLoader.style.transition = 'none';
+                blockbusterLoader.style.display = 'none';
+                blockbusterLoader.style.visibility = 'hidden';
+                blockbusterLoader.style.opacity = '0';
+                blockbusterLoader.style.pointerEvents = 'none';
+                blockbusterLoader.style.zIndex = '-1';
+                blockbusterLoader.style.transform = 'scale(1)';
+                blockbusterLoader.style.filter = 'blur(10px) brightness(0)';
+                blockbusterLoader.style.background = 'transparent';
                 
                 // Add loaded class to show main content
                 document.body.classList.add('loaded');
@@ -19542,14 +19541,14 @@
         console.log('📱 Mobile version forced visible - COMPREHENSIVE');
       }
       
-      // Show mobile loader and hide cinematic loader
+      // Show mobile loader and hide blockbuster loader
       const mobileLoader = document.querySelector('.mobile-loader');
-      const cinematicLoader = document.querySelector('.cinematic-loader');
+      const blockbusterLoader = document.querySelector('.blockbuster-loader');
       
-      if (cinematicLoader) {
-        cinematicLoader.style.display = 'none';
-        cinematicLoader.style.visibility = 'hidden';
-        cinematicLoader.style.opacity = '0';
+      if (blockbusterLoader) {
+        blockbusterLoader.style.display = 'none';
+        blockbusterLoader.style.visibility = 'hidden';
+        blockbusterLoader.style.opacity = '0';
       }
       
       if (mobileLoader) {
@@ -19569,7 +19568,7 @@
       }
       
       // Force hide all desktop elements
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
       desktopElements.forEach(el => {
         el.style.display = 'none !important';
         el.style.visibility = 'hidden !important';
@@ -19608,7 +19607,7 @@
       }
       
       // Force hide desktop elements
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
       desktopElements.forEach(el => {
         el.style.display = 'none !important';
         el.style.visibility = 'hidden !important';
@@ -19652,7 +19651,7 @@
         }
         
         // Hide desktop elements
-        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
         desktopElements.forEach(el => {
           el.style.display = 'none !important';
           el.style.visibility = 'hidden !important';
@@ -19781,7 +19780,7 @@
       }
       
       // Force hide desktop elements
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
       desktopElements.forEach(el => {
         el.style.display = 'none !important';
         el.style.visibility = 'hidden !important';
