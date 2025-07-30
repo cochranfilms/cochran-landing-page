@@ -101,10 +101,16 @@
     }
   }
     
-    // Run immediately and on window load
-    ensureContentVisibility();
-    window.addEventListener('load', ensureContentVisibility);
-    window.addEventListener('resize', ensureContentVisibility);
+      // Run immediately and on window load
+  ensureContentVisibility();
+  window.addEventListener('load', ensureContentVisibility);
+  window.addEventListener('resize', ensureContentVisibility);
+  
+  // CRITICAL FIX: Force content to show immediately
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+    console.log('🔧 Forced loaded class added');
+  }, 1000);
     
     // Force HTTPS redirect
     if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
@@ -235,14 +241,27 @@
       font-family: 'Inter', 'Segoe UI', sans-serif !important;
     }
     
-    /* Ensure sections are properly visible */
-    .deliver-section, .timeline-section, .testimonials-section {
+    /* CRITICAL FIX: Override the loaded class requirement */
+    .deliver-section, .timeline-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .premium-footer {
       display: block !important;
       visibility: visible !important;
       opacity: 1 !important;
       position: relative !important;
       z-index: 1 !important;
       overflow: visible !important;
+    }
+    
+    /* Override the body:not(.loaded) rule */
+    body:not(.loaded) .deliver-section,
+    body:not(.loaded) .timeline-section,
+    body:not(.loaded) .testimonials-section,
+    body:not(.loaded) .services-section,
+    body:not(.loaded) .comparison-section,
+    body:not(.loaded) .agency-comparison-section,
+    body:not(.loaded) .premium-footer {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
     }
     
     /* Fix text overflow issues */
