@@ -52,6 +52,49 @@
   
   <!-- 🔒 FORCE HTTPS REDIRECT -->
   <script>
+    // CRITICAL FIX: Ensure content displays properly
+    function ensureContentVisibility() {
+      const isMobile = window.innerWidth <= 768;
+      console.log('🔧 Ensuring content visibility - Mobile:', isMobile);
+      
+      if (isMobile) {
+        // Show mobile version
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'block';
+          mobileVersion.style.visibility = 'visible';
+          mobileVersion.style.opacity = '1';
+        }
+        
+        // Hide desktop elements
+        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+        desktopElements.forEach(el => {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+        });
+      } else {
+        // Show desktop elements
+        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+        desktopElements.forEach(el => {
+          el.style.display = 'block';
+          el.style.visibility = 'visible';
+          el.style.opacity = '1';
+        });
+        
+        // Hide mobile version
+        const mobileVersion = document.getElementById('mobileVersion');
+        if (mobileVersion) {
+          mobileVersion.style.display = 'none';
+          mobileVersion.style.visibility = 'hidden';
+        }
+      }
+    }
+    
+    // Run immediately and on window load
+    ensureContentVisibility();
+    window.addEventListener('load', ensureContentVisibility);
+    window.addEventListener('resize', ensureContentVisibility);
+    
     // Force HTTPS redirect
     if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       location.replace('https:' + window.location.href.substring(window.location.protocol.length));
@@ -124,6 +167,55 @@
     })();
   </script>
   <style>
+    /* CRITICAL FIX: Ensure main content is always visible */
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden !important;
+    }
+    
+    /* Force desktop content to be visible on desktop */
+    @media (min-width: 769px) {
+      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      
+      #mobileVersion {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+      }
+    }
+    
+    /* Force mobile content to be visible on mobile */
+    @media (max-width: 768px) {
+      #mobileVersion {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      
+      header, .hero-section, .million-dollar-photography, .service-builder-section, 
+      .testimonials-section, .services-section, .comparison-section, .agency-comparison-section,
+      .deliver-section, .timeline-section, .premium-footer {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        z-index: -1 !important;
+      }
+    }
+    
     /* Premium Interactive Enhancements */
     
     /* Magnetic Cursor Effect */
@@ -16751,7 +16843,7 @@
 </head>
 <body>
   <!-- Mobile-Optimized Version (Hidden on Desktop) -->
-  <div id="mobileVersion" style="display: none;">
+  <div id="mobileVersion" style="display: none; visibility: hidden;">
     
     <!-- Mobile Header Banner -->
     <div class="mobile-header-banner">
