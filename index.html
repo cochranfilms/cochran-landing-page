@@ -10435,7 +10435,7 @@
       top: 50%;
       right: clamp(15%, 20%, 25%);
       transform: translateY(-50%);
-      z-index: 50;
+      z-index: 20;
       animation: cardFloat 3s ease-in-out infinite;
     }
     
@@ -10445,7 +10445,7 @@
       top: -80px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 60;
+      z-index: 21;
     }
     
     .lanyard-strap {
@@ -10739,8 +10739,8 @@
       top: 50%;
       right: clamp(25%, 30%, 35%);
       transform: translateY(-50%);
-      z-index: 40;
-      opacity: 0.7;
+      z-index: 25;
+      opacity: 0.8;
       animation: arrowPulse 2s ease-in-out infinite;
       pointer-events: none;
     }
@@ -10823,19 +10823,19 @@
     /* Responsive positioning for different screen sizes */
     @media (max-width: 1200px) {
       .membership-card {
-        right: clamp(30%, 35%, 40%);
+        right: clamp(35%, 40%, 45%);
       }
       .arrow-hint {
-        right: clamp(40%, 45%, 50%);
+        right: clamp(45%, 50%, 55%);
       }
     }
     
     @media (max-width: 1024px) {
       .membership-card {
-        right: clamp(35%, 40%, 45%);
+        right: clamp(40%, 45%, 50%);
       }
       .arrow-hint {
-        right: clamp(45%, 50%, 55%);
+        right: clamp(50%, 55%, 60%);
       }
       .card-sleeve {
         width: 260px;
@@ -19061,6 +19061,12 @@
     }
   }
   
+  // Clear saved name on page refresh
+  function clearSavedName() {
+    localStorage.removeItem('storytellerCardName');
+    console.log('🗑️ Cleared saved name on page refresh');
+  }
+  
   // Enter Store Function
   function enterStore() {
     console.log('🏪 Entering Cochran Films store...');
@@ -19206,8 +19212,8 @@
     // Initialize audio system
     initAudio();
     
-    // Load saved name for membership card
-    loadSavedName();
+    // Clear saved name on page refresh
+    clearSavedName();
     
     // Start ambient hum after a short delay
     setTimeout(() => {
