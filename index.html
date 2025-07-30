@@ -17017,8 +17017,7 @@
         audioElement.muted = false;
         audioElement.preload = 'auto';
         
-        let audioStarted = false;
-        let userPressedEnter = false;
+        let hasEntered = false;
         let autoEnterTimer = null;
         let audioFadeOutInterval = null;
         
@@ -17030,24 +17029,20 @@
         const fadeOutAudio = () => {
           if (audioFadeOutInterval) return; // Prevent multiple fade outs
           
-          const startVolume = audioElement.volume;
-          const startTime = Date.now();
+          console.log('🔇 Starting audio fade out...');
           
           audioFadeOutInterval = setInterval(() => {
-            const elapsed = (Date.now() - startTime) / 1000;
-            const progress = Math.min(elapsed / (AUDIO_FADE_DURATION / 1000), 1);
-            
-            audioElement.volume = startVolume * (1 - progress);
-            
-            if (progress >= 1) {
-              clearInterval(audioFadeOutInterval);
+            if (audioElement.volume > 0.1) {
+              audioElement.volume -= 0.1;
+            } else {
               audioElement.pause();
               audioElement.currentTime = 0;
-              audioElement.volume = 0.2; // Reset for next time
+              audioElement.volume = 0.2; // Reset volume for next time
+              clearInterval(audioFadeOutInterval);
               audioFadeOutInterval = null;
               console.log('🔇 Audio fade out complete');
             }
-          }, 50);
+          }, 100);
         };
         
         // Cinematic transition function
@@ -17154,75 +17149,52 @@
           }, 300);
         };
         
-        // Auto-enter function
-        const autoEnter = () => {
-          if (userPressedEnter) return;
+        // Play audio immediately on desktop
+        audioElement.play().then(() => {
+          console.log('🎵 Audio started immediately on desktop');
+        }).catch(e => {
+          console.log('Audio blocked, will try on user interaction:', e);
+          // Try to play on first user interaction
+          const playOnInteraction = () => {
+            if (!hasEntered && audioElement.paused) {
+              audioElement.play().then(() => {
+                console.log('🎵 Audio started on user interaction');
+              }).catch(err => console.log('Audio still blocked:', err));
+            }
+            // Remove listeners after first successful play
+            document.removeEventListener('click', playOnInteraction);
+            document.removeEventListener('keydown', playOnInteraction);
+            document.removeEventListener('mousemove', playOnInteraction);
+            document.removeEventListener('touchstart', playOnInteraction);
+          };
           
-          console.log('⏰ Auto-entering store after 17 seconds...');
-          userPressedEnter = true;
-          
-          // Start audio and transition simultaneously
-          if (!audioStarted) {
-            audioElement.play().then(() => {
-              console.log('🎵 Audio started with auto-enter');
-              audioStarted = true;
-            }).catch(e => {
-              console.log('Audio blocked during auto-enter:', e);
-            });
-          }
-          
-          // Fade out audio and perform transition
-          fadeOutAudio();
-          performCinematicTransition();
-        };
+          document.addEventListener('click', playOnInteraction);
+          document.addEventListener('keydown', playOnInteraction);
+          document.addEventListener('mousemove', playOnInteraction);
+          document.addEventListener('touchstart', playOnInteraction);
+        });
         
-        // Start auto-enter timer
-        const startAutoEnterTimer = () => {
-          if (autoEnterTimer) clearTimeout(autoEnterTimer);
-          autoEnterTimer = setTimeout(autoEnter, AUTO_ENTER_DELAY);
-          console.log(`⏰ Auto-enter timer started (${AUTO_ENTER_DELAY/1000}s)`);
-        };
+        // Auto-enter timer
+        const autoEnter = setTimeout(() => {
+          if (!hasEntered) {
+            console.log('⏰ Auto-entering store after 17 seconds...');
+            hasEntered = true;
+            fadeOutAudio();
+            performCinematicTransition();
+          }
+        }, AUTO_ENTER_DELAY);
         
         // Override enterStore function
         const originalEnterStore = window.enterStore;
         window.enterStore = function() {
-          userPressedEnter = true;
-          if (autoEnterTimer) {
-            clearTimeout(autoEnterTimer);
+          if (!hasEntered) {
+            hasEntered = true;
+            clearTimeout(autoEnter);
             console.log('⏰ Auto-enter timer cancelled by user');
-          }
-          
-          // Fade out audio if playing
-          if (!audioElement.paused) {
             fadeOutAudio();
-          }
-          
-          originalEnterStore.call(this);
-        };
-        
-        // Start auto-enter timer immediately
-        startAutoEnterTimer();
-        
-        // User interaction handlers (for audio context resumption)
-        const events = ['click', 'keydown', 'mousemove', 'touchstart', 'scroll', 'pointerdown', 'pointermove'];
-        
-        const handleUserInteraction = () => {
-          if (audioStarted) return;
-          
-          // Resume audio context if needed
-          if (window.AudioContext || window.webkitAudioContext) {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            if (audioContext.state === 'suspended') {
-              audioContext.resume().then(() => {
-                console.log('🎵 Audio context resumed');
-              });
-            }
+            originalEnterStore.call(this);
           }
         };
-        
-        events.forEach(event => {
-          document.addEventListener(event, handleUserInteraction, { passive: true });
-        });
         
         // Load saved name on initialization
         loadSavedName();
