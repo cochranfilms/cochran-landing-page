@@ -10383,6 +10383,99 @@
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
       perspective: 1000px;
+      animation: storeEntrance 3s ease-out forwards;
+    }
+    
+    @keyframes storeEntrance {
+      0% { 
+        transform: scale(1.2) translateY(50px);
+        opacity: 0;
+      }
+      100% { 
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* VHS Static Overlay */
+    .vhs-static {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.03) 2px,
+          rgba(255, 255, 255, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.02) 2px,
+          rgba(255, 255, 255, 0.02) 4px
+        );
+      pointer-events: none;
+      z-index: 10;
+      animation: staticFlicker 0.1s infinite;
+    }
+    
+    @keyframes staticFlicker {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    
+    /* Scan Lines */
+    .scan-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 1px,
+          rgba(255, 255, 255, 0.02) 1px,
+          rgba(255, 255, 255, 0.02) 2px
+        );
+      pointer-events: none;
+      z-index: 11;
+      animation: scanMove 20s linear infinite;
+    }
+    
+    @keyframes scanMove {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+    
+    /* Ambient Fog */
+    .ambient-fog {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: 
+        radial-gradient(
+          ellipse at center bottom,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 50%,
+          transparent 100%
+        );
+      pointer-events: none;
+      z-index: 8;
+      animation: fogDrift 15s ease-in-out infinite;
+    }
+    
+    @keyframes fogDrift {
+      0%, 100% { transform: translateX(-20px) scale(1); opacity: 0.3; }
+      50% { transform: translateX(20px) scale(1.1); opacity: 0.6; }
     }
     
     body.loaded .cinematic-loader {
@@ -10702,11 +10795,11 @@
       left: 50%;
       transform: translateX(-50%);
       padding: 20px 40px;
-      background: linear-gradient(45deg, #FFD700, #FFA500);
-      border: 3px solid #FFD700;
+      background: linear-gradient(45deg, #FFB200, #FFD700);
+      border: 3px solid #FFB200;
       border-radius: 50px;
       color: #0066CC;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
       font-size: 1.5rem;
       font-weight: 900;
       text-transform: uppercase;
@@ -10714,25 +10807,77 @@
       cursor: pointer;
       box-shadow: 
         0 10px 30px rgba(0,0,0,0.3),
-        0 0 20px rgba(255,215,0,0.6),
+        0 0 20px rgba(255,178,0,0.6),
+        0 0 40px rgba(255,178,0,0.4),
+        0 0 60px rgba(255,178,0,0.2),
         inset 0 2px 4px rgba(255,255,255,0.3);
-      animation: buttonFloat 2s ease-in-out infinite;
+      animation: buttonFloat 2s ease-in-out infinite, buttonPulse 3s ease-in-out infinite;
       transition: all 0.3s ease;
       z-index: 20;
+      text-shadow: 0 0 10px rgba(255,178,0,0.8);
     }
     
     .enter-button:hover {
       transform: translateX(-50%) scale(1.1);
       box-shadow: 
         0 15px 40px rgba(0,0,0,0.4),
-        0 0 30px rgba(255,215,0,0.8),
+        0 0 30px rgba(255,178,0,0.8),
+        0 0 60px rgba(255,178,0,0.6),
+        0 0 90px rgba(255,178,0,0.4),
         inset 0 2px 4px rgba(255,255,255,0.3);
-      background: linear-gradient(45deg, #FFA500, #FFD700);
+      background: linear-gradient(45deg, #FFD700, #FFB200);
+      animation: buttonGlitch 0.2s ease-in-out 3;
+    }
+    
+    .enter-button:active {
+      transform: translateX(-50%) scale(0.95);
+      box-shadow: 
+        0 5px 15px rgba(0,0,0,0.4),
+        0 0 15px rgba(255,178,0,0.6),
+        inset 0 2px 4px rgba(255,255,255,0.3);
     }
     
     @keyframes buttonFloat {
       0%, 100% { transform: translateX(-50%) translateY(0px); }
       50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    
+    @keyframes buttonPulse {
+      0%, 100% { 
+        box-shadow: 
+          0 10px 30px rgba(0,0,0,0.3),
+          0 0 20px rgba(255,178,0,0.6),
+          0 0 40px rgba(255,178,0,0.4),
+          0 0 60px rgba(255,178,0,0.2),
+          inset 0 2px 4px rgba(255,255,255,0.3);
+      }
+      50% { 
+        box-shadow: 
+          0 10px 30px rgba(0,0,0,0.3),
+          0 0 30px rgba(255,178,0,0.8),
+          0 0 60px rgba(255,178,0,0.6),
+          0 0 90px rgba(255,178,0,0.4),
+          inset 0 2px 4px rgba(255,255,255,0.3);
+      }
+    }
+    
+    @keyframes buttonGlitch {
+      0%, 100% { 
+        transform: translateX(-50%) scale(1.1);
+        filter: hue-rotate(0deg);
+      }
+      25% { 
+        transform: translateX(-50%) scale(1.1) translateX(2px);
+        filter: hue-rotate(10deg);
+      }
+      50% { 
+        transform: translateX(-50%) scale(1.1) translateX(-2px);
+        filter: hue-rotate(-10deg);
+      }
+      75% { 
+        transform: translateX(-50%) scale(1.1) translateX(1px);
+        filter: hue-rotate(5deg);
+      }
     }
     
     /* Store Sign */
@@ -10749,7 +10894,7 @@
       width: 280px;
       height: 140px;
       background: #0066CC;
-      border: 3px solid #FFD700;
+      border: 3px solid #FFB200;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -10757,9 +10902,10 @@
       transform: rotate(-3deg);
       box-shadow: 
         0 15px 40px rgba(0,0,0,0.4),
-        0 8px 20px rgba(255,215,0,0.3),
+        0 8px 20px rgba(255,178,0,0.3),
+        0 0 30px rgba(255,178,0,0.2),
         inset 0 2px 4px rgba(255,255,255,0.1);
-      animation: signFloat 4s ease-in-out infinite;
+      animation: signFloat 4s ease-in-out infinite, signFlicker 8s ease-in-out infinite;
       clip-path: polygon(
         0% 0%,
         85% 0%,
@@ -10771,8 +10917,8 @@
     
     .sign-content {
       text-align: center;
-      color: #FFD700;
-      font-family: Arial, sans-serif;
+      color: #FFB200;
+      font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
       font-weight: bold;
       transform: rotate(3deg);
     }
@@ -10783,8 +10929,10 @@
       letter-spacing: 0.1em;
       text-shadow: 
         0 2px 8px rgba(0,0,0,0.5),
-        0 0 20px rgba(255,215,0,0.3);
+        0 0 20px rgba(255,178,0,0.4),
+        0 0 40px rgba(255,178,0,0.2);
       line-height: 1.1;
+      animation: neonFlicker 6s ease-in-out infinite;
     }
     
     .sign-tm {
@@ -10794,11 +10942,57 @@
       right: 10px;
       font-weight: 700;
       transform: rotate(3deg);
+      color: #FFB200;
+      text-shadow: 0 0 10px rgba(255,178,0,0.6);
     }
     
     @keyframes signFloat {
       0%, 100% { transform: rotate(-3deg) translateY(0px); }
       50% { transform: rotate(-3deg) translateY(-8px); }
+    }
+    
+    @keyframes signFlicker {
+      0%, 100% { 
+        box-shadow: 
+          0 15px 40px rgba(0,0,0,0.4),
+          0 8px 20px rgba(255,178,0,0.3),
+          0 0 30px rgba(255,178,0,0.2),
+          inset 0 2px 4px rgba(255,255,255,0.1);
+      }
+      50% { 
+        box-shadow: 
+          0 15px 40px rgba(0,0,0,0.4),
+          0 8px 20px rgba(255,178,0,0.5),
+          0 0 40px rgba(255,178,0,0.4),
+          inset 0 2px 4px rgba(255,255,255,0.1);
+      }
+    }
+    
+    @keyframes neonFlicker {
+      0%, 100% { 
+        text-shadow: 
+          0 2px 8px rgba(0,0,0,0.5),
+          0 0 20px rgba(255,178,0,0.4),
+          0 0 40px rgba(255,178,0,0.2);
+      }
+      25% { 
+        text-shadow: 
+          0 2px 8px rgba(0,0,0,0.5),
+          0 0 15px rgba(255,178,0,0.3),
+          0 0 30px rgba(255,178,0,0.1);
+      }
+      50% { 
+        text-shadow: 
+          0 2px 8px rgba(0,0,0,0.5),
+          0 0 25px rgba(255,178,0,0.5),
+          0 0 50px rgba(255,178,0,0.3);
+      }
+      75% { 
+        text-shadow: 
+          0 2px 8px rgba(0,0,0,0.5),
+          0 0 18px rgba(255,178,0,0.4),
+          0 0 35px rgba(255,178,0,0.2);
+      }
     }
     
     /* Film Particles */
@@ -10814,23 +11008,78 @@
     
     .particle {
       position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #FFB200;
+      border-radius: 50%;
+      animation: particleFloat 8s linear infinite;
+      box-shadow: 
+        0 0 8px rgba(255,178,0,0.8),
+        0 0 16px rgba(255,178,0,0.4);
+    }
+    
+    .particle:nth-child(odd) {
+      width: 2px;
+      height: 2px;
+      animation-duration: 10s;
+      background: rgba(255,178,0,0.7);
+    }
+    
+    .particle:nth-child(3n) {
       width: 4px;
       height: 4px;
-      background: #FFD700;
-      border-radius: 50%;
-      animation: particleFloat 6s linear infinite;
-      box-shadow: 0 0 10px rgba(255,215,0,0.8);
+      animation-duration: 6s;
+      background: rgba(255,178,0,0.9);
     }
     
     @keyframes particleFloat {
       0% { 
+        transform: translateY(100vh) translateX(0px) scale(0);
+        opacity: 0;
+      }
+      10% { 
+        opacity: 1;
+        transform: translateY(90vh) translateX(10px) scale(1);
+      }
+      90% { 
+        opacity: 1;
+        transform: translateY(10vh) translateX(80px) scale(1);
+      }
+      100% { 
+        transform: translateY(-100px) translateX(100px) scale(0);
+        opacity: 0;
+      }
+    }
+    
+    /* Dust Motes */
+    .dust-motes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 6;
+    }
+    
+    .dust-mote {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      animation: dustFloat 12s linear infinite;
+    }
+    
+    @keyframes dustFloat {
+      0% { 
         transform: translateY(100vh) translateX(0px);
         opacity: 0;
       }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
+      20% { opacity: 0.5; }
+      80% { opacity: 0.5; }
       100% { 
-        transform: translateY(-100px) translateX(100px);
+        transform: translateY(-50px) translateX(50px);
         opacity: 0;
       }
     }
@@ -15399,6 +15648,109 @@
         padding: 1rem;
         font-size: 1rem;
       }
+      
+      /* Mobile Storefront Adjustments */
+      .storefront {
+        width: 90vw;
+        height: 300px;
+        transform: rotateX(3deg);
+      }
+      
+      .sign-ticket {
+        width: 240px;
+        height: 120px;
+      }
+      
+      .sign-logo {
+        font-size: 1.4rem;
+      }
+      
+      .enter-button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        bottom: 30px;
+      }
+      
+      .store-windows {
+        top: 30px;
+        left: 30px;
+        right: 30px;
+        height: 200px;
+        gap: 15px;
+      }
+      
+      .window-panel {
+        border-width: 2px;
+      }
+      
+      .film-reel {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .film-reel::before {
+        width: 15px;
+        height: 15px;
+      }
+      
+      .main-entrance {
+        width: 80px;
+        height: 150px;
+      }
+      
+      /* Reduce particle count on mobile */
+      .film-particles .particle:nth-child(n+6) {
+        display: none;
+      }
+      
+      .dust-motes .dust-mote:nth-child(n+6) {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .storefront {
+        width: 95vw;
+        height: 250px;
+      }
+      
+      .sign-ticket {
+        width: 200px;
+        height: 100px;
+      }
+      
+      .sign-logo {
+        font-size: 1.2rem;
+      }
+      
+      .enter-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+        bottom: 20px;
+      }
+      
+      .store-windows {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        height: 150px;
+        gap: 10px;
+      }
+      
+      .film-reel {
+        width: 30px;
+        height: 30px;
+      }
+      
+      .film-reel::before {
+        width: 12px;
+        height: 12px;
+      }
+      
+      .main-entrance {
+        width: 60px;
+        height: 120px;
+      }
     }
     
   </style>
@@ -15651,6 +16003,15 @@
     <!-- Blockbuster-style background -->
     <div class="blockbuster-bg"></div>
     
+    <!-- VHS Static Overlay -->
+    <div class="vhs-static"></div>
+    
+    <!-- Scan Lines -->
+    <div class="scan-lines"></div>
+    
+    <!-- Ambient Fog -->
+    <div class="ambient-fog"></div>
+    
     <!-- Store Sign -->
     <div class="store-sign">
       <div class="sign-ticket">
@@ -15707,6 +16068,20 @@
       <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
       <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
       <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
+    </div>
+    
+    <!-- Dust motes -->
+    <div class="dust-motes">
+      <div class="dust-mote" style="left: 5%; animation-delay: 0s;"></div>
+      <div class="dust-mote" style="left: 15%; animation-delay: 2s;"></div>
+      <div class="dust-mote" style="left: 25%; animation-delay: 4s;"></div>
+      <div class="dust-mote" style="left: 35%; animation-delay: 1s;"></div>
+      <div class="dust-mote" style="left: 45%; animation-delay: 3s;"></div>
+      <div class="dust-mote" style="left: 55%; animation-delay: 5s;"></div>
+      <div class="dust-mote" style="left: 65%; animation-delay: 2.5s;"></div>
+      <div class="dust-mote" style="left: 75%; animation-delay: 1.5s;"></div>
+      <div class="dust-mote" style="left: 85%; animation-delay: 3.5s;"></div>
+      <div class="dust-mote" style="left: 95%; animation-delay: 0.5s;"></div>
     </div>
   </div>
   </div>
@@ -17548,20 +17923,69 @@
   function enterStore() {
     console.log('🏪 Entering Cochran Films store...');
     
-    // Add entrance animation
+    // Add VHS rewind glitch effect
     const cinematicLoader = document.querySelector('.cinematic-loader');
-    if (cinematicLoader) {
-      cinematicLoader.style.transition = 'all 1s ease-in-out';
-      cinematicLoader.style.transform = 'scale(0.8) translateY(-50px)';
-      cinematicLoader.style.opacity = '0';
+    const enterButton = document.querySelector('.enter-button');
+    
+    if (cinematicLoader && enterButton) {
+      // Disable button to prevent multiple clicks
+      enterButton.disabled = true;
+      enterButton.style.pointerEvents = 'none';
       
+      // Add VHS glitch effect
+      cinematicLoader.style.animation = 'vhsGlitch 0.5s ease-in-out';
+      
+      // Enhanced entrance animation
       setTimeout(() => {
-        cinematicLoader.style.display = 'none';
-        document.body.classList.add('loaded');
-        console.log('✅ Store entrance complete');
-      }, 1000);
+        cinematicLoader.style.transition = 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        cinematicLoader.style.transform = 'scale(0.6) translateY(-100px) rotateX(20deg)';
+        cinematicLoader.style.opacity = '0';
+        cinematicLoader.style.filter = 'blur(10px)';
+        
+        // Add slide transition effect
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+          cinematicLoader.style.display = 'none';
+          document.body.classList.add('loaded');
+          document.body.style.overflow = '';
+          console.log('✅ Store entrance complete');
+        }, 1500);
+      }, 500);
     }
   }
+  
+  // VHS Glitch Animation
+  const vhsGlitchStyle = document.createElement('style');
+  vhsGlitchStyle.textContent = `
+    @keyframes vhsGlitch {
+      0%, 100% { 
+        transform: scale(1) translateX(0);
+        filter: hue-rotate(0deg) brightness(1);
+      }
+      10% { 
+        transform: scale(1.02) translateX(2px);
+        filter: hue-rotate(5deg) brightness(1.1);
+      }
+      20% { 
+        transform: scale(0.98) translateX(-2px);
+        filter: hue-rotate(-5deg) brightness(0.9);
+      }
+      30% { 
+        transform: scale(1.01) translateX(1px);
+        filter: hue-rotate(3deg) brightness(1.05);
+      }
+      40% { 
+        transform: scale(0.99) translateX(-1px);
+        filter: hue-rotate(-3deg) brightness(0.95);
+      }
+      50% { 
+        transform: scale(1) translateX(0);
+        filter: hue-rotate(0deg) brightness(1);
+      }
+    }
+  `;
+  document.head.appendChild(vhsGlitchStyle);
   
   // Call emergency fixes on page load
   document.addEventListener('DOMContentLoaded', function() {
