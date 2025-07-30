@@ -8703,7 +8703,7 @@
       
       /* Quick action floating button - FIXED FOR MOBILE */
       body::after {
-        content: "📞 Book Now" !important;
+        content: "📸 Book Now" !important;
         position: fixed !important;
         bottom: 80px !important;
         right: 20px !important;
@@ -13628,28 +13628,84 @@
       #bookingModal input,
       #bookingModal textarea,
       #bookingModal select {
-        width: 100% !important;
-        padding: 1rem !important;
-        border: 2px solid #ddd !important;
-        border-radius: 8px !important;
-        font-size: 1rem !important;
-        background: #fff !important;
-        color: #000 !important;
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        border: 2px solid rgba(76, 175, 80, 0.3);
+        font-size: 1rem;
+        background: rgba(255,255,255,0.95);
+        color: #000000;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
       }
       
-      #bookingModal button[type="submit"] {
-        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
-        color: #000 !important;
-        font-weight: bold !important;
-        padding: 1rem 2rem !important;
-        border: none !important;
-        border-radius: 25px !important;
-        font-size: 1rem !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
-        margin-top: 1rem !important;
+      /* 📱 ULTRA MOBILE MODAL IMPROVEMENTS */
+      @media (max-width: 480px) {
+        #bookingModal .modal-content {
+          max-width: 95vw !important;
+          max-height: 90vh !important;
+          padding: 1.5rem !important;
+          margin: 0.5rem !important;
+        }
+        
+        #bookingModal h2 {
+          font-size: 1.3rem !important;
+          margin-bottom: 1rem !important;
+        }
+        
+        #bookingModal input,
+        #bookingModal textarea,
+        #bookingModal select {
+          font-size: 16px !important; /* Prevents zoom on iOS */
+          padding: 0.8rem !important;
+          margin-bottom: 0.8rem !important;
+        }
+        
+        #bookingModal button[type="submit"] {
+          width: 100% !important;
+          padding: 1rem !important;
+          font-size: 1rem !important;
+          font-weight: 700 !important;
+          margin-top: 1rem !important;
+        }
+        
+        #closeModal {
+          top: 0.5rem !important;
+          right: 0.5rem !important;
+          width: 35px !important;
+          height: 35px !important;
+        }
+        
+        /* 📱 ADDITIONAL MOBILE LAYOUT IMPROVEMENTS */
+        .mobile-hero-title {
+          font-size: 1.8rem !important;
+          line-height: 1.2 !important;
+          margin-bottom: 1rem !important;
+        }
+        
+        .mobile-hero-subtitle {
+          font-size: 1rem !important;
+          line-height: 1.4 !important;
+          margin-bottom: 1.5rem !important;
+        }
+        
+        .mobile-cta-primary {
+          font-size: 1rem !important;
+          padding: 1rem 1.5rem !important;
+          border-radius: 8px !important;
+        }
+        
+        .mobile-service-card {
+          margin-bottom: 1rem !important;
+          padding: 1.5rem !important;
+        }
+        
+        .mobile-gallery-grid {
+          gap: 0.8rem !important;
+        }
       }
       
+      /* 📱 BOOKING MODAL BUTTON HOVER EFFECTS */
       #bookingModal button[type="submit"]:hover {
         transform: scale(1.05) !important;
         box-shadow: 0 4px 15px rgba(255, 178, 0, 0.4) !important;
@@ -13929,8 +13985,8 @@
           </div>
           
           <div class="mobile-hero-text">
-            <h1 class="mobile-hero-title">STORY TELLING THAT CONVERTS</h1>
-            <p class="mobile-hero-subtitle">Professional video production that transforms your vision into compelling content that drives results.</p>
+            <h1 class="mobile-hero-title">PROFESSIONAL PHOTOGRAPHY & VIDEO</h1>
+            <p class="mobile-hero-subtitle">Capturing your moments with cinematic quality and professional results.</p>
             
             <div class="mobile-hero-stats">
               <div class="mobile-hero-stat">
@@ -13948,7 +14004,7 @@
             </div>
             
             <div class="mobile-hero-buttons">
-              <button class="mobile-cta-primary" onclick="openBookingModal()">Start Your Project</button>
+              <button class="mobile-cta-primary" onclick="openBookingModal()">📸 Book Now</button>
               <button class="mobile-cta-secondary" onclick="scrollToMobileSection('mobileServices')">View Services</button>
             </div>
             
@@ -14074,8 +14130,8 @@
           
           <div class="mobile-contact-buttons">
             <button class="mobile-contact-btn primary" onclick="openBookingModal()">
-              <i class="fas fa-phone"></i>
-              Book Consultation
+              <i class="fas fa-camera"></i>
+              📸 Book Now
             </button>
             <button class="mobile-contact-btn secondary" onclick="openMobileContactForm()">
               <i class="fas fa-envelope"></i>
@@ -18476,7 +18532,7 @@
         modal.style.zIndex = '999999';
         modal.setAttribute('data-manual-open', 'true');
         
-        // Ensure modal content is visible
+        // Ensure modal content is visible and properly styled for mobile
         const modalContent = modal.querySelector('.modal-content');
         if (modalContent) {
           modalContent.style.display = 'block';
@@ -18484,6 +18540,11 @@
           modalContent.style.visibility = 'visible';
           modalContent.style.background = '#fff';
           modalContent.style.color = '#000';
+          modalContent.style.maxWidth = '90vw';
+          modalContent.style.maxHeight = '90vh';
+          modalContent.style.overflowY = 'auto';
+          modalContent.style.borderRadius = '12px';
+          modalContent.style.boxShadow = '0 20px 60px rgba(0,0,0,0.3)';
         }
         
         // Add focus to first input for better UX
