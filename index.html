@@ -10627,6 +10627,16 @@
       visibility: hidden !important;
       opacity: 0 !important;
       pointer-events: none !important;
+      z-index: -1 !important;
+      transform: scale(0) !important;
+      filter: blur(20px) brightness(0) !important;
+    }
+    
+    /* Ensure all cinematic elements are hidden */
+    body.loaded .cinematic-loader * {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
     
     @keyframes fadeInContent {
@@ -10862,45 +10872,200 @@
       animation: windowShine 3s ease-in-out infinite;
     }
     
-    /* Light Reflection Across Windows */
-    .window-reflection {
+
+    
+    /* Retro TV Styles */
+    .retro-tv {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+    
+    .tv-body {
+      width: 80%;
+      height: 70%;
+      background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      border-radius: 15px;
+      box-shadow: 
+        0 8px 32px rgba(0,0,0,0.8),
+        inset 0 2px 4px rgba(255,255,255,0.1),
+        0 0 20px rgba(255,178,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tv-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    
+    .tv-bezel {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    }
+    
+    .tv-screen-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tv-video {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .tv-controls {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 8px;
+      z-index: 4;
+    }
+    
+    .tv-button {
+      width: 12px;
+      height: 12px;
+      background: #333;
+      border-radius: 50%;
+      border: 1px solid #555;
+      box-shadow: 
+        inset 0 1px 2px rgba(255,255,255,0.1),
+        0 1px 2px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .tv-button:hover {
+      background: #555;
+      box-shadow: 
+        inset 0 1px 2px rgba(255,255,255,0.2),
+        0 1px 2px rgba(0,0,0,0.5),
+        0 0 8px rgba(255,178,0,0.5);
+    }
+    
+    .tv-button.power {
+      background: #4a4a4a;
+    }
+    
+    .tv-speaker-grills {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      height: 20px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 4;
+    }
+    
+    .speaker-grill {
+      width: 40px;
+      height: 20px;
+      background: 
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 2px,
+          #333 2px,
+          #333 4px
+        );
+      border-radius: 2px;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+    }
+    
+    .tv-stand {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 20px;
+    }
+    
+    .stand-base {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+      border-radius: 5px;
+      box-shadow: 
+        0 4px 8px rgba(0,0,0,0.5),
+        inset 0 1px 2px rgba(255,255,255,0.05);
+    }
+    
+    /* TV Screen Glow Effect */
+    .tv-bezel::after {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       background: 
-        linear-gradient(
-          45deg,
-          transparent 0%,
-          transparent 20%,
-          rgba(255, 255, 255, 0.3) 30%,
-          rgba(255, 255, 255, 0.6) 40%,
-          rgba(255, 255, 255, 0.8) 50%,
-          rgba(255, 255, 255, 0.6) 60%,
-          rgba(255, 255, 255, 0.3) 70%,
-          transparent 80%,
-          transparent 100%
+        radial-gradient(
+          ellipse at center,
+          rgba(255,178,0,0.1) 0%,
+          transparent 70%
         );
-      animation: lightReflection 12s ease-in-out infinite;
       pointer-events: none;
       z-index: 2;
+      animation: tvGlow 4s ease-in-out infinite;
     }
     
-    @keyframes lightReflection {
+    @keyframes tvGlow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+    
+    /* CRT Scan Lines Effect */
+    .tv-screen-inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent 0px,
+          transparent 1px,
+          rgba(0,0,0,0.1) 1px,
+          rgba(0,0,0,0.1) 2px
+        );
+      pointer-events: none;
+      z-index: 3;
+      animation: scanLines 0.1s linear infinite;
+    }
+    
+    @keyframes scanLines {
       0% {
-        transform: translateX(-100%) translateY(-100%);
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      80% {
-        opacity: 1;
+        transform: translateY(0);
       }
       100% {
-        transform: translateX(100%) translateY(100%);
-        opacity: 0;
+        transform: translateY(2px);
       }
     }
     
@@ -16097,6 +16262,43 @@
         border-width: 2px;
       }
       
+      .retro-tv {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .tv-body {
+        width: 90%;
+        height: 80%;
+      }
+      
+      .tv-screen {
+        padding: 10px;
+      }
+      
+      .tv-controls {
+        bottom: 5px;
+        right: 5px;
+        gap: 5px;
+      }
+      
+      .tv-button {
+        width: 8px;
+        height: 8px;
+      }
+      
+      .tv-speaker-grills {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        height: 15px;
+      }
+      
+      .speaker-grill {
+        width: 30px;
+        height: 15px;
+      }
+      
       .film-reel {
         width: 40px;
         height: 40px;
@@ -16126,6 +16328,43 @@
       .storefront {
         width: 95vw;
         height: 250px;
+      }
+      
+      .retro-tv {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .tv-body {
+        width: 95%;
+        height: 85%;
+      }
+      
+      .tv-screen {
+        padding: 8px;
+      }
+      
+      .tv-controls {
+        bottom: 3px;
+        right: 3px;
+        gap: 3px;
+      }
+      
+      .tv-button {
+        width: 6px;
+        height: 6px;
+      }
+      
+      .tv-speaker-grills {
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        height: 12px;
+      }
+      
+      .speaker-grill {
+        width: 25px;
+        height: 12px;
       }
       
       .sign-ticket {
@@ -16472,21 +16711,43 @@
         <!-- Glass Windows -->
         <div class="store-windows">
           <div class="window-panel">
-            <div class="window-reflection"></div>
             <div class="film-reel"></div>
             <div class="film-reel"></div>
             <div class="film-reel"></div>
           </div>
           <div class="window-panel">
-            <div class="window-reflection"></div>
-            <div class="camera-equipment">
-              <div class="camera-body">
-                <div class="camera-lens"></div>
+            <div class="retro-tv">
+              <div class="tv-body">
+                <div class="tv-screen">
+                  <div class="tv-bezel">
+                    <div class="tv-screen-inner">
+                      <iframe 
+                        src="https://www.youtube.com/embed/o1q-o-Mb3hc?autoplay=1&loop=1&playlist=o1q-o-Mb3hc&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                        frameborder="0" 
+                        allowfullscreen
+                        class="tv-video">
+                      </iframe>
+                    </div>
+                  </div>
+                  <div class="tv-controls">
+                    <div class="tv-button power"></div>
+                    <div class="tv-button channel-up"></div>
+                    <div class="tv-button channel-down"></div>
+                    <div class="tv-button volume-up"></div>
+                    <div class="tv-button volume-down"></div>
+                  </div>
+                  <div class="tv-speaker-grills">
+                    <div class="speaker-grill left"></div>
+                    <div class="speaker-grill right"></div>
+                  </div>
+                </div>
+                <div class="tv-stand">
+                  <div class="stand-base"></div>
+                </div>
               </div>
             </div>
           </div>
           <div class="window-panel">
-            <div class="window-reflection"></div>
             <div class="film-reel"></div>
             <div class="film-reel"></div>
           </div>
@@ -18567,12 +18828,24 @@
             
             // Phase 3: Complete fade and reveal
             setTimeout(() => {
-              cinematicLoader.style.display = 'none';
-              cinematicLoader.style.visibility = 'hidden';
+              // Force complete removal with aggressive fade
+              cinematicLoader.style.transition = 'all 0.5s ease-out';
+              cinematicLoader.style.transform = `scale(10) translate(${offsetX * 100}%, ${offsetY * 100}%)`;
               cinematicLoader.style.opacity = '0';
-              document.body.classList.add('loaded');
-              document.body.style.overflow = '';
-              console.log('✅ Door entrance complete');
+              cinematicLoader.style.filter = 'blur(30px) brightness(0)';
+              
+              // Final removal
+              setTimeout(() => {
+                cinematicLoader.style.transition = 'none';
+                cinematicLoader.style.display = 'none';
+                cinematicLoader.style.visibility = 'hidden';
+                cinematicLoader.style.opacity = '0';
+                cinematicLoader.style.pointerEvents = 'none';
+                cinematicLoader.style.zIndex = '-1';
+                document.body.classList.add('loaded');
+                document.body.style.overflow = '';
+                console.log('✅ Door entrance complete');
+              }, 500);
             }, 2000);
           }, 3000);
         }, 1500);
