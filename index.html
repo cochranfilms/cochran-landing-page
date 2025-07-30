@@ -75,7 +75,7 @@
           }
           
           // Force hide desktop elements
-          const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+          const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
           desktopElements.forEach(el => {
             el.style.display = 'none !important';
             el.style.visibility = 'hidden !important';
@@ -7337,7 +7337,7 @@
     
     /* Mobile Loading Screen */
     @media (max-width: 768px) {
-      .cinematic-loader {
+      .blockbuster-loader {
         display: none !important;
       }
       
@@ -9037,7 +9037,7 @@
       }
       
       /* Enhanced loading screen for mobile performance */
-      .cinematic-loader {
+      .blockbuster-loader {
         -webkit-backface-visibility: hidden !important;
         backface-visibility: hidden !important;
         transform: translateZ(0) !important;
@@ -10429,7 +10429,7 @@
     }
     
     /* Main Storefront Container - Blockbuster Style */
-    .cinematic-loader {
+    .blockbuster-loader {
       position: fixed;
       top: 0;
       left: 0;
@@ -11152,7 +11152,7 @@
     }
     
     /* Ensure enter screen stays visible until user clicks ENTER */
-    .cinematic-loader {
+    .blockbuster-loader {
       opacity: 1 !important;
       visibility: visible !important;
       display: flex !important;
@@ -11200,8 +11200,8 @@
       animation: fadeInContent 1s ease-out forwards;
     }
     
-    /* Force hide cinematic loader when loaded */
-    body.loaded .cinematic-loader {
+    /* Force hide blockbuster loader when loaded */
+    body.loaded .blockbuster-loader {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -11217,8 +11217,8 @@
       overflow: hidden !important;
     }
     
-    /* Ensure all cinematic elements are hidden */
-    body.loaded .cinematic-loader * {
+    /* Ensure all blockbuster elements are hidden */
+    body.loaded .blockbuster-loader * {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -12454,8 +12454,8 @@
     
     /* 📱 MOBILE LOADING SCREEN OPTIMIZATION - COMPLETE FIX */
     @media (max-width: 768px) {
-      /* Hide the complex cinematic loader on mobile */
-      .cinematic-loader {
+      /* Hide the complex blockbuster loader on mobile */
+      .blockbuster-loader {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -12669,7 +12669,7 @@
     /* Mobile Optimization - Complete Enhancement */
     @media (max-width: 768px) {
       /* Main loader optimizations */
-      .cinematic-loader {
+      .blockbuster-loader {
         background: 
           radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
         will-change: opacity;
@@ -12752,7 +12752,7 @@
       }
       
           /* 🎬 MOBILE LOADING SCREEN - PREMIUM OPTIMIZED VERSION */
-    .cinematic-loader {
+    .blockbuster-loader {
       background: 
         radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
       will-change: opacity;
@@ -13059,7 +13059,7 @@
   
   /* Ultra-small mobile devices optimization */
   @media (max-width: 480px) {
-    .cinematic-loader {
+    .blockbuster-loader {
       padding: 1rem !important;
     }
     
@@ -13101,7 +13101,7 @@
   
   /* Landscape mobile fix */
   @media (max-width: 768px) and (orientation: landscape) {
-    .cinematic-loader {
+    .blockbuster-loader {
       flex-direction: row !important;
       align-items: center !important;
       justify-content: space-around !important;
@@ -17041,19 +17041,19 @@
   </script>
   
   <script>
-    // Simplified cinematic transition
-    const performCinematicTransition = () => {
-      const cinematicLoader = document.querySelector('.cinematic-loader');
+    // Simplified blockbuster transition
+    const performBlockbusterTransition = () => {
+      const blockbusterLoader = document.querySelector('.blockbuster-loader');
       const mainEntrance = document.querySelector('.main-entrance');
       const doorLeft = document.querySelector('.door-left');
       const doorRight = document.querySelector('.door-right');
       
-      if (!cinematicLoader || !mainEntrance) return;
+      if (!blockbusterLoader || !mainEntrance) return;
       
       // Audio removed - no sound effects
       
       // Add VHS glitch effect
-      cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
+      blockbusterLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
       
       // Door opening sequence
       setTimeout(() => {
@@ -17084,28 +17084,28 @@
           `;
           mainEntrance.style.filter = 'brightness(1.3) contrast(1.1)';
           
-          // Cinematic fade out
+          // Blockbuster fade out
           setTimeout(() => {
-            cinematicLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            cinematicLoader.style.opacity = '0';
-            cinematicLoader.style.filter = 'blur(3px) brightness(0.3)';
+            blockbusterLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            blockbusterLoader.style.opacity = '0';
+            blockbusterLoader.style.filter = 'blur(3px) brightness(0.3)';
             
             // Final fade to black
             setTimeout(() => {
-              cinematicLoader.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-              cinematicLoader.style.opacity = '0';
-              cinematicLoader.style.filter = 'blur(6px) brightness(0)';
+              blockbusterLoader.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+              blockbusterLoader.style.opacity = '0';
+              blockbusterLoader.style.filter = 'blur(6px) brightness(0)';
               
               // Complete removal
               setTimeout(() => {
-                cinematicLoader.style.transition = 'none';
-                cinematicLoader.style.display = 'none';
-                cinematicLoader.style.visibility = 'hidden';
-                cinematicLoader.style.opacity = '0';
-                cinematicLoader.style.pointerEvents = 'none';
-                cinematicLoader.style.zIndex = '-1';
-                cinematicLoader.style.filter = 'blur(10px) brightness(0)';
-                cinematicLoader.style.background = 'transparent';
+                blockbusterLoader.style.transition = 'none';
+                blockbusterLoader.style.display = 'none';
+                blockbusterLoader.style.visibility = 'hidden';
+                blockbusterLoader.style.opacity = '0';
+                blockbusterLoader.style.pointerEvents = 'none';
+                blockbusterLoader.style.zIndex = '-1';
+                blockbusterLoader.style.filter = 'blur(10px) brightness(0)';
+                blockbusterLoader.style.background = 'transparent';
                 
                 // Show main content
                 document.body.classList.add('loaded');
@@ -17118,7 +17118,7 @@
                   mainContent.style.visibility = 'visible';
                 }
                 
-                console.log('🏪 Cinematic transition complete');
+                console.log('🏪 Blockbuster transition complete');
               }, 400);
             }, 800);
           }, 500);
@@ -17199,21 +17199,21 @@
       console.log('📱 Mobile optimizations applied');
     }
     
-    // Ensure cinematic loader is properly hidden and main content is visible
+    // Ensure blockbuster loader is properly hidden and main content is visible
     const ensureProperDisplay = () => {
-      const cinematicLoader = document.querySelector('.cinematic-loader');
+      const blockbusterLoader = document.querySelector('.blockbuster-loader');
       const mainContent = document.querySelector('header, .hero-section, .services-section, .deliver-section, .testimonials-section');
       
-      // If cinematic loader is visible but shouldn't be, hide it
-      if (cinematicLoader && document.body.classList.contains('loaded')) {
-        cinematicLoader.style.display = 'none';
-        cinematicLoader.style.visibility = 'hidden';
-        cinematicLoader.style.opacity = '0';
-        cinematicLoader.style.pointerEvents = 'none';
-        cinematicLoader.style.zIndex = '-1';
-        cinematicLoader.style.position = 'absolute';
-        cinematicLoader.style.top = '-9999px';
-        cinematicLoader.style.left = '-9999px';
+      // If blockbuster loader is visible but shouldn't be, hide it
+      if (blockbusterLoader && document.body.classList.contains('loaded')) {
+        blockbusterLoader.style.display = 'none';
+        blockbusterLoader.style.visibility = 'hidden';
+        blockbusterLoader.style.opacity = '0';
+        blockbusterLoader.style.pointerEvents = 'none';
+        blockbusterLoader.style.zIndex = '-1';
+        blockbusterLoader.style.position = 'absolute';
+        blockbusterLoader.style.top = '-9999px';
+        blockbusterLoader.style.left = '-9999px';
       }
       
       // Ensure main content is visible
@@ -17237,16 +17237,16 @@
     // Also run on DOM content loaded
     document.addEventListener('DOMContentLoaded', ensureProperDisplay);
     
-    // Fallback: If cinematic loader is causing issues, force load the page
+    // Fallback: If blockbuster loader is causing issues, force load the page
     setTimeout(() => {
-      if (document.querySelector('.cinematic-loader') && !document.body.classList.contains('loaded')) {
-        console.log('⚠️ Cinematic loader causing issues, forcing page load');
+      if (document.querySelector('.blockbuster-loader') && !document.body.classList.contains('loaded')) {
+        console.log('⚠️ Blockbuster loader causing issues, forcing page load');
         document.body.classList.add('loaded');
-        const cinematicLoader = document.querySelector('.cinematic-loader');
-        if (cinematicLoader) {
-          cinematicLoader.style.display = 'none';
-          cinematicLoader.style.visibility = 'hidden';
-          cinematicLoader.style.opacity = '0';
+        const blockbusterLoader = document.querySelector('.blockbuster-loader');
+        if (blockbusterLoader) {
+          blockbusterLoader.style.display = 'none';
+          blockbusterLoader.style.visibility = 'hidden';
+          blockbusterLoader.style.opacity = '0';
         }
         ensureProperDisplay();
       }
@@ -17256,7 +17256,7 @@
 
   
   <!-- 🏪 BLOCKBUSTER-STYLE STOREFRONT ENTER SCREEN -->
-  <div class="cinematic-loader">
+  <div class="blockbuster-loader">
     <!-- Blockbuster-style background -->
     <div class="blockbuster-bg"></div>
     
@@ -17265,20 +17265,6 @@
     
     <!-- Film Strip Effect -->
     <div class="film-strip"></div>
-    
-    <!-- VHS Static Overlay - DISABLED -->
-    <!-- <div class="vhs-static"></div> -->
-    
-    <!-- VHS Tracking Lines - DISABLED -->
-    <!-- <div class="vhs-tracking">
-      <div class="tracking-line"></div>
-      <div class="tracking-line"></div>
-      <div class="tracking-line"></div>
-      <div class="tracking-line"></div>
-    </div> -->
-    
-    <!-- Scan Lines - DISABLED -->
-    <!-- <div class="scan-lines"></div> -->
     
     <!-- Ambient Fog -->
     <div class="ambient-fog"></div>
@@ -17397,7 +17383,6 @@
       <div class="dust-mote" style="left: 85%; animation-delay: 3.5s;"></div>
       <div class="dust-mote" style="left: 95%; animation-delay: 0.5s;"></div>
     </div>
-  </div>
   </div>
 
   <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
@@ -19297,13 +19282,13 @@
   function enterStore() {
     console.log('🏪 Entering Cochran Films store...');
     
-    const cinematicLoader = document.querySelector('.cinematic-loader');
+    const blockbusterLoader = document.querySelector('.blockbuster-loader');
     const enterButton = document.querySelector('.enter-button');
     const mainEntrance = document.querySelector('.main-entrance');
     const doorLeft = document.querySelector('.door-left');
     const doorRight = document.querySelector('.door-right');
     
-    if (cinematicLoader && enterButton && mainEntrance) {
+    if (blockbusterLoader && enterButton && mainEntrance) {
       // Disable button to prevent multiple clicks
       enterButton.disabled = true;
       enterButton.style.pointerEvents = 'none';
@@ -19311,7 +19296,7 @@
       // Audio removed - no sound effects
       
       // Add VHS glitch effect first
-      cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
+      blockbusterLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
       
       // Start enhanced door opening animation
       setTimeout(() => {
