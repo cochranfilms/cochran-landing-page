@@ -11173,9 +11173,9 @@
       transform: rotateX(5deg) rotateY(-2deg);
       margin-bottom: 2rem;
       animation: storeFloat 6s ease-in-out infinite;
-      /* Center the storefront */
+      /* Center the storefront but move it left */
       position: absolute;
-      left: 50%;
+      left: 35%;
       top: 50%;
       transform: translate(-50%, -50%) rotateX(5deg) rotateY(-2deg);
     }
@@ -19248,6 +19248,17 @@
     
     // Start ambient audio immediately
     playAmbientHum();
+    
+    // Also try to start audio on window load as backup
+    window.addEventListener('load', function() {
+      // Ensure audio starts playing
+      const audioElement = document.getElementById('videoStoreAudio');
+      if (audioElement && audioElement.paused) {
+        audioElement.volume = 0.3;
+        audioElement.loop = true;
+        audioElement.play().catch(e => console.log('Audio still blocked on load:', e));
+      }
+    });
   });
   
   // Also call on window load as backup
@@ -19261,6 +19272,16 @@
       }
     }, 500);
   });
+  
+  // Ensure audio plays on first user interaction
+  document.addEventListener('click', function() {
+    const audioElement = document.getElementById('videoStoreAudio');
+    if (audioElement && audioElement.paused) {
+      audioElement.volume = 0.3;
+      audioElement.loop = true;
+      audioElement.play().catch(e => console.log('Audio play on click failed:', e));
+    }
+  }, { once: true });
   
   // Mobile form handling initialization
   function initializeMobileFormHandling() {
