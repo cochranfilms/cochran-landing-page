@@ -1249,7 +1249,7 @@
       .mobile-section-title {
         font-size: 2rem;
       font-weight: 800;
-        color: #fff;
+        color: #000;
         text-align: center;
       margin-bottom: 2rem;
         text-transform: uppercase;
@@ -1265,7 +1265,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 3px;
-      background: var(--primary);
+      background: #FFB200;
       border-radius: 2px;
       }
       
@@ -1384,11 +1384,28 @@
       }
       
       .mobile-gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 1rem;
         padding: 0 1rem;
         margin-top: 2rem;
+        width: 100% !important;
+        overflow: visible !important;
+      }
+
+      @media (max-width: 480px) {
+        .mobile-gallery-grid {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem !important;
+        }
+        
+        .mobile-gallery-item {
+          width: 100% !important;
+        }
+        
+        .mobile-gallery-item img {
+          height: 250px !important;
+        }
       }
       
       .mobile-gallery-item {
@@ -1398,6 +1415,10 @@
         transition: all 0.3s ease;
         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         background: #fff;
+        width: 100%;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
       }
       
       .mobile-gallery-item:hover {
@@ -1429,12 +1450,20 @@
         padding: 4rem 1rem;
         background: linear-gradient(135deg, #FFB200 0%, #FF9000 100%);
       }
+
+      .mobile-contact .mobile-section-title {
+        color: #000;
+      }
+
+      .mobile-contact-text {
+        color: #000;
+      }
       
       /* Mobile Footer */
       .mobile-footer {
         background: #000;
         color: #fff;
-        padding: 2rem 1rem 1rem 1rem;
+        padding: 2rem 1rem 0 1rem;
         text-align: center;
         margin: 0;
       }
@@ -1453,16 +1482,53 @@
       html, body {
         overflow-x: hidden !important;
       }
+
+      /* Force mobile visibility */
+      @media (max-width: 768px) {
+        #mobileVersion {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          position: relative !important;
+          z-index: 1 !important;
+        }
+        
+        .mobile-content {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        
+        .mobile-gallery {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        
+        .mobile-gallery-grid {
+          display: grid !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        
+        .mobile-gallery-item {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+      }
       
       #mobileVersion {
         min-height: 100vh !important;
         margin: 0 !important;
         padding: 0 !important;
+        padding-bottom: 0 !important;
       }
       
       .mobile-footer-container {
         max-width: 600px;
         margin: 0 auto;
+        padding-bottom: 0;
       }
       
       .mobile-footer-content {
@@ -1480,12 +1546,14 @@
       }
       
       .mobile-footer-logo {
-        height: 60px;
+        height: 80px;
         width: auto;
         filter: brightness(1) contrast(1);
-        display: block;
+        display: block !important;
         margin: 0 auto;
         max-width: 200px;
+        opacity: 1 !important;
+        visibility: visible !important;
       }
       
       .mobile-footer-tagline {
@@ -1541,13 +1609,15 @@
       
       .mobile-footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 1.5rem;
+        padding: 1.5rem 0 0 0;
+        margin-bottom: 0;
       }
       
       .mobile-footer-bottom p {
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.6);
         margin: 0;
+        padding-bottom: 0;
       }
       
       /* Mobile Loader */
@@ -18930,7 +19000,6 @@
   // Success popup with countdown
   function showSuccessPopup(url) {
     bookingModal.style.display = 'none';
-    bookingForm.reset();
     
     const successPopup = document.getElementById('successPopup');
     const countdownEl = document.getElementById('countdown');
@@ -18959,6 +19028,10 @@
 
   function redirectToService(url) {
     document.getElementById('successPopup').style.display = 'none';
+    // Reset the form only after redirect
+    if (bookingForm) {
+      bookingForm.reset();
+    }
     window.open(url, '_blank');
   }
 
