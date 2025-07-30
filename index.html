@@ -851,7 +851,7 @@
     }
     
     .mobile-header-logo {
-      height: 60px;
+      height: 120px;
       width: auto;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
       display: block;
@@ -1206,13 +1206,13 @@
       
       .mobile-cta-secondary {
         background: transparent;
-        color: #000;
-        border: 2px solid #000;
+        color: #fff;
+        border: 2px solid #fff;
       }
       
       .mobile-cta-secondary:hover {
-        background: #000;
-        color: #FFB200;
+        background: #fff;
+        color: #000;
         transform: translateY(-2px);
       }
       
@@ -1509,15 +1509,28 @@
         
         /* Ensure mobile content doesn't get covered by fixed header */
         .mobile-content {
-          margin-top: 120px !important;
+          margin-top: 160px !important;
           padding-top: 1rem !important;
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
         }
         
-        /* Adjust spacing for smaller screens */
-        @media (max-width: 480px) {
-          .mobile-content {
-            margin-top: 140px !important; /* Extra space for smaller screens where text might wrap */
-          }
+        /* Force mobile version to exact content height */
+        #mobileVersion {
+          height: auto !important;
+          min-height: auto !important;
+          max-height: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          display: block !important;
+          position: relative !important;
+        }
+        
+                 /* Adjust spacing for smaller screens */
+         @media (max-width: 480px) {
+           .mobile-content {
+             margin-top: 180px !important; /* Extra space for smaller screens where text might wrap */
+           }
           
           .mobile-header-banner {
             padding: 0.8rem !important;
@@ -1534,12 +1547,61 @@
           }
         }
         
-        /* Hide desktop footer on mobile to prevent white space */
-        .premium-footer {
+        /* Hide ALL desktop content on mobile to prevent white space */
+        .premium-footer,
+        .cinematic-loader,
+        header,
+        .hero-section,
+        .million-dollar-photography,
+        .service-builder-section,
+        .testimonials-section,
+        .services-section,
+        .comparison-section,
+        .agency-comparison-section,
+        .deliver-section,
+        .timeline-section,
+        .brief-submission-section,
+        .footer-container {
           display: none !important;
           visibility: hidden !important;
           position: absolute !important;
-          z-index: -1 !important;
+          top: -9999px !important;
+          left: -9999px !important;
+          z-index: -999 !important;
+          height: 0 !important;
+          width: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        
+        /* Force body to only show mobile content */
+        html, body {
+          margin: 0 !important;
+          padding: 0 !important;
+          height: auto !important;
+          min-height: auto !important;
+          max-height: none !important;
+          overflow-y: auto !important;
+          overflow-x: hidden !important;
+        }
+        
+        /* Remove any remaining min-height from desktop elements */
+        body > *:not(#mobileVersion) {
+          min-height: 0 !important;
+          height: 0 !important;
+        }
+        
+        /* Ensure only mobileVersion is visible */
+        body > *:not(#mobileVersion):not(script):not(style) {
+          display: none !important;
+          visibility: hidden !important;
+          position: absolute !important;
+          top: -9999px !important;
+          left: -9999px !important;
+          z-index: -999 !important;
+          height: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
         }
       }
 
@@ -2088,8 +2150,8 @@
     
     .mobile-cta-secondary {
       background: transparent;
-      color: #000;
-      border: 2px solid #000;
+      color: #fff;
+      border: 2px solid #fff;
       padding: 1rem 2rem;
       font-size: 1rem;
       font-weight: 600;
@@ -2101,8 +2163,8 @@
     }
     
     .mobile-cta-secondary:hover {
-      background: #000;
-      color: #FFB200;
+      background: #fff;
+      color: #000;
       transform: translateY(-2px);
     }
     
@@ -3517,8 +3579,8 @@
       
       .mobile-cta-secondary {
         background: transparent;
-        color: #000;
-        border: 2px solid #000;
+        color: #fff;
+        border: 2px solid #fff;
         padding: 1rem 2rem;
         border-radius: 8px;
         font-size: 1rem;
