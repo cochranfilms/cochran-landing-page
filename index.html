@@ -16990,19 +16990,59 @@
     </div> <!-- End mobile-content -->
   </div>
 
+  <!-- Audio Elements with Enhanced Preloading -->
+  <audio id="ambientHum" loop preload="auto">
+    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+  </audio>
+  
+  <audio id="videoStoreAudio" preload="auto">
+    <source src="./Video_Store.mp3" type="audio/mpeg">
+  </audio>
+  
   <!-- Preload critical assets -->
+  <link rel="preload" href="./Video_Store.mp3" as="audio" type="audio/mpeg">
   <link rel="preload" href="Logo.png" as="image">
   <link rel="preload" href="logo-white.png" as="image">
   
   <script>
-    // Audio system removed - loading screen now silent
+    // Simplified Audio System for Loading Screen
     (function() {
-      console.log('🔇 Audio system disabled - loading screen is silent');
+      // Initialize audio context for VHS sounds
+      initAudio();
       
-      // Load saved name on initialization
-      loadSavedName();
-    })();
-  </script>
+      // Only handle main audio on desktop
+      const isMobile = window.innerWidth <= 768;
+      const audioElement = document.getElementById('videoStoreAudio');
+      
+      if (audioElement && !isMobile) {
+        // Configure main audio
+        audioElement.volume = 0.3;
+        audioElement.loop = false;
+        audioElement.muted = false;
+        audioElement.preload = 'auto';
+        
+        let hasEntered = false;
+        let audioFadeOutInterval = null;
+        
+        // Simple fade out function
+        const fadeOutAudio = () => {
+          if (audioFadeOutInterval) return;
+          
+          console.log('🔇 Starting audio fade out...');
+          
+          audioFadeOutInterval = setInterval(() => {
+            if (audioElement.volume > 0.05) {
+              audioElement.volume -= 0.05;
+            } else {
+              audioElement.pause();
+              audioElement.currentTime = 0;
+              audioElement.volume = 0.3; // Reset volume
+              clearInterval(audioFadeOutInterval);
+              audioFadeOutInterval = null;
+              console.log('🔇 Audio fade out complete');
+            }
+          }, 50);
+        };
         
         // Simplified cinematic transition
         const performCinematicTransition = () => {
@@ -17013,7 +17053,10 @@
           
           if (!cinematicLoader || !mainEntrance) return;
           
-          // Audio removed - no sound effects
+          // Play VHS click sound
+          if (typeof playVHSClick === 'function') {
+            playVHSClick();
+          }
           
           // Add VHS glitch effect
           cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
@@ -17089,7 +17132,41 @@
           }, 300);
         };
         
-        // Audio removed - no sound effects
+        // Play audio immediately on desktop
+        audioElement.play().then(() => {
+          console.log('🎵 Audio started immediately on desktop');
+        }).catch(e => {
+          console.log('Audio blocked, will try on user interaction:', e);
+          // Try to play on first user interaction
+          const playOnInteraction = () => {
+            if (!hasEntered && audioElement.paused) {
+              audioElement.play().then(() => {
+                console.log('🎵 Audio started on user interaction');
+              }).catch(err => console.log('Audio still blocked:', err));
+            }
+            // Remove listeners after first successful play
+            document.removeEventListener('click', playOnInteraction);
+            document.removeEventListener('keydown', playOnInteraction);
+            document.removeEventListener('mousemove', playOnInteraction);
+            document.removeEventListener('touchstart', playOnInteraction);
+          };
+          
+          document.addEventListener('click', playOnInteraction);
+          document.addEventListener('keydown', playOnInteraction);
+          document.addEventListener('mousemove', playOnInteraction);
+          document.addEventListener('touchstart', playOnInteraction);
+        });
+        
+        // Override enterStore function to handle audio fade out
+        const originalEnterStore = window.enterStore;
+        window.enterStore = function() {
+          if (!hasEntered) {
+            hasEntered = true;
+            console.log('🎵 User clicked ENTER - fading out audio');
+            fadeOutAudio();
+            originalEnterStore.call(this);
+          }
+        };
         
         // Load saved name on initialization
         loadSavedName();
@@ -17103,6 +17180,7 @@
         
         // Browser compatibility checks
         console.log('🎬 Blockbuster loading screen initialized');
+        console.log('🔊 Audio context supported:', !!(window.AudioContext || window.webkitAudioContext));
         console.log('📱 Device type:', window.innerWidth <= 768 ? 'Mobile' : 'Desktop');
         
         // Mobile-specific optimizations
@@ -17165,7 +17243,13 @@
     })();
   </script>
   
-
+  <audio id="vhsRewind">
+    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+  </audio>
+  
+  <audio id="vhsClick">
+    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+  </audio>
   
   <!-- 🏪 BLOCKBUSTER-STYLE STOREFRONT ENTER SCREEN -->
   <div class="cinematic-loader">
@@ -17242,7 +17326,7 @@
     </div>
     
     <!-- Floating ENTER Button -->
-    <button class="enter-button" onclick="enterStore()">ENTER</button>
+    <button class="enter-button" onclick="enterStore()" onmouseenter="playVHSRewind()">ENTER</button>
     
     <!-- Blockbuster-Style Membership Card with Lanyard -->
     <div class="membership-card">
@@ -19145,7 +19229,144 @@
     }
   }
   
-  // Audio system removed - all sound effects disabled
+  // Simplified Audio System
+  let audioContext;
+  let rewindGain;
+  let clickGain;
+  
+  function initAudio() {
+    // Disable audio on mobile devices
+    if (window.innerWidth <= 768) {
+      console.log('🔇 Audio disabled on mobile device');
+      return;
+    }
+    
+    try {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      rewindGain = audioContext.createGain();
+      clickGain = audioContext.createGain();
+      
+      rewindGain.gain.value = 0.3;
+      clickGain.gain.value = 0.4;
+      
+      console.log('🎵 Audio system initialized');
+    } catch (e) {
+      console.log('Audio context not supported:', e);
+    }
+  }
+  
+  // Enhanced audio fade out function
+  function fadeOutAudio() {
+    const audioElement = document.getElementById('videoStoreAudio');
+    if (audioElement && !audioElement.paused) {
+      console.log('🔇 Starting audio fade out...');
+      
+      // Create a smooth fade out over 2 seconds
+      const fadeOutDuration = 2.0;
+      const startVolume = audioElement.volume;
+      const startTime = Date.now();
+      
+      const fadeOutInterval = setInterval(() => {
+        const elapsed = (Date.now() - startTime) / 1000;
+        const progress = Math.min(elapsed / fadeOutDuration, 1);
+        
+        audioElement.volume = startVolume * (1 - progress);
+        
+        if (progress >= 1) {
+          clearInterval(fadeOutInterval);
+          audioElement.pause();
+          audioElement.currentTime = 0;
+          audioElement.volume = 0.2; // Reset volume for next time
+          console.log('🔇 Audio fade out complete');
+        }
+      }, 50); // Update every 50ms for smooth fade
+    }
+  }
+  
+  function createVHSRewind() {
+    if (!audioContext) return;
+    
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    const filter = audioContext.createBiquadFilter();
+    
+    oscillator.type = 'sawtooth';
+    oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.3);
+    
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(1000, audioContext.currentTime);
+    filter.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.3);
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+    
+    oscillator.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(rewindGain);
+    rewindGain.connect(audioContext.destination);
+    
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.3);
+  }
+  
+  function createVHSClick() {
+    if (!audioContext) return;
+    
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    const filter = audioContext.createBiquadFilter();
+    
+    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.1);
+    
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(2000, audioContext.currentTime);
+    filter.frequency.exponentialRampToValueAtTime(500, audioContext.currentTime + 0.1);
+    
+    gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    
+    oscillator.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(clickGain);
+    clickGain.connect(audioContext.destination);
+    
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.1);
+  }
+  
+  function playAmbientHum() {
+    if (audioContext && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+    createAmbientHum();
+  }
+  
+  // Stop ambient audio when enter screen fades out
+  function stopAmbientAudio() {
+    const audioElement = document.getElementById('videoStoreAudio');
+    if (audioElement) {
+      audioElement.volume = 0.2; // Lower volume for better autoplay
+      audioElement.pause();
+      console.log('🔇 Stopped Video_Store.mp3 audio');
+    }
+  }
+  
+  function playVHSRewind() {
+    if (audioContext && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+    createVHSRewind();
+  }
+  
+  function playVHSClick() {
+    if (audioContext && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+    createVHSClick();
+  }
   
   // Enhanced name submission function for membership card
   function submitName() {
@@ -19156,7 +19377,10 @@
     if (nameInput && cardName && nameInput.value.trim()) {
       const name = nameInput.value.trim();
       
-      // Audio removed - no sound effects
+      // Add VHS click sound for feedback
+      if (typeof playVHSClick === 'function') {
+        playVHSClick();
+      }
       
       // Update the card with the user's name
       cardName.textContent = name.toUpperCase();
@@ -19211,7 +19435,11 @@
       enterButton.disabled = true;
       enterButton.style.pointerEvents = 'none';
       
-      // Audio removed - no sound effects
+      // Play VHS click sound
+      playVHSClick();
+      
+      // Fade out ambient audio smoothly
+      fadeOutAudio();
       
       // Add VHS glitch effect first
       cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
@@ -19287,7 +19515,13 @@
                   mainContent.style.visibility = 'visible';
                 }
                 
-                // Audio removed - no sound effects
+                // Ensure audio is completely stopped for main page
+                const audioElement = document.getElementById('videoStoreAudio');
+                if (audioElement) {
+                  audioElement.pause();
+                  audioElement.currentTime = 0;
+                  audioElement.volume = 0.3; // Reset for next time
+                }
                 
                 console.log('✅ Enhanced door entrance complete - main content should be visible');
               }, 200);
@@ -21371,7 +21605,22 @@
     
     buttons.forEach(button => {
       button.addEventListener('click', () => {
-        // Audio removed - no sound effects
+        // Create subtle click sound effect
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
+        
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.1);
       });
     });
   }
