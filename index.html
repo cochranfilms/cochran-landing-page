@@ -109,6 +109,25 @@
      // CRITICAL FIX: Add the loaded class immediately
      document.body.classList.add('loaded');
      console.log('🔧 Loaded class added immediately');
+     
+     // FORCE ALL CONTENT TO BE VISIBLE
+     function forceShowAllContent() {
+       const allSections = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
+       allSections.forEach(el => {
+         el.style.setProperty('display', 'block', 'important');
+         el.style.setProperty('visibility', 'visible', 'important');
+         el.style.setProperty('opacity', '1', 'important');
+         el.style.setProperty('position', 'relative', 'important');
+         el.style.setProperty('z-index', '1', 'important');
+       });
+       console.log('🔧 Forced all content visible');
+     }
+     
+     // Run immediately and repeatedly
+     forceShowAllContent();
+     setTimeout(forceShowAllContent, 100);
+     setTimeout(forceShowAllContent, 500);
+     setTimeout(forceShowAllContent, 1000);
     
     // Force HTTPS redirect
     if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
@@ -19179,7 +19198,7 @@
     isUltraMobile: false
   };
   
-  // 📱 COMPREHENSIVE MOBILE DETECTION AND INITIALIZATION
+  // 📱 DISABLED MOBILE DETECTION - ALWAYS SHOW DESKTOP CONTENT
   function initializeMobileExperience() {
     const isMobile = window.innerWidth <= 768;
     const isUltraMobile = window.innerWidth <= 480;
@@ -19193,15 +19212,16 @@
     if (isMobile) {
       console.log('📱 Mobile experience initializing...');
       
+      // DISABLED - DO NOT HIDE DESKTOP ELEMENTS
       // Force hide desktop elements first
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
-      desktopElements.forEach(el => {
-        el.style.display = 'none !important';
-        el.style.visibility = 'hidden !important';
-        el.style.opacity = '0 !important';
-        el.style.position = 'absolute !important';
-        el.style.zIndex = '-1 !important';
-      });
+      // const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
+      // desktopElements.forEach(el => {
+      //   el.style.display = 'none !important';
+      //   el.style.visibility = 'hidden !important';
+      //   el.style.opacity = '0 !important';
+      //   el.style.position = 'absolute !important';
+      //   el.style.zIndex = '-1 !important';
+      // });
       
       // Force show mobile version
       const mobileVersion = document.getElementById('mobileVersion');
