@@ -10433,8 +10433,8 @@
     .membership-card {
       position: absolute;
       top: 50%;
-      right: clamp(15%, 20%, 25%);
-      transform: translateY(-50%);
+      left: 75%;
+      transform: translate(-50%, -50%);
       z-index: 20;
       animation: cardFloat 3s ease-in-out infinite;
     }
@@ -10737,8 +10737,8 @@
     .arrow-hint {
       position: absolute;
       top: 50%;
-      right: clamp(25%, 30%, 35%);
-      transform: translateY(-50%);
+      left: 70%;
+      transform: translate(-50%, -50%);
       z-index: 25;
       opacity: 0.8;
       animation: arrowPulse 2s ease-in-out infinite;
@@ -10823,19 +10823,19 @@
     /* Responsive positioning for different screen sizes */
     @media (max-width: 1200px) {
       .membership-card {
-        right: clamp(35%, 40%, 45%);
+        left: 70%;
       }
       .arrow-hint {
-        right: clamp(45%, 50%, 55%);
+        left: 65%;
       }
     }
     
     @media (max-width: 1024px) {
       .membership-card {
-        right: clamp(40%, 45%, 50%);
+        left: 65%;
       }
       .arrow-hint {
-        right: clamp(50%, 55%, 60%);
+        left: 60%;
       }
       .card-sleeve {
         width: 260px;
@@ -10852,10 +10852,10 @@
     
     @media (max-width: 768px) {
       .membership-card {
-        right: clamp(40%, 45%, 50%);
+        left: 60%;
       }
       .arrow-hint {
-        right: clamp(50%, 55%, 60%);
+        left: 55%;
       }
       .card-sleeve {
         width: 240px;
@@ -10878,10 +10878,10 @@
     
     @media (max-width: 480px) {
       .membership-card {
-        right: clamp(45%, 50%, 55%);
+        left: 55%;
       }
       .arrow-hint {
-        right: clamp(55%, 60%, 65%);
+        left: 50%;
       }
       .card-sleeve {
         width: 220px;
@@ -10905,10 +10905,10 @@
     /* Extra small screens - ensure maximum separation */
     @media (max-width: 375px) {
       .membership-card {
-        right: clamp(50%, 55%, 60%);
+        left: 50%;
       }
       .arrow-hint {
-        right: clamp(60%, 65%, 70%);
+        left: 45%;
       }
       .card-sleeve {
         width: 200px;
@@ -10927,6 +10927,14 @@
       .card-subtitle {
         font-size: 9px;
       }
+    }
+    
+    /* Ensure booking modal is hidden on enter screen */
+    .cinematic-loader #bookingModal {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      z-index: -1 !important;
     }
     
     /* VHS Static Overlay */
@@ -11165,11 +11173,16 @@
       transform: rotateX(5deg) rotateY(-2deg);
       margin-bottom: 2rem;
       animation: storeFloat 6s ease-in-out infinite;
+      /* Center the storefront */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateX(5deg) rotateY(-2deg);
     }
     
     @keyframes storeFloat {
       0%, 100% { 
-        transform: rotateX(5deg) rotateY(-2deg) translateY(0px);
+        transform: translate(-50%, -50%) rotateX(5deg) rotateY(-2deg) translateY(0px);
         box-shadow: 
           0 20px 60px rgba(0,0,0,0.4),
           0 10px 30px rgba(0,0,0,0.3),
@@ -11177,7 +11190,7 @@
           inset 0 2px 4px rgba(255,255,255,0.1);
       }
       50% { 
-        transform: rotateX(5deg) rotateY(-2deg) translateY(-10px);
+        transform: translate(-50%, -50%) rotateX(5deg) rotateY(-2deg) translateY(-10px);
         box-shadow: 
           0 25px 70px rgba(0,0,0,0.5),
           0 15px 40px rgba(0,0,0,0.4),
