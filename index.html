@@ -11691,12 +11691,12 @@
     /* Store Sign */
     .store-sign {
       position: absolute;
-      top: 20px;
+      top: 60px; /* Moved closer down to the storefront */
       left: 50%;
       transform: translateX(-50%);
       z-index: 15;
       /* Center with storefront building */
-      margin-left: -140px; /* Adjust to center with the storefront */
+      margin-left: -200px; /* Adjusted to better center with the storefront */
     }
     
     .sign-ticket {
@@ -16549,6 +16549,12 @@
         height: 150px;
       }
       
+      /* Mobile store-sign positioning */
+      .store-sign {
+        top: 40px; /* Closer to storefront on mobile */
+        margin-left: -120px; /* Adjusted for mobile centering */
+      }
+      
       /* Reduce particle count on mobile */
       .film-particles .particle:nth-child(n+6) {
         display: none;
@@ -16601,6 +16607,12 @@
       .main-entrance {
         width: 60px;
         height: 120px;
+      }
+      
+      /* Small mobile store-sign positioning */
+      .store-sign {
+        top: 30px; /* Even closer on small mobile */
+        margin-left: -100px; /* Further adjusted for small mobile */
       }
     }
     
@@ -16854,7 +16866,7 @@
     <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
   </audio>
   
-  <audio id="videoStoreAudio" preload="auto" loop>
+  <audio id="videoStoreAudio" preload="auto">
     <source src="./Video_Store.mp3" type="audio/mpeg">
   </audio>
   
@@ -17219,7 +17231,7 @@
     </div>
     
     <!-- Floating ENTER Button -->
-    <button class="enter-button" onclick="enterStore()" onmouseenter="playVHSRewind()" onmousedown="initAudio()">ENTER</button>
+    <button class="enter-button" onclick="enterStore()" onmouseenter="playVHSRewind()">ENTER</button>
     
     <!-- Blockbuster-Style Membership Card with Lanyard -->
     <div class="membership-card">
@@ -19141,109 +19153,21 @@
       
       console.log('🎵 Audio system initialized');
       
+      // DISABLED - Audio is now controlled by the new autoplay system
       // Auto-start ambient audio without user interaction
-      setTimeout(() => {
-        createAmbientHum();
-      }, 1000);
+      // setTimeout(() => {
+      //   createAmbientHum();
+      // }, 1000);
     } catch (e) {
       console.log('Audio context not supported:', e);
     }
   }
   
   function createAmbientHum() {
-    if (!audioContext) return;
-    
-    // Use Video_Store.mp3 instead of generated audio
-    const audioElement = document.getElementById('videoStoreAudio');
-    if (audioElement) {
-      audioElement.volume = 0.2; // Lower volume for better autoplay
-      audioElement.loop = true;
-      audioElement.muted = false;
-      
-      // Try to play immediately with multiple strategies
-      const playAudio = () => {
-        audioElement.play().then(() => {
-          console.log('🎵 Playing Video_Store.mp3 ambient audio in loop');
-        }).catch(e => {
-          console.log('Audio autoplay blocked, will play on user interaction:', e);
-          // Try again after a short delay
-          setTimeout(() => {
-            audioElement.play().catch(err => console.log('Retry failed:', err));
-          }, 500);
-        });
-      };
-      
-      // Try immediate play
-      playAudio();
-      
-      // Also try to play on page load
-      if (document.readyState === 'complete') {
-        playAudio();
-      } else {
-        window.addEventListener('load', playAudio);
-      }
-      
-      // Set up multiple event listeners for first user interaction
-      const playOnInteraction = () => {
-        if (audioElement.paused) {
-          audioElement.play().then(() => {
-            console.log('🎵 Audio started on user interaction');
-          }).catch(err => console.log('Still blocked:', err));
-        }
-        // Remove listeners after first successful play
-        document.removeEventListener('click', playOnInteraction);
-        document.removeEventListener('keydown', playOnInteraction);
-        document.removeEventListener('mousemove', playOnInteraction);
-        document.removeEventListener('touchstart', playOnInteraction);
-        document.removeEventListener('scroll', playOnInteraction);
-      };
-      
-      // Add multiple event listeners to catch any user interaction
-      document.addEventListener('click', playOnInteraction);
-      document.addEventListener('keydown', playOnInteraction);
-      document.addEventListener('mousemove', playOnInteraction);
-      document.addEventListener('touchstart', playOnInteraction);
-      document.addEventListener('scroll', playOnInteraction);
-      
-      // Also try to resume audio context on any interaction
-      const resumeAudioContext = () => {
-        if (audioContext.state === 'suspended') {
-          audioContext.resume().then(() => {
-            console.log('🎵 Audio context resumed');
-            playAudio();
-          });
-        }
-        document.removeEventListener('click', resumeAudioContext);
-        document.removeEventListener('keydown', resumeAudioContext);
-        document.removeEventListener('mousemove', resumeAudioContext);
-        document.removeEventListener('touchstart', resumeAudioContext);
-      };
-      
-      document.addEventListener('click', resumeAudioContext);
-      document.addEventListener('keydown', resumeAudioContext);
-      document.addEventListener('mousemove', resumeAudioContext);
-      document.addEventListener('touchstart', resumeAudioContext);
-      
-    } else {
-      console.log('⚠️ Video_Store.mp3 not found, falling back to generated audio');
-      // Fallback to generated audio if file not found
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(60, audioContext.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(58, audioContext.currentTime + 2);
-      
-      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 2);
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(ambientGain);
-      ambientGain.connect(audioContext.destination);
-      
-      oscillator.start();
-      return oscillator;
-    }
+    // DISABLED - Audio is now controlled by the new autoplay system
+    // This function is kept for compatibility but does nothing
+    console.log('🎵 createAmbientHum() disabled - audio controlled by new system');
+    return;
   }
   
   // Enhanced audio fade out function
@@ -19557,66 +19481,16 @@
       forceMobileFixes();
     }, 1000);
     
+    // DISABLED - Audio is now controlled by the new autoplay system
     // Initialize audio system
-    initAudio();
+    // initAudio();
     
     // Clear saved name on page refresh
     clearSavedName();
     
+    // DISABLED - Audio is now controlled by the new autoplay system
     // Start ambient audio immediately with aggressive autoplay
-    playAmbientHum();
-    
-    // Try to start audio immediately on DOM ready
-    const audioElement = document.getElementById('videoStoreAudio');
-    if (audioElement) {
-      audioElement.volume = 0.2; // Lower volume for better autoplay
-      audioElement.loop = true;
-      audioElement.muted = false;
-      
-      // Try immediate play
-      audioElement.play().then(() => {
-        console.log('🎵 Audio started immediately on DOM ready');
-      }).catch(e => {
-        console.log('Audio blocked on DOM ready, will try on user interaction:', e);
-      });
-    }
-    
-    // Also try to start audio on window load as backup
-    window.addEventListener('load', function() {
-      // Ensure audio starts playing
-      const audioElement = document.getElementById('videoStoreAudio');
-      if (audioElement && audioElement.paused) {
-        audioElement.volume = 0.2; // Lower volume for better autoplay
-        audioElement.loop = true;
-        audioElement.muted = false;
-        audioElement.play().catch(e => console.log('Audio still blocked on load:', e));
-      }
-    });
-    
-    // Force audio to start on any user interaction with multiple events
-    const startAudioOnInteraction = () => {
-      const audioElement = document.getElementById('videoStoreAudio');
-      if (audioElement && audioElement.paused) {
-        audioElement.volume = 0.2; // Lower volume for better autoplay
-        audioElement.loop = true;
-        audioElement.muted = false;
-        audioElement.play().then(() => {
-          console.log('🎵 Audio started on user interaction');
-        }).catch(e => console.log('Audio play on interaction failed:', e));
-      }
-      // Remove listeners after first successful play
-      document.removeEventListener('click', startAudioOnInteraction);
-      document.removeEventListener('keydown', startAudioOnInteraction);
-      document.removeEventListener('mousemove', startAudioOnInteraction);
-      document.removeEventListener('touchstart', startAudioOnInteraction);
-      document.removeEventListener('scroll', startAudioOnInteraction);
-    };
-    
-    document.addEventListener('click', startAudioOnInteraction);
-    document.addEventListener('keydown', startAudioOnInteraction);
-    document.addEventListener('mousemove', startAudioOnInteraction);
-    document.addEventListener('touchstart', startAudioOnInteraction);
-    document.addEventListener('scroll', startAudioOnInteraction);
+    // playAmbientHum();
   });
   
   // Also call on window load as backup
@@ -19631,15 +19505,16 @@
     }, 500);
   });
   
+  // DISABLED - Audio is now controlled by the new autoplay system
   // Ensure audio plays on first user interaction
-  document.addEventListener('click', function() {
-    const audioElement = document.getElementById('videoStoreAudio');
-    if (audioElement && audioElement.paused) {
-      audioElement.volume = 0.2; // Lower volume for better autoplay
-      audioElement.loop = true;
-      audioElement.play().catch(e => console.log('Audio play on click failed:', e));
-    }
-  }, { once: true });
+  // document.addEventListener('click', function() {
+  //   const audioElement = document.getElementById('videoStoreAudio');
+  //   if (audioElement && audioElement.paused) {
+  //     audioElement.volume = 0.2; // Lower volume for better autoplay
+  //     audioElement.loop = true;
+  //     audioElement.play().catch(e => console.log('Audio play on click failed:', e));
+  //   }
+  // }, { once: true });
   
   // Mobile form handling initialization
   function initializeMobileFormHandling() {
