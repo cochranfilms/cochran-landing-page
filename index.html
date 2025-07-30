@@ -10736,8 +10736,8 @@
     /* Animated Arrow Hint */
     .arrow-hint {
       position: absolute;
-      bottom: -60px;
-      left: 65%;
+      bottom: -40px;
+      left: 50%;
       transform: translateX(-50%);
       z-index: 25;
       opacity: 0.8;
@@ -10830,19 +10830,11 @@
       .membership-card {
         left: 60%;
       }
-      .arrow-hint {
-        left: 60%;
-        bottom: -60px;
-      }
     }
     
     @media (max-width: 1024px) {
       .membership-card {
         left: 55%;
-      }
-      .arrow-hint {
-        left: 55%;
-        bottom: -60px;
       }
       .card-sleeve {
         width: 260px;
@@ -10860,10 +10852,6 @@
     @media (max-width: 768px) {
       .membership-card {
         left: 50%;
-      }
-      .arrow-hint {
-        left: 50%;
-        bottom: -60px;
       }
       .card-sleeve {
         width: 240px;
@@ -10888,10 +10876,6 @@
       .membership-card {
         left: 45%;
       }
-      .arrow-hint {
-        left: 45%;
-        bottom: -60px;
-      }
       .card-sleeve {
         width: 220px;
         height: 150px;
@@ -10915,10 +10899,6 @@
     @media (max-width: 375px) {
       .membership-card {
         left: 40%;
-      }
-      .arrow-hint {
-        left: 40%;
-        bottom: -60px;
       }
       .card-sleeve {
         width: 200px;
@@ -11173,7 +11153,6 @@
       box-shadow: 
         0 20px 60px rgba(0,0,0,0.4),
         0 10px 30px rgba(0,0,0,0.3),
-        0 0 50px rgba(255,178,0,0.2),
         inset 0 2px 4px rgba(255,255,255,0.1);
       transform: rotateX(5deg) rotateY(-2deg);
       margin-bottom: 2rem;
@@ -11188,7 +11167,7 @@
     /* Center the store sign with the storefront */
     .store-sign {
       position: absolute;
-      left: 50%;
+      left: 35%;
       top: 20%;
       transform: translateX(-50%);
       z-index: 30;
@@ -11200,7 +11179,6 @@
         box-shadow: 
           0 20px 60px rgba(0,0,0,0.4),
           0 10px 30px rgba(0,0,0,0.3),
-          0 0 50px rgba(255,178,0,0.2),
           inset 0 2px 4px rgba(255,255,255,0.1);
       }
       50% { 
@@ -11208,7 +11186,6 @@
         box-shadow: 
           0 25px 70px rgba(0,0,0,0.5),
           0 15px 40px rgba(0,0,0,0.4),
-          0 0 60px rgba(255,178,0,0.3),
           inset 0 2px 4px rgba(255,255,255,0.1);
       }
     }
@@ -16877,7 +16854,7 @@
     <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
   </audio>
   
-  <audio id="videoStoreAudio" preload="auto" loop autoplay muted>
+  <audio id="videoStoreAudio" preload="auto" loop>
     <source src="./Video_Store.mp3" type="audio/mpeg">
   </audio>
   
@@ -16888,32 +16865,9 @@
       if (audioElement) {
         audioElement.volume = 0.2; // Lower volume for better autoplay
         audioElement.loop = true;
-        audioElement.muted = true; // Start muted to allow autoplay
+        audioElement.muted = false; // Start unmuted
         
-        // Unmute on first user interaction
-        const unmuteAudio = () => {
-          audioElement.muted = false;
-          console.log('🎵 Audio unmuted on user interaction');
-          // Remove all event listeners after unmuting
-          document.removeEventListener('click', unmuteAudio);
-          document.removeEventListener('keydown', unmuteAudio);
-          document.removeEventListener('mousemove', unmuteAudio);
-          document.removeEventListener('touchstart', unmuteAudio);
-          document.removeEventListener('scroll', unmuteAudio);
-          document.removeEventListener('pointerdown', unmuteAudio);
-          document.removeEventListener('pointermove', unmuteAudio);
-        };
-        
-        // Add event listeners to unmute on any interaction
-        document.addEventListener('click', unmuteAudio);
-        document.addEventListener('keydown', unmuteAudio);
-        document.addEventListener('mousemove', unmuteAudio);
-        document.addEventListener('touchstart', unmuteAudio);
-        document.addEventListener('scroll', unmuteAudio);
-        document.addEventListener('pointerdown', unmuteAudio);
-        document.addEventListener('pointermove', unmuteAudio);
-        
-        // Strategy 1: Try immediate play
+        // Try to play immediately
         const playAudio = () => {
           audioElement.play().then(() => {
             console.log('🎵 Audio started successfully');
@@ -16929,6 +16883,16 @@
             console.log('Audio blocked, waiting for user interaction:', e);
           });
         };
+        
+        // Try to play immediately
+        playAudio();
+        
+        // Also try on page load
+        if (document.readyState === 'complete') {
+          playAudio();
+        } else {
+          window.addEventListener('load', playAudio);
+        }
         
         // Try to play immediately
         playAudio();
@@ -17083,13 +17047,13 @@
         </div>
         <div class="input-instruction">Click to personalize your card</div>
       </div>
-    </div>
-    
-    <!-- Animated Arrow Hint -->
-          <div class="arrow-hint" id="arrowHint">
+      
+      <!-- Animated Arrow Hint -->
+      <div class="arrow-hint" id="arrowHint">
         <div class="arrow-text">HOVER TO PERSONALIZE</div>
         <div class="arrow-icon">↑</div>
       </div>
+    </div>
     
     <!-- Floating film particles -->
     <div class="film-particles">
