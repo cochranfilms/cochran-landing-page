@@ -13120,6 +13120,472 @@
       }
     }
     
+    /* 📱 COMPREHENSIVE MOBILE FIXES - ALL ISSUES RESOLVED */
+    
+    /* 1. FIX LOADING SCREEN JUMBLED TEXT */
+    @media (max-width: 768px) {
+      .cinematic-text {
+        width: 90% !important;
+        max-width: 300px !important;
+        text-align: center !important;
+        padding: 0 1rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        line-height: 1.4 !important;
+      }
+      
+      .brand-name {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+        word-break: break-word !important;
+        margin-bottom: 0.5rem !important;
+      }
+      
+      .tagline {
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+        word-break: break-word !important;
+        letter-spacing: 0.1em !important;
+      }
+      
+      /* Fix any overlapping text elements */
+      .cinematic-text * {
+        max-width: 100% !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+    }
+    
+    /* 2. FIX MISSING HERO SECTION HEADING TEXT */
+    @media (max-width: 768px) {
+      .mobile-hero-title {
+        font-size: 2rem !important;
+        font-weight: 900 !important;
+        color: #000 !important;
+        text-align: center !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.2 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 10 !important;
+      }
+      
+      .mobile-hero-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        color: rgba(0,0,0,0.8) !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+    }
+    
+    /* 3. FIX MOBILE MENU DESIGN AND FUNCTIONALITY */
+    @media (max-width: 768px) {
+      .mobile-nav-toggle {
+        position: fixed !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        width: 50px !important;
+        height: 50px !important;
+        background: rgba(255, 178, 0, 0.95) !important;
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        z-index: 10000 !important;
+        box-shadow: 0 4px 15px rgba(255, 178, 0, 0.4) !important;
+        transition: all 0.3s ease !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .mobile-nav-toggle:hover {
+        transform: scale(1.1) !important;
+        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.6) !important;
+      }
+      
+      .mobile-nav-toggle .line {
+        width: 24px !important;
+        height: 3px !important;
+        background: #000 !important;
+        margin: 3px 0 !important;
+        border-radius: 2px !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .mobile-nav-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.95) !important;
+        display: none !important;
+        z-index: 9999 !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+        backdrop-filter: blur(10px) !important;
+      }
+      
+      .mobile-nav-overlay.active {
+        display: flex !important;
+        opacity: 1 !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      .mobile-nav-container {
+        width: 90% !important;
+        max-width: 350px !important;
+        background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%) !important;
+        border-radius: 15px !important;
+        padding: 2rem !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+        text-align: center !important;
+      }
+      
+      .mobile-nav-menu {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 2rem 0 !important;
+      }
+      
+      .nav-item {
+        margin: 1rem 0 !important;
+      }
+      
+      .nav-item a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 1rem 1.5rem !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #000 !important;
+        text-decoration: none !important;
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+        transition: all 0.3s ease !important;
+        border: 2px solid transparent !important;
+      }
+      
+      .nav-item a:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(0, 0, 0, 0.2) !important;
+        transform: translateY(-2px) !important;
+      }
+      
+      .mobile-nav-close {
+        position: absolute !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+        color: #FFB200 !important;
+        border: none !important;
+        border-radius: 50% !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.5rem !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .mobile-nav-close:hover {
+        background: rgba(0, 0, 0, 0.9) !important;
+        transform: scale(1.1) !important;
+      }
+    }
+    
+    /* 4. FIX SCROLLING GETTING STUCK ON PHOTOS */
+    @media (max-width: 768px) {
+      .mobile-gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+        overflow: visible !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      
+      .mobile-gallery-item {
+        position: relative !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        cursor: pointer !important;
+        transition: transform 0.3s ease !important;
+        background: #fff !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+        will-change: transform !important;
+        transform: translateZ(0) !important;
+      }
+      
+      .mobile-gallery-item:hover {
+        transform: scale(1.05) !important;
+      }
+      
+      .mobile-gallery-item img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        display: block !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      /* Fix section title to "Photography & On-Site Prints" */
+      .mobile-gallery .mobile-section-title {
+        content: "Photography & On-Site Prints" !important;
+      }
+      
+      /* Ensure smooth scrolling */
+      html, body {
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+        overflow-x: hidden !important;
+      }
+      
+      /* Prevent scroll interference */
+      .mobile-gallery {
+        position: relative !important;
+        z-index: 1 !important;
+        overflow: visible !important;
+        pointer-events: auto !important;
+      }
+    }
+    
+    /* 5. FIX BOOKING FORM DISAPPEARING */
+    @media (max-width: 768px) {
+      #bookingModal {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+        display: none !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 999999 !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+      }
+      
+      #bookingModal[style*="display: flex"] {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      #bookingModal .modal-content {
+        width: 90% !important;
+        max-width: 400px !important;
+        max-height: 90vh !important;
+        background: #fff !important;
+        border-radius: 15px !important;
+        padding: 2rem !important;
+        position: relative !important;
+        overflow-y: auto !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+        margin: 1rem !important;
+      }
+      
+      #bookingModal h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+        color: #000 !important;
+        text-align: center !important;
+      }
+      
+      #bookingModal form {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+      
+      #bookingModal input,
+      #bookingModal select,
+      #bookingModal textarea {
+        width: 100% !important;
+        padding: 1rem !important;
+        border: 2px solid rgba(76, 175, 80, 0.3) !important;
+        border-radius: 10px !important;
+        font-size: 16px !important;
+        background: #fff !important;
+        color: #000 !important;
+        box-sizing: border-box !important;
+      }
+      
+      #bookingModal button[type="submit"] {
+        width: 100% !important;
+        padding: 1rem !important;
+        background: linear-gradient(135deg, #4CAF50, #45a049) !important;
+        color: #fff !important;
+        border: none !important;
+        border-radius: 10px !important;
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        margin-top: 1rem !important;
+      }
+      
+      #closeModal {
+        position: absolute !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        background: rgba(255, 178, 0, 0.9) !important;
+        color: #000 !important;
+        border: none !important;
+        border-radius: 50% !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.5rem !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 1000 !important;
+      }
+    }
+    
+    /* 6. FIX FLOATING BOOK NOW BUTTON */
+    @media (max-width: 768px) {
+      /* Remove any problematic floating buttons */
+      body::after,
+      body::before {
+        display: none !important;
+        content: none !important;
+      }
+      
+      /* Create a proper floating button */
+      .mobile-floating-book-btn {
+        position: fixed !important;
+        bottom: 2rem !important;
+        right: 1rem !important;
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        color: #000 !important;
+        padding: 1rem 1.5rem !important;
+        border-radius: 30px !important;
+        font-weight: 700 !important;
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5) !important;
+        z-index: 9998 !important;
+        cursor: pointer !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        transition: all 0.3s ease !important;
+        animation: pulseGlow 3s ease-in-out infinite !important;
+      }
+      
+      .mobile-floating-book-btn:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 8px 25px rgba(255, 178, 0, 0.7) !important;
+      }
+      
+      @keyframes pulseGlow {
+        0%, 100% { 
+          box-shadow: 0 6px 20px rgba(255, 178, 0, 0.5) !important;
+        }
+        50% { 
+          box-shadow: 0 6px 20px rgba(255, 178, 0, 0.8), 0 0 20px rgba(255, 178, 0, 0.3) !important;
+        }
+      }
+    }
+    
+    /* 7. FIX YOUTUBE VIDEO FORMATTING */
+    @media (max-width: 768px) {
+      .mobile-video-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 15px !important;
+        overflow: hidden !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        background: #000 !important;
+        position: relative !important;
+        aspect-ratio: 16/9 !important;
+      }
+      
+      .mobile-video-container iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        object-fit: cover !important;
+      }
+      
+      .mobile-hero-video {
+        margin-top: 2rem !important;
+        width: 100% !important;
+        padding: 0 1rem !important;
+        box-sizing: border-box !important;
+      }
+      
+      /* Ensure proper aspect ratio */
+      .mobile-video-container::before {
+        content: '' !important;
+        display: block !important;
+        padding-top: 56.25% !important; /* 16:9 aspect ratio */
+      }
+    }
+    
+    /* 8. ADDITIONAL MOBILE OPTIMIZATIONS */
+    @media (max-width: 768px) {
+      /* Ensure all mobile sections are properly visible */
+      .mobile-hero,
+      .mobile-services,
+      .mobile-gallery,
+      .mobile-contact {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+        min-height: auto !important;
+        padding: 3rem 1rem !important;
+      }
+      
+      /* Fix any overflow issues */
+      .mobile-content {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      
+      /* Ensure proper touch targets */
+      button, a, .mobile-gallery-item {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+      
+      /* Prevent zoom on inputs */
+      input, textarea, select {
+        font-size: 16px !important;
+      }
+    }
+    
     /* 📱 MOBILE-FIRST RESPONSIVE BREAKPOINTS */
     /* Mobile Portrait (320px - 479px) */
     @media (max-width: 479px) {
@@ -13976,6 +14442,11 @@
     <!-- Mobile Content Container -->
     <div class="mobile-content">
       
+      <!-- Mobile Floating Book Now Button -->
+      <button class="mobile-floating-book-btn" onclick="openBookingModal()">
+        📸 Book Now
+      </button>
+      
       <!-- Mobile Hero Section -->
       <section class="mobile-hero" id="mobileHero">
         <div class="mobile-hero-content">
@@ -14067,7 +14538,7 @@
       <!-- Mobile Gallery Section -->
       <section class="mobile-gallery" id="mobileGallery">
         <div class="mobile-gallery-container">
-          <h2 class="mobile-section-title">Our Work</h2>
+          <h2 class="mobile-section-title">Photography & On-Site Prints</h2>
           <p class="mobile-section-subtitle">A showcase of our best photography and video work</p>
           
           <div class="mobile-gallery-grid">
@@ -16149,6 +16620,23 @@
     }
   }
   
+  // 📱 FIXED MOBILE NAVIGATION CLOSE FUNCTION
+  function closeMobileNav() {
+    const overlay = document.getElementById('mobileNavOverlay');
+    const toggle = document.querySelector('.mobile-nav-toggle');
+    
+    if (overlay) {
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      window.mobileState.navOpen = false;
+      console.log('📱 Mobile nav closed');
+    }
+    
+    if (toggle) {
+      toggle.classList.remove('active');
+    }
+  }
+  
   // 📱 COMPREHENSIVE MOBILE FUNCTIONALITY INITIALIZATION
   function initializeMobileFunctionality() {
     if (window.innerWidth <= 768) {
@@ -18100,6 +18588,12 @@
   function closeBookingModal() {
     const modal = document.getElementById('bookingModal');
     if (modal) {
+      // Clean up observer if exists
+      if (modal._observer) {
+        modal._observer.disconnect();
+        delete modal._observer;
+      }
+      
       modal.style.display = 'none';
       modal.style.visibility = 'hidden';
       modal.style.opacity = '0';
@@ -18123,6 +18617,33 @@
       setTimeout(() => {
         preventAutoModalOpening();
       }, 100);
+    }
+  }
+  
+  // 📱 ENHANCED MOBILE MODAL CLOSE FUNCTION
+  function closeBookingModalMobile() {
+    const modal = document.getElementById('bookingModal');
+    
+    if (modal) {
+      // Clean up observer if exists
+      if (modal._observer) {
+        modal._observer.disconnect();
+        delete modal._observer;
+      }
+      
+      // Ensure modal is properly hidden
+      modal.style.display = 'none';
+      modal.style.visibility = 'hidden';
+      modal.style.opacity = '0';
+      modal.removeAttribute('data-manual-open');
+      
+      // Restore body scroll
+      document.body.style.overflow = '';
+      
+      // Reset modal state
+      window.mobileState.modalOpen = false;
+      
+      console.log('✅ Mobile booking modal closed');
     }
   }
   
@@ -18495,69 +19016,97 @@
   }); // Close the second DOMContentLoaded event listener
 
       // Function to open booking modal
-    // 📱 MILLION DOLLAR BOOKING MODAL OPENING
-    function openBookingModal() {
-      // Prevent auto-opening if triggered automatically
-      if (window.mobileState && window.mobileState.preventAutoModal && !event) {
-        console.log('🚫 Auto-modal opening prevented');
-        return;
-      }
-      
-      const modal = document.getElementById('bookingModal');
-      const serviceSelect = document.getElementById('service');
-      
-      if (modal && serviceSelect) {
-        // Close mobile nav if open
-        closeMobileNav();
-        
-        // Set modal state
-        window.mobileState.modalOpen = true;
-        
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-        
-        // Clear any previous selection
-        serviceSelect.value = '';
-        
-        // Show ALL service options
-        const options = serviceSelect.querySelectorAll('option');
-        options.forEach(option => {
-          option.style.display = 'block';
-        });
-        
-        // Show modal with proper styling and manual flag
-        modal.style.display = 'flex';
-        modal.style.visibility = 'visible';
-        modal.style.opacity = '1';
-        modal.style.zIndex = '999999';
-        modal.setAttribute('data-manual-open', 'true');
-        
-        // Ensure modal content is visible and properly styled for mobile
-        const modalContent = modal.querySelector('.modal-content');
-        if (modalContent) {
-          modalContent.style.display = 'block';
-          modalContent.style.opacity = '1';
-          modalContent.style.visibility = 'visible';
-          modalContent.style.background = '#fff';
-          modalContent.style.color = '#000';
-          modalContent.style.maxWidth = '90vw';
-          modalContent.style.maxHeight = '90vh';
-          modalContent.style.overflowY = 'auto';
-          modalContent.style.borderRadius = '12px';
-          modalContent.style.boxShadow = '0 20px 60px rgba(0,0,0,0.3)';
-        }
-        
-        // Add focus to first input for better UX
-        setTimeout(() => {
-          const firstInput = modal.querySelector('select, input');
-          if (firstInput) {
-            firstInput.focus();
-          }
-        }, 300);
-        
-        console.log('✅ Booking modal opened manually - body scroll disabled');
-      }
+      // 📱 MILLION DOLLAR BOOKING MODAL OPENING
+  function openBookingModal() {
+    // Prevent auto-opening if triggered automatically
+    if (window.mobileState && window.mobileState.preventAutoModal && !event) {
+      console.log('🚫 Auto-modal opening prevented');
+      return;
     }
+    
+    const modal = document.getElementById('bookingModal');
+    const serviceSelect = document.getElementById('service');
+    
+    if (modal && serviceSelect) {
+      // Close mobile nav if open
+      closeMobileNav();
+      
+      // Set modal state
+      window.mobileState.modalOpen = true;
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+      
+      // Clear any previous selection
+      serviceSelect.value = '';
+      
+      // Show ALL service options
+      const options = serviceSelect.querySelectorAll('option');
+      options.forEach(option => {
+        option.style.display = 'block';
+      });
+      
+      // Show modal with proper styling and manual flag
+      modal.style.display = 'flex';
+      modal.style.visibility = 'visible';
+      modal.style.opacity = '1';
+      modal.style.zIndex = '999999';
+      modal.setAttribute('data-manual-open', 'true');
+      
+      // Ensure modal content is visible and properly styled for mobile
+      const modalContent = modal.querySelector('.modal-content');
+      if (modalContent) {
+        modalContent.style.display = 'block';
+        modalContent.style.opacity = '1';
+        modalContent.style.visibility = 'visible';
+        modalContent.style.background = '#fff';
+        modalContent.style.color = '#000';
+        modalContent.style.maxWidth = '90vw';
+        modalContent.style.maxHeight = '90vh';
+        modalContent.style.overflowY = 'auto';
+        modalContent.style.borderRadius = '12px';
+        modalContent.style.boxShadow = '0 20px 60px rgba(0,0,0,0.3)';
+      }
+      
+      // Add focus to first input for better UX
+      
+      // 📱 ADDITIONAL MOBILE MODAL FIXES
+      // Ensure modal stays visible
+      setTimeout(() => {
+        if (modal.style.display === 'flex') {
+          modal.style.display = 'flex';
+          modal.style.visibility = 'visible';
+          modal.style.opacity = '1';
+        }
+      }, 100);
+      
+      // Prevent modal from disappearing
+      const preventDisappear = () => {
+        if (modal.style.display === 'flex') {
+          modal.style.display = 'flex';
+          modal.style.visibility = 'visible';
+          modal.style.opacity = '1';
+        }
+      };
+      
+      // Monitor modal visibility
+      const observer = new MutationObserver(preventDisappear);
+      observer.observe(modal, { attributes: true, attributeFilter: ['style'] });
+      
+      // Store observer for cleanup
+      modal._observer = observer;
+      
+      // Add focus to first input for better UX
+      setTimeout(() => {
+        const firstInput = modal.querySelector('select, input');
+        if (firstInput) {
+          firstInput.focus();
+        }
+      }, 300);
+      
+      console.log('✅ Booking modal opened manually - body scroll disabled');
+    }
+  }
     
     // Function to open photo-specific booking modal
     function openPhotoBookingModal() {
