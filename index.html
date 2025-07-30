@@ -10429,7 +10429,7 @@
       }
     }
     
-    /* Blockbuster-Style Membership Card */
+    /* Blockbuster-Style Membership Card with Lanyard */
     .membership-card {
       position: absolute;
       top: 50%;
@@ -10437,6 +10437,64 @@
       transform: translateY(-50%);
       z-index: 50;
       animation: cardFloat 3s ease-in-out infinite;
+    }
+    
+    /* Lanyard Design */
+    .lanyard {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 60;
+    }
+    
+    .lanyard-strap {
+      width: 120px;
+      height: 60px;
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      border-radius: 30px 30px 0 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    }
+    
+    .lanyard-text {
+      font-family: 'Arial Black', sans-serif;
+      font-size: 10px;
+      font-weight: bold;
+      color: #000;
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+    
+    .lanyard-clip {
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 20px;
+      background: #333;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .lanyard-clip::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 10px;
+      background: #666;
+      border-radius: 0 0 10px 10px;
     }
     
     .card-sleeve {
@@ -10451,6 +10509,31 @@
       box-shadow: 
         0 4px 16px rgba(0, 0, 0, 0.2),
         0 0 10px rgba(255, 178, 0, 0.1);
+    }
+    
+    /* Punch Hole for Lanyard */
+    .punch-hole {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: transparent;
+      border: 2px solid #FFD700;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    
+    .punch-hole::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 4px;
+      height: 4px;
+      background: #000;
+      border-radius: 50%;
     }
     
     .card-sleeve::before {
@@ -10740,27 +10823,14 @@
     /* Responsive positioning for different screen sizes */
     @media (max-width: 1200px) {
       .membership-card {
-        right: clamp(25%, 30%, 35%);
-      }
-      .arrow-hint {
-        right: clamp(35%, 40%, 45%);
-      }
-    }
-    
-    @media (max-width: 1024px) {
-      .membership-card {
         right: clamp(30%, 35%, 40%);
       }
       .arrow-hint {
         right: clamp(40%, 45%, 50%);
       }
-      .card-sleeve {
-        width: 260px;
-        height: 170px;
-      }
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .membership-card {
         right: clamp(35%, 40%, 45%);
       }
@@ -10768,8 +10838,35 @@
         right: clamp(45%, 50%, 55%);
       }
       .card-sleeve {
+        width: 260px;
+        height: 170px;
+      }
+      .lanyard-strap {
+        width: 110px;
+        height: 55px;
+      }
+      .lanyard-text {
+        font-size: 9px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .membership-card {
+        right: clamp(40%, 45%, 50%);
+      }
+      .arrow-hint {
+        right: clamp(50%, 55%, 60%);
+      }
+      .card-sleeve {
         width: 240px;
         height: 160px;
+      }
+      .lanyard-strap {
+        width: 100px;
+        height: 50px;
+      }
+      .lanyard-text {
+        font-size: 8px;
       }
       .card-title {
         font-size: 24px;
@@ -10781,14 +10878,21 @@
     
     @media (max-width: 480px) {
       .membership-card {
-        right: clamp(40%, 45%, 50%);
+        right: clamp(45%, 50%, 55%);
       }
       .arrow-hint {
-        right: clamp(50%, 55%, 60%);
+        right: clamp(55%, 60%, 65%);
       }
       .card-sleeve {
         width: 220px;
         height: 150px;
+      }
+      .lanyard-strap {
+        width: 90px;
+        height: 45px;
+      }
+      .lanyard-text {
+        font-size: 7px;
       }
       .card-title {
         font-size: 20px;
@@ -10801,14 +10905,21 @@
     /* Extra small screens - ensure maximum separation */
     @media (max-width: 375px) {
       .membership-card {
-        right: clamp(45%, 50%, 55%);
+        right: clamp(50%, 55%, 60%);
       }
       .arrow-hint {
-        right: clamp(55%, 60%, 65%);
+        right: clamp(60%, 65%, 70%);
       }
       .card-sleeve {
         width: 200px;
         height: 140px;
+      }
+      .lanyard-strap {
+        width: 80px;
+        height: 40px;
+      }
+      .lanyard-text {
+        font-size: 6px;
       }
       .card-title {
         font-size: 18px;
@@ -16867,9 +16978,19 @@
     <!-- Floating ENTER Button -->
     <button class="enter-button" onclick="enterStore()" onmouseenter="playVHSRewind()" onmousedown="initAudio()">ENTER</button>
     
-    <!-- Blockbuster-Style Membership Card -->
+    <!-- Blockbuster-Style Membership Card with Lanyard -->
     <div class="membership-card">
+      <!-- Lanyard -->
+      <div class="lanyard">
+        <div class="lanyard-strap">
+          <div class="lanyard-text">COCHRAN FILMS</div>
+        </div>
+        <div class="lanyard-clip"></div>
+      </div>
+      
+      <!-- Card with Punch Hole -->
       <div class="card-sleeve">
+        <div class="punch-hole"></div>
         <div class="card-body">
           <div class="card-header">
             <div class="card-title">STORYTELLER</div>
@@ -18874,6 +18995,16 @@
     createAmbientHum();
   }
   
+  // Stop ambient audio when enter screen fades out
+  function stopAmbientAudio() {
+    const audioElement = document.getElementById('videoStoreAudio');
+    if (audioElement) {
+      audioElement.volume = 0.3;
+      audioElement.pause();
+      console.log('🔇 Stopped Video_Store.mp3 audio');
+    }
+  }
+  
   function playVHSRewind() {
     if (audioContext && audioContext.state === 'suspended') {
       audioContext.resume();
@@ -18949,11 +19080,7 @@
       playVHSClick();
       
       // Stop ambient audio immediately
-      if (audioContext && ambientGain) {
-        ambientGain.gain.setValueAtTime(ambientGain.gain.value, audioContext.currentTime);
-        ambientGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
-        console.log('🔇 Stopping ambient audio');
-      }
+      stopAmbientAudio();
       
       // Add VHS glitch effect first
       cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
