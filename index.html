@@ -7341,36 +7341,32 @@
       }
       
       .mobile-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #0066CC; /* Blockbuster blue background */
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-        visibility: visible !important;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+        z-index: -1 !important;
       }
       
-      /* Ensure mobile loader is visible by default on mobile */
+      /* Hide mobile loader completely - use blockbuster loader instead */
       body:not(.loaded) .mobile-loader {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
       }
       
       body.loaded .mobile-loader {
-        opacity: 0;
+        display: none !important;
+        opacity: 0 !important;
         pointer-events: none;
         visibility: hidden !important;
       }
       
       .mobile-loader.hidden {
-        opacity: 0;
+        display: none !important;
+        opacity: 0 !important;
         pointer-events: none;
         visibility: hidden !important;
       }
@@ -12453,31 +12449,33 @@
     
     /* 📱 MOBILE LOADING SCREEN OPTIMIZATION - COMPLETE FIX */
     @media (max-width: 768px) {
-      /* Hide the complex blockbuster loader on mobile */
+      /* Show the blockbuster loader on mobile with blue gradient background */
       .blockbuster-loader {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        background: linear-gradient(180deg, #87CEEB 0%, #0066CC 50%, #004499 100%) !important;
+        z-index: 999999 !important;
       }
       
       .aperture-container {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
         position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        z-index: 10000 !important;
+        top: -9999px !important;
+        left: -9999px !important;
+        z-index: -1 !important;
       }
       
       .cinematic-text {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
         position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        width: 90% !important;
-        max-width: 400px !important;
-        text-align: center !important;
-        padding: 0 1rem !important;
-        z-index: 10001 !important;
+        top: -9999px !important;
+        left: -9999px !important;
+        z-index: -1 !important;
       }
       
       .brand-name {
@@ -17398,25 +17396,26 @@
   
   <!-- 📱 MOBILE LOADING SCRIPT -->
   <script>
-    // Show mobile loader immediately for mobile devices
+    // Show blockbuster loader immediately for mobile devices
     if (window.innerWidth <= 768) {
-      // Show loader immediately, don't wait for DOMContentLoaded
-      const showMobileLoader = () => {
-        const mobileLoader = document.querySelector('.mobile-loader');
-        if (mobileLoader) {
-          mobileLoader.style.display = 'flex';
-          mobileLoader.style.visibility = 'visible';
-          mobileLoader.style.opacity = '1';
-          mobileLoader.style.zIndex = '99999';
+      // Show blockbuster loader immediately, don't wait for DOMContentLoaded
+      const showBlockbusterLoader = () => {
+        const blockbusterLoader = document.querySelector('.blockbuster-loader');
+        if (blockbusterLoader) {
+          blockbusterLoader.style.display = 'flex';
+          blockbusterLoader.style.visibility = 'visible';
+          blockbusterLoader.style.opacity = '1';
+          blockbusterLoader.style.zIndex = '999999';
+          blockbusterLoader.style.background = 'linear-gradient(180deg, #87CEEB 0%, #0066CC 50%, #004499 100%)';
           
-          console.log('📱 Mobile loader displayed');
+          console.log('📱 Blockbuster loader displayed with blue gradient');
           
           // Hide loader after content loads
           setTimeout(() => {
-            mobileLoader.style.opacity = '0';
+            blockbusterLoader.style.opacity = '0';
             setTimeout(() => {
-              mobileLoader.style.display = 'none';
-              console.log('📱 Mobile loader hidden');
+              blockbusterLoader.style.display = 'none';
+              console.log('📱 Blockbuster loader hidden');
             }, 500);
           }, 2500);
         }
@@ -17424,9 +17423,9 @@
       
       // Try to show loader immediately
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', showMobileLoader);
+        document.addEventListener('DOMContentLoaded', showBlockbusterLoader);
       } else {
-        showMobileLoader();
+        showBlockbusterLoader();
       }
     }
   </script>
@@ -19606,8 +19605,8 @@
         mobileVersion.style.zIndex = '1 !important';
       }
       
-      // Force hide desktop elements
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
+      // Force hide desktop elements (but keep blockbuster loader)
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
       desktopElements.forEach(el => {
         el.style.display = 'none !important';
         el.style.visibility = 'hidden !important';
@@ -19615,6 +19614,17 @@
         el.style.position = 'absolute !important';
         el.style.zIndex = '-1 !important';
       });
+      
+      // Ensure blockbuster loader is visible on mobile
+      const blockbusterLoader = document.querySelector('.blockbuster-loader');
+      if (blockbusterLoader) {
+        blockbusterLoader.style.display = 'flex !important';
+        blockbusterLoader.style.visibility = 'visible !important';
+        blockbusterLoader.style.opacity = '1 !important';
+        blockbusterLoader.style.position = 'fixed !important';
+        blockbusterLoader.style.zIndex = '999999 !important';
+        blockbusterLoader.style.background = 'linear-gradient(180deg, #87CEEB 0%, #0066CC 50%, #004499 100%) !important';
+      }
       
       // Ensure mobile navigation is visible
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -19650,13 +19660,22 @@
           mobileVersion.style.opacity = '1 !important';
         }
         
-        // Hide desktop elements
-        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
+        // Hide desktop elements (but keep blockbuster loader)
+        const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
         desktopElements.forEach(el => {
           el.style.display = 'none !important';
           el.style.visibility = 'hidden !important';
           el.style.opacity = '0 !important';
         });
+        
+        // Ensure blockbuster loader is visible
+        const blockbusterLoader = document.querySelector('.blockbuster-loader');
+        if (blockbusterLoader) {
+          blockbusterLoader.style.display = 'flex !important';
+          blockbusterLoader.style.visibility = 'visible !important';
+          blockbusterLoader.style.opacity = '1 !important';
+          blockbusterLoader.style.background = 'linear-gradient(180deg, #87CEEB 0%, #0066CC 50%, #004499 100%) !important';
+        }
         
         // Initialize mobile functionality again to ensure everything works
         initializeMobileFunctionality();
@@ -19779,8 +19798,8 @@
         mobileVersion.style.zIndex = '1 !important';
       }
       
-      // Force hide desktop elements
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .blockbuster-loader');
+      // Force hide desktop elements (but keep blockbuster loader)
+      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer');
       desktopElements.forEach(el => {
         el.style.display = 'none !important';
         el.style.visibility = 'hidden !important';
@@ -19788,6 +19807,17 @@
         el.style.position = 'absolute !important';
         el.style.zIndex = '-1 !important';
       });
+      
+      // Ensure blockbuster loader is visible on mobile
+      const blockbusterLoader = document.querySelector('.blockbuster-loader');
+      if (blockbusterLoader) {
+        blockbusterLoader.style.display = 'flex !important';
+        blockbusterLoader.style.visibility = 'visible !important';
+        blockbusterLoader.style.opacity = '1 !important';
+        blockbusterLoader.style.position = 'fixed !important';
+        blockbusterLoader.style.zIndex = '999999 !important';
+        blockbusterLoader.style.background = 'linear-gradient(180deg, #87CEEB 0%, #0066CC 50%, #004499 100%) !important';
+      }
       
       // Ensure mobile navigation is visible
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
