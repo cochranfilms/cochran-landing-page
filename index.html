@@ -1386,8 +1386,9 @@
       .mobile-gallery-grid {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
         padding: 0 1rem;
+        margin-top: 2rem;
       }
       
       .mobile-gallery-item {
@@ -1395,22 +1396,28 @@
         overflow: hidden;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        background: #fff;
       }
       
       .mobile-gallery-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 12px 35px rgba(255,178,0,0.3);
+        transform: scale(1.02);
+        box-shadow: 0 12px 35px rgba(255,178,0,0.2);
       }
       
       .mobile-gallery-item img {
         width: 100%;
-        height: 300px;
+        height: 350px;
         object-fit: cover;
         display: block;
         background: #f0f0f0;
-        min-height: 300px;
+        min-height: 350px;
         border-radius: 15px;
+        transition: transform 0.3s ease;
+      }
+      
+      .mobile-gallery-item:hover img {
+        transform: scale(1.05);
       }
       
       .mobile-gallery-item img[src*="placeholder"] {
@@ -1427,8 +1434,9 @@
       .mobile-footer {
         background: #000;
         color: #fff;
-        padding: 3rem 1rem 2rem 1rem;
+        padding: 2rem 1rem 1rem 1rem;
         text-align: center;
+        margin-bottom: 0;
       }
       
       .mobile-footer-container {
@@ -1451,9 +1459,12 @@
       }
       
       .mobile-footer-logo {
-        height: 50px;
+        height: 60px;
         width: auto;
         filter: brightness(1) contrast(1);
+        display: block;
+        margin: 0 auto;
+        max-width: 200px;
       }
       
       .mobile-footer-tagline {
@@ -13075,7 +13086,7 @@
     @media (max-width: 768px) {
       .cinematic-text {
         width: 90% !important;
-        max-width: 350px !important;
+        max-width: 320px !important;
         text-align: center !important;
         padding: 0 1rem !important;
         word-wrap: break-word !important;
@@ -13084,39 +13095,48 @@
         line-height: 1.4 !important;
         position: relative !important;
         z-index: 10001 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
       }
       
       .brand-name {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
         line-height: 1.2 !important;
-        word-break: break-word !important;
-        margin-bottom: 1rem !important;
+        word-break: keep-all !important;
+        margin-bottom: 0.5rem !important;
         color: #FFB200 !important;
         text-shadow: 0 0 20px rgba(255, 178, 0, 0.5) !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
       }
       
       .tagline {
-        font-size: 1rem !important;
+        font-size: 0.9rem !important;
         line-height: 1.3 !important;
-        word-break: break-word !important;
-        letter-spacing: 0.1em !important;
+        word-break: keep-all !important;
+        letter-spacing: 0.05em !important;
         color: rgba(255, 255, 255, 0.9) !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-align: center !important;
       }
       
       /* Fix any overlapping text elements */
       .cinematic-text * {
         max-width: 100% !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
       }
       
       /* Ensure logo is visible */
       .cinematic-text img {
-        max-width: 200px !important;
+        max-width: 180px !important;
         width: 100% !important;
         height: auto !important;
         display: block !important;
-        margin: 0 auto 2rem auto !important;
+        margin: 0 auto 1rem auto !important;
         filter: brightness(1) contrast(1) !important;
       }
     }
@@ -13386,6 +13406,55 @@
         z-index: 10000 !important;
       }
       
+      /* Ensure form stays open during interaction */
+      #bookingModal form {
+        position: relative !important;
+        z-index: 10001 !important;
+      }
+      
+      #bookingModal input,
+      #bookingModal textarea,
+      #bookingModal select {
+        font-size: 16px !important;
+        min-height: 44px !important;
+        padding: 0.8rem 1rem !important;
+        border-radius: 8px !important;
+        border: 2px solid rgba(255, 178, 0, 0.3) !important;
+        background: #fff !important;
+        color: #000 !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      #bookingModal input:focus,
+      #bookingModal textarea:focus,
+      #bookingModal select:focus {
+        border-color: #FFB200 !important;
+        box-shadow: 0 0 0 3px rgba(255, 178, 0, 0.2) !important;
+        outline: none !important;
+      }
+      
+      #bookingModal button[type="submit"] {
+        background: linear-gradient(135deg, #FFB200, #FFC700) !important;
+        color: #000 !important;
+        border: none !important;
+        padding: 1rem 2rem !important;
+        border-radius: 25px !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        min-height: 50px !important;
+        width: 100% !important;
+        margin-top: 1rem !important;
+      }
+      
+      #bookingModal button[type="submit"]:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(255, 178, 0, 0.4) !important;
+      }
+      
       #bookingModal {
         position: fixed !important;
         top: 0 !important;
@@ -13485,6 +13554,32 @@
       body::before {
         display: none !important;
         content: none !important;
+      }
+      
+      /* Remove dark/light mode toggle on mobile */
+      .theme-toggle,
+      .dark-mode-toggle,
+      .light-mode-toggle,
+      [class*="theme"],
+      [class*="mode"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+      
+      /* Force dark theme on mobile */
+      body {
+        background: #000 !important;
+        color: #fff !important;
+      }
+      
+      /* Ensure all mobile sections use dark theme */
+      .mobile-hero,
+      .mobile-services,
+      .mobile-gallery,
+      .mobile-contact {
+        background: #000 !important;
+        color: #fff !important;
       }
       
       /* Create a proper floating button */
@@ -16283,7 +16378,7 @@
   <!-- 🔒 SECURE BOOKING MODAL -->
 <div id="bookingModal" class="modal-overlay" style="display:none;">
   <div class="modal-content">
-    <button class="modal-close" id="closeModal" title="Close">&times;</button>
+    <button class="modal-close" id="closeModal" title="Close" onclick="closeBookingModal()">&times;</button>
     <h2>🔒 Secure Booking Form</h2>
     <form id="bookingForm" method="post" action="https://formspree.io/f/your-form-id" autocomplete="off" novalidate>
       <label for="service">Service</label>
@@ -16608,12 +16703,27 @@
       });
       
       // Initialize mobile booking modal
-      const mobileBookingButtons = document.querySelectorAll('.mobile-cta-primary, .mobile-contact-btn.primary');
+      const mobileBookingButtons = document.querySelectorAll('.mobile-cta-primary, .mobile-contact-btn.primary, .mobile-book-btn, button[onclick*="openBookingModal"]');
       mobileBookingButtons.forEach(button => {
         button.addEventListener('click', function(e) {
           e.preventDefault();
+          e.stopPropagation();
           openBookingModal();
         });
+      });
+      
+      // Also add click handlers to any buttons with "book" or "Book" text
+      const allButtons = document.querySelectorAll('button, .btn, a');
+      allButtons.forEach(button => {
+        const text = button.textContent || button.innerText || '';
+        if (text.toLowerCase().includes('book') && !button.hasAttribute('data-book-handler')) {
+          button.setAttribute('data-book-handler', 'true');
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openBookingModal();
+          });
+        }
       });
       
 
@@ -18963,13 +19073,17 @@
     
     if (modal && serviceSelect) {
       // Close mobile nav if open
-      closeMobileNav();
+      if (typeof closeMobileNav === 'function') {
+        closeMobileNav();
+      }
       
       // Set modal state
       window.mobileState.modalOpen = true;
       
       // Prevent body scroll
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
       
       // Clear any previous selection
       serviceSelect.value = '';
@@ -19039,6 +19153,40 @@
       }, 300);
       
       console.log('✅ Booking modal opened manually - body scroll disabled');
+      
+      // Add event listener to prevent modal from closing when clicking inside
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          // Only close if clicking the backdrop, not the content
+          closeBookingModal();
+        }
+      });
+      
+      // Prevent modal from closing when clicking form elements
+      const form = modal.querySelector('form');
+      if (form) {
+        form.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+    }
+  }
+  
+  // Function to close booking modal
+  function closeBookingModal() {
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+      modal.style.display = 'none';
+      modal.style.visibility = 'hidden';
+      modal.style.opacity = '0';
+      
+      // Restore body scroll
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      
+      window.mobileState.modalOpen = false;
+      console.log('✅ Booking modal closed - body scroll restored');
     }
   }
     
