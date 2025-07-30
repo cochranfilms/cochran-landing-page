@@ -17051,37 +17051,45 @@
           }
         };
         
-        // Play audio immediately on desktop
-        audioElement.play().then(() => {
-          console.log('🎵 Audio started immediately on desktop');
-          
-          // Set up auto-enter timer for when audio ends (~17 seconds)
-          autoEnterTimer = setTimeout(performAutoEnter, 17000);
-          
-        }).catch(e => {
-          console.log('Audio blocked, will try on user interaction:', e);
-          
-          // Try to play on first user interaction
-          const playOnInteraction = () => {
-            if (!hasEntered && audioElement.paused) {
-              audioElement.play().then(() => {
-                console.log('🎵 Audio started on user interaction');
-                // Set up auto-enter timer
-                autoEnterTimer = setTimeout(performAutoEnter, 17000);
-              }).catch(err => console.log('Audio still blocked:', err));
-            }
-            // Remove listeners after first successful play
-            document.removeEventListener('click', playOnInteraction);
-            document.removeEventListener('keydown', playOnInteraction);
-            document.removeEventListener('mousemove', playOnInteraction);
-            document.removeEventListener('touchstart', playOnInteraction);
-          };
-          
-          document.addEventListener('click', playOnInteraction);
-          document.addEventListener('keydown', playOnInteraction);
-          document.addEventListener('mousemove', playOnInteraction);
-          document.addEventListener('touchstart', playOnInteraction);
-        });
+        // Play audio immediately on desktop (only during loading screen)
+        const startAudio = () => {
+          // Only play if we're still on the loading screen
+          if (!document.body.classList.contains('loaded')) {
+            audioElement.play().then(() => {
+              console.log('🎵 Audio started immediately on desktop');
+              
+              // Set up auto-enter timer for when audio ends (~17 seconds)
+              autoEnterTimer = setTimeout(performAutoEnter, 17000);
+              
+            }).catch(e => {
+              console.log('Audio blocked, will try on user interaction:', e);
+              
+              // Try to play on first user interaction
+              const playOnInteraction = () => {
+                if (!hasEntered && audioElement.paused && !document.body.classList.contains('loaded')) {
+                  audioElement.play().then(() => {
+                    console.log('🎵 Audio started on user interaction');
+                    // Set up auto-enter timer
+                    autoEnterTimer = setTimeout(performAutoEnter, 17000);
+                  }).catch(err => console.log('Audio still blocked:', err));
+                }
+                // Remove listeners after first successful play
+                document.removeEventListener('click', playOnInteraction);
+                document.removeEventListener('keydown', playOnInteraction);
+                document.removeEventListener('mousemove', playOnInteraction);
+                document.removeEventListener('touchstart', playOnInteraction);
+              };
+              
+              document.addEventListener('click', playOnInteraction);
+              document.addEventListener('keydown', playOnInteraction);
+              document.addEventListener('mousemove', playOnInteraction);
+              document.addEventListener('touchstart', playOnInteraction);
+            });
+          }
+        };
+        
+        // Start audio
+        startAudio();
         
         // Override enterStore function to handle audio fade out
         const originalEnterStore = window.enterStore;
@@ -17100,6 +17108,21 @@
             originalEnterStore.call(this);
           }
         };
+        
+        // Stop audio when main content loads
+        document.addEventListener('DOMContentLoaded', () => {
+          const checkForMainContent = setInterval(() => {
+            if (document.body.classList.contains('loaded')) {
+              // Main content has loaded, stop any remaining audio
+              if (audioElement && !audioElement.paused) {
+                audioElement.pause();
+                audioElement.currentTime = 0;
+                console.log('🔇 Audio stopped - main content loaded');
+              }
+              clearInterval(checkForMainContent);
+            }
+          }, 100);
+        });
         
         console.log('✅ Audio system initialized');
       } else {
