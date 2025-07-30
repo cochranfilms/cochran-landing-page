@@ -10429,6 +10429,127 @@
       }
     }
     
+    /* Blockbuster-Style Membership Card */
+    .membership-card {
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      transform: translateY(-50%);
+      z-index: 100;
+      animation: cardFloat 3s ease-in-out infinite;
+    }
+    
+    .card-sleeve {
+      position: relative;
+      width: 280px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 8px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 178, 0, 0.2);
+    }
+    
+    .card-sleeve::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    .card-body {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0066CC 0%, #004499 50%, #002266 100%);
+      border-radius: 6px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid;
+      border-image: linear-gradient(45deg, #FFD700, #FFA500) 1;
+      box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card-header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    .card-title {
+      font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #FFD700;
+      text-shadow: 
+        2px 2px 0px #000,
+        -1px -1px 0px #000,
+        1px -1px 0px #000,
+        -1px 1px 0px #000;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    
+    .card-subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 0px #000;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .card-trademark {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 12px;
+      color: #FFD700;
+      font-weight: bold;
+    }
+    
+    @keyframes cardFloat {
+      0%, 100% { 
+        transform: translateY(-50%) translateX(0);
+      }
+      50% { 
+        transform: translateY(-50%) translateX(5px);
+      }
+    }
+    
+    /* Card hover effects */
+    .membership-card:hover .card-sleeve {
+      transform: scale(1.05);
+      box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(255, 178, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .membership-card:hover .card-title {
+      color: #FFA500;
+      text-shadow: 
+        2px 2px 0px #000,
+        -1px -1px 0px #000,
+        1px -1px 0px #000,
+        -1px 1px 0px #000,
+        0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
     /* VHS Static Overlay */
     .vhs-static {
       position: absolute;
@@ -16474,6 +16595,19 @@
     <!-- Floating ENTER Button -->
     <button class="enter-button" onclick="enterStore()" onmouseenter="playVHSRewind()" onmousedown="initAudio()">ENTER</button>
     
+    <!-- Blockbuster-Style Membership Card -->
+    <div class="membership-card">
+      <div class="card-sleeve">
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-title">STORYTELLER</div>
+            <div class="card-subtitle">MEMBERSHIP CARD</div>
+          </div>
+          <div class="card-trademark">®</div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Floating film particles -->
     <div class="film-particles">
       <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
@@ -18514,24 +18648,24 @@
           
           // Start fade out sequence
           setTimeout(() => {
-            // Smooth fade out of the entire cinematic loader
-            cinematicLoader.style.transition = 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            // Complete fade out to black - ensure it goes to 0% opacity
+            cinematicLoader.style.transition = 'all 2s cubic-bezier(0.4, 0, 0.2, 1)';
             cinematicLoader.style.opacity = '0';
-            cinematicLoader.style.filter = 'blur(2px) brightness(0.8)';
+            cinematicLoader.style.filter = 'blur(3px) brightness(0.3)';
             
             // Add slide transition effect
             document.body.style.overflow = 'hidden';
             
-            // Complete fade and reveal
+            // Ensure complete fade to black
             setTimeout(() => {
-              // Final smooth fade
-              cinematicLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+              // Force complete opacity to 0 and black filter
+              cinematicLoader.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
               cinematicLoader.style.opacity = '0';
-              cinematicLoader.style.filter = 'blur(4px) brightness(0.6)';
+              cinematicLoader.style.filter = 'blur(6px) brightness(0)';
               
-              // Final removal
+              // Final removal - ensure it's completely gone
               setTimeout(() => {
-                // Clean removal
+                // Force complete removal and hide
                 cinematicLoader.style.transition = 'none';
                 cinematicLoader.style.display = 'none';
                 cinematicLoader.style.visibility = 'hidden';
@@ -18539,7 +18673,8 @@
                 cinematicLoader.style.pointerEvents = 'none';
                 cinematicLoader.style.zIndex = '-1';
                 cinematicLoader.style.transform = 'scale(1)';
-                cinematicLoader.style.filter = 'blur(8px) brightness(0)';
+                cinematicLoader.style.filter = 'blur(10px) brightness(0)';
+                cinematicLoader.style.background = 'transparent';
                 
                 // Add loaded class to show main content
                 document.body.classList.add('loaded');
