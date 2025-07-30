@@ -10435,7 +10435,7 @@
       top: 50%;
       right: clamp(15%, 20%, 25%);
       transform: translateY(-50%);
-      z-index: 100;
+      z-index: 50;
       animation: cardFloat 3s ease-in-out infinite;
     }
     
@@ -10443,14 +10443,14 @@
       position: relative;
       width: 280px;
       height: 180px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 8px;
       padding: 8px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(255, 178, 0, 0.2);
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 0 10px rgba(255, 178, 0, 0.1);
     }
     
     .card-sleeve::before {
@@ -10650,6 +10650,54 @@
       text-shadow: 1px 1px 0px #000;
     }
     
+    /* Animated Arrow Hint */
+    .arrow-hint {
+      position: absolute;
+      top: 50%;
+      right: clamp(25%, 30%, 35%);
+      transform: translateY(-50%);
+      z-index: 40;
+      opacity: 0.7;
+      animation: arrowPulse 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .arrow-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      color: #FFD700;
+      text-align: center;
+      text-shadow: 1px 1px 0px #000;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .arrow-icon {
+      font-size: 24px;
+      color: #FFD700;
+      text-align: center;
+      text-shadow: 1px 1px 0px #000;
+      animation: arrowBounce 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes arrowPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+    }
+    
+    /* Hide arrow when card is hovered */
+    .membership-card:hover ~ .arrow-hint,
+    .membership-card:hover .arrow-hint {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
     @keyframes cardFloat {
       0%, 100% { 
         transform: translateY(-50%) translateX(0);
@@ -10692,13 +10740,19 @@
     /* Responsive positioning for different screen sizes */
     @media (max-width: 1200px) {
       .membership-card {
-        right: clamp(20%, 25%, 30%);
+        right: clamp(25%, 30%, 35%);
+      }
+      .arrow-hint {
+        right: clamp(35%, 40%, 45%);
       }
     }
     
     @media (max-width: 1024px) {
       .membership-card {
-        right: clamp(25%, 30%, 35%);
+        right: clamp(30%, 35%, 40%);
+      }
+      .arrow-hint {
+        right: clamp(40%, 45%, 50%);
       }
       .card-sleeve {
         width: 260px;
@@ -10708,7 +10762,10 @@
     
     @media (max-width: 768px) {
       .membership-card {
-        right: clamp(30%, 35%, 40%);
+        right: clamp(35%, 40%, 45%);
+      }
+      .arrow-hint {
+        right: clamp(45%, 50%, 55%);
       }
       .card-sleeve {
         width: 240px;
@@ -10724,7 +10781,10 @@
     
     @media (max-width: 480px) {
       .membership-card {
-        right: clamp(35%, 40%, 45%);
+        right: clamp(40%, 45%, 50%);
+      }
+      .arrow-hint {
+        right: clamp(50%, 55%, 60%);
       }
       .card-sleeve {
         width: 220px;
@@ -10741,7 +10801,10 @@
     /* Extra small screens - ensure maximum separation */
     @media (max-width: 375px) {
       .membership-card {
-        right: clamp(40%, 45%, 50%);
+        right: clamp(45%, 50%, 55%);
+      }
+      .arrow-hint {
+        right: clamp(55%, 60%, 65%);
       }
       .card-sleeve {
         width: 200px;
@@ -16715,6 +16778,10 @@
     <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
   </audio>
   
+  <audio id="videoStoreAudio" preload="auto">
+    <source src="./Video_Store.mp3" type="audio/mpeg">
+  </audio>
+  
   <audio id="vhsRewind">
     <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
   </audio>
@@ -16821,6 +16888,12 @@
         </div>
         <div class="input-instruction">Click to personalize your card</div>
       </div>
+    </div>
+    
+    <!-- Animated Arrow Hint -->
+    <div class="arrow-hint" id="arrowHint">
+      <div class="arrow-text">HOVER TO PERSONALIZE</div>
+      <div class="arrow-icon">→</div>
     </div>
     
     <!-- Floating film particles -->
@@ -18711,22 +18784,33 @@
   function createAmbientHum() {
     if (!audioContext) return;
     
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(60, audioContext.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(58, audioContext.currentTime + 2);
-    
-    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 2);
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(ambientGain);
-    ambientGain.connect(audioContext.destination);
-    
-    oscillator.start();
-    return oscillator;
+    // Use Video_Store.mp3 instead of generated audio
+    const audioElement = document.getElementById('videoStoreAudio');
+    if (audioElement) {
+      audioElement.volume = 0.3;
+      audioElement.loop = true;
+      audioElement.play().catch(e => console.log('Audio autoplay blocked:', e));
+      console.log('🎵 Playing Video_Store.mp3 ambient audio');
+    } else {
+      console.log('⚠️ Video_Store.mp3 not found, falling back to generated audio');
+      // Fallback to generated audio if file not found
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(60, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(58, audioContext.currentTime + 2);
+      
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 2);
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(ambientGain);
+      ambientGain.connect(audioContext.destination);
+      
+      oscillator.start();
+      return oscillator;
+    }
   }
   
   function createVHSRewind() {
