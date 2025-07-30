@@ -1436,7 +1436,28 @@
         color: #fff;
         padding: 2rem 1rem 1rem 1rem;
         text-align: center;
-        margin-bottom: 0;
+        margin: 0;
+      }
+      
+      /* Remove any bottom spacing */
+      .mobile-content {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+      }
+      
+      body {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      
+      html, body {
+        overflow-x: hidden !important;
+      }
+      
+      #mobileVersion {
+        min-height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       
       .mobile-footer-container {
@@ -1527,6 +1548,67 @@
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.6);
         margin: 0;
+      }
+      
+      /* Mobile Loader */
+      .mobile-loader {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: #000 !important;
+        z-index: 99999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      .mobile-loader-content {
+        text-align: center;
+        color: #fff;
+      }
+      
+      .mobile-loader-logo {
+        height: 80px;
+        width: auto;
+        margin-bottom: 2rem;
+        filter: brightness(1) contrast(1);
+      }
+      
+      .mobile-loader-title {
+        font-size: 1.8rem;
+        color: #FFB200;
+        margin: 1rem 0 0.5rem 0;
+        font-weight: 700;
+      }
+      
+      .mobile-loader-subtitle {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0 0 2rem 0;
+      }
+      
+      .mobile-loader-bar {
+        width: 200px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      
+      .mobile-loader-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #FFB200, #FFC700);
+        border-radius: 2px;
+        width: 0;
+        animation: mobileLoadProgress 2s ease-in-out forwards;
+      }
+      
+      @keyframes mobileLoadProgress {
+        0% { width: 0; }
+        100% { width: 100%; }
       }
       
       .mobile-contact-container {
@@ -10395,16 +10477,11 @@
     
     /* 📱 MOBILE LOADING SCREEN OPTIMIZATION - COMPLETE FIX */
     @media (max-width: 768px) {
+      /* Hide the complex cinematic loader on mobile */
       .cinematic-loader {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 9999 !important;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
       }
       
       .aperture-container {
@@ -13567,18 +13644,20 @@
         opacity: 0 !important;
       }
       
-      /* Force dark theme on mobile */
-      body {
+      /* Force dark theme on mobile - ONLY for mobile sections, not loading screen */
+      .mobile-hero,
+      .mobile-services,
+      .mobile-gallery,
+      .mobile-contact,
+      .mobile-footer {
         background: #000 !important;
         color: #fff !important;
       }
       
-      /* Ensure all mobile sections use dark theme */
-      .mobile-hero,
-      .mobile-services,
-      .mobile-gallery,
-      .mobile-contact {
-        background: #000 !important;
+      .mobile-section-title,
+      .mobile-section-subtitle,
+      .mobile-hero-title,
+      .mobile-hero-subtitle {
         color: #fff !important;
       }
       
@@ -14832,25 +14911,36 @@
   
   <!-- 📱 MOBILE LOADING SCRIPT -->
   <script>
-    // Ensure mobile loader works properly
+    // Show mobile loader immediately for mobile devices
     if (window.innerWidth <= 768) {
-      document.addEventListener('DOMContentLoaded', function() {
+      // Show loader immediately, don't wait for DOMContentLoaded
+      const showMobileLoader = () => {
         const mobileLoader = document.querySelector('.mobile-loader');
         if (mobileLoader) {
-          mobileLoader.style.display = 'flex !important';
-          mobileLoader.style.visibility = 'visible !important';
-          mobileLoader.style.opacity = '1 !important';
-          mobileLoader.style.zIndex = '99999 !important';
+          mobileLoader.style.display = 'flex';
+          mobileLoader.style.visibility = 'visible';
+          mobileLoader.style.opacity = '1';
+          mobileLoader.style.zIndex = '99999';
+          
+          console.log('📱 Mobile loader displayed');
           
           // Hide loader after content loads
           setTimeout(() => {
             mobileLoader.style.opacity = '0';
             setTimeout(() => {
               mobileLoader.style.display = 'none';
+              console.log('📱 Mobile loader hidden');
             }, 500);
-          }, 2000);
+          }, 2500);
         }
-      });
+      };
+      
+      // Try to show loader immediately
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showMobileLoader);
+      } else {
+        showMobileLoader();
+      }
     }
   </script>
   <header>
@@ -16561,13 +16651,21 @@
         console.log('📱 Mobile version forced visible - COMPREHENSIVE');
       }
       
-      // Ensure mobile loader is visible
+      // Show mobile loader and hide cinematic loader
       const mobileLoader = document.querySelector('.mobile-loader');
+      const cinematicLoader = document.querySelector('.cinematic-loader');
+      
+      if (cinematicLoader) {
+        cinematicLoader.style.display = 'none';
+        cinematicLoader.style.visibility = 'hidden';
+        cinematicLoader.style.opacity = '0';
+      }
+      
       if (mobileLoader) {
-        mobileLoader.style.display = 'flex !important';
-        mobileLoader.style.visibility = 'visible !important';
-        mobileLoader.style.opacity = '1 !important';
-        mobileLoader.style.zIndex = '99999 !important';
+        mobileLoader.style.display = 'flex';
+        mobileLoader.style.visibility = 'visible';
+        mobileLoader.style.opacity = '1';
+        mobileLoader.style.zIndex = '99999';
       }
       
       // Ensure mobile nav toggle is visible
