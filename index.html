@@ -1218,7 +1218,7 @@
       
           /* Enhanced Mobile Services Section */
       .mobile-services {
-      padding: 3rem 1rem;
+      padding: 1.5rem 1rem;
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
       position: relative;
       overflow: hidden;
@@ -1366,7 +1366,7 @@
       
       /* Mobile Gallery Section */
       .mobile-gallery {
-        padding: 4rem 1rem;
+        padding: 2rem 1rem;
         background: #000;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
@@ -1448,7 +1448,7 @@
       
       /* Mobile Contact Section */
       .mobile-contact {
-        padding: 4rem 1rem;
+        padding: 2rem 1rem;
         background: linear-gradient(135deg, #FFB200 0%, #FF9000 100%);
       }
 
@@ -1464,7 +1464,7 @@
       .mobile-footer {
         background: #000;
         color: #fff;
-        padding: 2rem 1rem 0 1rem;
+        padding: 2rem 1rem 1rem 1rem;
         text-align: center;
         margin: 0;
       }
@@ -1482,6 +1482,28 @@
       
       html, body {
         overflow-x: hidden !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+
+      /* Force absolutely no bottom spacing on mobile */
+      @media (max-width: 768px) {
+        html, body, #mobileVersion, .mobile-footer, .mobile-footer-container, .mobile-footer-bottom {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
+        
+        #mobileVersion {
+          display: block !important;
+          position: relative !important;
+          height: auto !important;
+          min-height: 100vh !important;
+        }
+        
+        body {
+          height: auto !important;
+          overflow-x: hidden !important;
+        }
       }
 
       /* Force mobile visibility */
@@ -1524,6 +1546,8 @@
         margin: 0 !important;
         padding: 0 !important;
         padding-bottom: 0 !important;
+        overflow-x: hidden !important;
+        position: relative !important;
       }
       
       .mobile-footer-container {
@@ -1536,7 +1560,7 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
       }
       
       .mobile-footer-brand {
@@ -2348,18 +2372,22 @@
         /* Large, clickable mobile gallery items */
         .mobile-gallery-item {
           width: 100% !important;
-          height: 300px !important;
+          min-height: 200px !important;
+          max-height: 400px !important;
           border-radius: 15px !important;
           overflow: hidden !important;
           cursor: pointer !important;
           background: #333 !important;
-          display: block !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
         }
         
         .mobile-gallery-item img {
           width: 100% !important;
-          height: 100% !important;
-          object-fit: cover !important;
+          height: auto !important;
+          max-height: 400px !important;
+          object-fit: contain !important;
           transition: transform 0.3s ease !important;
         }
         
@@ -2375,7 +2403,8 @@
           }
           
           .mobile-gallery-item {
-            height: 200px !important;
+            min-height: 150px !important;
+            max-height: 300px !important;
           }
         }
         
@@ -2453,8 +2482,9 @@
     
     .mobile-gallery-item img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
       display: block;
       transition: transform 0.3s ease;
     }
@@ -2466,7 +2496,7 @@
     /* Mobile gallery optimizations */
     @media (max-width: 768px) {
       .mobile-gallery {
-        padding: 3rem 0.5rem;
+        padding: 1.5rem 0.5rem;
         overflow: hidden;
         -webkit-overflow-scrolling: touch;
       }
@@ -2483,7 +2513,8 @@
       }
       
       .mobile-gallery-item {
-        aspect-ratio: 1;
+        min-height: 150px;
+        max-height: 350px;
         position: relative;
         overflow: hidden;
         border-radius: 12px;
@@ -2493,15 +2524,19 @@
         transform: translateZ(0);
         will-change: transform;
         contain: content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       
       .mobile-gallery-item img {
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
+        top: auto;
+        left: auto;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
+        max-height: 350px;
+        object-fit: contain;
         border-radius: 12px;
         transform: translateZ(0);
         will-change: transform;
@@ -3621,7 +3656,7 @@
       
       /* Mobile contact section */
       .mobile-contact {
-        padding: 4rem 1rem;
+        padding: 2rem 1rem;
         background: #fff;
       }
       
@@ -3632,7 +3667,7 @@
       
       /* Mobile photography section */
       .mobile-photography {
-        padding: 4rem 1rem;
+        padding: 2rem 1rem;
         background: var(--bg);
       }
       
@@ -14312,12 +14347,12 @@
         right: 0 !important;
         z-index: 10001 !important;
         background: linear-gradient(135deg, #FFD700 0%, #FFB200 60%, #FF9000 100%) !important;
-        padding: 2rem 1rem !important;
+        padding: 1.5rem 1rem !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        min-height: 200px !important;
+        min-height: 160px !important;
       }
       
       .mobile-header-content {
@@ -14332,16 +14367,19 @@
       }
       
       .mobile-header-logo {
-        width: 60px !important;
+        width: 50px !important;
         height: auto !important;
         filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)) !important;
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.3rem !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
       }
       
       .mobile-header-divider {
         width: 60px !important;
         height: 3px !important;
-        background: #000 !important;
+        background: #fff !important;
         border-radius: 2px !important;
         margin: 0.5rem 0 !important;
       }
@@ -14349,10 +14387,10 @@
       .mobile-header-title {
         font-size: 1.4rem !important;
         font-weight: 900 !important;
-        color: #000 !important;
+        color: #fff !important;
         text-transform: uppercase !important;
         letter-spacing: 0.05em !important;
-        text-shadow: 0 1px 2px rgba(255,255,255,0.3) !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
         margin: 0.5rem 0 !important;
         line-height: 1.2 !important;
       }
@@ -14360,7 +14398,7 @@
       .mobile-header-subtitle {
         font-size: 0.9rem !important;
         font-weight: 500 !important;
-        color: rgba(0,0,0,0.8) !important;
+        color: rgba(255,255,255,0.9) !important;
         line-height: 1.4 !important;
         margin: 0 !important;
         max-width: 500px !important;
@@ -14369,12 +14407,16 @@
       /* 📱 RESPONSIVE MOBILE BANNER ADJUSTMENTS */
       @media (max-width: 480px) {
         .mobile-header-banner {
-          padding: 1.5rem 0.5rem !important;
-          min-height: 180px !important;
+          padding: 1rem 0.5rem !important;
+          min-height: 140px !important;
+        }
+        
+        .mobile-header-logo {
+          width: 40px !important;
         }
         
         .mobile-header-title {
-          font-size: 1.2rem !important;
+          font-size: 1.1rem !important;
           line-height: 1.1 !important;
         }
         
@@ -14384,18 +14426,22 @@
         }
         
         .mobile-hero {
-          padding-top: 200px !important;
+          padding-top: 160px !important;
         }
       }
       
       @media (max-width: 360px) {
         .mobile-header-banner {
-          padding: 1rem 0.5rem !important;
-          min-height: 160px !important;
+          padding: 0.8rem 0.5rem !important;
+          min-height: 120px !important;
+        }
+        
+        .mobile-header-logo {
+          width: 35px !important;
         }
         
         .mobile-header-title {
-          font-size: 1rem !important;
+          font-size: 0.9rem !important;
         }
         
         .mobile-header-subtitle {
@@ -14403,13 +14449,13 @@
         }
         
         .mobile-hero {
-          padding-top: 180px !important;
+          padding-top: 140px !important;
         }
       }
       
       /* 📱 MOBILE HERO SECTION PADDING FIX */
       .mobile-hero {
-        padding-top: 220px !important;
+        padding-top: 180px !important;
         margin-top: 0 !important;
       }
       
@@ -19115,15 +19161,7 @@
     const headerLogo = header.querySelector('img');
     const headerShapes = header.querySelectorAll('.header-shape');
     
-    // Header parallax effect on scroll
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.3;
-      
-      if (header) {
-        header.style.transform = `translateY(${rate}px)`;
-      }
-    });
+    // Header parallax effect removed for better mobile/desktop experience
     
     // Logo hover effects
     if (headerLogo) {
