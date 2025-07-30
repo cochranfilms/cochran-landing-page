@@ -16859,54 +16859,213 @@
   </audio>
   
   <script>
-    // Aggressive audio autoplay with multiple strategies
+    // Enhanced audio autoplay with auto-enter functionality
     (function() {
       const audioElement = document.getElementById('videoStoreAudio');
       if (audioElement) {
-        audioElement.volume = 0.2; // Lower volume for better autoplay
-        audioElement.loop = true;
-        audioElement.muted = false; // Start unmuted
+        audioElement.volume = 0.2;
+        audioElement.loop = false; // Don't loop - play once
+        audioElement.muted = false;
         
-        // Try to play immediately
+        let audioStarted = false;
+        let autoEnterTimer = null;
+        let userPressedEnter = false;
+        
+        // Auto-enter timeout (in milliseconds) - adjust as needed
+        const AUTO_ENTER_DELAY = 17000; // 17 seconds
+        
         const playAudio = () => {
+          if (audioStarted) return;
+          
           audioElement.play().then(() => {
             console.log('🎵 Audio started successfully');
-            // Remove all event listeners once audio is playing
-            document.removeEventListener('click', playAudio);
-            document.removeEventListener('keydown', playAudio);
-            document.removeEventListener('mousemove', playAudio);
-            document.removeEventListener('touchstart', playAudio);
-            document.removeEventListener('scroll', playAudio);
-            document.removeEventListener('pointerdown', playAudio);
-            document.removeEventListener('pointermove', playAudio);
+            audioStarted = true;
+            removeAllListeners();
+            
+            // Start auto-enter timer when audio starts
+            startAutoEnterTimer();
           }).catch(e => {
             console.log('Audio blocked, waiting for user interaction:', e);
           });
         };
         
-        // Try to play immediately
-        playAudio();
+        const removeAllListeners = () => {
+          document.removeEventListener('click', playAudio);
+          document.removeEventListener('keydown', playAudio);
+          document.removeEventListener('mousemove', playAudio);
+          document.removeEventListener('touchstart', playAudio);
+          document.removeEventListener('scroll', playAudio);
+          document.removeEventListener('pointerdown', playAudio);
+          document.removeEventListener('pointermove', playAudio);
+          document.removeEventListener('mouseenter', playAudio);
+          document.removeEventListener('focus', playAudio);
+        };
         
-        // Also try on page load
-        if (document.readyState === 'complete') {
+        // Auto-enter function
+        const autoEnter = () => {
+          if (userPressedEnter) return; // Don't auto-enter if user already pressed enter
+          
+          console.log('⏰ Auto-entering store after timeout...');
+          userPressedEnter = true; // Prevent multiple calls
+          
+          // Fade out audio smoothly
+          fadeOutAudio();
+          
+          // Trigger the same entrance animation as manual enter
+          const cinematicLoader = document.querySelector('.cinematic-loader');
+          const enterButton = document.querySelector('.enter-button');
+          const mainEntrance = document.querySelector('.main-entrance');
+          const doorLeft = document.querySelector('.door-left');
+          const doorRight = document.querySelector('.door-right');
+          
+          if (cinematicLoader && mainEntrance) {
+            // Play VHS click sound
+            playVHSClick();
+            
+            // Add VHS glitch effect first
+            cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
+            
+            // Start enhanced door opening animation
+            setTimeout(() => {
+              // Add entrance glow effect
+              mainEntrance.style.boxShadow = `
+                0 0 50px rgba(255,178,0,1),
+                0 0 100px rgba(255,178,0,0.8),
+                0 0 150px rgba(255,178,0,0.6),
+                inset 0 2px 4px rgba(255,255,255,0.3)
+              `;
+              
+              // Enhanced door opening with smooth transitions
+              if (doorLeft && doorRight) {
+                doorLeft.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                doorRight.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                doorLeft.style.transform = 'rotateY(-90deg)';
+                doorRight.style.transform = 'rotateY(90deg)';
+              }
+              
+              // Enhanced entrance glow effect
+              setTimeout(() => {
+                mainEntrance.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                mainEntrance.style.boxShadow = `
+                  0 0 100px rgba(255,178,0,1),
+                  0 0 200px rgba(255,178,0,0.8),
+                  0 0 300px rgba(255,178,0,0.6),
+                  inset 0 4px 8px rgba(255,255,255,0.4)
+                `;
+                mainEntrance.style.filter = 'brightness(1.3) contrast(1.1)';
+                
+                // Start fade out sequence
+                setTimeout(() => {
+                  // Complete fade out to black
+                  cinematicLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                  cinematicLoader.style.opacity = '0';
+                  cinematicLoader.style.filter = 'blur(3px) brightness(0.3)';
+                  
+                  // Add slide transition effect
+                  document.body.style.overflow = 'hidden';
+                  
+                  // Ensure complete fade to black
+                  setTimeout(() => {
+                    // Force complete opacity to 0 and black filter
+                    cinematicLoader.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                    cinematicLoader.style.opacity = '0';
+                    cinematicLoader.style.filter = 'blur(6px) brightness(0)';
+                    
+                    // Final removal - ensure it's completely gone
+                    setTimeout(() => {
+                      // Force complete removal and hide
+                      cinematicLoader.style.transition = 'none';
+                      cinematicLoader.style.display = 'none';
+                      cinematicLoader.style.visibility = 'hidden';
+                      cinematicLoader.style.opacity = '0';
+                      cinematicLoader.style.pointerEvents = 'none';
+                      cinematicLoader.style.zIndex = '-1';
+                      cinematicLoader.style.transform = 'scale(1)';
+                      cinematicLoader.style.filter = 'blur(10px) brightness(0)';
+                      cinematicLoader.style.background = 'transparent';
+                      
+                      // Add loaded class to show main content
+                      document.body.classList.add('loaded');
+                      document.body.style.overflow = '';
+                      
+                      // Force show main content
+                      const mainContent = document.querySelector('header, main, footer, .hero-section, .services-section, .about-section, .contact-section, .gallery-section');
+                      if (mainContent) {
+                        mainContent.style.display = 'block';
+                        mainContent.style.opacity = '1';
+                        mainContent.style.visibility = 'visible';
+                      }
+                      
+                      console.log('🏪 Auto-entered store successfully');
+                    }, 400);
+                  }, 800);
+                }, 500);
+              }, 800);
+            }, 300);
+          }
+        };
+        
+        // Start auto-enter timer
+        const startAutoEnterTimer = () => {
+          if (autoEnterTimer) clearTimeout(autoEnterTimer);
+          autoEnterTimer = setTimeout(autoEnter, AUTO_ENTER_DELAY);
+          console.log(`⏰ Auto-enter timer started (${AUTO_ENTER_DELAY/1000}s)`);
+        };
+        
+        // Override the original enterStore function to prevent auto-enter
+        const originalEnterStore = window.enterStore;
+        window.enterStore = function() {
+          userPressedEnter = true; // Mark that user pressed enter
+          if (autoEnterTimer) {
+            clearTimeout(autoEnterTimer);
+            console.log('⏰ Auto-enter timer cancelled by user');
+          }
+          originalEnterStore.call(this);
+        };
+        
+        // Strategy 1: Try immediate autoplay with user gesture simulation
+        const tryImmediatePlay = () => {
+          // Try multiple times with slight delays
           playAudio();
+          setTimeout(playAudio, 100);
+          setTimeout(playAudio, 500);
+          setTimeout(playAudio, 1000);
+        };
+        
+        // Strategy 2: Try on various page events
+        tryImmediatePlay();
+        
+        if (document.readyState === 'complete') {
+          tryImmediatePlay();
         } else {
-          window.addEventListener('load', playAudio);
+          window.addEventListener('load', tryImmediatePlay);
+          window.addEventListener('DOMContentLoaded', tryImmediatePlay);
         }
         
-        // Try to play immediately
-        playAudio();
+        // Strategy 3: Try on window focus (when user returns to tab)
+        window.addEventListener('focus', playAudio);
         
-        // Strategy 2: Set up multiple event listeners for any user interaction
-        document.addEventListener('click', playAudio);
-        document.addEventListener('keydown', playAudio);
-        document.addEventListener('mousemove', playAudio);
-        document.addEventListener('touchstart', playAudio);
-        document.addEventListener('scroll', playAudio);
-        document.addEventListener('pointerdown', playAudio);
-        document.addEventListener('pointermove', playAudio);
+        // Strategy 4: Set up comprehensive event listeners with immediate execution
+        const events = ['click', 'keydown', 'mousemove', 'touchstart', 'scroll', 'pointerdown', 'pointermove', 'mouseenter', 'focus'];
+        events.forEach(event => {
+          document.addEventListener(event, playAudio, { passive: true, once: false });
+        });
         
-        // Strategy 3: Try to resume audio context on any interaction
+        // Strategy 4.5: More aggressive first-interaction handling
+        const firstInteraction = (e) => {
+          console.log('First user interaction detected:', e.type);
+          playAudio();
+          // Remove this listener after first interaction
+          events.forEach(event => {
+            document.removeEventListener(event, firstInteraction);
+          });
+        };
+        
+        events.forEach(event => {
+          document.addEventListener(event, firstInteraction, { passive: true, once: true });
+        });
+        
+        // Strategy 5: Audio context resumption
         const resumeAudioContext = () => {
           if (window.AudioContext || window.webkitAudioContext) {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -16917,16 +17076,62 @@
               });
             }
           }
-          document.removeEventListener('click', resumeAudioContext);
-          document.removeEventListener('keydown', resumeAudioContext);
-          document.removeEventListener('mousemove', resumeAudioContext);
-          document.removeEventListener('touchstart', resumeAudioContext);
         };
         
-        document.addEventListener('click', resumeAudioContext);
-        document.addEventListener('keydown', resumeAudioContext);
-        document.addEventListener('mousemove', resumeAudioContext);
-        document.addEventListener('touchstart', resumeAudioContext);
+        // Try to resume audio context on any interaction
+        events.forEach(event => {
+          document.addEventListener(event, resumeAudioContext, { passive: true });
+        });
+        
+        // Strategy 6: Try autoplay with muted first, then unmute
+        const tryMutedAutoplay = () => {
+          if (audioStarted) return;
+          
+          audioElement.muted = true;
+          audioElement.play().then(() => {
+            console.log('🎵 Audio started muted');
+            audioElement.muted = false;
+            audioStarted = true;
+            removeAllListeners();
+            startAutoEnterTimer(); // Start timer even for muted autoplay
+          }).catch(e => {
+            console.log('Even muted autoplay blocked:', e);
+          });
+        };
+        
+        // Try muted autoplay as fallback
+        setTimeout(tryMutedAutoplay, 2000);
+        
+        // Strategy 7: Show subtle audio indicator if audio hasn't started after 3 seconds
+        setTimeout(() => {
+          if (!audioStarted) {
+            const audioIndicator = document.createElement('div');
+            audioIndicator.innerHTML = '🎵 Click anywhere to enable audio';
+            audioIndicator.style.cssText = `
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              background: rgba(0,0,0,0.8);
+              color: #00ff00;
+              padding: 10px 15px;
+              border-radius: 5px;
+              font-family: 'Courier New', monospace;
+              font-size: 12px;
+              z-index: 10000;
+              border: 1px solid #00ff00;
+              animation: pulse 2s infinite;
+            `;
+            document.body.appendChild(audioIndicator);
+            
+            // Remove indicator once audio starts
+            const checkAudioStarted = setInterval(() => {
+              if (audioStarted) {
+                audioIndicator.remove();
+                clearInterval(checkAudioStarted);
+              }
+            }, 100);
+          }
+        }, 3000);
       }
     })();
   </script>
