@@ -10736,8 +10736,8 @@
     /* Animated Arrow Hint */
     .arrow-hint {
       position: absolute;
-      bottom: -15px;
-      left: 70%;
+      bottom: -40px;
+      left: 65%;
       transform: translateX(-50%);
       z-index: 25;
       opacity: 0.8;
@@ -10831,7 +10831,8 @@
         left: 60%;
       }
       .arrow-hint {
-        left: 65%;
+        left: 60%;
+        bottom: -40px;
       }
     }
     
@@ -10840,7 +10841,8 @@
         left: 55%;
       }
       .arrow-hint {
-        left: 60%;
+        left: 55%;
+        bottom: -40px;
       }
       .card-sleeve {
         width: 260px;
@@ -10860,7 +10862,8 @@
         left: 50%;
       }
       .arrow-hint {
-        left: 55%;
+        left: 50%;
+        bottom: -40px;
       }
       .card-sleeve {
         width: 240px;
@@ -10886,7 +10889,8 @@
         left: 45%;
       }
       .arrow-hint {
-        left: 50%;
+        left: 45%;
+        bottom: -40px;
       }
       .card-sleeve {
         width: 220px;
@@ -10913,7 +10917,8 @@
         left: 40%;
       }
       .arrow-hint {
-        left: 45%;
+        left: 40%;
+        bottom: -40px;
       }
       .card-sleeve {
         width: 200px;
@@ -11713,6 +11718,8 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 15;
+      /* Center with storefront building */
+      margin-left: -70px; /* Adjust to center with the storefront */
     }
     
     .sign-ticket {
@@ -11731,7 +11738,8 @@
         0 8px 20px rgba(255,178,0,0.3),
         0 0 30px rgba(255,178,0,0.2),
         inset 0 2px 4px rgba(255,255,255,0.1);
-      animation: signFloat 4s ease-in-out infinite, signFlicker 8s ease-in-out infinite;
+      animation: signFloat 4s ease-in-out infinite;
+      /* Removed signFlicker animation to eliminate screen flickering */
       clip-path: polygon(
         0% 0%,
         85% 0%,
@@ -11758,7 +11766,7 @@
         0 0 20px rgba(255,178,0,0.4),
         0 0 40px rgba(255,178,0,0.2);
       line-height: 1.1;
-      animation: neonFlicker 6s ease-in-out infinite;
+      /* Removed neonFlicker animation to eliminate screen flickering */
     }
     
     .sign-tm {
@@ -11777,49 +11785,7 @@
       50% { transform: rotate(-3deg) translateY(-8px); }
     }
     
-    @keyframes signFlicker {
-      0%, 100% { 
-        box-shadow: 
-          0 15px 40px rgba(0,0,0,0.4),
-          0 8px 20px rgba(255,178,0,0.3),
-          0 0 30px rgba(255,178,0,0.2),
-          inset 0 2px 4px rgba(255,255,255,0.1);
-      }
-      50% { 
-        box-shadow: 
-          0 15px 40px rgba(0,0,0,0.4),
-          0 8px 20px rgba(255,178,0,0.5),
-          0 0 40px rgba(255,178,0,0.4),
-          inset 0 2px 4px rgba(255,255,255,0.1);
-      }
-    }
-    
-    @keyframes neonFlicker {
-      0%, 100% { 
-        text-shadow: 
-          0 2px 8px rgba(0,0,0,0.5),
-          0 0 20px rgba(255,178,0,0.4),
-          0 0 40px rgba(255,178,0,0.2);
-      }
-      25% { 
-        text-shadow: 
-          0 2px 8px rgba(0,0,0,0.5),
-          0 0 15px rgba(255,178,0,0.3),
-          0 0 30px rgba(255,178,0,0.1);
-      }
-      50% { 
-        text-shadow: 
-          0 2px 8px rgba(0,0,0,0.5),
-          0 0 25px rgba(255,178,0,0.5),
-          0 0 50px rgba(255,178,0,0.3);
-      }
-      75% { 
-        text-shadow: 
-          0 2px 8px rgba(0,0,0,0.5),
-          0 0 18px rgba(255,178,0,0.4),
-          0 0 35px rgba(255,178,0,0.2);
-      }
-    }
+    /* Removed signFlicker and neonFlicker animations to eliminate screen flickering */
     
     /* Film Particles */
     .film-particles {
@@ -18982,6 +18948,11 @@
       clickGain.gain.value = 0.5;
       
       console.log('🎵 Audio system initialized');
+      
+      // Auto-start ambient audio without user interaction
+      setTimeout(() => {
+        createAmbientHum();
+      }, 1000);
     } catch (e) {
       console.log('Audio context not supported:', e);
     }
@@ -19003,11 +18974,22 @@
           console.log('🎵 Playing Video_Store.mp3 ambient audio in loop');
         }).catch(e => {
           console.log('Audio autoplay blocked, will play on user interaction:', e);
+          // Try again after a short delay
+          setTimeout(() => {
+            audioElement.play().catch(err => console.log('Retry failed:', err));
+          }, 500);
         });
       };
       
       // Try immediate play
       playAudio();
+      
+      // Also try to play on page load
+      if (document.readyState === 'complete') {
+        playAudio();
+      } else {
+        window.addEventListener('load', playAudio);
+      }
       
       // Set up multiple event listeners for first user interaction
       const playOnInteraction = () => {
