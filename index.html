@@ -9786,11 +9786,13 @@
       -webkit-backface-visibility: hidden;
     }
     
-    body.loaded .cinematic-loader {
+    /* REMOVED: This was auto-hiding the interactive blockbuster loader
+       The loader should only hide when user clicks ENTER, not automatically */
+    /* body.loaded .cinematic-loader {
       opacity: 0;
       pointer-events: none;
       transform: translateZ(0);
-    }
+    } */
 
     /* Blockbuster Background */
     .blockbuster-bg {
@@ -10856,6 +10858,44 @@
         inset 0 1px 2px rgba(255,255,255,0.3);
       border: 1px solid rgba(255,178,0,0.8);
       z-index: 2;
+    }
+    
+    /* Door Opening Animation - MISSING! */
+    .door-opening .door-left {
+      transform: rotateY(-90deg);
+    }
+    
+    .door-opening .door-right {
+      transform: rotateY(90deg);
+    }
+    
+    /* Door Opening Animation */
+    .door-opening .main-entrance {
+      animation: doorEntranceOpen 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    @keyframes doorEntranceOpen {
+      0% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 
+          0 0 30px rgba(255,178,0,0.8),
+          0 0 60px rgba(255,178,0,0.4),
+          inset 0 2px 4px rgba(255,255,255,0.3);
+      }
+      50% {
+        transform: translateX(-50%) scale(1.2);
+        box-shadow: 
+          0 0 50px rgba(255,178,0,1),
+          0 0 100px rgba(255,178,0,0.8),
+          inset 0 2px 4px rgba(255,255,255,0.3);
+      }
+      100% {
+        transform: translateX(-50%) scale(2);
+        box-shadow: 
+          0 0 80px rgba(255,178,0,1),
+          0 0 160px rgba(255,178,0,0.8),
+          inset 0 2px 4px rgba(255,255,255,0.3);
+      }
     }
     
     /* Visual Effects */
