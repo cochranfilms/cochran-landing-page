@@ -10007,6 +10007,583 @@
       100% { background-position: 200% 0; }
     }
     
+    /* Main Storefront Container - Interactive Blockbuster Style */
+    .cinematic-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #87CEEB 0%, #0066CC 50%, #004499 100%);
+      z-index: 999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: none;
+      overflow: hidden;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      perspective: 1000px;
+      animation: storeEntrance 2s ease-out forwards;
+    }
+    
+    @keyframes storeEntrance {
+      0% { 
+        transform: scale(1.2) translateY(50px);
+        opacity: 0;
+      }
+      100% { 
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* Floating ENTER Button */
+    .enter-button {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 20px 40px;
+      background: linear-gradient(45deg, #FFB200, #FFD700);
+      border: 3px solid #FFB200;
+      border-radius: 50px;
+      color: #0066CC;
+      font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      box-shadow: 
+        0 10px 30px rgba(0,0,0,0.3),
+        0 0 20px rgba(255,178,0,0.6),
+        0 0 40px rgba(255,178,0,0.4),
+        0 0 60px rgba(255,178,0,0.2),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+      animation: buttonFloat 2s ease-in-out infinite, buttonPulse 3s ease-in-out infinite;
+      transition: all 0.3s ease;
+      z-index: 20;
+      text-shadow: 0 0 10px rgba(255,178,0,0.8);
+    }
+    
+    .enter-button:hover {
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 
+        0 15px 40px rgba(0,0,0,0.4),
+        0 0 30px rgba(255,178,0,0.8),
+        0 0 60px rgba(255,178,0,0.6),
+        0 0 90px rgba(255,178,0,0.4),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+      background: linear-gradient(45deg, #FFD700, #FFB200);
+      animation: buttonGlitch 0.2s ease-in-out 3;
+    }
+    
+    .enter-button:active {
+      transform: translateX(-50%) scale(0.95);
+      box-shadow: 
+        0 5px 15px rgba(0,0,0,0.4),
+        0 0 15px rgba(255,178,0,0.6),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+    }
+    
+    @keyframes buttonFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0px); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    
+    @keyframes buttonPulse {
+      0%, 100% { 
+        box-shadow: 
+          0 10px 30px rgba(0,0,0,0.3),
+          0 0 20px rgba(255,178,0,0.6),
+          0 0 40px rgba(255,178,0,0.4),
+          0 0 60px rgba(255,178,0,0.2),
+          inset 0 2px 4px rgba(255,255,255,0.3);
+      }
+      50% { 
+        box-shadow: 
+          0 10px 30px rgba(0,0,0,0.3),
+          0 0 30px rgba(255,178,0,0.8),
+          0 0 60px rgba(255,178,0,0.6),
+          0 0 90px rgba(255,178,0,0.4),
+          inset 0 2px 4px rgba(255,255,255,0.3);
+      }
+    }
+    
+    @keyframes buttonGlitch {
+      0%, 100% { 
+        transform: translateX(-50%) scale(1.1);
+        filter: hue-rotate(0deg);
+      }
+      25% { 
+        transform: translateX(-50%) scale(1.1) translateX(2px);
+        filter: hue-rotate(10deg);
+      }
+      50% { 
+        transform: translateX(-50%) scale(1.1) translateX(-2px);
+        filter: hue-rotate(-10deg);
+      }
+      75% { 
+        transform: translateX(-50%) scale(1.1) translateX(1px);
+        filter: hue-rotate(5deg);
+      }
+    }
+    
+    /* Store Sign */
+    .store-sign {
+      position: absolute;
+      left: 35%;
+      top: 20%;
+      transform: translateX(-50%);
+      z-index: 30;
+    }
+    
+    .sign-ticket {
+      position: relative;
+      width: 280px;
+      height: 140px;
+      background: #0066CC;
+      border: 3px solid #FFB200;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-3deg);
+      box-shadow: 
+        0 15px 40px rgba(0,0,0,0.4),
+        0 8px 20px rgba(255,178,0,0.3),
+        0 0 30px rgba(255,178,0,0.2),
+        inset 0 2px 4px rgba(255,255,255,0.1);
+      animation: signFloat 4s ease-in-out infinite;
+      clip-path: polygon(
+        0% 0%,
+        85% 0%,
+        90% 50%,
+        85% 100%,
+        0% 100%
+      );
+    }
+    
+    .sign-content {
+      text-align: center;
+      color: #FFB200;
+      font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+      font-weight: bold;
+      transform: rotate(3deg);
+    }
+    
+    .sign-logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-shadow: 
+        0 2px 8px rgba(0,0,0,0.5),
+        0 0 20px rgba(255,178,0,0.4),
+        0 0 40px rgba(255,178,0,0.2);
+      line-height: 1.1;
+    }
+    
+    .sign-tm {
+      font-size: 0.7rem;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-weight: 700;
+      transform: rotate(3deg);
+      color: #FFB200;
+      text-shadow: 0 0 10px rgba(255,178,0,0.6);
+    }
+    
+    @keyframes signFloat {
+      0%, 100% { transform: rotate(-3deg) translateY(0px); }
+      50% { transform: rotate(-3deg) translateY(-8px); }
+    }
+    
+    /* Storefront Building */
+    .storefront {
+      position: absolute;
+      left: 35%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateX(5deg) rotateY(-2deg);
+      width: 800px;
+      height: 500px;
+      background: #0066CC;
+      border-radius: 0;
+      box-shadow: 
+        0 20px 60px rgba(0,0,0,0.4),
+        0 10px 30px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.1);
+      margin-bottom: 2rem;
+      animation: storeFloat 6s ease-in-out infinite;
+    }
+    
+    @keyframes storeFloat {
+      0%, 100% { 
+        transform: translate(-50%, -50%) rotateX(5deg) rotateY(-2deg) translateY(0px);
+        box-shadow: 
+          0 20px 60px rgba(0,0,0,0.4),
+          0 10px 30px rgba(0,0,0,0.3),
+          inset 0 2px 4px rgba(255,255,255,0.1);
+      }
+      50% { 
+        transform: translate(-50%, -50%) rotateX(5deg) rotateY(-2deg) translateY(-10px);
+        box-shadow: 
+          0 25px 70px rgba(0,0,0,0.5),
+          0 15px 40px rgba(0,0,0,0.4),
+          inset 0 2px 4px rgba(255,255,255,0.1);
+      }
+    }
+    
+    /* Building Facade */
+    .building-facade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0066CC;
+      border: 4px solid #FFD700;
+      box-sizing: border-box;
+    }
+    
+    /* Glass Windows */
+    .store-windows {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      right: 50px;
+      height: 300px;
+      display: flex;
+      gap: 20px;
+    }
+    
+    .window-panel {
+      flex: 1;
+      background: rgba(255,255,255,0.1);
+      border: 3px solid #FFD700;
+      border-radius: 8px;
+      backdrop-filter: blur(3px);
+      box-shadow: 
+        0 0 20px rgba(255,215,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .window-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.1) 50%, transparent 70%);
+      animation: windowShine 3s ease-in-out infinite;
+    }
+    
+    @keyframes windowShine {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* Film Reels in Windows */
+    .film-reel {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 3px solid #FFD700;
+      border-radius: 50%;
+      background: #0066CC;
+      animation: reelSpin 4s linear infinite;
+    }
+    
+    .film-reel::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: #FFB200;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255,178,0,0.8);
+      animation: discShimmer 4s ease-in-out infinite;
+    }
+    
+    @keyframes discShimmer {
+      0%, 100% { 
+        box-shadow: 0 0 15px rgba(255,178,0,0.8);
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% { 
+        box-shadow: 0 0 25px rgba(255,178,0,1), 0 0 35px rgba(255,178,0,0.6);
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+    
+    .film-reel:nth-child(1) {
+      top: 20%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+    
+    .film-reel:nth-child(2) {
+      top: 60%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+    
+    .film-reel:nth-child(3) {
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-delay: 1s;
+    }
+    
+    @keyframes reelSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Main Entrance */
+    .main-entrance {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 220px;
+      background: linear-gradient(90deg, #FFB200 0%, #FFD700 50%, #FFB200 100%);
+      border: 4px solid #FFB200;
+      border-bottom: none;
+      box-shadow: 
+        0 0 30px rgba(255,178,0,0.8),
+        0 0 60px rgba(255,178,0,0.4),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+      z-index: 25;
+      transition: all 0.3s ease;
+    }
+    
+    .main-entrance:hover {
+      box-shadow: 
+        0 0 40px rgba(255,178,0,1),
+        0 0 80px rgba(255,178,0,0.6),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+    }
+    
+    .door-frame {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      background: #0066CC;
+      border: 3px solid #FFB200;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .door-left {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      width: calc(50% - 18px);
+      bottom: 18px;
+      background: linear-gradient(90deg, #0066CC, #0055AA);
+      border: 2px solid #FFB200;
+      border-right: 1px solid #FFB200;
+      box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.3),
+        0 0 10px rgba(255,178,0,0.3);
+      transform-origin: left center;
+      transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .door-right {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: calc(50% - 18px);
+      bottom: 18px;
+      background: linear-gradient(90deg, #0055AA, #0066CC);
+      border: 2px solid #FFB200;
+      border-left: 1px solid #FFB200;
+      box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.3),
+        0 0 10px rgba(255,178,0,0.3);
+      transform-origin: right center;
+      transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .door-glass {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,178,0,0.6);
+      backdrop-filter: blur(3px);
+      box-shadow: 
+        0 0 20px rgba(255,178,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.2);
+      z-index: 1;
+    }
+    
+    .door-handle {
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 20px;
+      background: linear-gradient(90deg, #FFB200, #FFD700);
+      border-radius: 4px;
+      box-shadow: 
+        0 0 10px rgba(255,178,0,0.8),
+        inset 0 1px 2px rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,178,0,0.8);
+      z-index: 2;
+    }
+    
+    /* Visual Effects */
+    .neon-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255,178,0,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,178,0,0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 3;
+      animation: neonPulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes neonPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    
+    .film-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 8px,
+          rgba(255,178,0,0.1) 8px,
+          rgba(255,178,0,0.1) 12px
+        );
+      pointer-events: none;
+      z-index: 4;
+      animation: filmScroll 20s linear infinite;
+    }
+    
+    @keyframes filmScroll {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(100px); }
+    }
+    
+    .ambient-fog {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: 
+        radial-gradient(
+          ellipse at center bottom,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 50%,
+          transparent 100%
+        );
+      pointer-events: none;
+      z-index: 8;
+      animation: fogDrift 15s ease-in-out infinite;
+    }
+    
+    @keyframes fogDrift {
+      0%, 100% { transform: translateX(-20px) scale(1); opacity: 0.3; }
+      50% { transform: translateX(20px) scale(1.1); opacity: 0.6; }
+    }
+    
+    .crt-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.02) 2px,
+          rgba(255, 255, 255, 0.02) 4px
+        );
+      pointer-events: none;
+      z-index: 11;
+      opacity: 0.5;
+    }
+    
+    .spotlight {
+      position: absolute;
+      top: 20%;
+      width: 200px;
+      height: 200px;
+      background: 
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.2) 0%,
+          rgba(255,255,255,0.1) 30%,
+          transparent 70%
+        );
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 7;
+      animation: spotlightMove 8s ease-in-out infinite;
+    }
+    
+    @keyframes spotlightMove {
+      0%, 100% { transform: scale(1) translateY(0px); opacity: 0.4; }
+      50% { transform: scale(1.3) translateY(-30px); opacity: 0.8; }
+    }
+    
+    .lens-flare {
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      width: 100px;
+      height: 100px;
+      background: 
+        radial-gradient(
+          circle,
+          rgba(255,178,0,0.8) 0%,
+          rgba(255,178,0,0.4) 30%,
+          transparent 70%
+        );
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9;
+      animation: lensFlareMove 6s ease-in-out infinite;
+    }
+    
+    @keyframes lensFlareMove {
+      0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.6; }
+      50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    }
+    
     /* Professional Camera Viewfinder Overlay */
     .viewfinder-overlay {
       position: absolute;
@@ -14004,26 +14581,128 @@
     console.log('🖥️ Desktop-only mode active - All mobile functionality disabled');
   </script>
 
-  <!-- 🎬 BLOCKBUSTER-STYLE CINEMATIC LOADING SCREEN -->
+  <audio id="vhsRewind">
+    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+  </audio>
+  
+  <audio id="vhsClick">
+    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+  </audio>
+  
+  <!-- 🏪 BLOCKBUSTER-STYLE STOREFRONT ENTER SCREEN -->
   <div class="cinematic-loader">
     <!-- Blockbuster-style background -->
     <div class="blockbuster-bg"></div>
     
-    <!-- Blockbuster-style movie ticket sign -->
-    <div class="blockbuster-sign">
-      <div class="ticket-shape">
-        <div class="ticket-border"></div>
-        <div class="ticket-content">
-          <div class="blockbuster-logo">COCHRAN FILMS LLC</div>
-          <div class="registered-tm">®</div>
+    <!-- Neon Glow Effects -->
+    <div class="neon-glow"></div>
+    
+    <!-- Film Strip Effect -->
+    <div class="film-strip"></div>
+    
+    <!-- VHS Static Overlay - DISABLED -->
+    <!-- <div class="vhs-static"></div> -->
+    
+    <!-- VHS Tracking Lines - DISABLED -->
+    <!-- <div class="vhs-tracking">
+      <div class="tracking-line"></div>
+      <div class="tracking-line"></div>
+      <div class="tracking-line"></div>
+      <div class="tracking-line"></div>
+    </div> -->
+    
+    <!-- Scan Lines - DISABLED -->
+    <!-- <div class="scan-lines"></div> -->
+    
+    <!-- Ambient Fog -->
+    <div class="ambient-fog"></div>
+    
+    <!-- CRT Monitor Effect -->
+    <div class="crt-effect"></div>
+    
+    <!-- Store Sign -->
+    <div class="store-sign">
+      <div class="sign-ticket">
+        <div class="sign-content">
+          <div class="sign-logo">COCHRAN FILMS LLC</div>
+          <div class="sign-tm">®</div>
         </div>
       </div>
     </div>
     
-    <!-- Loading message -->
-    <div class="blockbuster-loading">
-      <div class="loading-text">WE ARE WORKING ON CREATING YOUR STORY.</div>
-      <div class="loading-subtext">...but while you wait, check out all that <span class="highlight">Cochran Films</span> has to offer.</div>
+    <!-- Storefront Building -->
+    <div class="storefront">
+      <div class="building-facade">
+        <!-- Glass Windows -->
+        <div class="store-windows">
+          <div class="window-panel">
+            <div class="film-reel"></div>
+            <div class="film-reel"></div>
+            <div class="film-reel"></div>
+          </div>
+          <div class="window-panel">
+            <div class="film-reel"></div>
+            <div class="film-reel"></div>
+            <div class="film-reel"></div>
+          </div>
+          <div class="window-panel">
+            <div class="film-reel"></div>
+            <div class="film-reel"></div>
+          </div>
+        </div>
+        
+        <!-- Main Entrance -->
+        <div class="main-entrance">
+          <div class="door-frame">
+            <div class="door-left"></div>
+            <div class="door-right"></div>
+            <div class="door-glass"></div>
+            <div class="door-handle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Floating ENTER Button -->
+    <button class="enter-button" onclick="enterStore()" onmouseenter="playVHSRewind()">ENTER</button>
+    
+    <!-- Blockbuster-Style Membership Card with Lanyard -->
+    <div class="membership-card">
+      <!-- Lanyard -->
+      <div class="lanyard">
+        <div class="lanyard-strap">
+          <div class="lanyard-text">COCHRAN FILMS</div>
+        </div>
+        <div class="lanyard-clip"></div>
+      </div>
+      
+      <!-- Card with Punch Hole -->
+      <div class="card-sleeve">
+        <div class="punch-hole"></div>
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-title">STORYTELLER</div>
+            <div class="card-subtitle">MEMBERSHIP CARD</div>
+            <div class="card-name" id="cardName"></div>
+          </div>
+          <div class="card-trademark">®</div>
+        </div>
+      </div>
+      
+      <!-- Interactive Name Input -->
+      <div class="name-input-container" id="nameInputContainer">
+        <div class="input-box">
+          <input type="text" id="nameInput" placeholder="Enter your name..." maxlength="20">
+          <button type="button" id="submitName" onclick="submitName()">SUBMIT</button>
+        </div>
+        <div class="input-instruction">Click to personalize your card</div>
+      </div>
+      
+      <!-- Animated Arrow Hint -->
+      <div class="arrow-hint" id="arrowHint">
+        <div class="arrow-text">HOVER TO PERSONALIZE</div>
+        <div class="arrow-icon">↑</div>
+      </div>
     </div>
     
     <!-- Floating film particles -->
@@ -14037,12 +14716,23 @@
       <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
       <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
       <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
+      <div class="particle" style="left: 15%; animation-delay: 0.3s;"></div>
+      <div class="particle" style="left: 25%; animation-delay: 1.3s;"></div>
+      <div class="particle" style="left: 35%; animation-delay: 2.3s;"></div>
+      <div class="particle" style="left: 45%; animation-delay: 0.8s;"></div>
+      <div class="particle" style="left: 55%; animation-delay: 1.8s;"></div>
+      <div class="particle" style="left: 65%; animation-delay: 2.8s;"></div>
+      <div class="particle" style="left: 75%; animation-delay: 1.1s;"></div>
+      <div class="particle" style="left: 85%; animation-delay: 2.1s;"></div>
+      <div class="particle" style="left: 95%; animation-delay: 2.5s;"></div>
     </div>
     
-    <!-- Progress Bar -->
-    <div class="blockbuster-progress">
-      <div class="progress-fill"></div>
-    </div>
+    <!-- Spotlight effects -->
+    <div class="spotlight" style="left: 20%; animation-delay: 0s;"></div>
+    <div class="spotlight" style="left: 80%; animation-delay: 2s;"></div>
+    
+    <!-- Lens flare effect -->
+    <div class="lens-flare"></div>
   </div>
 
 
@@ -16135,6 +16825,28 @@
                 document.body.classList.add('loaded');
                 document.body.style.overflow = '';
                 
+                // Initialize mobile and premium features after entering store
+                const isMobile = window.innerWidth <= 768;
+                const mobileVersion = document.getElementById('mobileVersion');
+                const mobileLoader = document.querySelector('.mobile-loader');
+                
+                // Handle mobile loader
+                if (mobileLoader && isMobile) {
+                  mobileLoader.classList.add('hidden');
+                  setTimeout(() => {
+                    mobileLoader.style.display = 'none';
+                    mobileLoader.style.visibility = 'hidden';
+                    mobileLoader.style.opacity = '0';
+                  }, 500);
+                }
+                
+                // Ensure mobile version is visible after loading
+                if (isMobile && mobileVersion) {
+                  mobileVersion.style.display = 'block';
+                  mobileVersion.style.visibility = 'visible';
+                  mobileVersion.style.opacity = '1';
+                }
+                
                 // Force show main content
                 const mainContentElements = document.querySelectorAll('header, main, footer, .hero-section, .services-section, .about-section, .contact-section, .gallery-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section');
                 mainContentElements.forEach(element => {
@@ -16144,6 +16856,29 @@
                     element.style.visibility = 'visible';
                   }
                 });
+                
+                // Initialize premium features after entering store
+                setTimeout(() => {
+                  try {
+                    initializePremiumFeatures();
+                    
+                    // Add cinematic entrance effects to main content (mobile optimized)
+                    const transitionDuration = isMobile ? 0.8 : 1.2;
+                    const staggerDelay = isMobile ? 150 : 300;
+                    
+                    document.querySelectorAll('header, .hero-section').forEach((element, index) => {
+                      element.style.opacity = '0';
+                      element.style.transform = isMobile ? 'translateY(20px)' : 'translateY(30px) scale(0.95)';
+                      setTimeout(() => {
+                        element.style.transition = `all ${transitionDuration}s cubic-bezier(0.4, 0, 0.2, 1)`;
+                        element.style.opacity = '1';
+                        element.style.transform = isMobile ? 'translateY(0)' : 'translateY(0) scale(1)';
+                      }, index * staggerDelay);
+                    });
+                  } catch (error) {
+                    console.error('Production error during initialization:', error);
+                  }
+                }, 400);
                 
                 // Ensure audio is completely stopped for main page
                 const audioElement = document.getElementById('videoStoreAudio');
@@ -16194,38 +16929,63 @@
   `;
   document.head.appendChild(vhsGlitchStyle);
   
-  // Auto-loading without ENTER button (for simple Blockbuster screen)
+  // Interactive blockbuster loading screen - requires user to click ENTER
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎬 Blockbuster loading screen initializing...');
+    console.log('🎬 Interactive Blockbuster loading screen initialized');
     
-    // Set loading duration
-    const loadingDuration = 3500; // 3.5 seconds
-    
-    // Hide loading screen after duration
-    setTimeout(() => {
-      document.body.classList.add('loaded');
-      console.log('✅ Loading complete - Welcome to Cochran Films!');
-      
-      // Additional cleanup after fade out
-      setTimeout(() => {
-        const loader = document.querySelector('.cinematic-loader');
-        if (loader) {
-          loader.style.display = 'none';
-        }
-      }, 1000);
-    }, loadingDuration);
-    
-    // Load saved name on initialization
+    // Load saved name on page load
     loadSavedName();
-  });
-  
-  // Fallback safety net
-  setTimeout(() => {
-    if (!document.body.classList.contains('loaded')) {
-      document.body.classList.add('loaded');
-      console.log('🎬 Fallback loading completed');
+    
+    // Add keyboard support for ENTER key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const cinematicLoader = document.querySelector('.cinematic-loader');
+        if (cinematicLoader && cinematicLoader.style.display !== 'none') {
+          e.preventDefault();
+          enterStore();
+        }
+      }
+    });
+    
+    // Add name input functionality
+    const nameInput = document.getElementById('nameInput');
+    if (nameInput) {
+      nameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          submitName();
+        }
+      });
     }
-  }, 6000);
+    
+    // Show membership card personalization on hover
+    const membershipCard = document.querySelector('.membership-card');
+    const nameInputContainer = document.getElementById('nameInputContainer');
+    const arrowHint = document.getElementById('arrowHint');
+    
+    if (membershipCard && nameInputContainer && arrowHint) {
+      membershipCard.addEventListener('mouseenter', () => {
+        const cardName = document.getElementById('cardName');
+        if (!cardName || !cardName.textContent.trim()) {
+          nameInputContainer.style.opacity = '1';
+          nameInputContainer.style.visibility = 'visible';
+          nameInputContainer.style.transform = 'scale(1)';
+          arrowHint.style.opacity = '0';
+        }
+      });
+      
+      membershipCard.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+          if (!nameInput || document.activeElement !== nameInput) {
+            nameInputContainer.style.opacity = '0';
+            nameInputContainer.style.visibility = 'hidden';
+            nameInputContainer.style.transform = 'scale(0.95)';
+            arrowHint.style.opacity = '1';
+          }
+        }, 200);
+      });
+    }
+  });
   
   // 🔊 AUDIO SYSTEM - VHS Sound Effects
   let audioContext;
@@ -17390,67 +18150,20 @@
      }, 1000); // Wait for other scripts to load
    }
   
+  // DISABLED AUTO-LOADING - Interactive mode requires ENTER button click
+  // The auto-loading functionality has been removed to allow the interactive
+  // blockbuster loader to work properly. Content only loads when user clicks ENTER.
+  
+  // Keep mobile initialization on page load without auto-loading the content
   window.addEventListener('load', () => {
-    console.log('🎬 Rolling cameras... Action!');
+    console.log('🎬 Interactive Blockbuster loader ready - waiting for user to ENTER!');
     
     const isMobile = window.innerWidth <= 768;
-    const isUltraMobile = window.innerWidth <= 480;
-    const mobileVersion = document.getElementById('mobileVersion');
-    const mobileLoader = document.querySelector('.mobile-loader');
     
-    // Ensure mobile experience is properly initialized
+    // Ensure mobile experience is properly initialized (but don't auto-load content)
     initializeMobileExperience();
     
-    // Optimize loading time based on device capabilities
-    const loadingDuration = isUltraMobile ? 3000 : isMobile ? 4000 : 5000;
-    const transitionDuration = isMobile ? 0.8 : 1.2;
-    const staggerDelay = isMobile ? 150 : 300;
-    
-    // Allow the cinematic experience to play (optimized for mobile)
-    setTimeout(() => {
-      document.body.classList.add('loaded');
-      console.log('🎬 And... CUT! Welcome to Cochran Films.');
-      
-      // Handle mobile loader
-      if (mobileLoader && isMobile) {
-        mobileLoader.classList.add('hidden');
-        setTimeout(() => {
-          mobileLoader.style.display = 'none';
-          mobileLoader.style.visibility = 'hidden';
-          mobileLoader.style.opacity = '0';
-        }, 500);
-      }
-      
-      // Ensure mobile version is visible after loading
-      if (isMobile) {
-        const mobileVersion = document.getElementById('mobileVersion');
-        if (mobileVersion) {
-          mobileVersion.style.display = 'block';
-          mobileVersion.style.visibility = 'visible';
-          mobileVersion.style.opacity = '1';
-        }
-      }
-      
-      // Initialize premium features after the cinematic experience
-      setTimeout(() => {
-        try {
-          initializePremiumFeatures();
-          // Add cinematic entrance effects to main content (mobile optimized)
-          document.querySelectorAll('header, .hero-section').forEach((element, index) => {
-            element.style.opacity = '0';
-            element.style.transform = isMobile ? 'translateY(20px)' : 'translateY(30px) scale(0.95)';
-            setTimeout(() => {
-              element.style.transition = `all ${transitionDuration}s cubic-bezier(0.4, 0, 0.2, 1)`;
-              element.style.opacity = '1';
-              element.style.transform = isMobile ? 'translateY(0)' : 'translateY(0) scale(1)';
-            }, index * staggerDelay);
-          });
-        } catch (error) {
-          console.error('Production error during initialization:', error);
-          // Ensure page is still functional even if initialization fails
-        }
-      }, isMobile ? 200 : 400);
-    }, loadingDuration);
+    // Note: Content will only load when user clicks the ENTER button in enterStore() function
   });
   
   // Countdown Timer Function
