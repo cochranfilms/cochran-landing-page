@@ -57,10 +57,10 @@
       location.replace('https:' + window.location.href.substring(window.location.protocol.length));
     }
     
-    // DESKTOP ONLY - Mobile detection disabled
+    // 📱 IMMEDIATE MOBILE DETECTION AND INITIALIZATION
     (function() {
-      const isMobile = false; // Force desktop view
-      console.log('🖥️ Desktop-only mode - Mobile detection disabled');
+      const isMobile = window.innerWidth <= 768;
+      console.log('📱 Immediate mobile detection - Width:', window.innerWidth, 'isMobile:', isMobile);
       
       if (isMobile) {
         // Force mobile version to be visible immediately
@@ -124,14 +124,7 @@
     })();
   </script>
   <style>
-    /* CRITICAL FIX: Force hide all mobile loaders */
-    .mobile-loader, .mobile-loader-content, .mobile-loader-logo, 
-    .mobile-loader-title, .mobile-loader-subtitle, .mobile-loader-bar {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      z-index: -1 !important;
-    }
+    /* Allow mobile loaders to display properly */
     
     /* Premium Interactive Enhancements */
     
@@ -6716,7 +6709,7 @@
     /* Mobile Loading Screen */
     @media (max-width: 768px) {
       .cinematic-loader {
-        display: none !important;
+        display: flex !important;
       }
       
       .mobile-loader {
@@ -8366,12 +8359,7 @@
         appearance: none !important;
       }
       
-      /* Enhanced loading screen for mobile performance */
-      .cinematic-loader {
-        -webkit-backface-visibility: hidden !important;
-        backface-visibility: hidden !important;
-        transform: translateZ(0) !important;
-      }
+      /* Enhanced loading screen for mobile performance - removed conflicting rules */
       
       /* Optimize animations for mobile */
       @media (prefers-reduced-motion: reduce) {
@@ -10588,12 +10576,7 @@
     
     /* Mobile Optimization - Complete Enhancement */
     @media (max-width: 768px) {
-      /* Main loader optimizations */
-      .cinematic-loader {
-        background: 
-          radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-        will-change: opacity;
-      }
+      /* Main loader optimizations - removed conflicting background */
       
       /* Central aperture - optimized for mobile */
       .aperture-container {
@@ -10979,9 +10962,7 @@
   
   /* Ultra-small mobile devices optimization */
   @media (max-width: 480px) {
-    .cinematic-loader {
-      padding: 1rem !important;
-    }
+    /* Removed conflicting cinematic-loader padding rule */
     
     .aperture-container {
       width: 100px !important;
@@ -11021,12 +11002,7 @@
   
   /* Landscape mobile fix */
   @media (max-width: 768px) and (orientation: landscape) {
-    .cinematic-loader {
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: space-around !important;
-      padding: 1rem !important;
-    }
+    /* Removed conflicting cinematic-loader layout rules */
     
     .aperture-container {
       margin-bottom: 0 !important;
@@ -13813,120 +13789,26 @@
     console.log('🖥️ Desktop-only mode active - All mobile functionality disabled');
   </script>
 
-  <!-- 🏪 BLOCKBUSTER-STYLE STOREFRONT ENTER SCREEN -->
+  <!-- 🎬 BLOCKBUSTER-STYLE CINEMATIC LOADING SCREEN -->
   <div class="cinematic-loader">
     <!-- Blockbuster-style background -->
     <div class="blockbuster-bg"></div>
     
-    <!-- Neon Glow Effects -->
-    <div class="neon-glow"></div>
-    
-    <!-- Film Strip Effect -->
-    <div class="film-strip"></div>
-    
-    <!-- VHS Static Overlay - DISABLED -->
-    <!-- <div class="vhs-static"></div> -->
-    
-    <!-- VHS Tracking Lines - DISABLED -->
-    <!-- <div class="vhs-tracking">
-      <div class="tracking-line"></div>
-      <div class="tracking-line"></div>
-      <div class="tracking-line"></div>
-      <div class="tracking-line"></div>
-    </div> -->
-    
-    <!-- Scan Lines - DISABLED -->
-    <!-- <div class="scan-lines"></div> -->
-    
-    <!-- Ambient Fog -->
-    <div class="ambient-fog"></div>
-    
-    <!-- CRT Monitor Effect -->
-    <div class="crt-effect"></div>
-    
-    <!-- Store Sign -->
-    <div class="store-sign">
-      <div class="sign-ticket">
-        <div class="sign-content">
-          <div class="sign-logo">COCHRAN FILMS LLC</div>
-          <div class="sign-tm">®</div>
+    <!-- Blockbuster-style movie ticket sign -->
+    <div class="blockbuster-sign">
+      <div class="ticket-shape">
+        <div class="ticket-border"></div>
+        <div class="ticket-content">
+          <div class="blockbuster-logo">COCHRAN FILMS LLC</div>
+          <div class="registered-tm">®</div>
         </div>
       </div>
     </div>
     
-    <!-- Storefront Building -->
-    <div class="storefront">
-      <div class="building-facade">
-        <!-- Glass Windows -->
-        <div class="store-windows">
-          <div class="window-panel">
-            <div class="film-reel"></div>
-            <div class="film-reel"></div>
-            <div class="film-reel"></div>
-          </div>
-          <div class="window-panel">
-            <div class="film-reel"></div>
-            <div class="film-reel"></div>
-            <div class="film-reel"></div>
-          </div>
-          <div class="window-panel">
-            <div class="film-reel"></div>
-            <div class="film-reel"></div>
-          </div>
-        </div>
-        
-        <!-- Main Entrance -->
-        <div class="main-entrance">
-          <div class="door-frame">
-            <div class="door-left"></div>
-            <div class="door-right"></div>
-            <div class="door-glass"></div>
-            <div class="door-handle"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Floating ENTER Button -->
-    <button class="enter-button" onclick="enterStore()" onmouseenter="playVHSRewind()">ENTER</button>
-    
-    <!-- Blockbuster-Style Membership Card with Lanyard -->
-    <div class="membership-card">
-      <!-- Lanyard -->
-      <div class="lanyard">
-        <div class="lanyard-strap">
-          <div class="lanyard-text">COCHRAN FILMS</div>
-        </div>
-        <div class="lanyard-clip"></div>
-      </div>
-      
-      <!-- Card with Punch Hole -->
-      <div class="card-sleeve">
-        <div class="punch-hole"></div>
-        <div class="card-body">
-          <div class="card-header">
-            <div class="card-title">STORYTELLER</div>
-            <div class="card-subtitle">MEMBERSHIP CARD</div>
-            <div class="card-name" id="cardName"></div>
-          </div>
-          <div class="card-trademark">®</div>
-        </div>
-      </div>
-      
-      <!-- Interactive Name Input -->
-      <div class="name-input-container" id="nameInputContainer">
-        <div class="input-box">
-          <input type="text" id="nameInput" placeholder="Enter your name..." maxlength="20">
-          <button type="button" id="submitName" onclick="submitName()">SUBMIT</button>
-        </div>
-        <div class="input-instruction">Click to personalize your card</div>
-      </div>
-      
-      <!-- Animated Arrow Hint -->
-      <div class="arrow-hint" id="arrowHint">
-        <div class="arrow-text">HOVER TO PERSONALIZE</div>
-        <div class="arrow-icon">↑</div>
-      </div>
+    <!-- Loading message -->
+    <div class="blockbuster-loading">
+      <div class="loading-text">WE ARE WORKING ON CREATING YOUR STORY.</div>
+      <div class="loading-subtext">...but while you wait, check out all that <span class="highlight">Cochran Films</span> has to offer.</div>
     </div>
     
     <!-- Floating film particles -->
@@ -13942,18 +13824,9 @@
       <div class="particle" style="left: 90%; animation-delay: 2.2s;"></div>
     </div>
     
-    <!-- Dust motes -->
-    <div class="dust-motes">
-      <div class="dust-mote" style="left: 5%; animation-delay: 0s;"></div>
-      <div class="dust-mote" style="left: 15%; animation-delay: 2s;"></div>
-      <div class="dust-mote" style="left: 25%; animation-delay: 4s;"></div>
-      <div class="dust-mote" style="left: 35%; animation-delay: 1s;"></div>
-      <div class="dust-mote" style="left: 45%; animation-delay: 3s;"></div>
-      <div class="dust-mote" style="left: 55%; animation-delay: 5s;"></div>
-      <div class="dust-mote" style="left: 65%; animation-delay: 2.5s;"></div>
-      <div class="dust-mote" style="left: 75%; animation-delay: 1.5s;"></div>
-      <div class="dust-mote" style="left: 85%; animation-delay: 3.5s;"></div>
-      <div class="dust-mote" style="left: 95%; animation-delay: 0.5s;"></div>
+    <!-- Progress Bar -->
+    <div class="blockbuster-progress">
+      <div class="progress-fill"></div>
     </div>
   </div>
 
