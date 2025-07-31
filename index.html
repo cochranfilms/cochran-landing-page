@@ -124,6 +124,15 @@
     })();
   </script>
   <style>
+    /* CRITICAL FIX: Force hide all mobile loaders */
+    .mobile-loader, .mobile-loader-content, .mobile-loader-logo, 
+    .mobile-loader-title, .mobile-loader-subtitle, .mobile-loader-bar {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      z-index: -1 !important;
+    }
+    
     /* Premium Interactive Enhancements */
     
     /* Magnetic Cursor Effect */
@@ -14738,41 +14747,7 @@
     </div>
   </div>
 
-  <!-- 📱 SIMPLE MOBILE LOADING SCREEN -->
-  <div class="mobile-loader" style="display: none;">
-    <div class="mobile-loader-content">
-      <img src="Logo.png" alt="Cochran Films" class="mobile-loader-logo">
-      <h1 class="mobile-loader-title">Cochran Films</h1>
-      <p class="mobile-loader-subtitle">Loading your experience...</p>
-      <div class="mobile-loader-bar">
-        <div class="mobile-loader-progress"></div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- 📱 MOBILE LOADING SCRIPT -->
-  <script>
-    // Ensure mobile loader works properly
-    if (window.innerWidth <= 768) {
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileLoader = document.querySelector('.mobile-loader');
-        if (mobileLoader) {
-          mobileLoader.style.display = 'flex !important';
-          mobileLoader.style.visibility = 'visible !important';
-          mobileLoader.style.opacity = '1 !important';
-          mobileLoader.style.zIndex = '99999 !important';
-          
-          // Hide loader after content loads
-          setTimeout(() => {
-            mobileLoader.style.opacity = '0';
-            setTimeout(() => {
-              mobileLoader.style.display = 'none';
-            }, 500);
-          }, 2000);
-        }
-      });
-    }
-  </script>
+
   <header>
     <!-- Cinematic background shapes -->
     <div class="header-shape"></div>
