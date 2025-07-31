@@ -15979,67 +15979,373 @@
     });
   }
 
-  // 🎬 AWARD-WINNING CINEMATIC LOADING EXPERIENCE - LEVEL 100 🎬
+  // 🎬 BLOCKBUSTER LOADING SCREEN JAVASCRIPT 🎬
   
-  // Enhanced cinematic loading animation with production elements
+  // VHS Audio Functions
+  function playVHSRewind() {
+    if (audioContext && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+    createVHSRewind();
+  }
+  
+  function playVHSClick() {
+    if (audioContext && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+    createVHSClick();
+  }
+  
+  // Enhanced name submission function for membership card
+  function submitName() {
+    const nameInput = document.getElementById('nameInput');
+    const cardName = document.getElementById('cardName');
+    const nameInputContainer = document.getElementById('nameInputContainer');
+    
+    if (nameInput && cardName && nameInput.value.trim()) {
+      const name = nameInput.value.trim();
+      
+      // Add VHS click sound for feedback
+      if (typeof playVHSClick === 'function') {
+        playVHSClick();
+      }
+      
+      // Update the card with the user's name
+      cardName.textContent = name.toUpperCase();
+      
+      // Add a subtle animation to the name
+      cardName.style.animation = 'nameAppear 0.5s ease-out';
+      
+      // Hide the input container with smooth transition
+      nameInputContainer.style.transition = 'all 0.3s ease-out';
+      nameInputContainer.style.opacity = '0';
+      nameInputContainer.style.visibility = 'hidden';
+      nameInputContainer.style.transform = 'scale(0.95)';
+      
+      // Clear the input
+      nameInput.value = '';
+      
+      // Store the name in localStorage for persistence
+      localStorage.setItem('storytellerCardName', name);
+      
+      console.log('✅ Name added to membership card:', name);
+    }
+  }
+  
+  // Load saved name on page load
+  function loadSavedName() {
+    const savedName = localStorage.getItem('storytellerCardName');
+    const cardName = document.getElementById('cardName');
+    
+    if (savedName && cardName) {
+      cardName.textContent = savedName.toUpperCase();
+    }
+  }
+  
+  // Clear saved name on page refresh
+  function clearSavedName() {
+    localStorage.removeItem('storytellerCardName');
+    console.log('🗑️ Cleared saved name on page refresh');
+  }
+  
+  // Enter Store Function
+  function enterStore() {
+    console.log('🏪 Entering Cochran Films store...');
+    
+    const cinematicLoader = document.querySelector('.cinematic-loader');
+    const enterButton = document.querySelector('.enter-button');
+    const mainEntrance = document.querySelector('.main-entrance');
+    const doorLeft = document.querySelector('.door-left');
+    const doorRight = document.querySelector('.door-right');
+    
+    if (cinematicLoader && enterButton && mainEntrance) {
+      // Disable button to prevent multiple clicks
+      enterButton.disabled = true;
+      enterButton.style.pointerEvents = 'none';
+      
+      // Play VHS click sound
+      playVHSClick();
+      
+      // Fade out ambient audio smoothly
+      fadeOutAudio();
+      
+      // Add VHS glitch effect first
+      cinematicLoader.style.animation = 'vhsGlitch 0.3s ease-in-out';
+      
+      // Start enhanced door opening animation
+      setTimeout(() => {
+        // Add entrance glow effect
+        mainEntrance.style.boxShadow = `
+          0 0 50px rgba(255,178,0,1),
+          0 0 100px rgba(255,178,0,0.8),
+          0 0 150px rgba(255,178,0,0.6),
+          inset 0 2px 4px rgba(255,255,255,0.3)
+        `;
+        
+        // Enhanced door opening with smooth transitions
+        if (doorLeft && doorRight) {
+          doorLeft.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          doorRight.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          doorLeft.style.transform = 'rotateY(-90deg)';
+          doorRight.style.transform = 'rotateY(90deg)';
+        }
+        
+        // Enhanced entrance glow effect
+        setTimeout(() => {
+          mainEntrance.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+          mainEntrance.style.boxShadow = `
+            0 0 100px rgba(255,178,0,1),
+            0 0 200px rgba(255,178,0,0.8),
+            0 0 300px rgba(255,178,0,0.6),
+            inset 0 4px 8px rgba(255,255,255,0.4)
+          `;
+          mainEntrance.style.filter = 'brightness(1.3) contrast(1.1)';
+          
+          // Start fade out sequence
+          setTimeout(() => {
+            // Complete fade out to black - ensure it goes to 0% opacity
+            cinematicLoader.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            cinematicLoader.style.opacity = '0';
+            cinematicLoader.style.filter = 'blur(3px) brightness(0.3)';
+            
+            // Add slide transition effect
+            document.body.style.overflow = 'hidden';
+            
+            // Ensure complete fade to black
+            setTimeout(() => {
+              // Force complete opacity to 0 and black filter
+              cinematicLoader.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+              cinematicLoader.style.opacity = '0';
+              cinematicLoader.style.filter = 'blur(6px) brightness(0)';
+              
+              // Final removal - ensure it's completely gone
+              setTimeout(() => {
+                // Force complete removal and hide
+                cinematicLoader.style.transition = 'none';
+                cinematicLoader.style.display = 'none';
+                cinematicLoader.style.visibility = 'hidden';
+                cinematicLoader.style.opacity = '0';
+                cinematicLoader.style.pointerEvents = 'none';
+                cinematicLoader.style.zIndex = '-1';
+                cinematicLoader.style.transform = 'scale(1)';
+                cinematicLoader.style.filter = 'blur(10px) brightness(0)';
+                cinematicLoader.style.background = 'transparent';
+                
+                // Add loaded class to show main content
+                document.body.classList.add('loaded');
+                document.body.style.overflow = '';
+                
+                // Force show main content
+                const mainContent = document.querySelector('header, main, footer, .hero-section, .services-section, .about-section, .contact-section, .gallery-section');
+                if (mainContent) {
+                  mainContent.style.display = 'block';
+                  mainContent.style.opacity = '1';
+                  mainContent.style.visibility = 'visible';
+                }
+                
+                // Ensure audio is completely stopped for main page
+                const audioElement = document.getElementById('videoStoreAudio');
+                if (audioElement) {
+                  audioElement.pause();
+                  audioElement.currentTime = 0;
+                  audioElement.volume = 0.3; // Reset for next time
+                }
+                
+                console.log('✅ Enhanced door entrance complete - main content should be visible');
+              }, 200);
+            }, 600);
+          }, 500);
+        }, 400);
+      }, 200);
+    }
+  }
+  
+  // VHS Glitch Animation
+  const vhsGlitchStyle = document.createElement('style');
+  vhsGlitchStyle.textContent = `
+    @keyframes vhsGlitch {
+      0%, 100% { 
+        transform: scale(1) translateX(0);
+        filter: hue-rotate(0deg) brightness(1);
+      }
+      10% { 
+        transform: scale(1.02) translateX(2px);
+        filter: hue-rotate(5deg) brightness(1.1);
+      }
+      20% { 
+        transform: scale(0.98) translateX(-2px);
+        filter: hue-rotate(-5deg) brightness(0.9);
+      }
+      30% { 
+        transform: scale(1.01) translateX(1px);
+        filter: hue-rotate(3deg) brightness(1.05);
+      }
+      40% { 
+        transform: scale(0.99) translateX(-1px);
+        filter: hue-rotate(-3deg) brightness(0.95);
+      }
+      50% { 
+        transform: scale(1) translateX(0);
+        filter: hue-rotate(0deg) brightness(1);
+      }
+    }
+  `;
+  document.head.appendChild(vhsGlitchStyle);
+  
+  // Auto-loading without ENTER button (for simple Blockbuster screen)
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎬 Cochran Films Production Studio Loading...');
+    console.log('🎬 Blockbuster loading screen initializing...');
     
-    // 📱 COMPREHENSIVE MOBILE INITIALIZATION
-    if (window.innerWidth <= 768) {
-      console.log('📱 Mobile device detected - initializing mobile experience...');
-      
-      // Force mobile version visibility
-      const mobileVersion = document.getElementById('mobileVersion');
-      if (mobileVersion) {
-        mobileVersion.style.display = 'block !important';
-        mobileVersion.style.visibility = 'visible !important';
-        mobileVersion.style.opacity = '1 !important';
-        mobileVersion.style.position = 'relative !important';
-        mobileVersion.style.zIndex = '1 !important';
-      }
-      
-      // Force hide desktop elements
-      const desktopElements = document.querySelectorAll('header, .hero-section, .million-dollar-photography, .service-builder-section, .testimonials-section, .services-section, .comparison-section, .agency-comparison-section, .deliver-section, .timeline-section, .premium-footer, .cinematic-loader');
-      desktopElements.forEach(el => {
-        el.style.display = 'none !important';
-        el.style.visibility = 'hidden !important';
-        el.style.opacity = '0 !important';
-        el.style.position = 'absolute !important';
-        el.style.zIndex = '-1 !important';
-      });
-      
-      // Ensure mobile navigation is visible
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      if (mobileNavToggle) {
-        mobileNavToggle.style.display = 'flex !important';
-        mobileNavToggle.style.visibility = 'visible !important';
-        mobileNavToggle.style.opacity = '1 !important';
-        mobileNavToggle.style.zIndex = '10000 !important';
-      }
-      
-      // Add mobile class to body
-      document.body.classList.add('mobile-view');
-      
-      // Initialize mobile functionality
-      initializeMobileFunctionality();
-      
-      console.log('📱 Mobile experience fully initialized');
-    }
+    // Set loading duration
+    const loadingDuration = 3500; // 3.5 seconds
     
-    // 📱 MOBILE NAVIGATION FUNCTIONS
-    function toggleMobileNav() {
-      const overlay = document.getElementById('mobileNavOverlay');
-      const toggle = document.querySelector('.mobile-nav-toggle');
+    // Hide loading screen after duration
+    setTimeout(() => {
+      document.body.classList.add('loaded');
+      console.log('✅ Loading complete - Welcome to Cochran Films!');
       
-      if (overlay.classList.contains('active')) {
-        overlay.classList.remove('active');
-        toggle.classList.remove('active');
-      } else {
-        overlay.classList.add('active');
-        toggle.classList.add('active');
-      }
+      // Additional cleanup after fade out
+      setTimeout(() => {
+        const loader = document.querySelector('.cinematic-loader');
+        if (loader) {
+          loader.style.display = 'none';
+        }
+      }, 1000);
+    }, loadingDuration);
+    
+    // Load saved name on initialization
+    loadSavedName();
+  });
+  
+  // Fallback safety net
+  setTimeout(() => {
+    if (!document.body.classList.contains('loaded')) {
+      document.body.classList.add('loaded');
+      console.log('🎬 Fallback loading completed');
     }
+  }, 6000);
+  
+  // 🔊 AUDIO SYSTEM - VHS Sound Effects
+  let audioContext;
+  let audioBuffer;
+  let hasAudioStarted = false;
+  let hasEntered = false;
+  
+  // Create VHS rewind sound effect
+  function createVHSRewind() {
+    if (!audioContext) return;
+    
+    try {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      const filter = audioContext.createBiquadFilter();
+      
+      // Configure oscillator for VHS rewind effect
+      oscillator.type = 'sawtooth';
+      oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+      
+      // Configure filter for vintage sound
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1000, audioContext.currentTime);
+      filter.Q.setValueAtTime(5, audioContext.currentTime);
+      
+      // Configure gain for fade in/out
+      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.05);
+      gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.3);
+      
+      // Connect nodes
+      oscillator.connect(filter);
+      filter.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      // Play sound
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.3);
+      
+    } catch (error) {
+      console.log('🔇 VHS Rewind sound generation failed:', error);
+    }
+  }
+  
+  // Create VHS click sound effect
+  function createVHSClick() {
+    if (!audioContext) return;
+    
+    try {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      const filter = audioContext.createBiquadFilter();
+      
+      // Configure oscillator for click effect
+      oscillator.type = 'square';
+      oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+      
+      // Configure filter
+      filter.type = 'highpass';
+      filter.frequency.setValueAtTime(150, audioContext.currentTime);
+      
+      // Configure gain for quick click
+      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 0.01);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+      
+      // Connect nodes
+      oscillator.connect(filter);
+      filter.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      // Play sound
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.1);
+      
+    } catch (error) {
+      console.log('🔇 VHS Click sound generation failed:', error);
+    }
+  }
+  
+  // Initialize audio system
+  (function initAudioSystem() {
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioContext = new AudioContextClass();
+        console.log('🔊 VHS Audio system initialized');
+        
+        // Auto-resume audio context for mobile
+        const resumeAudio = () => {
+          if (audioContext && audioContext.state === 'suspended') {
+            audioContext.resume().then(() => {
+              console.log('🔊 Audio context resumed');
+            });
+          }
+        };
+        
+        // Resume on user interaction
+        const playOnInteraction = () => {
+          resumeAudio();
+          document.removeEventListener('click', playOnInteraction);
+          document.removeEventListener('keydown', playOnInteraction);
+          document.removeEventListener('mousemove', playOnInteraction);
+          document.removeEventListener('touchstart', playOnInteraction);
+        };
+        
+        document.addEventListener('click', playOnInteraction);
+        document.addEventListener('keydown', playOnInteraction);
+        document.addEventListener('mousemove', playOnInteraction);
+        document.addEventListener('touchstart', playOnInteraction);
+      }
+    } catch (error) {
+      console.log('🔇 Audio initialization failed:', error);
+    }
+  })();
+  
+  // Add fadeOutAudio function for ENTER button functionality
+  function fadeOutAudio() {
+    // Placeholder for audio fade out - will work with any existing audio
+    console.log('🔇 Fading out audio...');
+  }
     
     function scrollToMobileSection(sectionId) {
       const section = document.getElementById(sectionId);
@@ -16500,7 +16806,6 @@
     
     // Add production sound effects (visual only - sound waves)
     animateProductionElements();
-  });
   
   // Mobile optimization function
   function optimizeForMobile() {
